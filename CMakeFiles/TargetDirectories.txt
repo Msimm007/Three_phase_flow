@@ -1,0 +1,10 @@
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/ThreePhase.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/run.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/debug.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/release.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/runclean.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/distclean.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/strip_comments.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/info.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/edit_cache.dir
+/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/rebuild_cache.dir
