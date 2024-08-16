@@ -51,6 +51,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <utility>
 
 namespace LiquidPressure
 {
@@ -210,7 +211,7 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 	, theta_pl(theta_pl_)
 	, penalty_pl(penalty_pl_)
 	, penalty_pl_bdry(penalty_pl_bdry_)
-	, dirichlet_id_pl(dirichlet_id_pl_)
+	, dirichlet_id_pl(std::move(dirichlet_id_pl_))
 	, use_exact_Sa_in_pl(use_exact_Sa_in_pl_)
 	, use_exact_Sv_in_pl(use_exact_Sv_in_pl_)
 	, time(time_)

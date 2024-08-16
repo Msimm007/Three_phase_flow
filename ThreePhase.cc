@@ -1535,8 +1535,6 @@ template <int dim>
 void CoupledPressureSaturationProblem<dim>::run()
 {
 
-
-
 //	create_mesh();
 	create_mesh<dim>(triangulation, ref_level, dirichlet_id_pl, dirichlet_id_sa, dirichlet_id_sv);
 //	load_gmsh_mesh();

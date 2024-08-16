@@ -147,9 +147,6 @@ double Kappa_tilde_t<dim>::value()const
     return 2.5;
     //return 21.0;
 }
-
-
-
 template <int dim>
 class Kappa_tilde_a : public Function<dim>
 {
