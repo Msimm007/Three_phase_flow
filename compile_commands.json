@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE",
+  "command": "/usr/bin/c++ -DDEBUG -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled -isystem /usr/include/openmpi-x86_64 -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/gsl-2.7 -fdiagnostics-color=always -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/ThreePhase.dir/LocalPolynomialsRT.cc.o -c /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/LocalPolynomialsRT.cc",
+  "file": "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/LocalPolynomialsRT.cc",
+  "output": "CMakeFiles/ThreePhase.dir/LocalPolynomialsRT.cc.o"
+},
+{
+  "directory": "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE",
+  "command": "/usr/bin/c++ -DDEBUG -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled -isystem /usr/include/openmpi-x86_64 -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/gsl-2.7 -fdiagnostics-color=always -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/ThreePhase.dir/FE_RTProj.cc.o -c /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/FE_RTProj.cc",
+  "file": "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/FE_RTProj.cc",
+  "output": "CMakeFiles/ThreePhase.dir/FE_RTProj.cc.o"
+},
+{
+  "directory": "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE",
+  "command": "/usr/bin/c++ -DDEBUG -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled -isystem /usr/include/openmpi-x86_64 -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/gsl-2.7 -fdiagnostics-color=always -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/ThreePhase.dir/ThreePhase.cc.o -c /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/ThreePhase.cc",
+  "file": "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/ThreePhase.cc",
+  "output": "CMakeFiles/ThreePhase.dir/ThreePhase.cc.o"
+}
+]

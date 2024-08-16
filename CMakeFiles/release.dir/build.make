@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,10 +68,10 @@ include CMakeFiles/release.dir/progress.make
 
 CMakeFiles/release:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Switching CMAKE_BUILD_TYPE to Release"
-	/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE
-	/usr/bin/cmake -E echo "***"
-	/usr/bin/cmake -E echo "*** Switched to Release mode. Now recompile with:  \$$ make"
-	/usr/bin/cmake -E echo "***"
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Release /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E echo "***"
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E echo "*** Switched to Release mode. Now recompile with:  \$$ make"
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E echo "***"
 
 release: CMakeFiles/release
 release: CMakeFiles/release.dir/build.make

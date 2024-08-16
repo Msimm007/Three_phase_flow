@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,10 +68,10 @@ include CMakeFiles/distclean.dir/progress.make
 
 CMakeFiles/distclean:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
-	/usr/bin/cmake --build /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE --target clean
-	/usr/bin/cmake --build /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE --target runclean
-	/usr/bin/cmake -E remove_directory CMakeFiles
-	/usr/bin/cmake -E remove CMakeCache.txt cmake_install.cmake Makefile build.ninja rules.ninja .ninja_deps .ninja_log
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake --build /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE --target clean
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake --build /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE --target runclean
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E remove_directory CMakeFiles
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E remove CMakeCache.txt cmake_install.cmake Makefile build.ninja rules.ninja .ninja_deps .ninja_log
 
 distclean: CMakeFiles/distclean
 distclean: CMakeFiles/distclean.dir/build.make

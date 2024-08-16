@@ -19,7 +19,6 @@ SET(TARGET "ThreePhase")
 SET(TARGET_H
   LocalPolynomialsRT.hh
   FE_RTProj.hh
-  run_midpoint.hh
 )
 
 SET(TARGET_SRC

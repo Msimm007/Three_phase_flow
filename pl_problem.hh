@@ -246,7 +246,6 @@ template <int dim>
 void LiquidPressureProblem<dim>::setup_system()
 
 {
-    //    if_incompressible<dim>(incompressible);
     dof_handler.distribute_dofs(fe);
 
     constraints.clear();

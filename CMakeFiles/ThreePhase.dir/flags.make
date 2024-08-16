@@ -6,5 +6,5 @@ CXX_DEFINES = -DDEBUG
 
 CXX_INCLUDES = -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include -isystem /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled -isystem /usr/include/openmpi-x86_64 -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/gsl-2.7
 
-CXX_FLAGS = -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections
+CXX_FLAGS = -fdiagnostics-color=always -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections
 

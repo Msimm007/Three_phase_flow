@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -67,7 +67,7 @@ include CMakeFiles/info.dir/compiler_depend.make
 include CMakeFiles/info.dir/progress.make
 
 CMakeFiles/info:
-	/usr/bin/cmake -P /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/print_usage.cmake
+	/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -P /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/CMakeFiles/print_usage.cmake
 
 info: CMakeFiles/info
 info: CMakeFiles/info.dir/build.make
