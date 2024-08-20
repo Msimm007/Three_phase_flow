@@ -271,6 +271,7 @@ void LiquidPressureProblem_midpoint<dim>::assemble_system_matrix_pressure()
 {
 	setup_system();
 
+    // creating an alias to use for the future
     using Iterator = typename DoFHandler<dim>::active_cell_iterator;
     BoundaryValuesLiquidPressure<dim> boundary_function;
     RightHandSideLiquidPressure<dim> right_hand_side_fcn;

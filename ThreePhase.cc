@@ -403,27 +403,32 @@ private:
 	IndexSet locally_owned_dofs_RT;
 	IndexSet locally_relevant_dofs_RT;
 
+    // Solutions for BDF schemes
     PETScWrappers::MPI::Vector pl_solution;
     PETScWrappers::MPI::Vector pl_solution_n;
-    PETScWrappers::MPI::Vector pl_solution_k;
-    PETScWrappers::MPI::Vector pl_solution_kplus1;
     PETScWrappers::MPI::Vector pl_solution_nminus1;
     PETScWrappers::MPI::Vector pl_solution_nminus2;
 
-
     PETScWrappers::MPI::Vector Sa_solution;
     PETScWrappers::MPI::Vector Sa_solution_n;
-    PETScWrappers::MPI::Vector Sa_solution_k;
-    PETScWrappers::MPI::Vector Sa_solution_kplus1;
     PETScWrappers::MPI::Vector Sa_solution_nminus1;
     PETScWrappers::MPI::Vector Sa_solution_nminus2;
 
     PETScWrappers::MPI::Vector Sv_solution;
     PETScWrappers::MPI::Vector Sv_solution_n;
-    PETScWrappers::MPI::Vector Sv_solution_k;
-    PETScWrappers::MPI::Vector Sv_solution_kplus1;
     PETScWrappers::MPI::Vector Sv_solution_nminus1;
     PETScWrappers::MPI::Vector Sv_solution_nminus2;
+
+    // Solutions for Midpoint scheme
+    PETScWrappers::MPI::Vector pl_solution_k;
+    PETScWrappers::MPI::Vector pl_solution_kplus1;
+
+
+    PETScWrappers::MPI::Vector Sa_solution_k;
+    PETScWrappers::MPI::Vector Sa_solution_kplus1;
+
+    PETScWrappers::MPI::Vector Sv_solution_k;
+    PETScWrappers::MPI::Vector Sv_solution_kplus1;
 
     PETScWrappers::MPI::Vector pl_difference;
     PETScWrappers::MPI::Vector Sa_difference;
@@ -512,8 +517,6 @@ private:
     AffineConstraints<double> constraints;
 
 };
-
-
 
 template <int dim>
 CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const unsigned int degree, const unsigned int degreeRT_,
@@ -1535,9 +1538,8 @@ template <int dim>
 void CoupledPressureSaturationProblem<dim>::run()
 {
 
-//	create_mesh();
+
 	create_mesh<dim>(triangulation, ref_level, dirichlet_id_pl, dirichlet_id_sa, dirichlet_id_sv);
-//	load_gmsh_mesh();
 
 	pcout << "    Number of active cells:       "
 		  << triangulation.n_active_cells() << " (by partition:";
@@ -2046,7 +2048,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 		} 
 
 		else if(midpoint_method && !incompressible){
-			        std::cerr << "ERROR! Midpoint method must have incompressible to be true" << std::endl;
+			        std::cerr << "ERROR! Midpoint method must assume incompressible true" << std::endl;
 					std::abort();
 		}
 		else

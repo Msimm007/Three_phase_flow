@@ -3,24 +3,29 @@
 
 subsection Time discretization parameters
   # Final time of simulation
-  set Final time = 750.0
+  set Final time = 8000
+
   
   # Initial time step (must be chosen so that at least one time step is performed)
-  set Initial time step = 0.25
+  set Initial time step = 1
   
   # Second order time derivative
   set Second order time derivative = false
+
   
   # Second order extrapolation
   set Second order extrapolation = false
-  
+
   # Use implicit time derivative term in pl. If false, the term \partial_t(\phi \rho_t) is computed as (\phi^n\rho_t^n - \phi^{n-1}\rho_t^{n-1})/\tau.
   # If true, we apply chain rule and write it as \partial_t(\phi \rho_t) = a1 \partial_t p_\ell + a2 \partial_t s_a + a3 \partial_t s_v
   set Use implicit time term in pl = true
+
+    # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
+    set Midpoint method = false
   
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation"
-  set Create initial perturbation = true
+  set Create initial perturbation = false
 end
 
 
@@ -36,48 +41,52 @@ subsection Spatial discretization parameters
 
   # If true, then stability method is used For Sv
   set Stab_v = false
-
-  # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = true
-
+  
   # Polynomial degree for FE space
   set Degree = 1
+#  set Degree = 2
   
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 0
   
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 0
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
+
   
   # theta Sa (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta Sa = 1
+
   
   # theta Sv (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta Sv = 1
   
   # Penalty parameter pl
   set Penalty pl = 1.0
+
   
   # Penalty parameter Sa
   set Penalty Sa = 1.0
+
   
   # Penalty parameter Sv
   set Penalty Sv = 1.0
   
   # Penalty parameter pl for enforcing BC
-  set Penalty pl boundary = 100.0
+  set Penalty pl boundary = 1.0
+
   
   # Penalty parameter Sa for enforcing BC
-  set Penalty Sa boundary = 100.0
+  set Penalty Sa boundary = 1.0
+
   
   # Penalty parameter Sv for enforcing BC
   set Penalty Sv boundary = 1.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = false
+  set Project to RT0 = true
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
@@ -129,21 +138,17 @@ subsection Spatial discretization parameters
   # If true, it solves only for pl and Sa and sets Sv = 0.
   # Otherwise, it solves all three phases
   set Two phase problem = true
+  
 end
-
-
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = false
+  set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
-  set Frequency for vtk printing = 10
+  set Frequency for vtk printing = 5
   
   # Compute errors (manufactured sol test case)
   set Compute errors = false
-
-  # Compute and output energy
-  set Compute energy = false
 end
 
 subsection Continuation from previous solution
@@ -151,11 +156,11 @@ subsection Continuation from previous solution
   set Output solution = false
   
   # How often solution files are printed. Only used if previous variable is true
-  set Frequency for solution output = 2
+  set Frequency for solution output = 20
   
   # Continue from previous solution
   set Continue solution = false
   
   # Time step to continue solution from
-  set Time step number = 3
+  set Time step number = 1800
 end

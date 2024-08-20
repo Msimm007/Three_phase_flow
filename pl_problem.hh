@@ -93,6 +93,7 @@ template <int dim>
 class LiquidPressureProblem
 {
 public:
+    // constructor
 	LiquidPressureProblem(Triangulation<dim, dim> &triangulation_,
 			const unsigned int degree_, double time_step_, double theta_pl_, double penalty_pl_,
 			double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
@@ -655,7 +656,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 					}
                 }
 
-                // Source term
+                // Source term, right hand side
                 copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point]) * fe_v.shape_value(i, point) * JxW[point];
 
                 // Time term of pl
@@ -1655,6 +1656,6 @@ void LiquidPressureProblem<dim>::solve_pressure()
 	}
 
 }
-} // namespace LiquidPressure
+}
 
 #endif //PL_PROBLEM_HH

@@ -295,6 +295,16 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
 	}
 }
 
+// This function creates the value of kappa according to the cell
+template <int dim>
+double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator &cell)
+{
+	double kappa_abs = 7.e-10;
+
+	return kappa_abs;
+};
+
+
 template <int dim>
 class Kappa_tilde_t : public Function<dim>
 {
@@ -343,15 +353,6 @@ double Kappa_tilde_v<dim>::value()const
 {
     return 1.0;
 }
-
-// This function creates the value of kappa according to the cell
-template <int dim>
-double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator &cell)
-{
-	double kappa_abs = 7.e-10;
-
-	return kappa_abs;
-};
 
 template <int dim>
 class ExactLiquidPressure : public Function<dim>
@@ -668,7 +669,7 @@ CapillaryPressurePcv<dim>::derivative_wrt_Sv(double Sv,
 	Sv = std::min(1.0, std::max(Sv, 0.0));
 
 //	if(Sv > 0.05)
-		return amp_factor_cap_pressure*0.5*pow(Sv, -1.5);
+		return amp_factor_cap_pressure*0.5*pow(Sv+0.01, -1.5);
 //	else
 //		return amp_factor_cap_pressure*10.0/sqrt(0.05);
 }
