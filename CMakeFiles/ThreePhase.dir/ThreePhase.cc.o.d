@@ -1,8 +1,8 @@
 CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/ThreePhase.cc \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/ThreePhase.cc \
  /usr/include/stdc-predef.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/quadrature_lib.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/config.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/quadrature_lib.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/config.h \
  /usr/include/openmpi-x86_64/mpi.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
  /usr/include/openmpi-x86_64/mpi_portable_platform.h \
@@ -169,14 +169,14 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/openmpi-x86_64/openmpi/ompi/mpi/cxx/info_inln.h \
  /usr/include/openmpi-x86_64/openmpi/ompi/mpi/cxx/win_inln.h \
  /usr/include/openmpi-x86_64/openmpi/ompi/mpi/cxx/file_inln.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/numbers.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/types.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/numbers.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/types.h \
  /usr/include/c++/13/cstdint \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Macros.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_config.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_SetupBackend.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Macros.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_config.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_SetupBackend.hpp \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -198,19 +198,19 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/complex \
  /usr/include/c++/13/sstream /usr/include/c++/13/bits/sstream.tcc \
  /usr/include/boost/version.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/quadrature.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/point.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/exceptions.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Core.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Core_fwd.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Error.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Utilities.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MasterLock.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_FwdBackend.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/fwd/Kokkos_Fwd_SERIAL.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_DeclareBackend.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/decl/Kokkos_Declare_SERIAL.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Serial.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/quadrature.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/point.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/exceptions.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Core.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Core_fwd.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Error.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Utilities.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MasterLock.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_FwdBackend.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/fwd/Kokkos_Fwd_SERIAL.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_DeclareBackend.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/decl/Kokkos_Declare_SERIAL.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Serial.hpp \
  /usr/include/c++/13/mutex /usr/include/c++/13/bits/chrono.h \
  /usr/include/c++/13/ratio /usr/include/c++/13/ctime \
  /usr/include/c++/13/bits/parse_numbers.h \
@@ -219,14 +219,14 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/c++/13/bits/std_thread.h \
  /usr/include/c++/13/bits/unique_ptr.h \
  /usr/include/c++/13/bits/this_thread_sleep.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_TaskScheduler.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_TaskScheduler_fwd.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MemoryPool.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Parallel.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_DetectionIdiom.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_ExecPolicy.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Traits.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_BitOps.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_TaskScheduler.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_TaskScheduler_fwd.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MemoryPool.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Parallel.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_DetectionIdiom.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_ExecPolicy.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Traits.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_BitOps.hpp \
  /usr/include/c++/13/climits \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/syslimits.h \
@@ -234,23 +234,23 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
  /usr/include/bits/uio_lim.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_AnalyzePolicy.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Concepts.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_Traits_fwd.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_PolicyTraitAdaptor.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_ExecutionSpaceTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_GraphKernelTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_GraphImpl_fwd.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_IndexTypeTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_IterationPatternTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Rank.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Layout.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_LaunchBoundsTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_OccupancyControlTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_ScheduleTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_WorkItemPropertyTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_WorkTagTrait.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_View.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_AnalyzePolicy.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Concepts.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_Traits_fwd.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_PolicyTraitAdaptor.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_ExecutionSpaceTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_GraphKernelTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_GraphImpl_fwd.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_IndexTypeTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_IterationPatternTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Rank.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Layout.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_LaunchBoundsTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_OccupancyControlTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_ScheduleTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_WorkItemPropertyTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/traits/Kokkos_WorkTagTrait.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_View.hpp \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \
@@ -258,16 +258,16 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_HostSpace.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_HostSpace.hpp \
  /usr/include/c++/13/cstring \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MemoryTraits.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_SharedAlloc.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Tools.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling_Interface.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MemoryTraits.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_SharedAlloc.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Tools.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling_Interface.hpp \
  /usr/include/c++/13/cinttypes /usr/include/inttypes.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling_DeviceInfo.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling_C_Interface.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling_DeviceInfo.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Profiling_C_Interface.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
  /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/shared_ptr.h \
@@ -284,119 +284,119 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostSpace_deepcopy.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_MemorySpace.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/View/Hooks/Kokkos_ViewHooks.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewMapping.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Pair.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Extents.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewTracker.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewCtor.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Atomic_View.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomic.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomics_Desul_Wrapper.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomics_Desul_Config.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Atomic_Ref.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Common.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostSpace_deepcopy.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_MemorySpace.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/View/Hooks/Kokkos_ViewHooks.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewMapping.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Pair.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Extents.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewTracker.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewCtor.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Atomic_View.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomic.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomics_Desul_Wrapper.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomics_Desul_Config.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Atomic_Ref.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Common.hpp \
  /usr/include/c++/13/atomic \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Macros.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Generic.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Compare_Exchange.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Compare_Exchange_ScopeCaller.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Compare_Exchange_GCC.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Lock_Array.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Lock_Array_Cuda.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Lock_Array_HIP.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/CUDA.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/GCC.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/HIP.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/OpenMP.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/SYCL.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Atomic_Memory_Order.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Volatile_Load.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomics_Desul_Volatile_Wrapper.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_StringManipulation.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewArray.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Array.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewUniformType.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Tools_Generic.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Tuners.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/KokkosExp_MDRangePolicy.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/KokkosExp_Host_IterateTile.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Macros.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Generic.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Compare_Exchange.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Compare_Exchange_ScopeCaller.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Compare_Exchange_GCC.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Lock_Array.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Lock_Array_Cuda.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/Lock_Array_HIP.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/CUDA.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/GCC.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/HIP.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/OpenMP.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/desul/atomics/SYCL.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Atomic_Memory_Order.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Volatile_Load.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Atomics_Desul_Volatile_Wrapper.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_StringManipulation.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewArray.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Array.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ViewUniformType.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Tools_Generic.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Tuners.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/KokkosExp_MDRangePolicy.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/KokkosExp_Host_IterateTile.hpp \
  /usr/include/c++/13/array /usr/include/c++/13/compare \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/cassert \
  /usr/include/assert.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_FunctorAnalysis.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Parallel_Reduce.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_NumericTraits.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_FunctorAnalysis.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Parallel_Reduce.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_NumericTraits.hpp \
  /usr/include/c++/13/cfloat \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/float.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ConcurrentBitset.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ClockTic.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ConcurrentBitset.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ClockTic.hpp \
  /usr/include/c++/13/chrono \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Future.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueue.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskBase.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_LIFO.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_PointerOwnership.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_OptionalRef.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_LinkedListNode.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskResult.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskNode.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_VLAEmulation.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ChaseLev.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_LIFO.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_EBO.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_SingleTaskQueue.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueMemoryManager.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueCommon.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueMultiple.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueMultiple_impl.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskPolicyData.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskTeamMember.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_SimpleTaskScheduler.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_MultipleTaskQueue.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_ScratchSpace.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostThreadTeam.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostBarrier.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostSharedPtr.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Future.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueue.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskBase.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_LIFO.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_PointerOwnership.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_OptionalRef.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_LinkedListNode.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskResult.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskNode.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_VLAEmulation.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_ChaseLev.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_LIFO.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_EBO.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_SingleTaskQueue.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueMemoryManager.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueCommon.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueMultiple.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskQueueMultiple_impl.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskPolicyData.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_TaskTeamMember.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_SimpleTaskScheduler.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_MultipleTaskQueue.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_ScratchSpace.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostThreadTeam.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostBarrier.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_HostSharedPtr.hpp \
  /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_InitializationSettings.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_Range.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_MDRange.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_Team.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Task.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_UniqueToken.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_UniqueToken.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Half.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_AnonymousSpace.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_LogicalSpaces.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MinMaxClamp.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MathematicalConstants.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MathematicalFunctions.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MathematicalSpecialFunctions.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Complex.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Vectorization.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_hwloc.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Timer.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_CopyViews.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Crs.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_WorkGraphPolicy.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_WorkGraphPolicy.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Combined_Reducer.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_AcquireUniqueTokenImpl.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_PostInclude.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/tensor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/kokkos.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/table_indices.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/template_constraints.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/complex_overloads.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/std_cxx20/type_traits.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_InitializationSettings.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_Range.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_MDRange.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_Team.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Task.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_UniqueToken.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_UniqueToken.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Half.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_AnonymousSpace.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_LogicalSpaces.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MinMaxClamp.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MathematicalConstants.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MathematicalFunctions.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_MathematicalSpecialFunctions.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Complex.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Vectorization.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_hwloc.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Timer.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_CopyViews.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_Crs.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_WorkGraphPolicy.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_WorkGraphPolicy.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/impl/Kokkos_Combined_Reducer.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_AcquireUniqueTokenImpl.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/KokkosCore_Config_PostInclude.hpp \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/tensor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/kokkos.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/table_indices.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/template_constraints.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/complex_overloads.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/std_cxx20/type_traits.h \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/tensor_accessors.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/tensor_accessors.h \
  /usr/include/boost/geometry/core/cs.hpp \
  /usr/include/boost/geometry/core/coordinate_system.hpp \
  /usr/include/boost/geometry/core/point_type.hpp \
@@ -559,11 +559,11 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/assert.hpp \
  /usr/include/boost/geometry/core/coordinate_dimension.hpp \
  /usr/include/boost/geometry/core/make.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/subscriptor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/dynamic_sparsity_pattern.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/index_set.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/mpi_stub.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/mutex.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/subscriptor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/dynamic_sparsity_pattern.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/index_set.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/mpi_stub.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/mutex.h \
  /usr/include/boost/container/small_vector.hpp \
  /usr/include/boost/container/detail/config_begin.hpp \
  /usr/include/boost/container/detail/workaround.hpp \
@@ -579,6 +579,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/move/detail/workaround.hpp \
  /usr/include/boost/move/detail/meta_utils.hpp \
  /usr/include/boost/move/detail/meta_utils_core.hpp \
+ /usr/include/boost/move/detail/addressof.hpp \
  /usr/include/boost/move/detail/config_end.hpp \
  /usr/include/boost/intrusive/detail/mpl.hpp \
  /usr/include/boost/intrusive/detail/config_begin.hpp \
@@ -616,8 +617,9 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/container/detail/destroyers.hpp \
  /usr/include/boost/container/detail/version_type.hpp \
  /usr/include/boost/move/adl_move_swap.hpp \
- /usr/include/boost/move/iterator.hpp \
+ /usr/include/boost/move/iterator.hpp /usr/include/boost/move/traits.hpp \
  /usr/include/boost/core/no_exceptions_support.hpp \
+ /usr/include/boost/move/detail/force_ptr.hpp \
  /usr/include/boost/container/detail/algorithm.hpp \
  /usr/include/boost/intrusive/detail/algorithm.hpp \
  /usr/include/boost/container/detail/alloc_helpers.hpp \
@@ -626,7 +628,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/container/detail/min_max.hpp \
  /usr/include/boost/container/detail/value_functors.hpp \
  /usr/include/boost/intrusive/detail/value_functors.hpp \
- /usr/include/boost/move/traits.hpp \
  /usr/include/boost/move/detail/move_helpers.hpp \
  /usr/include/boost/move/algo/adaptive_merge.hpp \
  /usr/include/boost/move/algo/detail/adaptive_sort_merge.hpp \
@@ -635,6 +636,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/move/algo/detail/basic_op.hpp \
  /usr/include/boost/move/detail/destruct_n.hpp \
  /usr/include/boost/move/algo/predicate.hpp \
+ /usr/include/boost/move/algo/detail/search.hpp \
  /usr/include/boost/move/algo/detail/insertion_sort.hpp \
  /usr/include/boost/move/detail/placement_new.hpp \
  /usr/include/boost/move/algo/detail/merge_sort.hpp \
@@ -642,32 +644,32 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/move/algo/detail/is_sorted.hpp \
  /usr/include/boost/cstdint.hpp /usr/include/boost/move/algo/unique.hpp \
  /usr/include/boost/move/algo/detail/set_difference.hpp \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscis.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsys.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include/petscconf.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include/petscconf_poison.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/linux-gnu-c/include/petscfix.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscmacros.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscversion.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsc/private/petscadvancedmacros.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsystypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsccxxcomplexfix.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscmath.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscis.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsys.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/include/petscconf.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/include/petscconf_poison.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/include/petscfix.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscmacros.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscversion.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsc/private/petscadvancedmacros.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsystypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsccxxcomplexfix.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscmath.h \
  /usr/include/c++/13/math.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscerror.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscviewertypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscoptions.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsclog.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsctime.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscbt.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscstring.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsclogtypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsclogdeprecated.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscerror.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscviewertypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscoptions.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsclog.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsctime.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscbt.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscstring.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsclogtypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsclogdeprecated.h \
  /usr/include/c++/13/stdlib.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsftypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsectiontypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscistypes.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/utilities.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsftypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsectiontypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscistypes.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/utilities.h \
  /usr/include/boost/archive/binary_iarchive.hpp \
  /usr/include/boost/archive/binary_iarchive_impl.hpp \
  /usr/include/boost/archive/basic_binary_iprimitive.hpp \
@@ -811,7 +813,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/archive/detail/basic_iarchive.hpp \
  /usr/include/boost/scoped_ptr.hpp \
  /usr/include/boost/smart_ptr/scoped_ptr.hpp \
- /usr/include/boost/checked_delete.hpp \
  /usr/include/boost/core/checked_delete.hpp \
  /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp \
  /usr/include/boost/smart_ptr/detail/sp_disable_deprecated.hpp \
@@ -932,6 +933,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/iostreams/filtering_streambuf.hpp \
  /usr/include/boost/iostreams/chain.hpp /usr/include/c++/13/list \
  /usr/include/c++/13/bits/stl_list.h /usr/include/c++/13/bits/list.tcc \
+ /usr/include/boost/checked_delete.hpp \
  /usr/include/boost/core/typeinfo.hpp \
  /usr/include/boost/iostreams/constants.hpp \
  /usr/include/boost/iostreams/detail/access_control.hpp \
@@ -1115,25 +1117,25 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/iostreams/detail/config/zlib.hpp \
  /usr/include/boost/iostreams/filter/symmetric.hpp \
  /usr/include/boost/iostreams/putback.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/exceptions.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/sparsity_pattern_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/array_view.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/memory_space.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/symmetric_tensor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/sparse_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/smartpointer.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/identity_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/sparsity_pattern.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/linear_index_iterator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/vector_operation.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/sparse_direct.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/block_sparse_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/block_matrix_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/memory_consumption.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/table.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/aligned_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/mpi.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/mpi_tags.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/exceptions.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/sparsity_pattern_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/array_view.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/memory_space.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/symmetric_tensor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/sparse_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/smartpointer.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/identity_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/sparsity_pattern.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/linear_index_iterator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/vector_operation.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/sparse_direct.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/block_sparse_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/block_matrix_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/memory_consumption.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/table.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/aligned_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/mpi.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/mpi_tags.h \
  /usr/include/boost/signals2.hpp \
  /usr/include/boost/signals2/deconstruct.hpp \
  /usr/include/boost/signals2/deconstruct_ptr.hpp \
@@ -1145,6 +1147,8 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/core/explicit_operator_bool.hpp \
  /usr/include/boost/core/swap.hpp \
  /usr/include/boost/optional/bad_optional_access.hpp \
+ /usr/include/boost/type_traits/conjunction.hpp \
+ /usr/include/boost/type_traits/disjunction.hpp \
  /usr/include/boost/type_traits/decay.hpp \
  /usr/include/boost/type_traits/remove_bounds.hpp \
  /usr/include/boost/type_traits/is_nothrow_move_assignable.hpp \
@@ -1157,6 +1161,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/optional/detail/optional_config.hpp \
  /usr/include/boost/optional/detail/optional_factory_support.hpp \
  /usr/include/boost/optional/detail/optional_aligned_storage.hpp \
+ /usr/include/boost/optional/detail/optional_hash.hpp \
  /usr/include/boost/optional/detail/optional_trivially_copyable_base.hpp \
  /usr/include/boost/optional/detail/optional_reference_spec.hpp \
  /usr/include/boost/optional/detail/optional_relops.hpp \
@@ -1197,7 +1202,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/signals2/connection.hpp \
  /usr/include/boost/signals2/detail/auto_buffer.hpp \
  /usr/include/boost/signals2/detail/scope_guard.hpp \
- /usr/include/boost/swap.hpp \
  /usr/include/boost/type_traits/has_trivial_assign.hpp \
  /usr/include/boost/type_traits/has_trivial_constructor.hpp \
  /usr/include/boost/signals2/detail/null_output_iterator.hpp \
@@ -1220,7 +1224,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/weak_ptr.hpp \
  /usr/include/boost/smart_ptr/weak_ptr.hpp \
  /usr/include/boost/signals2/detail/foreign_ptr.hpp \
- /usr/include/boost/utility/swap.hpp \
  /usr/include/boost/variant/apply_visitor.hpp \
  /usr/include/boost/variant/detail/apply_visitor_unary.hpp \
  /usr/include/boost/mpl/distance.hpp \
@@ -1365,7 +1368,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/mpl/front_inserter.hpp \
  /usr/include/boost/variant/detail/variant_io.hpp \
  /usr/include/boost/signals2/trackable.hpp \
- /usr/include/boost/utility/addressof.hpp \
  /usr/include/boost/signals2/variadic_slot.hpp \
  /usr/include/boost/signals2/detail/variadic_arg_type.hpp \
  /usr/include/boost/signals2/detail/slot_template.hpp \
@@ -1461,125 +1463,125 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/set \
  /usr/include/c++/13/bits/stl_set.h \
  /usr/include/c++/13/bits/stl_multiset.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/parallel.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/synchronous_iterator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/blocked_range.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_stddef.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_config.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/parallel_for.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/task.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_machine.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/linux_intel64.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/gcc_ia32_common.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/gcc_itsx.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/linux_common.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/parallel.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/synchronous_iterator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/blocked_range.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_stddef.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_config.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/parallel_for.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/task.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_machine.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/linux_intel64.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/gcc_ia32_common.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/gcc_itsx.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/machine/linux_common.h \
  /usr/include/sys/syscall.h /usr/include/asm/unistd.h \
  /usr/include/asm/unistd_64.h /usr/include/bits/syscall.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_profiling.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/internal/_tbb_strings.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/atomic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/partitioner.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/task_arena.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_exception.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_allocator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/internal/_template_helpers.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/aligned_space.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/blocked_range.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/internal/_tbb_trace_impl.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_profiling.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/parallel_reduce.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/partitioner.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/block_indices.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/logstream.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/thread_local_storage.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_profiling.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/internal/_tbb_strings.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/atomic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/partitioner.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/task_arena.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_exception.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_allocator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/internal/_template_helpers.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/aligned_space.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/blocked_range.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/internal/_tbb_trace_impl.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/tbb_profiling.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/parallel_reduce.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/partitioner.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/block_indices.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/logstream.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/thread_local_storage.h \
  /usr/include/c++/13/shared_mutex /usr/include/c++/13/stack \
  /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
  /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/bits/stl_stack.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/full_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/full_matrix.h \
  /usr/include/c++/13/iomanip /usr/include/c++/13/bits/quoted_string.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/matrix_iterator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/vector_type_traits.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/block_sparsity_pattern.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/trilinos_sparsity_pattern.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/block_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/block_vector_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/sparse_matrix_ez.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/UFconfig.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_symbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_numeric.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_solve.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_free_symbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_free_numeric.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_defaults.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_qsymbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_wsolve.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_triplet_to_col.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_col_to_triplet.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_transpose.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_scale.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_lunz.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_numeric.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_symbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_save_numeric.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_load_numeric.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_save_symbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_load_symbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_determinant.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_status.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_control.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_triplet.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_symbolic.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_numeric.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_perm.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_timer.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_tictoc.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/amd.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_global.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/distributed/shared_tria.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/distributed/tria_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/partitioner.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/communication_pattern_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/geometry_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/ndarray.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/std_cxx20/iota_view.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/matrix_iterator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/vector_type_traits.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/block_sparsity_pattern.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/trilinos_sparsity_pattern.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/block_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/block_vector_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/sparse_matrix_ez.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/UFconfig.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_symbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_numeric.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_solve.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_free_symbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_free_numeric.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_defaults.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_qsymbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_wsolve.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_triplet_to_col.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_col_to_triplet.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_transpose.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_scale.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_lunz.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_numeric.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_symbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_save_numeric.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_load_numeric.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_save_symbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_load_symbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_get_determinant.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_status.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_control.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_triplet.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_symbolic.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_numeric.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_report_perm.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_timer.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_tictoc.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/amd.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/umfpack_global.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/distributed/shared_tria.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/distributed/tria_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/partitioner.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/communication_pattern_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/geometry_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/ndarray.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/std_cxx20/iota_view.h \
  /usr/include/boost/range/irange.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/iterator_range.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/cell_id.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_description.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/reference_cell.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator_selector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_levels.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_objects.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_objects_orientations.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/iterator_range.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/cell_id.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_description.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/reference_cell.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator_selector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_levels.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_objects.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_objects_orientations.h \
  /usr/include/boost/serialization/utility.hpp \
  /usr/include/boost/serialization/map.hpp \
  /usr/include/boost/serialization/unique_ptr.hpp \
  /usr/include/c++/13/bitset \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_accessor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/bounding_box.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_accessor.templates.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_faces.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator.templates.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/grid_generator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/function.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/function_time.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/cgal/additional_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/grid_in.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/grid_out.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/data_out_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/data_component_interpretation.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/grid_refinement.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_common.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/patterns.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/component_mask.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_accessor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/bounding_box.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_accessor.templates.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_faces.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/tria_iterator.templates.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/grid_generator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/function.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/function_time.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/cgal/additional_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/grid_in.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/grid_out.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/data_out_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/data_component_interpretation.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/grid_refinement.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_common.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/patterns.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/component_mask.h \
  /usr/include/boost/property_tree/ptree_fwd.hpp \
  /usr/include/boost/property_tree/ptree_serialization.hpp \
  /usr/include/boost/property_tree/ptree.hpp \
@@ -1689,6 +1691,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/type_traits/cv_traits.hpp \
  /usr/include/boost/type_traits/add_cv.hpp \
  /usr/include/boost/type_traits/remove_volatile.hpp \
+ /usr/include/boost/utility/swap.hpp \
  /usr/include/boost/multi_index/detail/index_loader.hpp \
  /usr/include/boost/multi_index/detail/index_saver.hpp \
  /usr/include/boost/multi_index/detail/index_matcher.hpp \
@@ -1721,92 +1724,93 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/property_tree/detail/ptree_implementation.hpp \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_values.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/derivative_form.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_accessor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_handler.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/block_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_faces.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_objects.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_iterator_selector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_levels.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/number_cache.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/hp/fe_collection.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/block_mask.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_update_flags.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_values_extractors.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/mapping.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/mapping_related_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/hp/q_collection.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/hp/collection.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/non_matching/immersed_surface_quadrature.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_accessor.templates.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/affine_constraints.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/vector_element_access.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/trilinos_epetra_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/trilinos_tpetra_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/read_write_vector.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsc.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscbag.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscmatlab.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdraw.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdrawtypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdevice.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdevicetypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsf.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscvec.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscviewer.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsection.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmda.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdm.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscmat.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscmatcoarsen.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmtypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscfetypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdstypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmlabel.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdt.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmdatypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscpf.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscao.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscfe.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscspace.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdualspace.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmcomposite.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmpatch.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmplex.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscpartitioner.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmplextypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscfv.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscfvtypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmfield.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmplextransform.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmplextransformtypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmredundant.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmshell.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmsliced.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmswarm.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmstag.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscdmproduct.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscds.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsccharacteristic.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscts.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscsnes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscksp.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscpc.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscpctypes.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petscconvest.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsctao.h \
- /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_14/petsc-3.20.0/include/petsctaolinesearch.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_boundary.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/hp/mapping_collection.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/mapping_q1.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/mapping_q.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/polynomial.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/vectorization.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_values.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/derivative_form.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_accessor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_handler.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/block_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_faces.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_objects.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_iterator_selector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_levels.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/number_cache.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/hp/fe_collection.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/block_mask.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_update_flags.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_values_extractors.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/mapping.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/mapping_related_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/hp/q_collection.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/hp/collection.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/non_matching/immersed_surface_quadrature.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_accessor.templates.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/affine_constraints.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/vector_element_access.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/trilinos_epetra_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/trilinos_tpetra_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/read_write_vector.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsc.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscbag.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscmatlab.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdraw.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdrawtypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdevice.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdevicetypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsf.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscvec.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscviewer.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsection.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmda.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdm.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscmat.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscmatcoarsen.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmtypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscfetypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdstypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmlabel.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdt.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmdatypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscpf.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscao.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscfe.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscspace.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdualspace.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmcomposite.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmpatch.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmplex.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscpartitioner.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmplextypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscfv.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscfvtypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmfield.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmplextransform.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmplextransformtypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmredundant.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmshell.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmsliced.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmswarm.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmstag.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscdmproduct.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscds.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsccharacteristic.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscts.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscsnes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscksp.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscpc.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscpctypes.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petscconvest.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsctao.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsctaolinesearch.h \
+ /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include/petsctao_deprecations.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_boundary.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/hp/mapping_collection.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/mapping_q1.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/mapping_q.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/polynomial.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/vectorization.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/x86intrin.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/x86gprintrin.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/ia32intrin.h \
@@ -1906,92 +1910,92 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/fma4intrin.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/ammintrin.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/xopintrin.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/shape_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/tensor_product_kernels.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_constraints.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/multigrid/mg_constrained_dofs.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/mg_level_object.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/multigrid/mg_tools.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_tools.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_evaluate.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/mpi_remote_point_evaluation.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/la_parallel_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/memory_space_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/cuda.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/vector_space_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/fe_point_evaluation.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/signaling_nan.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/evaluation_flags.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/evaluation_kernels.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/dof_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/face_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/vector_data_exchange.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/fe_evaluation_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/matrix_free/mapping_info_storage.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/non_matching/mapping_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_dgq.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/tensor_product_polynomials.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/scalar_polynomials_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_poly.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/mapping_cartesian.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/qprojector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_integrate_difference.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_interpolate.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_mean_value.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_point_gradient.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_point_value.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_project.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_rhs.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/data_out.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/filtered_iterator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/data_out_dof_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/hp/fe_values.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/data_postprocessor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_dg_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/polynomials_bdm.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/polynomial_space.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/tensor_polynomials_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/polynomials_nedelec.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/polynomials_raviart_thomas.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_poly_tensor.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_interface_values.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/solver_richardson.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/solver.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/solver_control.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/vector_memory.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/solver_gmres.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/householder.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/lapack_full_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/lapack_support.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/orthogonalization.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/solver_cg.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/tridiagonal_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/precondition.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/cuda_size.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/diagonal_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/precondition_block.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/precondition_block_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/derivative_approximation.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/matrix_tools.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/matrix_creator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_face.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_poly_face.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/fe/fe_raviart_thomas.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/conditional_ostream.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/timer.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/grid_tools.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/std_cxx17/optional.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/shape_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/tensor_product_kernels.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_constraints.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/multigrid/mg_constrained_dofs.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/mg_level_object.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/multigrid/mg_tools.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_tools.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_evaluate.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/mpi_remote_point_evaluation.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/la_parallel_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/memory_space_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/cuda.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/vector_space_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/fe_point_evaluation.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/signaling_nan.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/evaluation_flags.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/evaluation_kernels.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/dof_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/face_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/vector_data_exchange.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/fe_evaluation_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/matrix_free/mapping_info_storage.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/non_matching/mapping_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_dgq.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/tensor_product_polynomials.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/scalar_polynomials_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_poly.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/mapping_cartesian.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/qprojector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_integrate_difference.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_interpolate.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_mean_value.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_point_gradient.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_point_value.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_project.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/vector_tools_rhs.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/data_out.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/filtered_iterator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/data_out_dof_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/hp/fe_values.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/data_postprocessor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_dg_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/polynomials_bdm.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/polynomial_space.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/tensor_polynomials_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/polynomials_nedelec.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/polynomials_raviart_thomas.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_poly_tensor.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_interface_values.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/solver_richardson.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/solver.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/solver_control.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/vector_memory.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/solver_gmres.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/householder.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/lapack_full_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/lapack_support.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/orthogonalization.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/solver_cg.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/tridiagonal_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/precondition.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/cuda_size.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/diagonal_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/precondition_block.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/precondition_block_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/derivative_approximation.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/matrix_tools.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/matrix_creator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_face.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_poly_face.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/fe/fe_raviart_thomas.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/conditional_ostream.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/timer.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/grid_tools.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/std_cxx17/optional.h \
  /usr/include/c++/13/optional \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/boost_adaptors/bounding_box.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/boost_adaptors/point.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/grid/manifold.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/la_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_vector_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/sparsity_tools.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/trilinos_vector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/numerics/rtree.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/boost_adaptors/segment.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/boost_adaptors/bounding_box.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/boost_adaptors/point.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/grid/manifold.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/la_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_vector_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/sparsity_tools.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/trilinos_vector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/numerics/rtree.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/boost_adaptors/segment.h \
  /usr/include/boost/geometry/geometries/segment.hpp \
  /usr/include/boost/geometry/geometries/concepts/point_concept.hpp \
  /usr/include/boost/geometry/geometries/concepts/concept_type.hpp \
@@ -2001,7 +2005,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/core/exception.hpp \
  /usr/include/boost/geometry/algorithms/is_empty.hpp \
  /usr/include/boost/geometry/algorithms/not_implemented.hpp \
- /usr/include/boost/geometry/algorithms/detail/check_iterator_range.hpp \
  /usr/include/boost/geometry/algorithms/detail/visit.hpp \
  /usr/include/boost/geometry/core/visit.hpp \
  /usr/include/boost/geometry/util/type_traits.hpp \
@@ -2041,7 +2044,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/math/tools/precision.hpp \
  /usr/include/boost/math/tools/assert.hpp \
  /usr/include/boost/math/tools/convert_from_string.hpp \
- /usr/include/boost/math/tools/lexical_cast.hpp \
  /usr/include/boost/lexical_cast.hpp \
  /usr/include/boost/lexical_cast/bad_lexical_cast.hpp \
  /usr/include/boost/lexical_cast/try_lexical_convert.hpp \
@@ -2249,19 +2251,33 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/integer/common_factor_rt.hpp \
  /usr/include/boost/multiprecision/cpp_bin_float.hpp \
  /usr/include/boost/multiprecision/cpp_int.hpp \
- /usr/include/boost/multiprecision/detail/endian.hpp \
  /usr/include/boost/multiprecision/detail/standalone_config.hpp \
+ /usr/include/boost/multiprecision/detail/endian.hpp \
  /usr/include/boost/multiprecision/number.hpp \
  /usr/include/boost/multiprecision/detail/precision.hpp \
  /usr/include/boost/multiprecision/traits/is_variable_precision.hpp \
  /usr/include/boost/multiprecision/detail/number_base.hpp \
- /usr/include/boost/math/tools/complex.hpp \
- /usr/include/boost/math/tools/is_detected.hpp \
  /usr/include/boost/multiprecision/traits/transcendental_reduction_type.hpp \
  /usr/include/boost/multiprecision/traits/std_integer_traits.hpp \
+ /usr/include/boost/multiprecision/detail/no_exceptions_support.hpp \
+ /usr/include/boost/math/tools/complex.hpp \
+ /usr/include/boost/math/tools/is_detected.hpp \
+ /usr/include/boost/multiprecision/detail/check_cpp11_config.hpp \
  /usr/include/boost/multiprecision/detail/digits.hpp \
+ /usr/include/boost/multiprecision/detail/assert.hpp \
  /usr/include/boost/multiprecision/detail/generic_interconvert.hpp \
  /usr/include/boost/multiprecision/detail/default_ops.hpp \
+ /usr/include/boost/multiprecision/traits/is_backend.hpp \
+ /usr/include/boost/multiprecision/detail/fpclassify.hpp \
+ /usr/include/boost/multiprecision/detail/float128_functions.hpp \
+ /usr/include/boost/cstdfloat.hpp \
+ /usr/include/boost/math/cstdfloat/cstdfloat_types.hpp \
+ /usr/include/boost/math/cstdfloat/cstdfloat_limits.hpp \
+ /usr/include/boost/math/tools/nothrow.hpp \
+ /usr/include/boost/math/cstdfloat/cstdfloat_cmath.hpp \
+ /usr/include/boost/math/cstdfloat/cstdfloat_iostream.hpp \
+ /usr/include/boost/math/cstdfloat/cstdfloat_complex.hpp \
+ /usr/include/boost/math/cstdfloat/cstdfloat_complex_std.hpp \
  /usr/include/boost/math/special_functions/next.hpp \
  /usr/include/boost/math/special_functions/sign.hpp \
  /usr/include/boost/math/special_functions/trunc.hpp \
@@ -2272,24 +2288,23 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/multiprecision/detail/no_et_ops.hpp \
  /usr/include/boost/multiprecision/detail/et_ops.hpp \
  /usr/include/boost/multiprecision/detail/min_max.hpp \
- /usr/include/boost/multiprecision/traits/is_backend.hpp \
+ /usr/include/boost/multiprecision/detail/functions/trunc.hpp \
  /usr/include/boost/multiprecision/detail/number_compare.hpp \
  /usr/include/boost/multiprecision/traits/is_restricted_conversion.hpp \
  /usr/include/boost/multiprecision/traits/explicit_conversion.hpp \
  /usr/include/boost/multiprecision/traits/is_complex.hpp \
+ /usr/include/boost/multiprecision/traits/is_convertible_arithmetic.hpp \
  /usr/include/boost/multiprecision/detail/hash.hpp \
  /usr/include/boost/multiprecision/detail/ublas_interop.hpp \
  /usr/include/boost/multiprecision/detail/integer_ops.hpp \
  /usr/include/boost/multiprecision/detail/rebind.hpp \
- /usr/include/boost/core/empty_value.hpp \
  /usr/include/boost/multiprecision/cpp_int/cpp_int_config.hpp \
- /usr/include/boost/multiprecision/detail/assert.hpp \
  /usr/include/boost/multiprecision/rational_adaptor.hpp \
  /usr/include/boost/multiprecision/traits/is_byte_container.hpp \
- /usr/include/boost/integer/static_min_max.hpp \
  /usr/include/boost/multiprecision/cpp_int/checked.hpp \
  /usr/include/boost/multiprecision/detail/constexpr.hpp \
  /usr/include/boost/multiprecision/cpp_int/value_pack.hpp \
+ /usr/include/boost/multiprecision/detail/empty_value.hpp \
  /usr/include/boost/multiprecision/cpp_int/limits.hpp \
  /usr/include/boost/multiprecision/traits/max_digits10.hpp \
  /usr/include/boost/multiprecision/cpp_int/comparison.hpp \
@@ -2356,6 +2371,8 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategies/transform.hpp \
  /usr/include/boost/geometry/geometries/helper_geometry.hpp \
  /usr/include/boost/geometry/geometries/box.hpp \
+ /usr/include/boost/geometry/geometries/linestring.hpp \
+ /usr/include/boost/geometry/geometries/ring.hpp \
  /usr/include/boost/geometry/strategies/strategy_transform.hpp \
  /usr/include/boost/geometry/algorithms/detail/overlay/get_turn_info.hpp \
  /usr/include/boost/geometry/core/config.hpp \
@@ -2392,6 +2409,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/algorithms/dispatch/expand.hpp \
  /usr/include/boost/geometry/strategies/compare.hpp \
  /usr/include/boost/geometry/policies/compare.hpp \
+ /usr/include/boost/geometry/strategies/spherical/compare.hpp \
  /usr/include/boost/geometry/strategies/expand/services.hpp \
  /usr/include/boost/geometry/algorithms/detail/expand/implementation.hpp \
  /usr/include/boost/geometry/algorithms/detail/expand/point.hpp \
@@ -2441,6 +2459,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/algorithms/detail/envelope/implementation.hpp \
  /usr/include/boost/geometry/algorithms/detail/envelope/areal.hpp \
  /usr/include/boost/geometry/algorithms/detail/envelope/range.hpp \
+ /usr/include/boost/geometry/algorithms/detail/dummy_geometries.hpp \
  /usr/include/boost/geometry/algorithms/detail/envelope/initialize.hpp \
  /usr/include/boost/geometry/algorithms/detail/envelope/linear.hpp \
  /usr/include/boost/geometry/algorithms/detail/envelope/geometry_collection.hpp \
@@ -2449,28 +2468,39 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategies/envelope/cartesian.hpp \
  /usr/include/boost/geometry/strategy/cartesian/envelope.hpp \
  /usr/include/boost/geometry/strategy/cartesian/envelope_box.hpp \
+ /usr/include/boost/geometry/strategy/cartesian/envelope_boxes.hpp \
  /usr/include/boost/geometry/strategy/cartesian/envelope_multipoint.hpp \
+ /usr/include/boost/geometry/strategy/cartesian/envelope_range.hpp \
  /usr/include/boost/geometry/strategies/envelope/geographic.hpp \
  /usr/include/boost/geometry/strategy/geographic/envelope.hpp \
  /usr/include/boost/geometry/strategy/spherical/envelope.hpp \
- /usr/include/boost/geometry/strategies/envelope/spherical.hpp \
+ /usr/include/boost/geometry/strategy/geographic/envelope_range.hpp \
+ /usr/include/boost/geometry/strategy/spherical/envelope_range.hpp \
  /usr/include/boost/geometry/strategy/spherical/envelope_point.hpp \
+ /usr/include/boost/geometry/strategies/spherical/point_in_poly_winding.hpp \
+ /usr/include/boost/geometry/strategies/side.hpp \
+ /usr/include/boost/geometry/strategies/spherical/disjoint_box_box.hpp \
+ /usr/include/boost/geometry/strategies/cartesian/disjoint_box_box.hpp \
+ /usr/include/boost/geometry/strategies/spherical/ssf.hpp \
+ /usr/include/boost/geometry/strategies/spherical/disjoint_segment_box.hpp \
+ /usr/include/boost/geometry/util/calculation_type.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/segment_box.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/point_box.hpp \
+ /usr/include/boost/geometry/formulas/vertex_longitude.hpp \
+ /usr/include/boost/geometry/strategies/envelope/spherical.hpp \
+ /usr/include/boost/geometry/strategy/spherical/envelope_boxes.hpp \
  /usr/include/boost/geometry/strategy/spherical/envelope_multipoint.hpp \
  /usr/include/boost/algorithm/minmax_element.hpp \
  /usr/include/boost/geometry/algorithms/detail/expand_by_epsilon.hpp \
- /usr/include/boost/geometry/algorithms/detail/buffer/buffer_box.hpp \
  /usr/include/boost/geometry/iterators/ever_circling_iterator.hpp \
  /usr/include/boost/geometry/iterators/detail/iterator_base.hpp \
  /usr/include/boost/geometry/strategies/intersection_strategies.hpp \
  /usr/include/boost/geometry/policies/robustness/segment_ratio_type.hpp \
- /usr/include/boost/geometry/strategies/side.hpp \
  /usr/include/boost/geometry/strategies/cartesian/intersection.hpp \
  /usr/include/boost/geometry/util/promote_integral.hpp \
  /usr/include/boost/geometry/strategy/cartesian/area.hpp \
  /usr/include/boost/geometry/strategy/area.hpp \
- /usr/include/boost/geometry/strategies/cartesian/disjoint_box_box.hpp \
  /usr/include/boost/geometry/strategies/cartesian/disjoint_segment_box.hpp \
- /usr/include/boost/geometry/util/calculation_type.hpp \
  /usr/include/boost/geometry/strategies/cartesian/distance_pythagoras.hpp \
  /usr/include/boost/geometry/strategies/cartesian/point_in_poly_winding.hpp \
  /usr/include/boost/geometry/strategies/spherical/intersection.hpp \
@@ -2478,14 +2508,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategy/spherical/area.hpp \
  /usr/include/boost/geometry/formulas/area_formulas.hpp \
  /usr/include/boost/geometry/formulas/mean_radius.hpp \
- /usr/include/boost/geometry/strategies/spherical/disjoint_box_box.hpp \
- /usr/include/boost/geometry/strategies/spherical/disjoint_segment_box.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/segment_box.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/point_box.hpp \
- /usr/include/boost/geometry/formulas/vertex_longitude.hpp \
  /usr/include/boost/geometry/strategies/spherical/distance_haversine.hpp \
- /usr/include/boost/geometry/strategies/spherical/point_in_poly_winding.hpp \
- /usr/include/boost/geometry/strategies/spherical/ssf.hpp \
  /usr/include/boost/geometry/algorithms/detail/overlay/do_reverse.hpp \
  /usr/include/boost/geometry/algorithms/detail/within/multi_point.hpp \
  /usr/include/boost/geometry/index/rtree.hpp \
@@ -2542,6 +2565,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/index/adaptors/query.hpp \
  /usr/include/boost/geometry/index/detail/meta.hpp \
  /usr/include/boost/geometry/index/detail/utilities.hpp \
+ /usr/include/boost/swap.hpp \
  /usr/include/boost/geometry/index/detail/rtree/node/node.hpp \
  /usr/include/boost/geometry/index/detail/varray.hpp \
  /usr/include/boost/geometry/index/detail/varray_detail.hpp \
@@ -2551,6 +2575,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/index/detail/rtree/node/scoped_deallocator.hpp \
  /usr/include/boost/geometry/index/detail/rtree/node/variant_visitor.hpp \
  /usr/include/boost/variant/get.hpp \
+ /usr/include/boost/utility/addressof.hpp \
  /usr/include/boost/variant/detail/element_index.hpp \
  /usr/include/boost/geometry/index/detail/rtree/node/variant_dynamic.hpp \
  /usr/include/boost/geometry/index/detail/rtree/node/variant_static.hpp \
@@ -2593,15 +2618,13 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/index/detail/rtree/iterators.hpp \
  /usr/include/boost/geometry/index/detail/rtree/query_iterators.hpp \
  /usr/include/boost/geometry/index/detail/config_end.hpp \
- /usr/include/boost/geometry/algorithms/relate.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/implementation.hpp \
- /usr/include/boost/geometry/algorithms/detail/relate/point_point.hpp \
+ /usr/include/boost/geometry/algorithms/detail/relate/areal_areal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/sub_range.hpp \
+ /usr/include/boost/geometry/algorithms/detail/single_geometry.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/point_geometry.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/topology_check.hpp \
  /usr/include/boost/geometry/util/has_nan_coordinate.hpp \
- /usr/include/boost/geometry/algorithms/detail/relate/linear_linear.hpp \
- /usr/include/boost/geometry/algorithms/detail/sub_range.hpp \
- /usr/include/boost/geometry/algorithms/detail/single_geometry.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/turns.hpp \
  /usr/include/boost/geometry/policies/robustness/get_rescale_policy.hpp \
  /usr/include/boost/geometry/algorithms/detail/get_max_size.hpp \
@@ -2611,8 +2634,9 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/algorithms/num_points.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/follow_helpers.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/linear_areal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/relate/linear_linear.hpp \
  /usr/include/boost/geometry/algorithms/detail/relate/multi_point_geometry.hpp \
- /usr/include/boost/geometry/algorithms/detail/relate/areal_areal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/relate/point_point.hpp \
  /usr/include/boost/geometry/strategies/relate/cartesian.hpp \
  /usr/include/boost/geometry/strategies/agnostic/point_in_box_by_side.hpp \
  /usr/include/boost/geometry/strategies/geographic/side.hpp \
@@ -2638,6 +2662,109 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategy/geographic/area_box.hpp \
  /usr/include/boost/geometry/strategies/relate/spherical.hpp \
  /usr/include/boost/geometry/strategy/spherical/area_box.hpp \
+ /usr/include/boost/geometry/algorithms/detail/covered_by/implementation_gc.hpp \
+ /usr/include/boost/geometry/algorithms/detail/relate/implementation_gc.hpp \
+ /usr/include/boost/geometry/algorithms/difference.hpp \
+ /usr/include/boost/geometry/algorithms/detail/gc_make_rtree.hpp \
+ /usr/include/boost/geometry/views/detail/random_access_view.hpp \
+ /usr/include/boost/geometry/algorithms/detail/intersection/gc.hpp \
+ /usr/include/boost/geometry/algorithms/detail/intersection/interface.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/intersection_insert.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/clip_linestring.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/append_no_duplicates.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/follow.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/copy_segments.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/append_no_dups_or_spikes.hpp \
+ /usr/include/boost/geometry/algorithms/detail/point_is_spike_or_equal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/tupled_output.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/get_intersection_points.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/linear_linear.hpp \
+ /usr/include/boost/geometry/algorithms/detail/turns/compare_turns.hpp \
+ /usr/include/boost/geometry/algorithms/detail/turns/filter_continue_turns.hpp \
+ /usr/include/boost/geometry/algorithms/detail/turns/remove_duplicate_turns.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/follow_linear_linear.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/inconsistent_turns_exception.hpp \
+ /usr/include/boost/geometry/algorithms/detail/turns/debug_turn.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/overlay.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/cluster_info.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/enrich_intersection_points.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/discard_duplicate_turns.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/get_ring.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/handle_colocations.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/get_clusters.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/approximately_equals.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/is_self_turn.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/sort_by_side.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/copy_segment_point.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/handle_self_turns.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/less_by_segment_ratio.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/enrichment_info.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/needs_self_turns.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/traverse.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/backtrack_check_si.hpp \
+ /usr/include/boost/geometry/algorithms/detail/has_self_intersections.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/self_turn_points.hpp \
+ /usr/include/boost/geometry/policies/disjoint_interrupt_policy.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/traversal_ring_creator.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/traversal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/cluster_exits.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/traversal_switch_detector.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/traversal_info.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/visit_info.hpp \
+ /usr/include/boost/geometry/algorithms/reverse.hpp \
+ /usr/include/boost/geometry/algorithms/detail/multi_modify.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/add_rings.hpp \
+ /usr/include/boost/geometry/algorithms/area.hpp \
+ /usr/include/boost/geometry/algorithms/detail/calculate_null.hpp \
+ /usr/include/boost/geometry/algorithms/detail/calculate_sum.hpp \
+ /usr/include/boost/geometry/algorithms/detail/multi_sum.hpp \
+ /usr/include/boost/geometry/algorithms/area_result.hpp \
+ /usr/include/boost/geometry/strategies/area/services.hpp \
+ /usr/include/boost/geometry/algorithms/default_area_result.hpp \
+ /usr/include/boost/geometry/strategies/area/cartesian.hpp \
+ /usr/include/boost/geometry/strategies/area/geographic.hpp \
+ /usr/include/boost/geometry/strategies/area/spherical.hpp \
+ /usr/include/boost/geometry/strategies/concepts/area_concept.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/convert_ring.hpp \
+ /usr/include/boost/range/algorithm/reverse.hpp \
+ /usr/include/boost/range/detail/range_return.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/assign_parents.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/range_in_geometry.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/ring_properties.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/select_rings.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/pointlike_areal.hpp \
+ /usr/include/boost/geometry/algorithms/disjoint.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/implementation.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/areal_areal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/for_each_range.hpp \
+ /usr/include/boost/geometry/views/box_view.hpp \
+ /usr/include/boost/geometry/views/segment_view.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/linear_linear.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/segment_as_subrange.hpp \
+ /usr/include/boost/geometry/algorithms/for_each.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/linear_areal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/linear_segment_or_box.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/multirange_geometry.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/point_geometry.hpp \
+ /usr/include/boost/geometry/algorithms/detail/disjoint/multipoint_geometry.hpp \
+ /usr/include/boost/geometry/algorithms/detail/not.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/pointlike_linear.hpp \
+ /usr/include/boost/geometry/algorithms/detail/overlay/pointlike_pointlike.hpp \
+ /usr/include/boost/geometry/views/detail/boundary_view.hpp \
+ /usr/include/boost/geometry/views/detail/boundary_view/interface.hpp \
+ /usr/include/boost/geometry/views/detail/boundary_view/implementation.hpp \
+ /usr/include/boost/geometry/views/detail/geometry_collection_view.hpp \
+ /usr/include/boost/geometry/algorithms/detail/intersection/multi.hpp \
+ /usr/include/boost/geometry/algorithms/intersection.hpp \
+ /usr/include/boost/geometry/algorithms/detail/intersection/implementation.hpp \
+ /usr/include/boost/geometry/algorithms/detail/intersection/areal_areal.hpp \
+ /usr/include/boost/geometry/algorithms/detail/intersection/box_box.hpp \
+ /usr/include/boost/geometry/algorithms/union.hpp \
+ /usr/include/boost/geometry/algorithms/detail/gc_group_elements.hpp \
+ /usr/include/boost/geometry/geometries/multi_linestring.hpp \
+ /usr/include/boost/geometry/geometries/multi_point.hpp \
+ /usr/include/boost/geometry/geometries/multi_polygon.hpp \
+ /usr/include/boost/geometry/geometries/polygon.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/range_to_geometry_rtree.hpp \
  /usr/include/boost/geometry/algorithms/detail/closest_feature/range_to_range.hpp \
  /usr/include/boost/geometry/iterators/detail/has_one_element.hpp \
@@ -2646,31 +2773,17 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/algorithms/detail/distance/linear_or_areal_to_areal.hpp \
  /usr/include/boost/geometry/algorithms/intersects.hpp \
  /usr/include/boost/geometry/algorithms/detail/intersects/implementation.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/implementation.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/areal_areal.hpp \
- /usr/include/boost/geometry/algorithms/detail/for_each_range.hpp \
- /usr/include/boost/geometry/views/box_view.hpp \
- /usr/include/boost/geometry/views/segment_view.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/linear_linear.hpp \
- /usr/include/boost/geometry/algorithms/detail/overlay/segment_as_subrange.hpp \
- /usr/include/boost/geometry/policies/disjoint_interrupt_policy.hpp \
- /usr/include/boost/geometry/algorithms/for_each.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/linear_areal.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/linear_segment_or_box.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/multirange_geometry.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/point_geometry.hpp \
- /usr/include/boost/geometry/algorithms/detail/disjoint/multipoint_geometry.hpp \
- /usr/include/boost/geometry/algorithms/detail/overlay/self_turn_points.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/linear_to_box.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/geometry_collection.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/geometry_to_segment_or_box.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/segment_to_segment.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/segment_to_box.hpp \
- /usr/include/boost/geometry/algorithms/detail/dummy_geometries.hpp \
  /usr/include/boost/geometry/algorithms/detail/distance/box_to_box.hpp \
  /usr/include/boost/geometry/strategies/distance/backward_compatibility.hpp \
  /usr/include/boost/geometry/strategies/distance/cartesian.hpp \
  /usr/include/boost/geometry/strategies/cartesian/distance_projected_point.hpp \
+ /usr/include/boost/geometry/strategies/cartesian/closest_points_pt_seg.hpp \
+ /usr/include/boost/geometry/strategies/closest_points/services.hpp \
  /usr/include/boost/geometry/strategies/cartesian/distance_pythagoras_box_box.hpp \
  /usr/include/boost/geometry/strategies/cartesian/distance_pythagoras_point_box.hpp \
  /usr/include/boost/geometry/strategies/cartesian/distance_segment_box.hpp \
@@ -2697,66 +2810,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategies/cartesian/azimuth.hpp \
  /usr/include/boost/geometry/strategies/cartesian/buffer_end_flat.hpp \
  /usr/include/boost/geometry/strategies/cartesian/buffer_end_round.hpp \
- /usr/include/boost/geometry/io/wkt/wkt.hpp \
- /usr/include/boost/geometry/io/wkt/read.hpp \
- /usr/include/boost/tokenizer.hpp /usr/include/boost/token_iterator.hpp \
- /usr/include/boost/iterator/minimum_category.hpp \
- /usr/include/boost/token_functions.hpp \
- /usr/include/boost/algorithm/string.hpp \
- /usr/include/boost/algorithm/string/std_containers_traits.hpp \
- /usr/include/boost/algorithm/string/std/string_traits.hpp \
- /usr/include/boost/algorithm/string/yes_no_type.hpp \
- /usr/include/boost/algorithm/string/sequence_traits.hpp \
- /usr/include/boost/algorithm/string/std/list_traits.hpp \
- /usr/include/boost/algorithm/string/std/slist_traits.hpp \
- /usr/include/boost/algorithm/string/config.hpp \
- /usr/include/c++/13/ext/slist \
- /usr/include/boost/algorithm/string/trim.hpp \
- /usr/include/boost/range/as_literal.hpp \
- /usr/include/boost/range/detail/str_types.hpp \
- /usr/include/boost/algorithm/string/detail/trim.hpp \
- /usr/include/boost/algorithm/string/classification.hpp \
- /usr/include/boost/algorithm/string/detail/classification.hpp \
- /usr/include/boost/algorithm/string/predicate_facade.hpp \
- /usr/include/boost/algorithm/string/case_conv.hpp \
- /usr/include/boost/iterator/transform_iterator.hpp \
- /usr/include/boost/algorithm/string/detail/case_conv.hpp \
- /usr/include/boost/algorithm/string/predicate.hpp \
- /usr/include/boost/algorithm/string/compare.hpp \
- /usr/include/boost/algorithm/string/find.hpp \
- /usr/include/boost/algorithm/string/finder.hpp \
- /usr/include/boost/algorithm/string/constants.hpp \
- /usr/include/boost/algorithm/string/detail/finder.hpp \
- /usr/include/boost/algorithm/string/detail/predicate.hpp \
- /usr/include/boost/algorithm/string/split.hpp \
- /usr/include/boost/algorithm/string/iter_find.hpp \
- /usr/include/boost/algorithm/string/concept.hpp \
- /usr/include/boost/algorithm/string/find_iterator.hpp \
- /usr/include/boost/algorithm/string/detail/find_iterator.hpp \
- /usr/include/boost/algorithm/string/detail/util.hpp \
- /usr/include/boost/algorithm/string/join.hpp \
- /usr/include/boost/algorithm/string/detail/sequence.hpp \
- /usr/include/boost/algorithm/string/replace.hpp \
- /usr/include/boost/algorithm/string/find_format.hpp \
- /usr/include/boost/algorithm/string/detail/find_format.hpp \
- /usr/include/boost/algorithm/string/detail/find_format_store.hpp \
- /usr/include/boost/algorithm/string/detail/replace_storage.hpp \
- /usr/include/boost/algorithm/string/detail/find_format_all.hpp \
- /usr/include/boost/algorithm/string/formatter.hpp \
- /usr/include/boost/algorithm/string/detail/formatter.hpp \
- /usr/include/boost/algorithm/string/erase.hpp \
- /usr/include/boost/geometry/io/wkt/detail/prefix.hpp \
- /usr/include/boost/geometry/strategies/io/cartesian.hpp \
- /usr/include/boost/geometry/strategies/io/services.hpp \
- /usr/include/boost/geometry/strategies/cartesian/point_order.hpp \
- /usr/include/boost/geometry/strategies/point_order.hpp \
- /usr/include/boost/geometry/strategies/io/geographic.hpp \
- /usr/include/boost/geometry/strategies/geographic/point_order.hpp \
- /usr/include/boost/geometry/strategies/io/spherical.hpp \
- /usr/include/boost/geometry/strategies/spherical/point_order.hpp \
- /usr/include/boost/geometry/util/coordinate_cast.hpp \
- /usr/include/boost/geometry/io/wkt/write.hpp \
- /usr/include/boost/geometry/geometries/ring.hpp \
  /usr/include/boost/geometry/strategies/cartesian/buffer_join_miter.hpp \
  /usr/include/boost/geometry/strategies/cartesian/buffer_join_round.hpp \
  /usr/include/boost/geometry/strategies/cartesian/buffer_join_round_by_divide.hpp \
@@ -2769,7 +2822,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategies/line_interpolate.hpp \
  /usr/include/boost/geometry/strategies/spherical/densify.hpp \
  /usr/include/boost/geometry/formulas/interpolate_point_spherical.hpp \
- /usr/include/boost/geometry/strategies/spherical/compare.hpp \
  /usr/include/boost/geometry/strategies/spherical/line_interpolate.hpp \
  /usr/include/boost/geometry/strategies/geographic/buffer_point_circle.hpp \
  /usr/include/boost/geometry/strategies/geographic/densify.hpp \
@@ -2787,8 +2839,9 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/qvm/mat.hpp \
  /usr/include/boost/qvm/detail/mat_assign.hpp \
  /usr/include/boost/qvm/gen/mat_assign2.hpp \
- /usr/include/boost/qvm/enable_if.hpp /usr/include/boost/qvm/inline.hpp \
+ /usr/include/boost/qvm/config.hpp /usr/include/boost/qvm/enable_if.hpp \
  /usr/include/boost/qvm/mat_traits.hpp \
+ /usr/include/boost/qvm/is_scalar.hpp \
  /usr/include/boost/qvm/gen/mat_assign3.hpp \
  /usr/include/boost/qvm/gen/mat_assign4.hpp \
  /usr/include/boost/qvm/assert.hpp \
@@ -2807,6 +2860,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/qvm/deduce_scalar.hpp \
  /usr/include/boost/qvm/scalar_traits.hpp \
  /usr/include/boost/qvm/quat_traits.hpp \
+ /usr/include/boost/qvm/detail/remove_const.hpp \
  /usr/include/boost/qvm/deduce_vec.hpp /usr/include/boost/qvm/error.hpp \
  /usr/include/boost/qvm/throw_exception.hpp \
  /usr/include/boost/qvm/mat_operations3.hpp \
@@ -2816,7 +2870,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/qvm/math.hpp \
  /usr/include/boost/qvm/detail/determinant_impl.hpp \
  /usr/include/boost/qvm/mat_traits_array.hpp \
- /usr/include/boost/qvm/detail/remove_const.hpp \
  /usr/include/boost/qvm/detail/cofactor_impl.hpp \
  /usr/include/boost/qvm/detail/transp_impl.hpp \
  /usr/include/boost/qvm/vec_mat_operations.hpp \
@@ -2831,32 +2884,36 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/geometry/strategies/transform/map_transformer.hpp \
  /usr/include/boost/geometry/strategies/transform/inverse_transformer.hpp \
  /usr/include/boost/geometry/strategies/cartesian.hpp \
- /usr/include/boost/geometry/strategies/area/cartesian.hpp \
- /usr/include/boost/geometry/strategies/area/services.hpp \
  /usr/include/boost/geometry/strategies/azimuth/cartesian.hpp \
  /usr/include/boost/geometry/strategies/azimuth/services.hpp \
  /usr/include/boost/geometry/strategies/buffer/cartesian.hpp \
  /usr/include/boost/geometry/strategies/buffer/services.hpp \
  /usr/include/boost/geometry/strategies/convex_hull/cartesian.hpp \
  /usr/include/boost/geometry/strategies/convex_hull/services.hpp \
+ /usr/include/boost/geometry/strategies/io/cartesian.hpp \
+ /usr/include/boost/geometry/strategies/io/services.hpp \
+ /usr/include/boost/geometry/strategies/cartesian/point_order.hpp \
+ /usr/include/boost/geometry/strategies/point_order.hpp \
  /usr/include/boost/geometry/strategies/index/cartesian.hpp \
  /usr/include/boost/geometry/strategies/is_convex/cartesian.hpp \
  /usr/include/boost/geometry/strategies/is_convex/services.hpp \
  /usr/include/boost/geometry/strategies/simplify/cartesian.hpp \
  /usr/include/boost/geometry/strategies/simplify/services.hpp \
  /usr/include/boost/geometry/strategies/geographic.hpp \
- /usr/include/boost/geometry/strategies/area/geographic.hpp \
  /usr/include/boost/geometry/strategies/azimuth/geographic.hpp \
  /usr/include/boost/geometry/strategies/buffer/geographic.hpp \
  /usr/include/boost/geometry/strategies/convex_hull/geographic.hpp \
+ /usr/include/boost/geometry/strategies/io/geographic.hpp \
+ /usr/include/boost/geometry/strategies/geographic/point_order.hpp \
  /usr/include/boost/geometry/strategies/index/geographic.hpp \
  /usr/include/boost/geometry/strategies/is_convex/geographic.hpp \
  /usr/include/boost/geometry/strategies/simplify/geographic.hpp \
  /usr/include/boost/geometry/strategies/spherical.hpp \
- /usr/include/boost/geometry/strategies/area/spherical.hpp \
  /usr/include/boost/geometry/strategies/azimuth/spherical.hpp \
  /usr/include/boost/geometry/strategies/buffer/spherical.hpp \
  /usr/include/boost/geometry/strategies/convex_hull/spherical.hpp \
+ /usr/include/boost/geometry/strategies/io/spherical.hpp \
+ /usr/include/boost/geometry/strategies/spherical/point_order.hpp \
  /usr/include/boost/geometry/strategies/index/spherical.hpp \
  /usr/include/boost/geometry/strategies/is_convex/spherical.hpp \
  /usr/include/boost/geometry/strategies/simplify/spherical.hpp \
@@ -2872,6 +2929,7 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/random/detail/large_arithmetic.hpp \
  /usr/include/boost/random/detail/integer_log2.hpp \
  /usr/include/boost/integer/integer_log2.hpp \
+ /usr/include/boost/core/bit.hpp \
  /usr/include/boost/random/detail/disable_warnings.hpp \
  /usr/include/boost/random/detail/enable_warnings.hpp \
  /usr/include/boost/random/detail/signed_unsigned_tools.hpp \
@@ -2881,38 +2939,36 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/iostreams/filtering_stream.hpp \
  /usr/include/boost/iostreams/detail/iostream.hpp \
  /usr/include/boost/iostreams/stream.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/dofs/dof_renumbering.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/mesh_loop.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/work_stream.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/graph_coloring.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/thread_management.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/multithread_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/std_cxx17/tuple.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/dofs/dof_renumbering.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/mesh_loop.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/work_stream.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/graph_coloring.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/thread_management.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/multithread_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/std_cxx17/tuple.h \
  /usr/include/c++/13/future /usr/include/c++/13/condition_variable \
  /usr/include/c++/13/bits/atomic_futex.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/task_group.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/bundled/tbb/pipeline.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/assemble_flags.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/dof_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/local_results.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/matrix_block.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/algorithms/any_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/vector_selector.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/algorithms/named_selection.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/integration_info.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/local_integrator.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/loop.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/meshworker/scratch_data.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/algorithms/general_data_storage.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/ad_helpers.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/ad_number_traits.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/ad_number_types.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/task_group.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/bundled/tbb/pipeline.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/assemble_flags.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/dof_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/local_results.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/matrix_block.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/algorithms/any_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/vector_selector.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/algorithms/named_selection.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/integration_info.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/local_integrator.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/loop.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/meshworker/scratch_data.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/algorithms/general_data_storage.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/ad_helpers.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/ad_number_traits.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/ad_number_types.h \
  /usr/include/boost/type_traits.hpp \
  /usr/include/boost/type_traits/common_type.hpp \
  /usr/include/boost/type_traits/detail/mp_defer.hpp \
- /usr/include/boost/type_traits/conjunction.hpp \
- /usr/include/boost/type_traits/disjunction.hpp \
  /usr/include/boost/type_traits/floating_point_promotion.hpp \
  /usr/include/boost/type_traits/has_bit_and.hpp \
  /usr/include/boost/type_traits/has_bit_and_assign.hpp \
@@ -2969,33 +3025,32 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: \
  /usr/include/boost/type_traits/remove_cv_ref.hpp \
  /usr/include/boost/type_traits/integral_promotion.hpp \
  /usr/include/boost/type_traits/promote.hpp \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/adolc_math.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/adolc_number_types.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/adolc_product_types.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/sacado_math.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/sacado_number_types.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/differentiation/ad/sacado_product_types.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/parameter_handler.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/AverageGradientOperators.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/RT_projection.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/Auxiliary_Functions_PrimaryVars.cc \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/base/tensor_function.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_full_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_matrix_base.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_compatibility.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/adolc_math.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/adolc_number_types.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/adolc_product_types.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/sacado_math.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/sacado_number_types.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/differentiation/ad/sacado_product_types.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/parameter_handler.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/AverageGradientOperators.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/RT_projection.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/Auxiliary_Functions_PrimaryVars.cc \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/base/tensor_function.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_full_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_matrix_base.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_compatibility.h \
  /usr/include/c++/13/fstream \
  /usr/include/c++/13/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/FE_RTProj.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/LocalPolynomialsRT.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/pl_problem.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_sparse_matrix.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_solver.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/include/deal.II/lac/petsc_precondition.h \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/Sa_problem.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/Sv_problem.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/RT_projection_midpoint.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/pl_problem_midpoint.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/Sa_problem_midpoint.hh \
- /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE/Sv_problem_midpoint.hh
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/FE_RTProj.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/LocalPolynomialsRT.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/pl_problem.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_sparse_matrix.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_solver.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/include/deal.II/lac/petsc_precondition.h \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/Sa_problem.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/Sv_problem.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/Sa_rhs.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/Sa_problem_midpoint.hh \
+ /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE/Sv_problem_midpoint.hh

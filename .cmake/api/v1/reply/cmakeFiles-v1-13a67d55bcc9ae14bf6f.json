@@ -1,0 +1,869 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IIConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IIConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_add_test.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_initialize_cached_variables.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_pickup_tests.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_query_git_information.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_setup_target.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_shell_escape_option_groups.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_target_compile_flags.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_target_link_flags.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystem.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeUnixFindMake.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCompilerIdDetection.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/ADSP-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/AppleClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Borland-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Bruce-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Clang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Compaq-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Cray-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CrayClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Embarcadero-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Fujitsu-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GHS-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/HP-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IAR-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Intel-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/LCC-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/MSVC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/NVHPC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/NVIDIA-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/OrangeC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/PGI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/PathScale-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/SCO-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/SDCC-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/SunPro-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/TI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/TIClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Tasking-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Watcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/XL-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/XLClang-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/zOS-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-FindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Determine-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCompilerIdDetection.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/ADSP-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/AppleClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Borland-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Clang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Cray-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CrayClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Embarcadero-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Fujitsu-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GHS-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/HP-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IAR-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Intel-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/MSVC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/NVHPC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/NVIDIA-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/OrangeC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/PGI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/PathScale-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/SCO-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/TI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/TIClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Tasking-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/Watcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/XL-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-FindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseImplicitIncludeInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseLibraryArchitecture.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompileFeatures.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseImplicitIncludeInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseLibraryArchitecture.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompileFeatures.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IITargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IITargets-debugrelease.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPerl.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindCygwin.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindMsys.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "CMakeFiles/print_usage.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE",
+		"source" : "/storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

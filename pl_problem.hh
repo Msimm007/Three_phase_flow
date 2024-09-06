@@ -316,9 +316,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
     lambda_a<dim> lambda_a_fcn;
 
 
-	// Stabilization term. Declared and defined
-    Kappa_tilde_t<dim> Kappa_tilde_t_fcn;
-    double Kappa_tilde_t = Kappa_tilde_t_fcn.value();
 
     // Capillary pressures
     CapillaryPressurePca<dim> cap_p_pca_fcn;
@@ -616,26 +613,14 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
             {
                 for (unsigned int j = 0; j < n_dofs; ++j)
                 {
-					// Diffusion term
-					if(Stab_t)
-					{
-						copy_data.cell_matrix(i,j) +=
-						Kappa_tilde_t
-						* kappa
-						* fe_v.shape_grad(i, point)
-						* fe_v.shape_grad(j, point)
-						* JxW[point];
-					}
-					else
-					{
-					copy_data.cell_matrix(i,j) +=
+                    copy_data.cell_matrix(i,j) +=
 						rholambda_t
 						* kappa
 						* fe_v.shape_grad(i, point)
 						* fe_v.shape_grad(j, point)
 						* JxW[point];
 
-					}
+
 					// Time term
 					if(implicit_time_pl)
 					{
@@ -717,14 +702,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 					else
                 		copy_data.cell_rhs(i) += -(1.0/time_step)*(time_term_n - time_term_nminus1) * fe_v.shape_value(i, point) * JxW[point];
                 }
-
-					// Diffusion term moved to RHS - stab method
-                    if(Stab_t)
-                    {
-                        copy_data.cell_rhs(i) += (-rholambda_t + Kappa_tilde_t) * kappa * pl_grad_n
-                                                 * fe_v.shape_grad(i, point) * JxW[point];
-                    }
-			
                 // Pca and pcv terms
 				copy_data.cell_rhs(i) += - rho_v * lambda_v * kappa * pcv_grad * fe_v.shape_grad(i, point) * JxW[point];
 				copy_data.cell_rhs(i) += rho_a * lambda_a * kappa * pca_grad * fe_v.shape_grad(i, point) * JxW[point];
@@ -920,28 +897,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 				{
 					for (unsigned int j = 0; j < n_facet_dofs; ++j)
 					{
-
-//						if(Stab_t)
-//						{
-//							copy_data.cell_matrix(i, j) +=
-//									- Kappa_tilde_t
-//									* kappa
-//									* fe_face.shape_value(i, point)
-//									* fe_face.shape_grad(j, point)
-//									* normals[point]
-//									* JxW[point];
-//
-//							copy_data.cell_matrix(i, j) +=
-//									theta_pl
-//									* Kappa_tilde_t
-//									* kappa
-//									* fe_face.shape_value(j, point)
-//									* fe_face.shape_grad(i, point)
-//									* normals[point]
-//									* JxW[point];
-//						}
-//						else
-						{
 							copy_data.cell_matrix(i, j) +=
 									- rholambda_t
 									* kappa
@@ -958,7 +913,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 									* fe_face.shape_grad(i, point)
 									* normals[point]
 								* JxW[point];
-						}
+
 
 
 						copy_data.cell_matrix(i, j) +=
@@ -972,27 +927,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
                                             * fe_face.shape_value(i, point)
 											* g[point]
 											* JxW[point];
-//
-//					if(Stab_t)
-//					{
-//                        copy_data.cell_rhs(i) += (rholambda_t
-//                                                 - Kappa_tilde_t)
-//                                                 * kappa
-//                                                 * pl_grad_n
-//                                                 * normals[point]
-//                                                 * fe_face.shape_value(i, point)
-//                                                 * JxW[point];
-//
-//						copy_data.cell_rhs(i) += theta_pl
-//												* Kappa_tilde_t
-//												* kappa
-//												* fe_face.shape_grad(i, point)
-//												* normals[point]
-//												* g[point]
-//												* JxW[point];
-//					}
-//					else
-					{
+
 						copy_data.cell_rhs(i) += theta_pl
 												* rholambda_t
 												* kappa
@@ -1000,7 +935,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 												* normals[point]
 												* g[point]
 												* JxW[point];
-					}
+
 
 
 					if(cell->face(face_no)->boundary_id() != 5 && cell->face(face_no)->boundary_id() != 6)
@@ -1406,16 +1341,10 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
             double coef0_diff = rholambda_t0*kappa0;
 			double coef1_diff = rholambda_t1*kappa1;
 
-			// Stab method variables
-			double coef0_diff_stab = kappa0*Kappa_tilde_t;
-            double coef1_diff_stab = kappa1*Kappa_tilde_t;
 
 			double weight0_diff = coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
 			double weight1_diff = coef0_diff/(coef0_diff + coef1_diff + 1.e-20);
 
-
-			double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
-            double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
 
 			// Coefficients and weights from pcv term
 			double coef0_pcv = rho_v0*lambda_v0*kappa0;
@@ -1438,15 +1367,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 
 			double weight0_g = coef1_g/(coef0_g + coef1_g + 1.e-20);
 			double weight1_g = coef0_g/(coef0_g + coef1_g + 1.e-20);
-
-            //pl coefficients and weights for stab method
-            double coef0_pl_stab = (-rholambda_t0+Kappa_tilde_t)*kappa0;
-            double coef1_pl_stab = (-rholambda_t1+Kappa_tilde_t)*kappa1;
-
-
-            double weight0_pl_stab = coef1_pl_stab/(coef0_pl_stab + coef1_pl_stab + 1.e-20);
-            double weight1_pl_stab = coef0_pl_stab/(coef0_pl_stab + coef1_pl_stab + 1.e-20);
-
 			
 
             double gamma_pl_e = 2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
@@ -1465,31 +1385,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
                         * fe_iv.jump(j, point)
                         * JxW[point];
 
-//					if(Stab_t)
-//					{
-//                            double weighted_aver_j_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
-//                                                                                                               nsf, fe_iv,
-//                                                                                                               normals[point],
-//                                                                                                               j, point,
-//                                                                                                               coef0_diff_stab, coef1_diff_stab,
-//                                                                                                               weight0_diff_stab, weight1_diff_stab);
-//                            copy_data_face.cell_matrix(i, j) +=
-//                                    -fe_iv.jump(i, point)
-//                                    * weighted_aver_j_stab
-//                                    * JxW[point];
-//                            double weighted_aver_i_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
-//                                                                                                               nsf, fe_iv,
-//                                                                                                               normals[point],
-//                                                                                                               i, point,
-//                                                                                                               coef0_diff_stab, coef1_diff_stab,
-//                                                                                                               weight0_diff_stab, weight1_diff_stab);
-//                            copy_data_face.cell_matrix(i, j) +=
-//                                    theta_pl
-//                                    * fe_iv.jump(j, point)
-//                                    * weighted_aver_i_stab
-//                                    * JxW[point];
-//					}
-//					else
 					{
                             double weighted_aver_j = AverageGradOperators::weighted_average_gradient(cell, f, sf, ncell, nf,
                                     nsf, fe_iv,
@@ -1518,21 +1413,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 					}
 
                 }
-//                if(Stab_t)
-//                {
-//                    // pl term added to the RHS
-//                    double weighted_aver_rhs0_stab = AverageGradOperators::weighted_average_rhs<dim>(normals[point],
-//                                                                                                     pl_grad0_n, pl_grad1_n,
-//                                                                                                     coef0_pl_stab, coef1_pl_stab,
-//                                                                                                     weight0_pl_stab, weight1_pl_stab);
-//
-//                    copy_data_face.cell_rhs(i) -=
-//                            weighted_aver_rhs0_stab
-//                            * fe_iv.jump(i, point)
-//                            * JxW[point];
-//                }
-
-                // pcv term
 				double weighted_aver_rhs1 = AverageGradOperators::weighted_average_rhs(normals[point],
 							pcv_grad0, pcv_grad1,
 							coef0_pcv, coef1_pcv,
@@ -1563,8 +1443,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 				copy_data_face.cell_rhs(i) -= weighted_aver_rhs3
 						* fe_iv.jump(i, point)
 						* JxW[point];
-
-
             }
         }
     };

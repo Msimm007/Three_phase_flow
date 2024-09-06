@@ -22,6 +22,8 @@
 
 using namespace dealii;
 
+// Viscosity scaling parameter
+double M = 100.0;
 double amp_factor_cap_pressure = 300.0;
 
 // Mesh creator
@@ -304,23 +306,6 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 	return kappa_abs;
 };
 
-
-template <int dim>
-class Kappa_tilde_t : public Function<dim>
-{
-public:
-    Kappa_tilde_t()
-            : Function<dim>(1)
-    {}
-
-    virtual double value() const;
-};
-template <int dim>
-double Kappa_tilde_t<dim>::value()const
-{
-    return 2.5;
-    //return 21.0;
-}
 template <int dim>
 class Kappa_tilde_a : public Function<dim>
 {
@@ -331,10 +316,10 @@ public:
 
     virtual double value() const;
 };
+
 template <int dim>
 double Kappa_tilde_a<dim>::value()const
 {
-    //return 10.0;
     return 1.0;
 }
 
@@ -348,6 +333,7 @@ public:
 
     virtual double value() const;
 };
+
 template <int dim>
 double Kappa_tilde_v<dim>::value()const
 {
@@ -669,7 +655,7 @@ CapillaryPressurePcv<dim>::derivative_wrt_Sv(double Sv,
 	Sv = std::min(1.0, std::max(Sv, 0.0));
 
 //	if(Sv > 0.05)
-		return amp_factor_cap_pressure*0.5*pow(Sv+0.01, -1.5);
+		return amp_factor_cap_pressure*0.5*pow(Sv+0.001, -1.5); // edited to account for case when Sv is 0
 //	else
 //		return amp_factor_cap_pressure*10.0/sqrt(0.05);
 }
@@ -702,7 +688,7 @@ double
 CapillaryPressurePca<dim>::value(double Sa, double Sv,
                           const unsigned int /*component*/) const
 {
-	Sa = std::min(1.0, std::max(Sa, 0.0));
+	Sa = std::min(1.0, std::max(Sa, 0.0)); // makes sure our saturation is not negative
 	Sv = std::min(1.0, std::max(Sv, 0.0));
 
 	return amp_factor_cap_pressure/sqrt(Sa);
@@ -738,7 +724,7 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
                           const unsigned int /*component*/) const
 {
 	Sa = std::min(1.0, std::max(Sa, 0.0));
-
+    // modified: added 0.001
 	return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
 }
 
@@ -970,7 +956,7 @@ double Kappa_a<dim>::value(const double pl, const double Sa, const double Sv,
 	return 0.05*Sa*Sa;
 }
 
-// Viscosities
+// Viscosity
 template <int dim>
 class viscosity_l : public Function<dim>
 {
@@ -987,7 +973,7 @@ template <int dim>
 double viscosity_l<dim>::value(const double pl,
                                const unsigned int /*component*/) const
 {
-	return 200.0*1.e-3;
+	return M*1.e-3;
 }
 
 template <int dim>

@@ -1,4 +1,4 @@
-/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2023.3.4/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -S /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE -B /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE
+/storage/mbsimmon/EXTERNAL_SOFTWARES/clion-2024.2.0.1/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -S /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE -B /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE
 CMake Deprecation Warning at CMakeLists.txt:37 (CMAKE_MINIMUM_REQUIRED):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -7,18 +7,59 @@ CMake Deprecation Warning at CMakeLists.txt:37 (CMAKE_MINIMUM_REQUIRED):
   CMake that the project does not need compatibility with older versions.
 
 
--- Using the deal.II-9.5.1 installation found at /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_add_test.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_initialize_cached_variables.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_pickup_tests.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_query_git_information.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_setup_target.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_shell_escape_option_groups.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_target_compile_flags.cmake
--- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/share/deal.II/macros/macro_target_link_flags.cmake
+-- Using the deal.II-9.5.1 installation found at /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_add_test.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_initialize_cached_variables.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_pickup_tests.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_query_git_information.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_setup_target.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_shell_escape_option_groups.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_target_compile_flags.cmake
+-- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_target_link_flags.cmake
+-- The C compiler identification is GNU 13.3.1
+-- The CXX compiler identification is GNU 13.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 -- Autopilot invoked
--- Run   $ make info  to print a detailed help message
--- Configuring done (0.1s)
+###
+#
+#  Project  ThreePhase  set up with  deal.II-9.5.1  found at
+#      /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL
+#
+#  CMAKE_BUILD_TYPE:          Debug
+#
+#  You can now run
+#       $ make                - to compile and link the program
+#       $ make run            - to (compile, link and) run the program
+#
+#       $ make debug          - to switch the build type to 'Debug'
+#       $ make release        - to switch the build type to 'Release'
+#
+#       $ make edit_cache     - to change (cached) configuration variables
+#                               and rerun the configure and generate phases of CMake
+#
+#       $ make strip_comments - to strip the source files in this
+#                               directory off their comments; this is irreversible
+#       $ make clean          - to remove the generated executable as well as
+#                               all intermediate compilation files
+#       $ make runclean       - to remove all output generated by the program
+#       $ make distclean      - to clean the directory from _all_ generated
+#                               files (includes clean, runclean and the removal
+#                               of the generated build system)
+#       $ make info           - to view this message again
+#
+#  Have a nice day!
+#
+###
+-- Configuring done (0.7s)
 -- Generating done (0.1s)
--- Build files have been written to: /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL/SAFE_ZONE
+-- Build files have been written to: /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE

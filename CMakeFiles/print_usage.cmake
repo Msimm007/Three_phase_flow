@@ -2,7 +2,7 @@ message(
 "###
 #
 #  Project  ThreePhase  set up with  deal.II-9.5.1  found at
-#      /storage/mbsimmon/CODES_DEAL_II/COMPUTE_14/DEAL_II_INSTALL
+#      /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL
 #
 #  CMAKE_BUILD_TYPE:          Debug
 #
