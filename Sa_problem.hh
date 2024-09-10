@@ -103,14 +103,11 @@ namespace AqueousSaturation
 
         void assemble_system_matrix_aqueous_saturation();
         void assemble_rhs_aqueous_saturation();
-        void solve_aqueous_saturation();
+        void solve_aqueous_saturation(PETScWrappers::MPI::SparseMatrix &mat);
 
 
         PETScWrappers::MPI::SparseMatrix stored_matrix;
 
-        void store_matrix(const PETScWrappers::MPI::SparseMatrix &matrix) {
-            stored_matrix.reinit(matrix);
-        }
 
         PETScWrappers::MPI::Vector Sa_solution;
     private:
@@ -1516,6 +1513,9 @@ namespace AqueousSaturation
 
             system_matrix_aqueous_saturation.compress(VectorOperation::add);
 
+            stored_matrix.reinit(system_matrix_aqueous_saturation);
+            stored_matrix.copy_from(system_matrix_aqueous_saturation);
+
 
     }
 
@@ -2721,7 +2721,7 @@ namespace AqueousSaturation
 
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::solve_aqueous_saturation()
+    void AqueousSaturationProblem<dim>::solve_aqueous_saturation(PETScWrappers::MPI::SparseMatrix &mat)
     {
 //	std::map<types::global_dof_index, double> boundary_values;
 //	        VectorTools::interpolate_boundary_values(dof_handler,
@@ -2737,7 +2737,7 @@ namespace AqueousSaturation
             SolverControl cn;
             PETScWrappers::SparseDirectMUMPS solver(cn, mpi_communicator);
             //	solver.set_symmetric_mode(true);
-            solver.solve(system_matrix_aqueous_saturation, Sa_solution, right_hand_side_aqueous_saturation);
+            solver.solve(/*system_matrix_aqueous_saturation*/mat, Sa_solution, right_hand_side_aqueous_saturation);
 
 
         }
@@ -2748,12 +2748,14 @@ namespace AqueousSaturation
             PETScWrappers::SolverGMRES gmres(solver_control, mpi_communicator);
             PETScWrappers::PreconditionBoomerAMG preconditioner(system_matrix_aqueous_saturation);
 
-            gmres.solve(system_matrix_aqueous_saturation ,Sa_solution, right_hand_side_aqueous_saturation, preconditioner);
+            gmres.solve(/*system_matrix_aqueous_saturation*/ mat ,Sa_solution, right_hand_side_aqueous_saturation, preconditioner);
 
             Vector<double> localized_solution(Sa_solution);
             constraints.distribute(localized_solution);
 
             Sa_solution = localized_solution;
+
+
 
 
         }
