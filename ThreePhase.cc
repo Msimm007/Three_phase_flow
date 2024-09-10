@@ -52,6 +52,7 @@
 #include "Sa_problem.hh"
 #include "Sv_problem.hh"
 #include "Sa_rhs.hh"
+#include "midpoint_method.hh"
 
 // for midpoint method
 #include "Sa_problem_midpoint.hh"
@@ -1671,7 +1672,6 @@ void CoupledPressureSaturationProblem<dim>::run()
     unsigned int index_time = 0;
     double total_time = 0.0;
 
-    //testing for Stab_method
 
     // first iteration need to solve pl before solving for Sa
     LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree, time_step,
@@ -1795,12 +1795,17 @@ void CoupledPressureSaturationProblem<dim>::run()
     timer.start();
 
     Sa_problem.assemble_system_matrix_aqueous_saturation();
+
+    // save sparse matrix...
+
+    Sa_problem.store_matrix(Sa_problem.stored_matrix);
+
     Sa_problem.assemble_rhs_aqueous_saturation();
     timer.stop();
 
     assemble_time[index_time] += timer.cpu_time();
     pcout << std::endl;
-    pcout << "Elapsed CPU time for Sa assemble: " << timer.cpu_time() << " seconds." << std::endl;
+    pcout << "Elapsed CPU time for Sa assemble: " << timer.cpu_time() << " seconds." << std::endl << "\n";
 
     // boolean to decide whether to assemble Sa matrix on first iteration
     bool first_it = true;
@@ -2194,9 +2199,10 @@ void CoupledPressureSaturationProblem<dim>::run()
                 Sa_solution = Sa_problem.Sa_solution;
                 first_it = false;
             }
-            // past first iteration, we should only have to reassemble the rhs and solve.
+            // past first iteration, we should only have to reassemble the rhs and solve for stability
             // still need to solve for pl first
-            else{
+            else
+            {
                 LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree, time_step,
                                                                       theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
                                                                       use_exact_Sv_in_pl, time, timestep_number,
@@ -2300,20 +2306,68 @@ void CoupledPressureSaturationProblem<dim>::run()
                 totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
                 totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
 
-                // since we are past the first iteration, we should only have to recompute the rhs of the
-                // Sa
-               timer.reset();
-               timer.start();
-               Sa_problem.assemble_rhs_aqueous_saturation();
-               timer.stop();
-               pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
                timer.reset();
-               timer.start();
-               Sa_problem.solve_aqueous_saturation();
-               timer.stop();
-                pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
-                Sa_solution = Sa_problem.Sa_solution;
+
+
+
+               if(Stab_a){
+                   // since we are past the first iteration, we should only have to recompute the rhs of the
+                   // Sa
+//                   AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree, time_step,
+//                                                                               theta_Sa, penalty_Sa, penalty_Sa_bdry, dirichlet_id_sa, use_exact_pl_in_Sa,
+//                                                                               use_exact_Sv_in_Sa, time, timestep_number,
+//                                                                               second_order_time_derivative, second_order_extrapolation,
+//                                                                               use_direct_solver,Stab_a, incompressible, project_Darcy_with_gravity, artificial_visc_exp,
+//                                                                               artificial_visc_imp, art_visc_multiple_Sa,
+//                                                                               pl_solution, pl_solution_n, pl_solution_nminus1,
+//                                                                               Sa_solution_n, Sa_solution_nminus1,
+//                                                                               Sv_solution_n, Sv_solution_nminus1,
+//                                                                               kappa_abs_vec, totalDarcyvelocity_RT_Sa, degreeRT, project_only_kappa,
+//                                                                               mpi_communicator, n_mpi_processes, this_mpi_process);
+
+                   timer.start();
+                   Sa_problem.assemble_rhs_aqueous_saturation();
+                   timer.stop();
+                   pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
+
+                   timer.reset();
+                   timer.start();
+                   Sa_problem.solve_aqueous_saturation();
+                   timer.stop();
+                   pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
+                   Sa_solution = Sa_problem.Sa_solution;
+               }
+               else{
+                   AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree, time_step,
+                                                                               theta_Sa, penalty_Sa, penalty_Sa_bdry, dirichlet_id_sa, use_exact_pl_in_Sa,
+                                                                               use_exact_Sv_in_Sa, time, timestep_number,
+                                                                               second_order_time_derivative, second_order_extrapolation,
+                                                                               use_direct_solver,Stab_a, incompressible, project_Darcy_with_gravity, artificial_visc_exp,
+                                                                               artificial_visc_imp, art_visc_multiple_Sa,
+                                                                               pl_solution, pl_solution_n, pl_solution_nminus1,
+                                                                               Sa_solution_n, Sa_solution_nminus1,
+                                                                               Sv_solution_n, Sv_solution_nminus1,
+                                                                               kappa_abs_vec, totalDarcyvelocity_RT_Sa, degreeRT, project_only_kappa,
+                                                                               mpi_communicator, n_mpi_processes, this_mpi_process);
+                   timer.reset();
+                   timer.start();
+
+                   Sa_problem.assemble_system_matrix_aqueous_saturation();
+                   Sa_problem.assemble_rhs_aqueous_saturation();
+                   timer.stop();
+
+                   assemble_time[index_time] += timer.cpu_time();
+                   pcout << std::endl;
+                   pcout << "Elapsed CPU time for Sa assemble: " << timer.cpu_time() << " seconds." << std::endl;
+                   timer.reset();
+                   timer.start();
+                   //Sa_problem.solve_aqueous_saturation();
+                   timer.stop();
+                   pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
+                   Sa_solution = Sa_problem.Sa_solution;
+
+               }
             }
             if(two_phase)
                 Sv_solution = 0.0;

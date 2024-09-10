@@ -39,7 +39,7 @@ subsection Spatial discretization parameters
   set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = true
+  set Stab_v = false
   
   # Polynomial degree for FE space
   set Degree = 1
