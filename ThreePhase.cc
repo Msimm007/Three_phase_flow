@@ -1488,7 +1488,7 @@ namespace CouplingPressureSaturation {
     template<int dim>
     void CoupledPressureSaturationProblem<dim>::run() {
 
-        // create mesh. function is defined in Auxilliary file
+        // create mesh. Mesh is defined in Auxilliary file
         create_mesh<dim>(triangulation, ref_level, dirichlet_id_pl, dirichlet_id_sa, dirichlet_id_sv);
 
         pcout << "    Number of active cells:       "
@@ -1618,16 +1618,6 @@ namespace CouplingPressureSaturation {
 
         unsigned int index_time = 0;
         double total_time = 0.0;
-
-        // Calling constructor for all primary unknowns
-        // testing to see if we can only call them once
-
-
-
-
-
-
-
 
         // boolean to decide whether to assemble Sa matrix on first iteration
         bool first_it = true;
@@ -1994,7 +1984,6 @@ namespace CouplingPressureSaturation {
 
 int main(int argc, char *argv[])
 {
-
     try
     {
     	Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv, 1);
