@@ -1882,7 +1882,7 @@ namespace AqueousSaturation
                 }
 
             }
-            std::cout << "I have ran vol int terms";
+
         };
 
         // Boundary face integrals
@@ -2254,8 +2254,6 @@ namespace AqueousSaturation
                     }
                 }
             }
-
-            std::cout << "I have ran bound int terms";
         };
 
         // Interior faces integrals
@@ -2672,7 +2670,6 @@ namespace AqueousSaturation
                   }
                 }
             }
-            std::cout << "I have ran face int terms";
         };
 
         const auto copier = [&](const CopyData &c) {
