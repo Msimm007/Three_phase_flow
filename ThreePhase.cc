@@ -1787,7 +1787,7 @@ namespace CouplingPressureSaturation {
         totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
         totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
 
-        AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree, time_step,
+        AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem1(triangulation, degree, time_step,
                                                                     theta_Sa, penalty_Sa, penalty_Sa_bdry,
                                                                     dirichlet_id_sa, use_exact_pl_in_Sa,
                                                                     use_exact_Sv_in_Sa, time, timestep_number,
@@ -1806,12 +1806,12 @@ namespace CouplingPressureSaturation {
 
         timer.reset();
         timer.start();
-        Sa_problem.assemble_system_matrix_aqueous_saturation();
+        Sa_problem1.assemble_system_matrix_aqueous_saturation();
         timer.stop();
         pcout << "Elapsed CPU time for Sa matrix assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
         // this is the crucial matrix we need to save
-        auto &Sa_matrix = Sa_problem.stored_matrix;
+        auto &Sa_matrix = Sa_problem1.stored_matrix;
 
         // boolean to decide whether to assemble Sa matrix on first iteration
         bool first_it = true;
@@ -1828,17 +1828,17 @@ namespace CouplingPressureSaturation {
             {
                 timer.reset();
                 timer.start();
-                Sa_problem.assemble_rhs_aqueous_saturation();
+                Sa_problem1.assemble_rhs_aqueous_saturation();
                 timer.stop();
                 pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
                 // Solve for Sa
                 timer.reset();
                 timer.start();
-                Sa_problem.solve_aqueous_saturation(Sa_matrix);
+                Sa_problem1.solve_aqueous_saturation(Sa_matrix);
                 timer.stop();
                 pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
-                Sa_solution = Sa_problem.Sa_solution;
+                Sa_solution = Sa_problem1.Sa_solution;
                 first_it = false;
             }
             else
@@ -2008,7 +2008,7 @@ namespace CouplingPressureSaturation {
                 totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
                 totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
 
-                AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem2(triangulation, degree, time_step,
+                AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree, time_step,
                                                                             theta_Sa, penalty_Sa, penalty_Sa_bdry,
                                                                             dirichlet_id_sa, use_exact_pl_in_Sa,
                                                                             use_exact_Sv_in_Sa, time, timestep_number,
@@ -2029,14 +2029,14 @@ namespace CouplingPressureSaturation {
                 {
                     timer.reset();
                     timer.start();
-                    Sa_problem2.assemble_rhs_aqueous_saturation();
+                    Sa_problem.assemble_rhs_aqueous_saturation();
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
                     // Solve for Sa
                     timer.reset();
                     timer.start();
-                    Sa_problem2.solve_aqueous_saturation(Sa_matrix);
+                    Sa_problem.solve_aqueous_saturation(Sa_matrix);
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
                     Sa_solution = Sa_problem.Sa_solution;
@@ -2046,21 +2046,21 @@ namespace CouplingPressureSaturation {
 
                     timer.reset();
                     timer.start();
-                    Sa_problem2.assemble_system_matrix_aqueous_saturation();
+                    Sa_problem.assemble_system_matrix_aqueous_saturation();
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
                     timer.reset();
                     timer.start();
-                    Sa_problem2.assemble_rhs_aqueous_saturation();
+                    Sa_problem.assemble_rhs_aqueous_saturation();
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                    auto &Sa_matrix2 = Sa_problem2.stored_matrix;
+                    auto &Sa_matrix2 = Sa_problem.stored_matrix;
                     // Solve for Sa
                     timer.reset();
                     timer.start();
-                    Sa_problem2.solve_aqueous_saturation(Sa_matrix2);
+                    Sa_problem.solve_aqueous_saturation(Sa_matrix2);
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
                     Sa_solution = Sa_problem.Sa_solution;

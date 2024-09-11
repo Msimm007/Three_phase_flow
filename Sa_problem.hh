@@ -321,15 +321,15 @@ namespace AqueousSaturation
     void AqueousSaturationProblem<dim>::setup_rhs()
     {
 //
-//        dof_handler.distribute_dofs(fe);
-//        dof_handler_RT.distribute_dofs(fe_RT);
+        dof_handler.distribute_dofs(fe);
+        dof_handler_RT.distribute_dofs(fe_RT);
 //
-//        constraints.clear();
-//        constraints.close();
-//
-//        DynamicSparsityPattern dsp(dof_handler.n_dofs());
-//        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
-//        sparsity_pattern.copy_from(dsp);
+        constraints.clear();
+        constraints.close();
+
+        DynamicSparsityPattern dsp(dof_handler.n_dofs());
+        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
+        sparsity_pattern.copy_from(dsp);
 
         const std::vector<IndexSet> locally_owned_dofs_per_proc =
                 DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
