@@ -51,7 +51,6 @@
 #include "pl_problem.hh"
 #include "Sa_problem.hh"
 #include "Sv_problem.hh"
-#include "Sa_rhs.hh"
 #include "midpoint_method.hh"
 
 // for midpoint method
