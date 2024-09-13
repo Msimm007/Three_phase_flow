@@ -320,10 +320,10 @@ namespace AqueousSaturation
     template <int dim>
     void AqueousSaturationProblem<dim>::setup_rhs()
     {
-//
+
         dof_handler.distribute_dofs(fe);
         dof_handler_RT.distribute_dofs(fe_RT);
-//
+
         constraints.clear();
         constraints.close();
 
@@ -1882,7 +1882,6 @@ namespace AqueousSaturation
                 }
 
             }
-
         };
 
         // Boundary face integrals
@@ -2254,6 +2253,8 @@ namespace AqueousSaturation
                     }
                 }
             }
+
+
         };
 
         // Interior faces integrals
@@ -2737,7 +2738,7 @@ namespace AqueousSaturation
             SolverControl cn;
             PETScWrappers::SparseDirectMUMPS solver(cn, mpi_communicator);
             //	solver.set_symmetric_mode(true);
-            solver.solve(/*system_matrix_aqueous_saturation*/mat, Sa_solution, right_hand_side_aqueous_saturation);
+            solver.solve(mat, Sa_solution, right_hand_side_aqueous_saturation);
 
 
         }
@@ -2746,16 +2747,14 @@ namespace AqueousSaturation
             SolverControl solver_control(pl_solution.size(), 1.e-7 * right_hand_side_aqueous_saturation.l2_norm());
 
             PETScWrappers::SolverGMRES gmres(solver_control, mpi_communicator);
-            PETScWrappers::PreconditionBoomerAMG preconditioner(system_matrix_aqueous_saturation);
+            PETScWrappers::PreconditionBoomerAMG preconditioner(mat);
 
-            gmres.solve(/*system_matrix_aqueous_saturation*/ mat ,Sa_solution, right_hand_side_aqueous_saturation, preconditioner);
+            gmres.solve(mat,Sa_solution, right_hand_side_aqueous_saturation, preconditioner);
 
             Vector<double> localized_solution(Sa_solution);
             constraints.distribute(localized_solution);
 
             Sa_solution = localized_solution;
-
-
 
 
         }
