@@ -927,8 +927,8 @@ namespace AqueousSaturation
                                         * normals[point]
                                         * JxW[point];
                                 // Theta term
-                                copy_data.cell_matrix(i, j) -=
-                                        -Kappa_tilde_a
+                                copy_data.cell_matrix(i, j) +=
+                                        Kappa_tilde_a
                                         * kappa
                                         * theta_Sa
                                         * fe_face.shape_grad(i, point)
@@ -940,7 +940,7 @@ namespace AqueousSaturation
                             {
                                 // Diffusion term
                                 copy_data.cell_matrix(i, j) -=
-                                        rho_a
+                                        -rho_a
                                         * lambda_a
                                         * dpca_dSa
                                         * kappa
@@ -949,8 +949,8 @@ namespace AqueousSaturation
                                         * normals[point]
                                         * JxW[point];
                                 //Theta term
-                                copy_data.cell_matrix(i, j) -=
-                                         rho_a
+                                copy_data.cell_matrix(i, j) +=
+                                         -rho_a
                                         * lambda_a
                                         * dpca_dSa
                                         * kappa
