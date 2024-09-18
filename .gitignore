@@ -1,0 +1,8 @@
+# removing .vtu output files
+*.vtu
+
+
+
+# ignore log and bacup files
+*.log
+*.bak
