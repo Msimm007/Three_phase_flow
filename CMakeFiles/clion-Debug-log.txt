@@ -19,6 +19,6 @@ CMake Deprecation Warning at CMakeLists.txt:37 (CMAKE_MINIMUM_REQUIRED):
 -- Include macro /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/share/deal.II/macros/macro_target_link_flags.cmake
 -- Autopilot invoked
 -- Run   $ make info  to print a detailed help message
--- Configuring done (0.2s)
+-- Configuring done (0.1s)
 -- Generating done (0.1s)
 -- Build files have been written to: /storage/mbsimmon/CODES_DEAL_II/COMPUTE_12/DEAL_II_INSTALL/SAFE_ZONE
