@@ -37,13 +37,13 @@ subsection Spatial discretization parameters
   set Stab_t = false
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = false
+  set Incompressible = true
 
   # Polynomial degree for FE space
   set Degree = 1

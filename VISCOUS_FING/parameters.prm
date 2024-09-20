@@ -36,7 +36,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = false
@@ -46,10 +46,10 @@ subsection Spatial discretization parameters
 
   
   # Initial level of refinement
-  set Initial level of refinement = 0
+  set Initial level of refinement = 1
   
   # Final level of refinement
-  set Final level of refinement = 0
+  set Final level of refinement = 1
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -141,7 +141,7 @@ subsection Spatial discretization parameters
 end
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = true
+  set print vtk = false
   
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 20

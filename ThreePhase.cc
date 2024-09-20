@@ -2046,7 +2046,7 @@ namespace CouplingPressureSaturation {
                     timer.start();
                     Sa_problem.assemble_system_matrix_aqueous_saturation();
                     timer.stop();
-                    pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
+                    pcout << "Elapsed CPU time for Sa matrix assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
                     timer.reset();
                     timer.start();

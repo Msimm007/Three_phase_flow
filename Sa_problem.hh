@@ -1433,7 +1433,7 @@ namespace AqueousSaturation
                             copy_data_face.cell_matrix(i, j) +=
                                     theta_Sa
                                     * fe_iv.jump(j, point)
-                                    * -weighted_aver_i_stab
+                                    * weighted_aver_i_stab
                                     * JxW[point];
                             //                         Interior face terms from diffusion
                         }
