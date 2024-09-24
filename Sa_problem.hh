@@ -1057,29 +1057,29 @@ namespace AqueousSaturation
 
                     double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
 
-                    for (unsigned int i = 0; i < n_facet_dofs; ++i)
-                    {
-
-					if(cell->face(face_no)->boundary_id() == 5 || cell->face(face_no)->boundary_id() == 6)
-					{
-                        if(project_only_kappa)
-                            copy_data.cell_rhs(i) -= (rho_a*lambda_a)
-                                                     * totalDarcyVelo
-                                                     * normals[point]
-                                                     * fe_face.shape_value(i, point)
-                                                     * JxW[point];
-                        else
-                            copy_data.cell_rhs(i) -= (rho_a*lambda_a/rholambda_t)
-                                                     * totalDarcyVelo
-                                                     * normals[point]
-                                                     * fe_face.shape_value(i, point)
-                                                     * JxW[point];
-			}
-                        copy_data.cell_rhs(i) += neumann_term
-                                                 * normals[point]
-                                                 * fe_face.shape_value(i, point)
-                                                 * JxW[point];
-                    }
+//                    for (unsigned int i = 0; i < n_facet_dofs; ++i)
+//                    {
+//
+//					if(cell->face(face_no)->boundary_id() == 5 || cell->face(face_no)->boundary_id() == 6)
+//					{
+//                        if(project_only_kappa)
+//                            copy_data.cell_rhs(i) -= (rho_a*lambda_a)
+//                                                     * totalDarcyVelo
+//                                                     * normals[point]
+//                                                     * fe_face.shape_value(i, point)
+//                                                     * JxW[point];
+//                        else
+//                            copy_data.cell_rhs(i) -= (rho_a*lambda_a/rholambda_t)
+//                                                     * totalDarcyVelo
+//                                                     * normals[point]
+//                                                     * fe_face.shape_value(i, point)
+//                                                     * JxW[point];
+//			}
+//                        copy_data.cell_rhs(i) += neumann_term
+//                                                 * normals[point]
+//                                                 * fe_face.shape_value(i, point)
+//                                                 * JxW[point];
+//                    }
                 }
             }
 
@@ -1112,7 +1112,7 @@ namespace AqueousSaturation
             copy_data_face.joint_dof_indices = fe_iv.get_interface_dof_indices();
 
             copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
-            copy_data_face.cell_rhs.reinit(n_dofs);
+            //copy_data_face.cell_rhs.reinit(n_dofs);
 
             const std::vector<double> &        JxW     = fe_iv.get_JxW_values();
             const std::vector<Tensor<1, dim>> &normals = fe_iv.get_normal_vectors();
@@ -2282,7 +2282,8 @@ namespace AqueousSaturation
             const unsigned int n_dofs        = fe_iv.n_current_interface_dofs();
             copy_data_face.joint_dof_indices = fe_iv.get_interface_dof_indices();
 
-            copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
+            //copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
+
             copy_data_face.cell_rhs.reinit(n_dofs);
 
             const std::vector<double> &        JxW     = fe_iv.get_JxW_values();
