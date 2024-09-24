@@ -626,7 +626,7 @@ CapillaryPressurePcv<dim>::value(double Sv,
 	Sv = std::min(1.0, std::max(Sv, 0.0));
 
 //	if(Sv > 0.05)
-		return -amp_factor_cap_pressure/sqrt(Sv);
+		return -amp_factor_cap_pressure/sqrt(Sv+ 0.0001);
 //	else
 //		return amp_factor_cap_pressure*(-1.5 + 10.0*Sv)/sqrt(0.05);
 }
@@ -655,7 +655,7 @@ CapillaryPressurePcv<dim>::derivative_wrt_Sv(double Sv,
 	Sv = std::min(1.0, std::max(Sv, 0.0));
 
 //	if(Sv > 0.05)
-		return amp_factor_cap_pressure*0.5*pow(Sv+0.001, -1.5); // edited to account for case when Sv is 0
+		return amp_factor_cap_pressure*0.5*pow(Sv+0.0001, -1.5); // edited to account for case when Sv is 0
 //	else
 //		return amp_factor_cap_pressure*10.0/sqrt(0.05);
 }

@@ -516,6 +516,8 @@ namespace CouplingPressureSaturation {
 
         AffineConstraints<double> constraints;
 
+        bool first_it;
+
     };
 
     template<int dim>
@@ -1802,6 +1804,7 @@ namespace CouplingPressureSaturation {
                                                                     mpi_communicator, n_mpi_processes,
                                                                     this_mpi_process);
 
+
         timer.reset();
         timer.start();
         Sa_problem.assemble_system_matrix_aqueous_saturation();
@@ -1810,6 +1813,12 @@ namespace CouplingPressureSaturation {
 
         // this is the crucial matrix we need to save
         auto &Sa_matrix = Sa_problem.stored_matrix;
+
+        std::ofstream Sa_mat_first_it;
+        Sa_mat_first_it.open("Sa_mat_first_it");
+
+        Sa_matrix.print(Sa_mat_first_it);
+
 
         // boolean to decide whether to assemble Sa matrix on first iteration
         bool first_it = true;
@@ -2030,6 +2039,13 @@ namespace CouplingPressureSaturation {
                     Sa_problem.assemble_rhs_aqueous_saturation();
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
+
+
+                    std::ofstream Sa_mat_second_it;
+                    Sa_mat_second_it.open("Sa_mat_second_it");
+
+                    Sa_matrix.print(Sa_mat_second_it);
+
 
                     // Solve for Sa
                     timer.reset();

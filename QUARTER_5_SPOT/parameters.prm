@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation
-  set Final time = 750.0
+  set Final time = 0.75
   
   # Initial time step (must be chosen so that at least one time step is performed)
   set Initial time step = 0.25
@@ -32,7 +32,7 @@ subsection Spatial discretization parameters
   set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = true
+  set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
   set Incompressible = true
