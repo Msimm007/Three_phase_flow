@@ -118,6 +118,10 @@ namespace AqueousSaturation
         void assemble_system_matrix_aqueous_saturation();
         void assemble_rhs_aqueous_saturation();
         void solve_aqueous_saturation(PETScWrappers::MPI::SparseMatrix &mat);
+        void update(double time_step_, double time_, unsigned int timestep_number_, const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+                    const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                    const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                    const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_);
 
 
         PETScWrappers::MPI::SparseMatrix stored_matrix;
@@ -127,6 +131,7 @@ namespace AqueousSaturation
     private:
         void setup_mat();
         void setup_rhs();
+
 
         parallel::shared::Triangulation<dim>   triangulation;
         const MappingQ1<dim> mapping;
@@ -214,9 +219,30 @@ namespace AqueousSaturation
 
         AffineConstraints<double> constraints;
 
-        bool mat_assem;
-
     };
+
+    template<int dim>
+    void AqueousSaturationProblem<dim>::update(double time_step_, double time_, unsigned int timestep_number_,
+                                               const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                               const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                               const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                               const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_
+                                               ) {
+        //triangulation(MPI_COMM_WORLD);
+        time_step = time_step_;
+        time = time_;
+        timestep_number = timestep_number_;
+
+
+        pl_solution = pl_solution_;
+        pl_solution_n = pl_solution_n_;
+        pl_solution_nminus1 = pl_solution_nminus1_;
+        Sa_solution_n = Sa_solution_n_;
+        Sa_solution_nminus1 = Sa_solution_nminus1_;
+        Sv_solution_n = Sv_solution_n_;
+        Sv_solution_nminus1 = Sv_solution_nminus1_;
+
+    }
 
 
     template <int dim>
@@ -238,7 +264,6 @@ namespace AqueousSaturation
             const unsigned int degreeRT_, bool project_only_kappa_,
             MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_)
             : triangulation(MPI_COMM_WORLD)
-            , mat_assem(false)
             , mapping()
             , degree(degree_)
             , fe(degree_)
@@ -314,6 +339,7 @@ namespace AqueousSaturation
                                                 locally_owned_dofs,
                                                 sparsity_pattern,
                                                 mpi_communicator);
+        right_hand_side_aqueous_saturation.reinit(locally_owned_dofs, mpi_communicator);
 
         Sa_solution.reinit(locally_owned_dofs, mpi_communicator);
 
@@ -921,6 +947,7 @@ namespace AqueousSaturation
 
                     gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
 
+
                     double h_e = cell->face(face_no)->measure();
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
 
@@ -1526,7 +1553,6 @@ namespace AqueousSaturation
                                   face_worker);
 
             system_matrix_aqueous_saturation.compress(VectorOperation::add);
-
             stored_matrix.reinit(system_matrix_aqueous_saturation);
             stored_matrix.copy_from(system_matrix_aqueous_saturation);
 
@@ -1663,9 +1689,6 @@ namespace AqueousSaturation
         {
 
             const FEValues<dim> &fe_v = scratch_data.reinit(cell);
-
-
-
 
             const unsigned int n_dofs = fe_v.dofs_per_cell;
             copy_data.reinit_rhs(cell, n_dofs);
@@ -1841,8 +1864,6 @@ namespace AqueousSaturation
                 // This is where the main formulation starts
                 for (unsigned int i = 0; i < n_dofs; ++i)
                 {
-
-
                     // Source term
                     copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point]) * fe_v.shape_value(i, point) * JxW[point];
 
