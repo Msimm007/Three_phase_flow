@@ -13,3 +13,6 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 .cmake
+
+# misc
+.idea
