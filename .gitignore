@@ -6,3 +6,10 @@
 # ignore log and bacup files
 *.log
 *.bak
+
+# ignore CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+.cmake
