@@ -16,5 +16,13 @@ cmake_install.cmake
 Makefile
 .cmake
 
+# files for later that don't need to be tracked currently
+energies
+errors
+kappa.vtu
+iterations_old
+times
+
 # misc
 .idea
+compile_commands.json

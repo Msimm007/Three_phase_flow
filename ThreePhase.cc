@@ -350,6 +350,9 @@ namespace CouplingPressureSaturation {
                                          ParameterHandler &param);
 
         void run();
+        bool is_incompressible() const {
+            return incompressible;
+        }
 
     private:
         void load_gmsh_mesh();
