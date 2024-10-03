@@ -681,8 +681,8 @@ namespace AqueousSaturation
                         if (Stab_a)
                         {
                                 // Diffusion Term
-                                copy_data.cell_matrix(i,j) -=
-                                    -Kappa_tilde_a // also must be negative
+                                copy_data.cell_matrix(i,j) +=
+                                    Kappa_tilde_a
                                     * kappa
                                     * fe_v.shape_grad(i, point)
                                     * fe_v.shape_grad(j, point)
@@ -691,10 +691,10 @@ namespace AqueousSaturation
                         else
                         {
                             // Diffusion Term
-                            copy_data.cell_matrix(i,j) -=
+                            copy_data.cell_matrix(i,j) +=
                                     rho_a
                                     * lambda_a
-                                    * dpca_dSa // negative term
+                                    * (-dpca_dSa) // dpca_dSa negative
                                     * kappa
                                     * fe_v.shape_grad(i, point)
                                     * fe_v.shape_grad(j, point)
@@ -912,8 +912,8 @@ namespace AqueousSaturation
                             if(Stab_a)
                             {
                                 // Diffusion term
-                                copy_data.cell_matrix(i, j) +=
-                                        -Kappa_tilde_a
+                                copy_data.cell_matrix(i, j) -=
+                                        Kappa_tilde_a
                                         * kappa
                                         * fe_face.shape_value(i, point)
                                         * fe_face.shape_grad(j, point)
@@ -932,10 +932,10 @@ namespace AqueousSaturation
                             else
                             {
                                 // Diffusion term
-                                copy_data.cell_matrix(i, j) +=
+                                copy_data.cell_matrix(i, j) -=
                                         rho_a
                                         * lambda_a
-                                        * dpca_dSa
+                                        * (-dpca_dSa)
                                         * kappa
                                         * fe_face.shape_value(i, point)
                                         * fe_face.shape_grad(j, point)
@@ -943,17 +943,15 @@ namespace AqueousSaturation
                                         * JxW[point];
                                 //Theta term
                                 copy_data.cell_matrix(i, j) +=
-                                         -rho_a
+                                        rho_a
                                         * lambda_a
-                                        * dpca_dSa
+                                        * (-dpca_dSa)
                                         * kappa
                                         * theta_Sa
                                         * fe_face.shape_grad(i, point)
                                         * normals[point]
                                         * fe_face.shape_value(j, point)
                                         * JxW[point];
-                                //                             Boundary condition
-
                             }
                             // Not fully tested/working
                             if(artificial_visc_imp)
@@ -1438,7 +1436,7 @@ namespace AqueousSaturation
                                                                                                           j, point,
                                                                                                           coef0_diff, coef1_diff,
                                                                                                           weight0_diff, weight1_diff);
-                            copy_data_face.cell_matrix(i, j) +=
+                            copy_data_face.cell_matrix(i, j) -=
                                     fe_iv.jump(i, point)
                                     * weighted_aver_j
                                     * JxW[point];
