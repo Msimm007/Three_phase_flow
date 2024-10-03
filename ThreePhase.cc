@@ -350,9 +350,6 @@ namespace CouplingPressureSaturation {
                                          ParameterHandler &param);
 
         void run();
-        bool is_incompressible() const {
-            return incompressible;
-        }
 
     private:
         void load_gmsh_mesh();
@@ -547,7 +544,6 @@ namespace CouplingPressureSaturation {
         prm.leave_subsection();
 
         prm.enter_subsection("Spatial discretization parameters");
-
 
         incompressible = prm.get_bool("Incompressible");
         Stab_t = prm.get_bool("Stab_t");
@@ -1821,6 +1817,8 @@ namespace CouplingPressureSaturation {
             totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
             totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
 
+            pcout << std::endl;
+
             Sa_problem.update_sol(time_step, time, timestep_number, pl_solution, pl_solution_n, pl_solution_nminus1,
                                   Sa_solution_n, Sa_solution_nminus1,
                                   Sv_solution_n, Sv_solution_nminus1, totalDarcyvelocity_RT_Sa);
@@ -1836,11 +1834,17 @@ namespace CouplingPressureSaturation {
 
                 auto &Sa_matrix = Sa_problem.stored_matrix;
 
+                std::ofstream mat_file_1;
+                mat_file_1.open("mat_first_it");
+
+                Sa_matrix.print(mat_file_1);
+
                 timer.reset();
                 timer.start();
                 Sa_problem.assemble_rhs_aqueous_saturation();
                 timer.stop();
                 pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
+
 
                 // Solve for Sa
                 timer.reset();
@@ -1850,7 +1854,7 @@ namespace CouplingPressureSaturation {
                 pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
                 Sa_solution = Sa_problem.Sa_solution;
 
-                // set first it to false to go to else statement
+                // set first_it to false to go to else statement
                 first_it = false;
             }
             // only assembling rhs of system for stability method
@@ -1862,12 +1866,18 @@ namespace CouplingPressureSaturation {
                 timer.stop();
                 pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                auto &Sa_matrix = Sa_problem.stored_matrix;
+                auto &Sa_matrix2 = Sa_problem.stored_matrix;
+
+
+                std::ofstream mat_file_2;
+                mat_file_2.open("mat_second_it");
+
+                Sa_matrix2.print(mat_file_2);
 
                 // Solve for Sa
                 timer.reset();
                 timer.start();
-                Sa_problem.solve_aqueous_saturation(Sa_matrix);
+                Sa_problem.solve_aqueous_saturation(Sa_matrix2);
                 timer.stop();
                 pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
                 Sa_solution = Sa_problem.Sa_solution;

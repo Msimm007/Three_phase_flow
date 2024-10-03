@@ -23,11 +23,8 @@
 
 using namespace dealii;
 
-extern bool incompressible;
+
 bool inc = true; // MUST MATCH PARAMETER FILE.
-
-
-
 double amp_factor_cap_pressure = 300.0; //not used here
 double porosity_data = 0.2;
 double kappa_abs_data = 1.0;
