@@ -1631,7 +1631,7 @@ namespace CouplingPressureSaturation {
                                                               use_exact_Sa_in_pl,
                                                               use_exact_Sv_in_pl,
                                                               second_order_time_derivative, second_order_extrapolation,
-                                                              use_direct_solver, Stab_t, incompressible,
+                                                              use_direct_solver,incompressible,
                                                               implicit_time_pl,
                                                               kappa_abs_vec, mpi_communicator, n_mpi_processes,
                                                               this_mpi_process);
@@ -1660,173 +1660,173 @@ namespace CouplingPressureSaturation {
             pcout << "Time step " <<
             timestep_number << " at t=" << time
                   << std::endl;
-            if(first_it)
+            pl_problem.update_sol(time_step ,
+                                  time ,
+                                  timestep_number ,
+                                  pl_solution_n ,
+                                  pl_solution_nminus1 ,
+                                  pl_solution_nminus2 ,
+                                  Sa_solution_n ,
+                                  Sa_solution_nminus1 ,
+                                  Sa_solution_nminus2 ,
+                                  Sv_solution_n ,
+                                  Sv_solution_nminus1 ,
+                                  Sv_solution_nminus2);
+            // first assemble system matrix for pl
+            timer.reset();
+            timer.start();
+            pl_problem.assemble_system_matrix_pressure();
+            timer.stop();
+
+            assemble_time[index_time] = timer.cpu_time();
+            pcout << "Elapsed CPU time for pl assemble: " << timer.cpu_time() << " seconds." << std::endl;
+
+            // solve for pl
+            timer.reset();
+            timer.start();
+            pl_problem.solve_pressure();
+            timer.stop();
+
+            solver_time[index_time] = timer.cpu_time();
+            pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl;
+
+            //store solution
+            pl_solution = pl_problem.pl_solution;
+
+            // project darcy velocity
+            if (project_to_RT0)
             {
-                pl_problem.update_sol(time_step ,
-                                      time ,
-                                      timestep_number ,
-                                      pl_solution_n ,
-                                      pl_solution_nminus1 ,
-                                      pl_solution_nminus2 ,
-                                      Sa_solution_n ,
-                                      Sa_solution_nminus1 ,
-                                      Sa_solution_nminus2 ,
-                                      Sv_solution_n ,
-                                      Sv_solution_nminus1 ,
-                                      Sv_solution_nminus2);
-                // first assemble system matrix for pl
-                timer.reset();
-                timer.start();
-                pl_problem.assemble_system_matrix_pressure();
-                timer.stop();
-
-                assemble_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for pl assemble: " << timer.cpu_time() << " seconds." << std::endl;
-
-                // solve for pl
-                timer.reset();
-                timer.start();
-                pl_problem.solve_pressure();
-                timer.stop();
-
-                solver_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl;
-
-                //store solution
-                pl_solution = pl_problem.pl_solution;
-
-                // project darcy velocity
-                if (project_to_RT0)
+                if (project_Darcy_with_gravity)
                 {
-                    if (project_Darcy_with_gravity)
-                    {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
-                                                                                                      degree, theta_pl,
-                                                                                                      time, time_step,
-                                                                                                      penalty_pl,
-                                                                                                      penalty_pl_bdry,
-                                                                                                      dirichlet_id_pl,
-                                                                                                      use_exact_pl_in_RT,
-                                                                                                      use_exact_Sa_in_RT,
-                                                                                                      use_exact_Sv_in_RT,
-                                                                                                      second_order_extrapolation,
-                                                                                                      incompressible,
-                                                                                                      pl_solution,
-                                                                                                      Sa_solution_n,
-                                                                                                      Sa_solution_nminus1,
-                                                                                                      Sv_solution_n,
-                                                                                                      Sv_solution_nminus1,
-                                                                                                      kappa_abs_vec,
-                                                                                                      true,
-                                                                                                      project_only_kappa,
-                                                                                                      mpi_communicator,
-                                                                                                      n_mpi_processes,
-                                                                                                      this_mpi_process);
+                    totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
+                                                                                                  degree, theta_pl,
+                                                                                                  time, time_step,
+                                                                                                  penalty_pl,
+                                                                                                  penalty_pl_bdry,
+                                                                                                  dirichlet_id_pl,
+                                                                                                  use_exact_pl_in_RT,
+                                                                                                  use_exact_Sa_in_RT,
+                                                                                                  use_exact_Sv_in_RT,
+                                                                                                  second_order_extrapolation,
+                                                                                                  incompressible,
+                                                                                                  pl_solution,
+                                                                                                  Sa_solution_n,
+                                                                                                  Sa_solution_nminus1,
+                                                                                                  Sv_solution_n,
+                                                                                                  Sv_solution_nminus1,
+                                                                                                  kappa_abs_vec,
+                                                                                                  true,
+                                                                                                  project_only_kappa,
+                                                                                                  mpi_communicator,
+                                                                                                  n_mpi_processes,
+                                                                                                  this_mpi_process);
 
-                        totalDarcyvelocity_RT_Sv = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
-                                                                                                      degree, theta_pl,
-                                                                                                      time, time_step,
-                                                                                                      penalty_pl,
-                                                                                                      penalty_pl_bdry,
-                                                                                                      dirichlet_id_pl,
-                                                                                                      use_exact_pl_in_RT,
-                                                                                                      use_exact_Sa_in_RT,
-                                                                                                      use_exact_Sv_in_RT,
-                                                                                                      second_order_extrapolation,
-                                                                                                      incompressible,
-                                                                                                      pl_solution,
-                                                                                                      Sa_solution_n,
-                                                                                                      Sa_solution_nminus1,
-                                                                                                      Sv_solution_n,
-                                                                                                      Sv_solution_nminus1,
-                                                                                                      kappa_abs_vec,
-                                                                                                      false,
-                                                                                                      project_only_kappa,
-                                                                                                      mpi_communicator,
-                                                                                                      n_mpi_processes,
-                                                                                                      this_mpi_process);
-                    } else {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection<dim>(triangulation, degree,
-                                                                                              theta_pl, time,
-                                                                                              time_step, penalty_pl,
-                                                                                              penalty_pl_bdry,
-                                                                                              dirichlet_id_pl,
-                                                                                              use_exact_pl_in_RT,
-                                                                                              use_exact_Sa_in_RT,
-                                                                                              use_exact_Sv_in_RT,
-                                                                                              second_order_extrapolation,
-                                                                                              incompressible,
-                                                                                              pl_solution,
-                                                                                              Sa_solution_n,
-                                                                                              Sa_solution_nminus1,
-                                                                                              Sv_solution_n,
-                                                                                              Sv_solution_nminus1,
-                                                                                              kappa_abs_vec,
-                                                                                              project_only_kappa,
-                                                                                              mpi_communicator,
-                                                                                              n_mpi_processes,
-                                                                                              this_mpi_process);
+                    totalDarcyvelocity_RT_Sv = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
+                                                                                                  degree, theta_pl,
+                                                                                                  time, time_step,
+                                                                                                  penalty_pl,
+                                                                                                  penalty_pl_bdry,
+                                                                                                  dirichlet_id_pl,
+                                                                                                  use_exact_pl_in_RT,
+                                                                                                  use_exact_Sa_in_RT,
+                                                                                                  use_exact_Sv_in_RT,
+                                                                                                  second_order_extrapolation,
+                                                                                                  incompressible,
+                                                                                                  pl_solution,
+                                                                                                  Sa_solution_n,
+                                                                                                  Sa_solution_nminus1,
+                                                                                                  Sv_solution_n,
+                                                                                                  Sv_solution_nminus1,
+                                                                                                  kappa_abs_vec,
+                                                                                                  false,
+                                                                                                  project_only_kappa,
+                                                                                                  mpi_communicator,
+                                                                                                  n_mpi_processes,
+                                                                                                  this_mpi_process);
+                } else {
+                    totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection<dim>(triangulation, degree,
+                                                                                          theta_pl, time,
+                                                                                          time_step, penalty_pl,
+                                                                                          penalty_pl_bdry,
+                                                                                          dirichlet_id_pl,
+                                                                                          use_exact_pl_in_RT,
+                                                                                          use_exact_Sa_in_RT,
+                                                                                          use_exact_Sv_in_RT,
+                                                                                          second_order_extrapolation,
+                                                                                          incompressible,
+                                                                                          pl_solution,
+                                                                                          Sa_solution_n,
+                                                                                          Sa_solution_nminus1,
+                                                                                          Sv_solution_n,
+                                                                                          Sv_solution_nminus1,
+                                                                                          kappa_abs_vec,
+                                                                                          project_only_kappa,
+                                                                                          mpi_communicator,
+                                                                                          n_mpi_processes,
+                                                                                          this_mpi_process);
 
-                        totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
-                    }
-
-                } else // Project to RTk
-                {
-                    if (project_Darcy_with_gravity)
-                    {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RTk_projection_with_gravity<dim>(
-                                triangulation, degree, theta_pl, time,
-                                time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
-                                use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
-                                pl_solution, Sa_solution_n, Sa_solution_nminus1,
-                                Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec,
-                                true, project_only_kappa, mpi_communicator, n_mpi_processes, this_mpi_process);
-
-                        totalDarcyvelocity_RT_Sv = RT_Projection::compute_RTk_projection_with_gravity<dim>(
-                                triangulation, degree, theta_pl, time,
-                                time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
-                                use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
-                                pl_solution, Sa_solution_n, Sa_solution_nminus1,
-                                Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec,
-                                false, project_only_kappa, mpi_communicator, n_mpi_processes, this_mpi_process);
-                    }
-                    else
-                    {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RTk_projection<dim>(triangulation, degree,
-                                                                                              theta_pl, time,
-                                                                                              time_step, penalty_pl,
-                                                                                              penalty_pl_bdry,
-                                                                                              dirichlet_id_pl,
-                                                                                              use_exact_pl_in_RT,
-                                                                                              use_exact_Sa_in_RT,
-                                                                                              use_exact_Sv_in_RT,
-                                                                                              second_order_extrapolation,
-                                                                                              incompressible,
-                                                                                              pl_solution,
-                                                                                              Sa_solution_n,
-                                                                                              Sa_solution_nminus1,
-                                                                                              Sv_solution_n,
-                                                                                              Sv_solution_nminus1,
-                                                                                              kappa_abs_vec,
-                                                                                              project_only_kappa,
-                                                                                              mpi_communicator,
-                                                                                              n_mpi_processes,
-                                                                                              this_mpi_process);
-                        totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
-                    }
+                    totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
                 }
 
-                timer.stop();
-                RTproj_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for RT Projection: " << timer.cpu_time() << " seconds." << std::endl;
+            } else // Project to RTk
+            {
+                if (project_Darcy_with_gravity)
+                {
+                    totalDarcyvelocity_RT_Sa = RT_Projection::compute_RTk_projection_with_gravity<dim>(
+                            triangulation, degree, theta_pl, time,
+                            time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
+                            use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
+                            pl_solution, Sa_solution_n, Sa_solution_nminus1,
+                            Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec,
+                            true, project_only_kappa, mpi_communicator, n_mpi_processes, this_mpi_process);
 
-                totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
-                totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
+                    totalDarcyvelocity_RT_Sv = RT_Projection::compute_RTk_projection_with_gravity<dim>(
+                            triangulation, degree, theta_pl, time,
+                            time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
+                            use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
+                            pl_solution, Sa_solution_n, Sa_solution_nminus1,
+                            Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec,
+                            false, project_only_kappa, mpi_communicator, n_mpi_processes, this_mpi_process);
+                }
+                else
+                {
+                    totalDarcyvelocity_RT_Sa = RT_Projection::compute_RTk_projection<dim>(triangulation, degree,
+                                                                                          theta_pl, time,
+                                                                                          time_step, penalty_pl,
+                                                                                          penalty_pl_bdry,
+                                                                                          dirichlet_id_pl,
+                                                                                          use_exact_pl_in_RT,
+                                                                                          use_exact_Sa_in_RT,
+                                                                                          use_exact_Sv_in_RT,
+                                                                                          second_order_extrapolation,
+                                                                                          incompressible,
+                                                                                          pl_solution,
+                                                                                          Sa_solution_n,
+                                                                                          Sa_solution_nminus1,
+                                                                                          Sv_solution_n,
+                                                                                          Sv_solution_nminus1,
+                                                                                          kappa_abs_vec,
+                                                                                          project_only_kappa,
+                                                                                          mpi_communicator,
+                                                                                          n_mpi_processes,
+                                                                                          this_mpi_process);
+                    totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
+                }
+            }
 
-                Sa_problem.update_sol(time_step, time, timestep_number, pl_solution, pl_solution_n, pl_solution_nminus1,
-                                      Sa_solution_n, Sa_solution_nminus1,
-                                      Sv_solution_n, Sv_solution_nminus1, totalDarcyvelocity_RT_Sa);
+            timer.stop();
+            RTproj_time[index_time] = timer.cpu_time();
+            pcout << "Elapsed CPU time for RT Projection: " << timer.cpu_time() << " seconds." << std::endl;
 
+            totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
+            totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
+
+            Sa_problem.update_sol(time_step, time, timestep_number, pl_solution, pl_solution_n, pl_solution_nminus1,
+                                  Sa_solution_n, Sa_solution_nminus1,
+                                  Sv_solution_n, Sv_solution_nminus1, totalDarcyvelocity_RT_Sa);
+
+            if(first_it && Stab_a)
+            {
                 // Assemble system matrix for Aqueous saturation
                 timer.reset();
                 timer.start();
@@ -1853,223 +1853,51 @@ namespace CouplingPressureSaturation {
                 // set first it to false to go to else statement
                 first_it = false;
             }
+            // only assembling rhs of system for stability method
+            else if(Stab_a)
+            {
+                timer.reset();
+                timer.start();
+                Sa_problem.assemble_rhs_aqueous_saturation();
+                timer.stop();
+                pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
+
+                auto &Sa_matrix = Sa_problem.stored_matrix;
+
+                // Solve for Sa
+                timer.reset();
+                timer.start();
+                Sa_problem.solve_aqueous_saturation(Sa_matrix);
+                timer.stop();
+                pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
+                Sa_solution = Sa_problem.Sa_solution;
+            }
             else
             {
-                // update_sol solution for liquid pressure
-                pl_problem.update_sol(time_step ,
-                                      time ,
-                                      timestep_number ,
-                                      pl_solution_n ,
-                                      pl_solution_nminus1 ,
-                                      pl_solution_nminus2 ,
-                                      Sa_solution_n ,
-                                      Sa_solution_nminus1 ,
-                                      Sa_solution_nminus2 ,
-                                      Sv_solution_n ,
-                                      Sv_solution_nminus1 ,
-                                      Sv_solution_nminus2);
-
-
-               // assemble pressure
+                // Assemble system matrix for Aqueous saturation
                 timer.reset();
                 timer.start();
-                pl_problem.assemble_system_matrix_pressure();
+                Sa_problem.assemble_system_matrix_aqueous_saturation();
                 timer.stop();
+                pcout << "Elapsed CPU time for Sa matrix assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                assemble_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for pl assemble: " << timer.cpu_time() << " seconds." << std::endl;
+                auto &Sa_matrix = Sa_problem.stored_matrix;
 
-                // solve for pl
                 timer.reset();
                 timer.start();
-                pl_problem.solve_pressure();
+                Sa_problem.assemble_rhs_aqueous_saturation();
                 timer.stop();
+                pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                solver_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl;
-
-                //store solution
-                pl_solution = pl_problem.pl_solution;
-
-                // project darcy velocity
-                if (project_to_RT0)
-                {
-                    if (project_Darcy_with_gravity)
-                    {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
-                                                                                                      degree, theta_pl,
-                                                                                                      time, time_step,
-                                                                                                      penalty_pl,
-                                                                                                      penalty_pl_bdry,
-                                                                                                      dirichlet_id_pl,
-                                                                                                      use_exact_pl_in_RT,
-                                                                                                      use_exact_Sa_in_RT,
-                                                                                                      use_exact_Sv_in_RT,
-                                                                                                      second_order_extrapolation,
-                                                                                                      incompressible,
-                                                                                                      pl_solution,
-                                                                                                      Sa_solution_n,
-                                                                                                      Sa_solution_nminus1,
-                                                                                                      Sv_solution_n,
-                                                                                                      Sv_solution_nminus1,
-                                                                                                      kappa_abs_vec,
-                                                                                                      true,
-                                                                                                      project_only_kappa,
-                                                                                                      mpi_communicator,
-                                                                                                      n_mpi_processes,
-                                                                                                      this_mpi_process);
-
-                        totalDarcyvelocity_RT_Sv = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
-                                                                                                      degree, theta_pl,
-                                                                                                      time, time_step,
-                                                                                                      penalty_pl,
-                                                                                                      penalty_pl_bdry,
-                                                                                                      dirichlet_id_pl,
-                                                                                                      use_exact_pl_in_RT,
-                                                                                                      use_exact_Sa_in_RT,
-                                                                                                      use_exact_Sv_in_RT,
-                                                                                                      second_order_extrapolation,
-                                                                                                      incompressible,
-                                                                                                      pl_solution,
-                                                                                                      Sa_solution_n,
-                                                                                                      Sa_solution_nminus1,
-                                                                                                      Sv_solution_n,
-                                                                                                      Sv_solution_nminus1,
-                                                                                                      kappa_abs_vec,
-                                                                                                      false,
-                                                                                                      project_only_kappa,
-                                                                                                      mpi_communicator,
-                                                                                                      n_mpi_processes,
-                                                                                                      this_mpi_process);
-                    } else {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection<dim>(triangulation, degree,
-                                                                                              theta_pl, time,
-                                                                                              time_step, penalty_pl,
-                                                                                              penalty_pl_bdry,
-                                                                                              dirichlet_id_pl,
-                                                                                              use_exact_pl_in_RT,
-                                                                                              use_exact_Sa_in_RT,
-                                                                                              use_exact_Sv_in_RT,
-                                                                                              second_order_extrapolation,
-                                                                                              incompressible,
-                                                                                              pl_solution,
-                                                                                              Sa_solution_n,
-                                                                                              Sa_solution_nminus1,
-                                                                                              Sv_solution_n,
-                                                                                              Sv_solution_nminus1,
-                                                                                              kappa_abs_vec,
-                                                                                              project_only_kappa,
-                                                                                              mpi_communicator,
-                                                                                              n_mpi_processes,
-                                                                                              this_mpi_process);
-
-                        totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
-                    }
-
-                } else // Project to RTk
-                {
-                    if (project_Darcy_with_gravity)
-                    {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RTk_projection_with_gravity<dim>(
-                                triangulation, degree, theta_pl, time,
-                                time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
-                                use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
-                                pl_solution, Sa_solution_n, Sa_solution_nminus1,
-                                Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec,
-                                true, project_only_kappa, mpi_communicator, n_mpi_processes, this_mpi_process);
-
-                        totalDarcyvelocity_RT_Sv = RT_Projection::compute_RTk_projection_with_gravity<dim>(
-                                triangulation, degree, theta_pl, time,
-                                time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
-                                use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
-                                pl_solution, Sa_solution_n, Sa_solution_nminus1,
-                                Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec,
-                                false, project_only_kappa, mpi_communicator, n_mpi_processes, this_mpi_process);
-                    }
-                    else
-                    {
-                        totalDarcyvelocity_RT_Sa = RT_Projection::compute_RTk_projection<dim>(triangulation, degree,
-                                                                                              theta_pl, time,
-                                                                                              time_step, penalty_pl,
-                                                                                              penalty_pl_bdry,
-                                                                                              dirichlet_id_pl,
-                                                                                              use_exact_pl_in_RT,
-                                                                                              use_exact_Sa_in_RT,
-                                                                                              use_exact_Sv_in_RT,
-                                                                                              second_order_extrapolation,
-                                                                                              incompressible,
-                                                                                              pl_solution,
-                                                                                              Sa_solution_n,
-                                                                                              Sa_solution_nminus1,
-                                                                                              Sv_solution_n,
-                                                                                              Sv_solution_nminus1,
-                                                                                              kappa_abs_vec,
-                                                                                              project_only_kappa,
-                                                                                              mpi_communicator,
-                                                                                              n_mpi_processes,
-                                                                                              this_mpi_process);
-                        totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
-                    }
-                }
-
+                // Solve for Sa
+                timer.reset();
+                timer.start();
+                Sa_problem.solve_aqueous_saturation(Sa_matrix);
                 timer.stop();
-                RTproj_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for RT Projection: " << timer.cpu_time() << " seconds." << std::endl;
-
-                totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
-                totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
-
-                // if stability method is used, then only assemble rhs. otherwise, reassemble matrix
-                if(Stab_a)
-                {
-                    auto &Sa_matrix = Sa_problem.stored_matrix;
-
-                    Sa_problem.update_sol(time_step, time, timestep_number, pl_solution, pl_solution_n,
-                                          pl_solution_nminus1,
-                                          Sa_solution_n, Sa_solution_nminus1,
-                                          Sv_solution_n, Sv_solution_nminus1, totalDarcyvelocity_RT_Sa);
-
-                    timer.reset();
-                    timer.start();
-
-                    Sa_problem.assemble_rhs_aqueous_saturation();
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
-
-                    // Solve for Sa
-                    timer.reset();
-                    timer.start();
-                    Sa_problem.solve_aqueous_saturation(Sa_matrix);
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
-                    Sa_solution = Sa_problem.Sa_solution;
-                }
-                else
-                {
-
-                    timer.reset();
-                    timer.start();
-                    Sa_problem.assemble_system_matrix_aqueous_saturation();
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa matrix assemble: " << timer.cpu_time() << " seconds." << std::endl;
-
-                    timer.reset();
-                    timer.start();
-                    Sa_problem.assemble_rhs_aqueous_saturation();
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
-
-                    auto &Sa_matrix2 = Sa_problem.stored_matrix;
-                    // Solve for Sa
-                    timer.reset();
-                    timer.start();
-                    Sa_problem.solve_aqueous_saturation(Sa_matrix2);
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
-                    Sa_solution = Sa_problem.Sa_solution;
-                }
+                pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
+                Sa_solution = Sa_problem.Sa_solution;
             }
-            // stop here for two phase
+
             if (two_phase)
                 Sv_solution = 0.0;
 

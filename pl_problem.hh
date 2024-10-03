@@ -99,19 +99,19 @@ public:
 			double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
 			bool use_exact_Sv_in_pl_,
 			bool second_order_time_derivative_, bool second_order_extrapolation_,
-			bool use_direct_solver_, bool Stab_t_, bool incompressible_, bool implicit_time_pl_,
+			bool use_direct_solver_,bool incompressible_, bool implicit_time_pl_,
 			PETScWrappers::MPI::Vector kappa_abs_vec_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
 	void assemble_system_matrix_pressure();
 	void solve_pressure();
     void update_sol(double time_step_,double time_,
-                    unsigned int timestep_number_,PETScWrappers::MPI::Vector pl_solution_n_, PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                    PETScWrappers::MPI::Vector pl_solution_nminus2_,
-                    PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                    PETScWrappers::MPI::Vector Sa_solution_nminus2_,
-                    PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                    PETScWrappers::MPI::Vector Sv_solution_nminus2_);
+                    unsigned int timestep_number_,const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                    const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
+                    const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                    const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
+                    const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                    const PETScWrappers::MPI::Vector& Sv_solution_nminus2_);
 
 	PETScWrappers::MPI::Vector pl_solution;
 private:
@@ -172,7 +172,6 @@ private:
 
     std::vector<unsigned int> dirichlet_id_pl;
 
-	bool Stab_t;
     bool incompressible;
     bool second_order_time_derivative;
     bool second_order_extrapolation;
@@ -195,7 +194,7 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 		double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
 		bool use_exact_Sv_in_pl_,
 		bool second_order_time_derivative_, bool second_order_extrapolation_,
-		bool use_direct_solver_, bool Stab_t_, bool incompressible_, bool implicit_time_pl_,
+		bool use_direct_solver_, bool incompressible_, bool implicit_time_pl_,
 		PETScWrappers::MPI::Vector kappa_abs_vec_,
 		MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_)
 	: triangulation(MPI_COMM_WORLD)
@@ -212,7 +211,6 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 	, use_exact_Sv_in_pl(use_exact_Sv_in_pl_)
 	, second_order_time_derivative(second_order_time_derivative_)
 	, second_order_extrapolation(second_order_extrapolation_)
-	, Stab_t(Stab_t_)
 	, incompressible(incompressible_)
 	, implicit_time_pl(implicit_time_pl_)
 	, use_direct_solver(use_direct_solver_)
@@ -1520,15 +1518,15 @@ void LiquidPressureProblem<dim>::solve_pressure()
 }
     template<int dim>
     void LiquidPressureProblem<dim>::update_sol(double time_step_, double time_, unsigned int timestep_number_,
-                                                PETScWrappers::MPI::Vector pl_solution_n_,
-                                                PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                                                PETScWrappers::MPI::Vector pl_solution_nminus2_,
-                                                PETScWrappers::MPI::Vector Sa_solution_n_,
-                                                PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                                                PETScWrappers::MPI::Vector Sa_solution_nminus2_,
-                                                PETScWrappers::MPI::Vector Sv_solution_n_,
-                                                PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                                                PETScWrappers::MPI::Vector Sv_solution_nminus2_) {
+                                                const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                                const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
+                                                const PETScWrappers::MPI::Vector& Sa_solution_n_,
+                                                const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                                const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
+                                                const PETScWrappers::MPI::Vector& Sv_solution_n_,
+                                                const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                                const PETScWrappers::MPI::Vector& Sv_solution_nminus2_) {
         time_step = time_step_;
         time = time_;
         timestep_number = timestep_number_;

@@ -218,28 +218,6 @@ namespace AqueousSaturation
 
     };
 
-    template<int dim>
-    void AqueousSaturationProblem<dim>::update_sol(double time_step_, double time_, unsigned int timestep_number_,
-                                                   const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
-                                                   const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                   const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                   const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_
-                                               , const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_) {
-        time_step = time_step_;
-        time = time_;
-        timestep_number = timestep_number_;
-
-
-        pl_solution = pl_solution_;
-        pl_solution_n = pl_solution_n_;
-        pl_solution_nminus1 = pl_solution_nminus1_;
-        Sa_solution_n = Sa_solution_n_;
-        Sa_solution_nminus1 = Sa_solution_nminus1_;
-        Sv_solution_n = Sv_solution_n_;
-        Sv_solution_nminus1 = Sv_solution_nminus1_;
-        totalDarcyvelocity_RT = totalDarcyvelocity_RT_;
-    }
-
 
     template <int dim>
     AqueousSaturationProblem<dim>::AqueousSaturationProblem(
@@ -2781,6 +2759,29 @@ namespace AqueousSaturation
 
         }
     }
+
+    template<int dim>
+    void AqueousSaturationProblem<dim>::update_sol(double time_step_, double time_, unsigned int timestep_number_,
+                                                   const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                                   const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                                   const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                                   const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_
+            , const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_) {
+        time_step = time_step_;
+        time = time_;
+        timestep_number = timestep_number_;
+
+
+        pl_solution = pl_solution_;
+        pl_solution_n = pl_solution_n_;
+        pl_solution_nminus1 = pl_solution_nminus1_;
+        Sa_solution_n = Sa_solution_n_;
+        Sa_solution_nminus1 = Sa_solution_nminus1_;
+        Sv_solution_n = Sv_solution_n_;
+        Sv_solution_nminus1 = Sv_solution_nminus1_;
+        totalDarcyvelocity_RT = totalDarcyvelocity_RT_;
+    }
+
 } // namespace AqueousSaturation
 
 #endif //SA_PROBLEM_HH
