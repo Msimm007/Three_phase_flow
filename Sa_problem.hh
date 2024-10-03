@@ -100,7 +100,7 @@ namespace AqueousSaturation
     {
     public:
         AqueousSaturationProblem(Triangulation<dim, dim> &triangulation_,
-                                 const unsigned int degree_, double time_step_, double theta_Sa_, double penalty_Sa_,
+                                 unsigned int degree_, double time_step_, double theta_Sa_, double penalty_Sa_,
                                  double penalty_Sa_bdry_, std::vector<unsigned int> dirichlet_id_sa_, bool use_exact_pl_in_Sa_,
                                  bool use_exact_Sv_in_Sa_, double time_, unsigned int timestep_number_,
                                  bool second_order_time_derivative_, bool second_order_extrapolation_,
@@ -112,8 +112,8 @@ namespace AqueousSaturation
                                  PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
                                  PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
                                  PETScWrappers::MPI::Vector kappa_abs_vec_, PETScWrappers::MPI::Vector totalDarcyvelocity_RT_,
-                                 const unsigned int degreeRT_, bool project_only_kappa_,
-                                 MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
+                                 unsigned int degreeRT_, bool project_only_kappa_,
+                                 MPI_Comm mpi_communicator_, unsigned int n_mpi_processes_, unsigned int this_mpi_process_);
 
         void assemble_system_matrix_aqueous_saturation();
         void assemble_rhs_aqueous_saturation();
@@ -121,7 +121,8 @@ namespace AqueousSaturation
         void update(double time_step_, double time_, unsigned int timestep_number_, const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
                     const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                     const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                    const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_);
+                    const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                    const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
 
 
         PETScWrappers::MPI::SparseMatrix stored_matrix;
@@ -227,8 +228,7 @@ namespace AqueousSaturation
                                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                                                const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
                                                const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_
-                                               ) {
-        //triangulation(MPI_COMM_WORLD);
+                                               ,const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_) {
         time_step = time_step_;
         time = time_;
         timestep_number = timestep_number_;
@@ -241,7 +241,7 @@ namespace AqueousSaturation
         Sa_solution_nminus1 = Sa_solution_nminus1_;
         Sv_solution_n = Sv_solution_n_;
         Sv_solution_nminus1 = Sv_solution_nminus1_;
-
+        totalDarcyvelocity_RT = totalDarcyvelocity_RT_;
     }
 
 
@@ -310,11 +310,6 @@ namespace AqueousSaturation
     {
         triangulation.copy_triangulation(triangulation_);
     }
-//    template <int dim>
-//    PETScWrappers::MPI::SparseMatrix AqueousSaturationProblem<dim>::get_system_matrix() {
-//        return system_matrix_aqueous_saturation;
-//    }
-
 
     template <int dim>
     void AqueousSaturationProblem<dim>::setup_mat()
@@ -361,15 +356,16 @@ namespace AqueousSaturation
     void AqueousSaturationProblem<dim>::setup_rhs()
     {
 
-        dof_handler.distribute_dofs(fe);
-        dof_handler_RT.distribute_dofs(fe_RT);
 
-        constraints.clear();
-        constraints.close();
-
-        DynamicSparsityPattern dsp(dof_handler.n_dofs());
-        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
-        sparsity_pattern.copy_from(dsp);
+//        dof_handler.distribute_dofs(fe);
+//        dof_handler_RT.distribute_dofs(fe_RT);
+//
+//        constraints.clear();
+//        constraints.close();
+//
+//        DynamicSparsityPattern dsp(dof_handler.n_dofs());
+//        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
+//        sparsity_pattern.copy_from(dsp);
 
         const std::vector<IndexSet> locally_owned_dofs_per_proc =
                 DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
@@ -1153,7 +1149,7 @@ namespace AqueousSaturation
             copy_data_face.joint_dof_indices = fe_iv.get_interface_dof_indices();
 
             copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
-            //copy_data_face.cell_rhs.reinit(n_dofs);
+            copy_data_face.cell_rhs.reinit(n_dofs);
 
             const std::vector<double> &        JxW     = fe_iv.get_JxW_values();
             const std::vector<Tensor<1, dim>> &normals = fe_iv.get_normal_vectors();
@@ -1691,7 +1687,7 @@ namespace AqueousSaturation
             const FEValues<dim> &fe_v = scratch_data.reinit(cell);
 
             const unsigned int n_dofs = fe_v.dofs_per_cell;
-            copy_data.reinit_rhs(cell, n_dofs);
+            copy_data.reinit(cell, n_dofs);
 
             const auto &q_points = fe_v.get_quadrature_points();
             const int n_qpoints = q_points.size();
@@ -1901,8 +1897,11 @@ namespace AqueousSaturation
                                                  * fe_v.shape_grad(i, point) * JxW[point];
                     }
                     else
+                    {
                         copy_data.cell_rhs(i) += (rho_a*lambda_a/rholambda_t) * totalDarcyVelo_extrapolation
                                                  * fe_v.shape_grad(i, point) * JxW[point];
+                    }
+
 
                     // Gravity term
                     if(!project_Darcy_with_gravity)
@@ -2269,21 +2268,22 @@ namespace AqueousSaturation
                     for (unsigned int i = 0; i < n_facet_dofs; ++i)
                     {
 
-                        if(cell->face(face_no)->boundary_id() == 5 || cell->face(face_no)->boundary_id() == 6)
-                        {
-                            if(project_only_kappa)
-                                copy_data.cell_rhs(i) -= (rho_a*lambda_a)
-                                                         * totalDarcyVelo
-                                                         * normals[point]
-                                                         * fe_face.shape_value(i, point)
-                                                         * JxW[point];
-                            else
-                                copy_data.cell_rhs(i) -= (rho_a*lambda_a/rholambda_t)
-                                                         * totalDarcyVelo
-                                                         * normals[point]
-                                                         * fe_face.shape_value(i, point)
-                                                         * JxW[point];
-                        }
+//					if(cell->face(face_no)->boundary_id() == 5 || cell->face(face_no)->boundary_id() == 6)
+//					{
+                        if(project_only_kappa)
+                            copy_data.cell_rhs(i) -= (rho_a*lambda_a)
+                                                     * totalDarcyVelo
+                                                     * normals[point]
+                                                     * fe_face.shape_value(i, point)
+                                                     * JxW[point];
+                        else
+                            copy_data.cell_rhs(i) -= (rho_a*lambda_a/rholambda_t)
+                                                     * totalDarcyVelo
+                                                     * normals[point]
+                                                     * fe_face.shape_value(i, point)
+                                                     * JxW[point];
+//					}
+
                         copy_data.cell_rhs(i) += neumann_term
                                                  * normals[point]
                                                  * fe_face.shape_value(i, point)
@@ -2693,23 +2693,23 @@ namespace AqueousSaturation
                     }
 
                     // Artificial viscosity term
-                    if(artificial_visc_exp)
-                    {
+                    if(artificial_visc_exp) {
                         double coef0_nu = nu_h_artificial_visc0;
                         double coef1_nu = nu_h_artificial_visc1;
 
-                        double weight0_nu = coef1_nu/(coef0_nu + coef1_nu + 1.e-20);
-                        double weight1_nu = coef0_nu/(coef0_nu + coef1_nu + 1.e-20);
+                        double weight0_nu = coef1_nu / (coef0_nu + coef1_nu + 1.e-20);
+                        double weight1_nu = coef0_nu / (coef0_nu + coef1_nu + 1.e-20);
 
                         double weighted_aver_rhs_nu = AverageGradOperators::weighted_average_rhs(normals[point],
                                                                                                  Sa_grad0_n, Sa_grad1_n,
                                                                                                  coef0_nu, coef1_nu,
-                                                                                                 weight0_nu, weight1_nu);
+                                                                                                 weight0_nu,
+                                                                                                 weight1_nu);
 
                         copy_data_face.cell_rhs(i) += weighted_aver_rhs_nu
                                                       * fe_iv.jump(i, point)
                                                       * JxW[point];
-                  }
+                    }
                 }
             }
         };

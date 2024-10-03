@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation
-  set Final time = 0.75
+  set Final time = 750.0
   
   # Initial time step (must be chosen so that at least one time step is performed)
   set Initial time step = 0.25

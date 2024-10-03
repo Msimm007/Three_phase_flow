@@ -15,6 +15,7 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 .cmake
+build.ninja
 
 # files for later that don't need to be tracked currently
 energies
