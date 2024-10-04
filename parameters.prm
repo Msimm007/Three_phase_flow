@@ -43,7 +43,7 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = true
+  set Incompressible = false
 
   # Polynomial degree for FE space
   set Degree = 1
@@ -88,7 +88,7 @@ subsection Spatial discretization parameters
   #set Penalty Sv boundary = 1000.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = false
+  set Project to RT0 = true
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
@@ -139,7 +139,7 @@ subsection Spatial discretization parameters
   
   # If true, it solves only for pl and Sa and sets Sv = 0.
   # Otherwise, it solves all three phases
-  set Two phase problem = true
+  set Two phase problem =  false
 end
 
 

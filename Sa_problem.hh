@@ -60,7 +60,8 @@ namespace AqueousSaturation
         FullMatrix<double>                   cell_matrix;
         Vector<double>                       cell_rhs;
         std::vector<types::global_dof_index> joint_dof_indices;
-
+        std::array<unsigned int, 2>          cell_indices;
+        std::array<double, 2>                values;
     };
 
     struct CopyData
@@ -69,6 +70,9 @@ namespace AqueousSaturation
         Vector<double>                       cell_rhs;
         std::vector<types::global_dof_index> local_dof_indices;
         std::vector<CopyDataFace>            face_data;
+        double                               value;
+        unsigned int                         cell_index;
+
 
         template <class Iterator>
         void reinit(const Iterator &cell, unsigned int dofs_per_cell)
@@ -313,15 +317,15 @@ namespace AqueousSaturation
     {
 
 
-//        dof_handler.distribute_dofs(fe);
-//        dof_handler_RT.distribute_dofs(fe_RT);
-//
-//        constraints.clear();
-//        constraints.close();
-//
-//        DynamicSparsityPattern dsp(dof_handler.n_dofs());
-//        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
-//        sparsity_pattern.copy_from(dsp);
+        dof_handler.distribute_dofs(fe);
+        dof_handler_RT.distribute_dofs(fe_RT);
+
+        constraints.clear();
+        constraints.close();
+
+        DynamicSparsityPattern dsp(dof_handler.n_dofs());
+        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
+        sparsity_pattern.copy_from(dsp);
 
         const std::vector<IndexSet> locally_owned_dofs_per_proc =
                 DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
@@ -1103,7 +1107,7 @@ namespace AqueousSaturation
             copy_data_face.joint_dof_indices = fe_iv.get_interface_dof_indices();
 
             copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
-            copy_data_face.cell_rhs.reinit(n_dofs);
+            //copy_data_face.cell_rhs.reinit(n_dofs);
 
             const std::vector<double> &        JxW     = fe_iv.get_JxW_values();
             const std::vector<Tensor<1, dim>> &normals = fe_iv.get_normal_vectors();
@@ -1641,7 +1645,7 @@ namespace AqueousSaturation
             const FEValues<dim> &fe_v = scratch_data.reinit(cell);
 
             const unsigned int n_dofs = fe_v.dofs_per_cell;
-            copy_data.reinit(cell, n_dofs);
+            copy_data.reinit_rhs(cell, n_dofs);
 
             const auto &q_points = fe_v.get_quadrature_points();
             const int n_qpoints = q_points.size();

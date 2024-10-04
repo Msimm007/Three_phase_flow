@@ -71,6 +71,7 @@
 #include <algorithm>
 
 
+
 namespace CouplingPressureSaturation {
     using namespace dealii;
 
@@ -1855,7 +1856,7 @@ namespace CouplingPressureSaturation {
                 Sa_solution = Sa_problem.Sa_solution;
 
                 // set first_it to false to go to else statement
-                first_it = false;
+               first_it = false;
             }
             // only assembling rhs of system for stability method
             else if(Stab_a)
