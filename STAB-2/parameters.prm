@@ -1,0 +1,169 @@
+# Listing of Parameters
+# ---------------------
+
+subsection Time discretization parameters
+  # Final time of simulation
+  set Final time = 1
+  
+  # Initial time step
+  set Initial time step = 0.25
+
+  # Second order time derivative
+  set Second order time derivative = false
+
+  # Second order extrapolation
+  set Second order extrapolation = false
+
+  # Use implicit time derivative term in pl
+  set Use implicit time term in pl = true
+
+  # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
+  set Midpoint method = false
+
+  # Theta value for midpoint rule 
+  set Theta_n = 0.5
+
+  # This is used only for viscous fingering. If true, it creates a new perturbation for sa
+  # If false, it reads the initial perturbation from a file called "sa_perturbation"
+  set Create initial perturbation = false
+end
+
+
+subsection Spatial discretization parameters
+  # Dimension (2 or 3)
+  set Dimension = 2
+
+  # If true, then stability method is used For pl
+  set Stab_t = false
+
+  # If true, then stability method is used For Sa
+  set Stab_a = true
+
+  # If true, then stability method is used For Sv
+  set Stab_v = false
+
+  # If true, then it considers all the densities as constant, and cancels it from all the three equations
+  set Incompressible = true
+
+  # Polynomial degree for FE space
+  set Degree = 1
+
+  # Initial level of refinement
+  set Initial level of refinement = 1
+
+  # Final level of refinement
+  set Final level of refinement = 5
+
+  # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
+  set Theta pl = 1
+  
+  # theta Sa (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
+  set Theta Sa = 1
+  
+  # theta Sv (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
+  set Theta Sv = 1
+  
+  # Penalty parameter pl
+  set Penalty pl = 1.0
+  #set Penalty pl = 1000.0
+  
+  # Penalty parameter Sa
+  set Penalty Sa = 1.0
+  #set Penalty Sa = 1000.0
+  
+  # Penalty parameter Sv
+  set Penalty Sv = 1.0
+  #set Penalty Sv = 1000.0
+  
+  # Penalty parameter pl for enforcing BC
+  set Penalty pl boundary = 1.0
+  #set Penalty pl boundary = 1000.0
+  
+  # Penalty parameter Sa for enforcing BC
+  set Penalty Sa boundary = 1.0
+  #set Penalty Sa boundary = 1000.0
+  
+  # Penalty parameter Sv for enforcing BC
+  set Penalty Sv boundary = 1.0
+  #set Penalty Sv boundary = 1000.0
+  
+  # Project to RT0 (if false then projects to RTk)
+  set Project to RT0 = true
+
+  # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
+  set Project to RT0 with kappa only = false
+  
+  # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
+  # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise
+  # it projects either only the \nabla P_h part
+  set Project Darcy with gravity = false
+  
+  # Use direct solver for linear systems. If false, it uses gmres
+  set Use direct solver for linear systems = true
+  
+  # Use exact pl in Sa (only for manufactured test case)
+  set Use exact pl in Sa = false
+
+  # Use exact pl in Sv (only for manufactured test case)
+  set Use exact pl in Sv = false
+  
+  # Use exact pl in the projection onto RT (only for manufactured test case)
+  set Use exact pl in RT = false
+  
+  # Use exact Sa in pl (only for manufactured test case)
+  set Use exact Sa in pl = false
+
+  # Use exact Sa in Sv (only for manufactured test case)
+  set Use exact Sa in Sv = false
+  
+  # Use exact Sa in the projection onto RT (only for manufactured test case)
+  set Use exact Sa in RT = false
+  
+  # Use exact Sv in pl (only for manufactured test case)
+  set Use exact Sv in pl = false
+  
+  # Use exact Sv in Sa (only for manufactured test case)
+  set Use exact Sv in Sa = false
+  
+  # Use exact Sv in the projection onto RT (only for manufactured test case)
+  set Use exact Sv in RT = false
+  
+  # Add explicit artificial viscosity
+  set Add explicit artificial viscosity = false
+
+  # Add implicit artificial viscosity
+  set Add implicit artificial viscosity = false
+  
+  # Add explicit artificial viscosity
+  set Artificial viscosity multiple for Sa = 1.0
+  
+  # If true, it solves only for pl and Sa and sets Sv = 0.
+  # Otherwise, it solves all three phases
+  set Two phase problem = false
+end
+
+
+subsection Output parameters
+  # Print vtk files with solution
+  set print vtk = false
+  
+  # How often vtk files are printed. Only used if previous variable is true
+  set Frequency for vtk printing = 1
+  
+  # Compute errors (manufactured sol test case)
+  set Compute errors = true
+end
+
+subsection Continuation from previous solution
+  # Output solution files for continuation
+  set Output solution = false
+  
+  # How often solution files are printed. Only used if previous variable is true
+  set Frequency for solution output = 1
+  
+  # Continue from previous solution
+  set Continue solution = false
+  
+  # Time step to continue solution from
+  set Time step number = 3
+end
