@@ -43,7 +43,7 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = false
+  set Incompressible = true
 
   # Polynomial degree for FE space
   set Degree = 1
@@ -99,7 +99,7 @@ subsection Spatial discretization parameters
   set Project Darcy with gravity = false
   
   # Use direct solver for linear systems. If false, it uses gmres
-  set Use direct solver for linear systems = false
+  set Use direct solver for linear systems = true
   
   # Use exact pl in Sa (only for manufactured test case)
   set Use exact pl in Sa = false
@@ -139,7 +139,7 @@ subsection Spatial discretization parameters
   
   # If true, it solves only for pl and Sa and sets Sv = 0.
   # Otherwise, it solves all three phases
-  set Two phase problem =  false
+  set Two phase problem = false
 end
 
 
