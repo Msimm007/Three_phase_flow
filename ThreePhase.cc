@@ -1618,6 +1618,30 @@ namespace CouplingPressureSaturation {
 
         unsigned int index_time = 0;
         double total_time = 0.0;
+        // call constructor for unknowns
+        LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree,
+                                                              theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl,
+                                                              use_exact_Sa_in_pl,
+                                                              use_exact_Sv_in_pl,
+                                                              second_order_time_derivative, second_order_extrapolation,
+                                                              use_direct_solver, Stab_t, incompressible,
+                                                              implicit_time_pl,
+                                                              kappa_abs_vec, mpi_communicator, n_mpi_processes,
+                                                              this_mpi_process);
+
+        AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree,
+                                                                    theta_Sa, penalty_Sa, penalty_Sa_bdry,
+                                                                    dirichlet_id_sa, use_exact_pl_in_Sa,
+                                                                    use_exact_Sv_in_Sa,
+                                                                    second_order_time_derivative,
+                                                                    second_order_extrapolation,
+                                                                    use_direct_solver, Stab_a, incompressible,
+                                                                    project_Darcy_with_gravity, artificial_visc_exp,
+                                                                    artificial_visc_imp, art_visc_multiple_Sa,
+                                                                    kappa_abs_vec, degreeRT,
+                                                                    project_only_kappa,
+                                                                    mpi_communicator, n_mpi_processes,
+                                                                    this_mpi_process);
 
 
 
@@ -1630,22 +1654,18 @@ namespace CouplingPressureSaturation {
             timestep_number << " at t=" << time
                   << std::endl;
 
-            // call constructor for pl
-                LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree, time_step,
-                                                                      theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl,
-                                                                      use_exact_Sa_in_pl,
-                                                                      use_exact_Sv_in_pl, time, timestep_number,
-                                                                      second_order_time_derivative, second_order_extrapolation,
-                                                                      use_direct_solver, Stab_t, incompressible,
-                                                                      implicit_time_pl,
-                                                                      pl_solution_n, pl_solution_nminus1,
-                                                                      pl_solution_nminus2,
-                                                                      Sa_solution_n, Sa_solution_nminus1,
-                                                                      Sa_solution_nminus2,
-                                                                      Sv_solution_n, Sv_solution_nminus1,
-                                                                      Sv_solution_nminus2,
-                                                                      kappa_abs_vec, mpi_communicator, n_mpi_processes,
-                                                                      this_mpi_process);
+
+
+            pl_problem.update_pl_values(time_step, time, timestep_number,
+              pl_solution_n,
+              pl_solution_nminus1,
+              pl_solution_nminus2,
+              Sa_solution_n,
+              Sa_solution_nminus1,
+              Sa_solution_nminus2,
+              Sv_solution_n,
+              Sv_solution_nminus1,
+              Sv_solution_nminus2);
 
                 // first assemble system matrix for pl
                 timer.reset();
@@ -1798,22 +1818,14 @@ namespace CouplingPressureSaturation {
 
                 pcout << std::endl;
 
-                AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree, time_step,
-                                                                            theta_Sa, penalty_Sa, penalty_Sa_bdry,
-                                                                            dirichlet_id_sa, use_exact_pl_in_Sa,
-                                                                            use_exact_Sv_in_Sa, time, timestep_number,
-                                                                            second_order_time_derivative,
-                                                                            second_order_extrapolation,
-                                                                            use_direct_solver, Stab_a, incompressible,
-                                                                            project_Darcy_with_gravity, artificial_visc_exp,
-                                                                            artificial_visc_imp, art_visc_multiple_Sa,
-                                                                            pl_solution, pl_solution_n, pl_solution_nminus1,
-                                                                            Sa_solution_n, Sa_solution_nminus1,
-                                                                            Sv_solution_n, Sv_solution_nminus1,
-                                                                            kappa_abs_vec, totalDarcyvelocity_RT_Sa, degreeRT,
-                                                                            project_only_kappa,
-                                                                            mpi_communicator, n_mpi_processes,
-                                                                            this_mpi_process);
+
+                Sa_problem.update_sa_values( time_step,
+                                            time, timestep_number,
+                                            pl_solution, pl_solution_n, pl_solution_nminus1,
+                                            Sa_solution_n, Sa_solution_nminus1,
+                                            Sv_solution_n, Sv_solution_nminus1,
+                                            totalDarcyvelocity_RT_Sa
+                        );
 
                     timer.reset();
                     timer.start();
