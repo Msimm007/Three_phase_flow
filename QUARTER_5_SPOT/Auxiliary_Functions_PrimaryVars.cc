@@ -25,6 +25,10 @@ using namespace dealii;
 double amp_factor_cap_pressure = 1.e7;
 double kappa = 1.0;
 
+// stability terms
+double kappa_tilde_a_data = 1.0;
+double kappa_tilde_v_data = 1.0;
+
 // Mesh creator
 template <int dim>
 void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
@@ -315,45 +319,38 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 
 
 template <int dim>
-class Kappa_tilde_a : public Function<dim>
+class StabAqueousSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_a()
-            : Function<dim>(1)
-    {} 
-
-    virtual double value() const;
-};
-
-template <int dim>
-double Kappa_tilde_a<dim>::value()const
-{
-    //return 1000.0; 
-    //return 200.0; 
-    //return 5.0; 
-    return 1.0;
-}
-
-
-template <int dim>
-class Kappa_tilde_v : public Function<dim>
-{
-public:
-    Kappa_tilde_v()
+    StabAqueousSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
+template <int dim>
+double StabAqueousSaturation<dim>::value()const
+{
+
+    return kappa_tilde_a_data;
+}
 
 template <int dim>
-double Kappa_tilde_v<dim>::value()const
+class StabVaporSaturation : public Function<dim>
 {
-    //return 1000.0;
-    //return 200.0;
-    //return 5.0; 
-    return 1.0;
+public:
+    StabVaporSaturation()
+            : Function<dim>(1)
+    {}
+
+    virtual double value() const;
+};
+template <int dim>
+double StabVaporSaturation<dim>::value()const
+{
+    return kappa_tilde_v_data;
 }
+
 
 template <int dim>
 class ExactLiquidPressure : public Function<dim>

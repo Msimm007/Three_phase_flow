@@ -24,6 +24,10 @@ using namespace dealii;
 double M = 200;
 double amp_factor_cap_pressure = 300.0;
 
+// stability terms
+double kappa_tilde_a_data = 1.0;
+double kappa_tilde_v_data = 1.0;
+
 // Mesh creator
 template <int dim>
 void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
@@ -296,53 +300,38 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
 }
 
 template <int dim>
-class Kappa_tilde_t : public Function<dim>
+class StabAqueousSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_t()
+    StabAqueousSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
 template <int dim>
-double Kappa_tilde_t<dim>::value()const
+double StabAqueousSaturation<dim>::value()const
 {
-    return 2.5;
-    //return 21.0;
+
+    return kappa_tilde_a_data;
 }
+
 template <int dim>
-class Kappa_tilde_a : public Function<dim>
+class StabVaporSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_a()
+    StabVaporSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
 template <int dim>
-double Kappa_tilde_a<dim>::value()const
+double StabVaporSaturation<dim>::value()const
 {
-    //return 10.0;
-    return 1.0;
+    return kappa_tilde_v_data;
 }
 
-template <int dim>
-class Kappa_tilde_v : public Function<dim>
-{
-public:
-    Kappa_tilde_v()
-            : Function<dim>(1)
-    {}
-
-    virtual double value() const;
-};
-template <int dim>
-double Kappa_tilde_v<dim>::value()const
-{
-    return 1.0;
-}
 
 // This function creates the value of kappa according to the cell
 template <int dim>
