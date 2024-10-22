@@ -636,8 +636,8 @@ namespace AqueousSaturation
                         if (Stab_a)
                         {
                                 // Diffusion Term
-                                copy_data.cell_matrix(i,j) -=
-                                    -kappa_tilde_a // also must be negative
+                                copy_data.cell_matrix(i,j) +=
+                                    kappa_tilde_a // also must be negative
                                     * kappa
                                     * fe_v.shape_grad(i, point)
                                     * fe_v.shape_grad(j, point)
@@ -646,10 +646,10 @@ namespace AqueousSaturation
                         else
                         {
                             // Diffusion Term
-                            copy_data.cell_matrix(i,j) -=
+                            copy_data.cell_matrix(i,j) +=
                                     rho_a
                                     * lambda_a
-                                    * dpca_dSa // negative term
+                                    * (-dpca_dSa) // negative term
                                     * kappa
                                     * fe_v.shape_grad(i, point)
                                     * fe_v.shape_grad(j, point)
@@ -887,9 +887,9 @@ namespace AqueousSaturation
                             {
                                 // Diffusion term
                                 copy_data.cell_matrix(i, j) -=
-                                        -rho_a
+                                        rho_a
                                         * lambda_a
-                                        * dpca_dSa
+                                        * (-dpca_dSa)
                                         * kappa
                                         * fe_face.shape_value(i, point)
                                         * fe_face.shape_grad(j, point)
@@ -897,9 +897,9 @@ namespace AqueousSaturation
                                         * JxW[point];
                                 //Theta term
                                 copy_data.cell_matrix(i, j) +=
-                                         -rho_a
+                                         rho_a
                                         * lambda_a
-                                        * dpca_dSa
+                                        * (-dpca_dSa)
                                         * kappa
                                         * theta_Sa
                                         * fe_face.shape_grad(i, point)
@@ -1003,30 +1003,6 @@ namespace AqueousSaturation
                     double lambda_a = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
 
                     double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
-
-//                    for (unsigned int i = 0; i < n_facet_dofs; ++i)
-//                    {
-////
-////					if(cell->face(face_no)->boundary_id() == 5 || cell->face(face_no)->boundary_id() == 6)
-////					{
-////                        if(project_only_kappa)
-////                            copy_data.cell_rhs(i) -= (rho_a*lambda_a)
-////                                                     * totalDarcyVelo
-////                                                     * normals[point]
-////                                                     * fe_face.shape_value(i, point)
-////                                                     * JxW[point];
-////                        else
-////                            copy_data.cell_rhs(i) -= (rho_a*lambda_a/rholambda_t)
-////                                                     * totalDarcyVelo
-////                                                     * normals[point]
-////                                                     * fe_face.shape_value(i, point)
-////                                                     * JxW[point];
-////			}
-////                        copy_data.cell_rhs(i) += neumann_term
-////                                                 * normals[point]
-////                                                 * fe_face.shape_value(i, point)
-////                                                 * JxW[point];
-//                    }
                 }
             }
 
@@ -1417,18 +1393,14 @@ namespace AqueousSaturation
 
             const auto copier = [&](const CopyData &c) {
                 constraints.distribute_local_to_global(c.cell_matrix,
-                                                       /*c.cell_rhs,*/
                                                        c.local_dof_indices,
-                                                       system_matrix_aqueous_saturation
-                                                      /* right_hand_side_aqueous_saturation*/);
+                                                       system_matrix_aqueous_saturation);
 
                 for (auto &cdf : c.face_data)
                 {
                     constraints.distribute_local_to_global(cdf.cell_matrix,
-                                                           /*cdf.cell_rhs,*/
                                                            cdf.joint_dof_indices,
-                                                           system_matrix_aqueous_saturation
-                                                           /*right_hand_side_aqueous_saturation*/);
+                                                           system_matrix_aqueous_saturation);
                 }
             };
             const unsigned int n_gauss_points = dof_handler.get_fe().degree + 1;
@@ -2512,9 +2484,6 @@ namespace AqueousSaturation
                 //Sa coefficients and weights for stab method
                 double coef0_Sa_stab = (rho_a0*lambda_a0*dpca_dSa0+kappa_tilde_a)*kappa0;
                 double coef1_Sa_stab = (rho_a1*lambda_a1*dpca_dSa1+kappa_tilde_a)*kappa1;
-                //TEST DEBUG LC --> BAD
-                //double coef0_Sa_stab = fabs(rho_a0*lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
-                //double coef1_Sa_stab = fabs(rho_a1*lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;
 
                 double weight0_Sa_stab = coef1_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);
                 double weight1_Sa_stab = coef0_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);
@@ -2630,19 +2599,15 @@ namespace AqueousSaturation
         };
 
         const auto copier = [&](const CopyData &c) {
-            constraints.distribute_local_to_global(/*c.cell_matrix,*/
-                    c.cell_rhs,
+            constraints.distribute_local_to_global(c.cell_rhs,
                     c.local_dof_indices,
-                    /*system_matrix_aqueous_saturation*/
                      right_hand_side_aqueous_saturation);
 
             for (auto &cdf : c.face_data)
             {
-                constraints.distribute_local_to_global(/*cdf.cell_matrix,*/
-                        cdf.cell_rhs,
+                constraints.distribute_local_to_global(cdf.cell_rhs,
                                                        cdf.joint_dof_indices,
-                                                       /*system_matrix_aqueous_saturation*/
-                        right_hand_side_aqueous_saturation);
+                                                       right_hand_side_aqueous_saturation);
             }
         };
         const unsigned int n_gauss_points = dof_handler.get_fe().degree + 1;
@@ -2674,9 +2639,6 @@ namespace AqueousSaturation
 
         right_hand_side_aqueous_saturation.compress(VectorOperation::add);
     }
-
-
-
     template <int dim>
     void AqueousSaturationProblem<dim>::solve_aqueous_saturation()
     {
