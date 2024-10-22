@@ -1645,6 +1645,7 @@ namespace CouplingPressureSaturation {
 
 
 
+
         // start of sequential scheme
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
         {
@@ -1864,11 +1865,8 @@ namespace CouplingPressureSaturation {
                                                                         use_direct_solver, Stab_v, incompressible,
                                                                         project_Darcy_with_gravity,
                                                                         pl_solution, pl_solution_n, pl_solution_nminus1,
-                                                                        pl_solution_kplus1,
                                                                         Sa_solution, Sa_solution_n, Sa_solution_nminus1,
-                                                                        Sa_solution_kplus1,
                                                                         Sv_solution_n, Sv_solution_nminus1,
-                                                                        Sv_solution_k,
                                                                         kappa_abs_vec, totalDarcyvelocity_RT_Sv,
                                                                         degreeRT, project_only_kappa,
                                                                         mpi_communicator, n_mpi_processes,
