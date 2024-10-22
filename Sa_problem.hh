@@ -387,8 +387,8 @@ namespace AqueousSaturation
         lambda_a<dim> lambda_a_fcn;
 
         // Stabilization term. Declared and defined
-        Kappa_tilde_a<dim> Kappa_tilde_a_fcn;
-        double Kappa_tilde_a = Kappa_tilde_a_fcn.value();
+        StabAqueousSaturation<dim> kappa_tilde_a_fcn;
+        double kappa_tilde_a = kappa_tilde_a_fcn.value();
 
         // Capillary pressures
         CapillaryPressurePca<dim> cap_p_pca_fcn;
@@ -673,7 +673,7 @@ namespace AqueousSaturation
                         {
                                 // Diffusion Term
                                 copy_data.cell_matrix(i,j) -=
-                                    -Kappa_tilde_a // also must be negative
+                                    -kappa_tilde_a // also must be negative
                                     * kappa
                                     * fe_v.shape_grad(i, point)
                                     * fe_v.shape_grad(j, point)
@@ -903,7 +903,7 @@ namespace AqueousSaturation
                             {
                                 // Diffusion term
                                 copy_data.cell_matrix(i, j) -=
-                                        Kappa_tilde_a
+                                        kappa_tilde_a
                                         * kappa
                                         * fe_face.shape_value(i, point)
                                         * fe_face.shape_grad(j, point)
@@ -911,7 +911,7 @@ namespace AqueousSaturation
                                         * JxW[point];
                                 // Theta term
                                 copy_data.cell_matrix(i, j) +=
-                                        Kappa_tilde_a
+                                        kappa_tilde_a
                                         * kappa
                                         * theta_Sa
                                         * fe_face.shape_grad(i, point)
@@ -1337,8 +1337,8 @@ namespace AqueousSaturation
                 double coef1_diff = fabs(rho_a1*lambda_a1*kappa1*dpca_dSa1);
 
                 // for stabilization term
-                double coef0_diff_stab = fabs(kappa0*Kappa_tilde_a);
-                double coef1_diff_stab = fabs(kappa1*Kappa_tilde_a);
+                double coef0_diff_stab = fabs(kappa0*kappa_tilde_a);
+                double coef1_diff_stab = fabs(kappa1*kappa_tilde_a);
 
                 if(artificial_visc_imp)
                 {
@@ -1366,8 +1366,8 @@ namespace AqueousSaturation
                 double weight1_Sv = coef0_Sv/(coef0_Sv + coef1_Sv + 1.e-20);
 
                 //Sa coefficients and weights for stab method
-                double coef0_Sa_stab = (rho_a0*lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
-                double coef1_Sa_stab = (rho_a1*lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;
+                double coef0_Sa_stab = (rho_a0*lambda_a0*dpca_dSa0+kappa_tilde_a)*kappa0;
+                double coef1_Sa_stab = (rho_a1*lambda_a1*dpca_dSa1+kappa_tilde_a)*kappa1;
 
                 double weight0_Sa_stab = coef1_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);
                 double weight1_Sa_stab = coef0_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);
@@ -1549,8 +1549,8 @@ namespace AqueousSaturation
         lambda_a<dim> lambda_a_fcn;
 
         // Stabilization term. Declared and defined
-        Kappa_tilde_a<dim> Kappa_tilde_a_fcn;
-        double Kappa_tilde_a = Kappa_tilde_a_fcn.value();
+        StabAqueousSaturation<dim> kappa_tilde_a_fcn;
+        double kappa_tilde_a = kappa_tilde_a_fcn.value();
 
         // Capillary pressures
         CapillaryPressurePca<dim> cap_p_pca_fcn;
@@ -1832,7 +1832,7 @@ namespace AqueousSaturation
                     // Diffusion term moved to RHS - stab method
                     if(Stab_a)
                     {
-                        copy_data.cell_rhs(i) += (rho_a * lambda_a * dpca_dSa + Kappa_tilde_a) * kappa * Sa_grad_n
+                        copy_data.cell_rhs(i) += (rho_a * lambda_a * dpca_dSa + kappa_tilde_a) * kappa * Sa_grad_n
                                                  * fe_v.shape_grad(i, point) * JxW[point];
 
                     }
@@ -2066,14 +2066,14 @@ namespace AqueousSaturation
                         {
                             copy_data.cell_rhs(i) -= (rho_a
                                                      * lambda_a
-                                                     * dpca_dSa + Kappa_tilde_a)
+                                                     * dpca_dSa + kappa_tilde_a)
                                                      * kappa
                                                      * Sa_grad_n
                                                      * normals[point]
                                                      * fe_face.shape_value(i, point)
                                                      * JxW[point];
                             copy_data.cell_rhs(i) -= theta_Sa
-                                                     *(-Kappa_tilde_a)
+                                                     *(-kappa_tilde_a)
                                                      * kappa
                                                      * fe_face.shape_grad(i, point)
                                                      * normals[point]
@@ -2512,8 +2512,8 @@ namespace AqueousSaturation
                 double coef1_diff = fabs(rho_a1*lambda_a1*kappa1*dpca_dSa1);
 
                 // for stabilization term
-                double coef0_diff_stab = fabs(kappa0*Kappa_tilde_a);
-                double coef1_diff_stab = fabs(kappa1*Kappa_tilde_a);
+                double coef0_diff_stab = fabs(kappa0*kappa_tilde_a);
+                double coef1_diff_stab = fabs(kappa1*kappa_tilde_a);
 
                 if(artificial_visc_imp)
                 {
@@ -2541,8 +2541,8 @@ namespace AqueousSaturation
                 double weight1_Sv = coef0_Sv/(coef0_Sv + coef1_Sv + 1.e-20);
 
                 //Sa coefficients and weights for stab method
-                double coef0_Sa_stab = (rho_a0*lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
-                double coef1_Sa_stab = (rho_a1*lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;
+                double coef0_Sa_stab = (rho_a0*lambda_a0*dpca_dSa0+kappa_tilde_a)*kappa0;
+                double coef1_Sa_stab = (rho_a1*lambda_a1*dpca_dSa1+kappa_tilde_a)*kappa1;
                 //TEST DEBUG LC --> BAD
                 //double coef0_Sa_stab = fabs(rho_a0*lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
                 //double coef1_Sa_stab = fabs(rho_a1*lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;

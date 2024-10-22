@@ -345,8 +345,8 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 	lambda_a<dim> lambda_a_fcn;
 
 	// Stabilization term. Declared and defined
-    Kappa_tilde_a<dim> Kappa_tilde_a_fcn;
-    double Kappa_tilde_a = Kappa_tilde_a_fcn.value();
+    StabAqueousSaturation<dim> kappa_tilde_a_fcn;
+    double kappa_tilde_a = kappa_tilde_a_fcn.value();
 
 	// Capillary pressures
 	CapillaryPressurePca<dim> cap_p_pca_fcn;
@@ -552,7 +552,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                     {
                         // Diffusion Term
                         copy_data.cell_matrix(i,j) -=
-                             -Kappa_tilde_a
+                             -kappa_tilde_a
                             * kappa
                             * fe_v.shape_grad(i, point)
                             * fe_v.shape_grad(j, point)
@@ -603,7 +603,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 				// Diffusion term moved to RHS - stab method
 				if(Stab_a)
                     {
-                        copy_data.cell_rhs(i) += (lambda_a * dpca_dSa + Kappa_tilde_a) * kappa * Sa_grad_n
+                        copy_data.cell_rhs(i) += (lambda_a * dpca_dSa + kappa_tilde_a) * kappa * Sa_grad_n
                                                  * fe_v.shape_grad(i, point) * JxW[point];
                     }
 
@@ -775,7 +775,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                         {
                             // Diffusion term
                             copy_data.cell_matrix(i, j) -=
-                                    Kappa_tilde_a
+                                    kappa_tilde_a
                                     * kappa
                                     * fe_face.shape_value(i, point)
                                     * fe_face.shape_grad(j, point)
@@ -783,7 +783,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                                     * JxW[point];
                             // Theta term
                             copy_data.cell_matrix(i, j) +=
-                                    Kappa_tilde_a
+                                    kappa_tilde_a
                                     * kappa
                                     * theta_Sa
                                     * fe_face.shape_grad(i, point)
@@ -848,14 +848,14 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 					if (Stab_a)
                         {
                             copy_data.cell_rhs(i) -= (lambda_a
-                                                      * dpca_dSa + Kappa_tilde_a)
+                                                      * dpca_dSa + kappa_tilde_a)
                                                      * kappa
                                                      * Sa_grad_k
                                                      * normals[point]
                                                      * fe_face.shape_value(i, point)
                                                      * JxW[point];
                             copy_data.cell_rhs(i) -= theta_Sa
-                                                     *(-Kappa_tilde_a)
+                                                     *(-kappa_tilde_a)
                                                      * kappa
                                                      * fe_face.shape_grad(i, point)
                                                      * normals[point]
@@ -1179,8 +1179,8 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 			double coef1_diff = fabs(lambda_a1*kappa1*dpca_dSa1);
 		
 			// for stabilization term
-            double coef0_diff_stab = fabs(kappa0*Kappa_tilde_a);
-            double coef1_diff_stab = fabs(kappa1*Kappa_tilde_a);
+            double coef0_diff_stab = fabs(kappa0*kappa_tilde_a);
+            double coef1_diff_stab = fabs(kappa1*kappa_tilde_a);
 
 			
 
@@ -1210,8 +1210,8 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 			double weight1_Sv = coef0_Sv/(coef0_Sv + coef1_Sv + 1.e-20);
 
 			//Sa coefficients and weights for stab method
-            double coef0_Sa_stab = (lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
-            double coef1_Sa_stab = (lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;
+            double coef0_Sa_stab = (lambda_a0*dpca_dSa0+kappa_tilde_a)*kappa0;
+            double coef1_Sa_stab = (lambda_a1*dpca_dSa1+kappa_tilde_a)*kappa1;
 
 
 			double weight0_Sa_stab = coef1_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);

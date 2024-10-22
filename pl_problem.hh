@@ -204,14 +204,12 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 	, fe(degree_)
 	, quadrature(degree_ + 1)
   	, face_quadrature(degree_ + 1)
-
 	, theta_pl(theta_pl_)
 	, penalty_pl(penalty_pl_)
 	, penalty_pl_bdry(penalty_pl_bdry_)
 	, dirichlet_id_pl(std::move(dirichlet_id_pl_))
 	, use_exact_Sa_in_pl(use_exact_Sa_in_pl_)
 	, use_exact_Sv_in_pl(use_exact_Sv_in_pl_)
-
 	, second_order_time_derivative(second_order_time_derivative_)
 	, second_order_extrapolation(second_order_extrapolation_)
 	, Stab_t(Stab_t_)
@@ -256,8 +254,9 @@ void LiquidPressureProblem<dim>::setup_system()
 								  sparsity_pattern,
 								  mpi_communicator);
 
-    pl_solution.reinit(locally_owned_dofs, mpi_communicator);
     right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
+    pl_solution.reinit(locally_owned_dofs, mpi_communicator);
+
 
     dof_handler_dg0.distribute_dofs(fe_dg0);
 	const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 =

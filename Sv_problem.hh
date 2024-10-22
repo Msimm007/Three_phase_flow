@@ -353,8 +353,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 	lambda_a<dim> lambda_a_fcn;
 
     // Stabilization term
-    Kappa_tilde_v<dim> Kappa_tilde_v_fcn;
-    double Kappa_tilde_v = Kappa_tilde_v_fcn.value();
+    StabVaporSaturation<dim> kappa_tilde_v_fcn;
+    double kappa_tilde_v = kappa_tilde_v_fcn.value();
 
 	// Capillary pressures
 	CapillaryPressurePcv<dim> cap_p_pcv_fcn;
@@ -639,7 +639,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                     if(Stab_v)
                     {
                         copy_data.cell_matrix(i,j) +=
-                                Kappa_tilde_v
+                                kappa_tilde_v
                                 * kappa
                                 * fe_v.shape_grad(i, point)
                                 * fe_v.shape_grad(j, point)
@@ -679,7 +679,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                 // Diffusion term moved to RHS - stab method
                 if (Stab_v)
                 {
-                    copy_data.cell_rhs(i) += (-rho_v * lambda_v * dpcv_dSv + Kappa_tilde_v)
+                    copy_data.cell_rhs(i) += (-rho_v * lambda_v * dpcv_dSv + kappa_tilde_v)
                                              * kappa * Sv_grad_n
                                              * fe_v.shape_grad(i, point) * JxW[point];
                 }
@@ -865,7 +865,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                         {
                             // Diffusion term
                             copy_data.cell_matrix(i, j) -=
-                                    Kappa_tilde_v
+                                    kappa_tilde_v
                                     * kappa
                                     * fe_face.shape_value(i, point)
                                     * fe_face.shape_grad(j, point)
@@ -875,7 +875,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                             //Theta term
                             copy_data.cell_matrix(i, j) +=
                                     theta_Sv
-                                    * Kappa_tilde_v
+                                    * kappa_tilde_v
                                     * kappa
                                     * fe_face.shape_grad(i, point)
                                     * normals[point]
@@ -923,7 +923,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 
                     if (Stab_v)
                     {
-                        copy_data.cell_rhs(i) += (rho_v*lambda_v*dpcv_dSv - Kappa_tilde_v) // added to RHS
+                        copy_data.cell_rhs(i) += (rho_v*lambda_v*dpcv_dSv - kappa_tilde_v) // added to RHS
                                                  * kappa
                                                  * Sv_grad_n
                                                  * normals[point]
@@ -931,7 +931,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                                                  * JxW[point];
 
                         copy_data.cell_rhs(i) += theta_Sv
-                                                 * Kappa_tilde_v
+                                                 * kappa_tilde_v
                                                  * kappa
                                                  * fe_face.shape_grad(i, point)
                                                  * normals[point]
@@ -1286,14 +1286,14 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 			double weight1_diff = coef0_diff/(coef0_diff + coef1_diff + 1.e-20);
 
             // Diffusion coefficients and weights for stab method
-             double coef0_diff_stab = fabs(kappa0*Kappa_tilde_v);
-             double coef1_diff_stab = fabs(kappa1*Kappa_tilde_v);
+             double coef0_diff_stab = fabs(kappa0*kappa_tilde_v);
+             double coef1_diff_stab = fabs(kappa1*kappa_tilde_v);
 
              double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
              double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
 
-		    double coef0_Sv_stab = (-rho_v0*lambda_v0*dpcv_dSv0+Kappa_tilde_v)*kappa0;
-            double coef1_Sv_stab = (-rho_v1*lambda_v1*dpcv_dSv1+Kappa_tilde_v)*kappa1;
+		    double coef0_Sv_stab = (-rho_v0*lambda_v0*dpcv_dSv0+kappa_tilde_v)*kappa0;
+            double coef1_Sv_stab = (-rho_v1*lambda_v1*dpcv_dSv1+kappa_tilde_v)*kappa1;
 
             double weight0_Sv_stab = coef1_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
             double weight1_Sv_stab = coef0_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
