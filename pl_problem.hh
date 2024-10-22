@@ -99,20 +99,18 @@ public:
 			double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
 			bool use_exact_Sv_in_pl_,
 			bool second_order_time_derivative_, bool second_order_extrapolation_,
-			bool use_direct_solver_, bool Stab_t_, bool incompressible_, bool implicit_time_pl_,
-
+			bool use_direct_solver_, bool incompressible_, bool implicit_time_pl_,
 			PETScWrappers::MPI::Vector kappa_abs_vec_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
-	void assemble_system_matrix_pressure();
+	void assemble_system_matrix_pressure(double time_step_,double time_,
+                                         unsigned int timestep_number_,const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                         const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
+                                         const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                         const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
+                                         const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                         const PETScWrappers::MPI::Vector& Sv_solution_nminus2_);
 	void solve_pressure();
-    void update_pl_values(double time_step_,double time_,
-                    unsigned int timestep_number_,const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                    const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
-                    const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                    const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
-                    const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                    const PETScWrappers::MPI::Vector& Sv_solution_nminus2_);
 
 	PETScWrappers::MPI::Vector pl_solution;
 private:
@@ -124,6 +122,7 @@ private:
     using ScratchData = MeshWorker::ScratchData<dim>;
     const QGauss<dim>     quadrature;
     const QGauss<dim - 1> face_quadrature;
+
     // Furthermore we want to use DG elements.
     FE_DGQ<dim>     fe;
     DoFHandler<dim> dof_handler;
@@ -173,7 +172,6 @@ private:
 
     std::vector<unsigned int> dirichlet_id_pl;
 
-	bool Stab_t;
     bool incompressible;
     bool second_order_time_derivative;
     bool second_order_extrapolation;
@@ -195,7 +193,7 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 		double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
 		bool use_exact_Sv_in_pl_,
 		bool second_order_time_derivative_, bool second_order_extrapolation_,
-		bool use_direct_solver_, bool Stab_t_, bool incompressible_, bool implicit_time_pl_,
+		bool use_direct_solver_, bool incompressible_, bool implicit_time_pl_,
 		PETScWrappers::MPI::Vector kappa_abs_vec_,
 		MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_)
 	: triangulation(MPI_COMM_WORLD)
@@ -212,7 +210,6 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 	, use_exact_Sv_in_pl(use_exact_Sv_in_pl_)
 	, second_order_time_derivative(second_order_time_derivative_)
 	, second_order_extrapolation(second_order_extrapolation_)
-	, Stab_t(Stab_t_)
 	, incompressible(incompressible_)
 	, implicit_time_pl(implicit_time_pl_)
 	, use_direct_solver(use_direct_solver_)
@@ -268,9 +265,21 @@ void LiquidPressureProblem<dim>::setup_system()
 }
 
 template <int dim>
-void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
+void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_step_,double time_,
+                                                                 unsigned int timestep_number_,const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                                                 const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
+                                                                 const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                                                 const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
+                                                                 const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                                                 const PETScWrappers::MPI::Vector& Sv_solution_nminus2_)
 {
 	setup_system();
+
+    // initialize time terms
+    time_step = time_step_;
+    time = time_;
+    timestep_number = timestep_number_;
+
 
     using Iterator = typename DoFHandler<dim>::active_cell_iterator;
     BoundaryValuesLiquidPressure<dim> boundary_function;
@@ -364,17 +373,17 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 					  locally_relevant_dofs_dg0,
 					  mpi_communicator);
 
-    temp_pl_solution_n = pl_solution_n;
-	temp_pl_solution_nminus1 = pl_solution_nminus1;
-	temp_pl_solution_nminus2 = pl_solution_nminus2;
+    temp_pl_solution_n = pl_solution_n_;
+	temp_pl_solution_nminus1 = pl_solution_nminus1_;
+	temp_pl_solution_nminus2 = pl_solution_nminus2_;
 
-    temp_Sa_solution_n = Sa_solution_n;
-	temp_Sa_solution_nminus1 = Sa_solution_nminus1;
-	temp_Sa_solution_nminus2 = Sa_solution_nminus2;
+    temp_Sa_solution_n = Sa_solution_n_;
+	temp_Sa_solution_nminus1 = Sa_solution_nminus1_;
+	temp_Sa_solution_nminus2 = Sa_solution_nminus2_;
 
-    temp_Sv_solution_n = Sv_solution_n;
-	temp_Sv_solution_nminus1 = Sv_solution_nminus1;
-	temp_Sv_solution_nminus2 = Sv_solution_nminus2;
+    temp_Sv_solution_n = Sv_solution_n_;
+	temp_Sv_solution_nminus1 = Sv_solution_nminus1_;
+	temp_Sv_solution_nminus2 = Sv_solution_nminus2_;
 
 	temp_kappa = kappa_abs_vec;
 
@@ -1520,30 +1529,6 @@ void LiquidPressureProblem<dim>::solve_pressure()
 
 }
 
-    template<int dim>
-    void LiquidPressureProblem<dim>::update_pl_values(double time_step_, double time_, unsigned int timestep_number_,
-                                                const PETScWrappers::MPI::Vector& pl_solution_n_,
-                                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
-                                                const PETScWrappers::MPI::Vector& Sa_solution_n_,
-                                                const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
-                                                const PETScWrappers::MPI::Vector& Sv_solution_n_,
-                                                const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                                const PETScWrappers::MPI::Vector& Sv_solution_nminus2_) {
-        time_step = time_step_;
-        time = time_;
-        timestep_number = timestep_number_;
-        pl_solution_n = pl_solution_n_;
-        pl_solution_nminus1 = pl_solution_nminus1_;
-        pl_solution_nminus2 = pl_solution_nminus2_;
-        Sa_solution_n = Sa_solution_n_;
-        Sa_solution_nminus1 = Sa_solution_nminus1_;
-        Sa_solution_nminus2 = Sa_solution_nminus2_;
-        Sv_solution_n = Sv_solution_n_;
-        Sv_solution_nminus1 = Sv_solution_nminus1_;
-        Sv_solution_nminus2 = Sv_solution_nminus2_;
-    }
 
 }
 

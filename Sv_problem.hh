@@ -92,28 +92,25 @@ class VaporSaturationProblem
 {
 public:
 	VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
-			const unsigned int degree_, double time_step_, double theta_n_time_,
+			const unsigned int degree_,double theta_n_time_,
 			double theta_Sv_, double penalty_Sv_,
 			double penalty_Sv_bdry_, std::vector<unsigned int> dirichlet_id_sv_, bool use_exact_pl_in_Sv_,
-			bool use_exact_Sa_in_Sv_, double time_, unsigned int timestep_number_,
+			bool use_exact_Sa_in_Sv_,
 			bool second_order_time_derivative_, bool second_order_extrapolation_,
 			bool use_direct_solver_, bool Stab_v_, bool incompressible_, bool project_Darcy_with_gravity_,
-			PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
-			PETScWrappers::MPI::Vector pl_solution_nminus1_,
-            PETScWrappers::MPI::Vector Sa_solution_,
-            PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-			PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-			PETScWrappers::MPI::Vector kappa_abs_vec_, PETScWrappers::MPI::Vector totalDarcyvelocity_RT_,
+			PETScWrappers::MPI::Vector kappa_abs_vec_,
 			const unsigned int degreeRT_, bool project_only_kappa_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
-	void assemble_system_matrix_vapor_saturation();
+	void assemble_system_matrix_vapor_saturation( double time_step_,double time_, unsigned int timestep_number_,
+                                                  const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                                  const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                                  const PETScWrappers::MPI::Vector& Sa_solution_,
+                                                  const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                                  const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                                  const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
 	void solve_vapor_saturation();
-    void update_sa_values(double time_step_,double time_,unsigned int timestep_number_,PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
-                          PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                          PETScWrappers::MPI::Vector Sa_solution_,
-                          PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                          PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,PETScWrappers::MPI::Vector totalDarcyvelocity_RT_);
+
 
 	PETScWrappers::MPI::Vector Sv_solution;
 private:
@@ -208,18 +205,13 @@ private:
 
 template <int dim>
 VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
-		const unsigned int degree_, double time_step_, double theta_n_time_,
+		const unsigned int degree_,  double theta_n_time_,
 		double theta_Sv_, double penalty_Sv_,
 		double penalty_Sv_bdry_, std::vector<unsigned int> dirichlet_id_sv_, bool use_exact_pl_in_Sv_,
-		bool use_exact_Sa_in_Sv_, double time_, unsigned int timestep_number_,
+		bool use_exact_Sa_in_Sv_,
 		bool second_order_time_derivative_, bool second_order_extrapolation_,
 		bool use_direct_solver_,bool Stab_v_, bool incompressible_, bool project_Darcy_with_gravity_,
-		PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
-		PETScWrappers::MPI::Vector pl_solution_nminus1_,
-        PETScWrappers::MPI::Vector Sa_solution_,
-		PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-		PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-		PETScWrappers::MPI::Vector kappa_abs_vec_, PETScWrappers::MPI::Vector totalDarcyvelocity_RT_,
+		PETScWrappers::MPI::Vector kappa_abs_vec_,
 		const unsigned int degreeRT_, bool project_only_kappa_,
 		MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_)
 	: triangulation(MPI_COMM_WORLD)
@@ -230,7 +222,6 @@ VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &tri
 	, face_quadrature(degree_ + 1)
 	, degreeRT(degreeRT_)
 	, fe_RT(degreeRT_)
-	, time_step(time_step_)
 	, theta_n_time(theta_n_time_)
 	, theta_Sv(theta_Sv_)
 	, penalty_Sv(penalty_Sv_)
@@ -238,8 +229,6 @@ VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &tri
 	, dirichlet_id_sv(dirichlet_id_sv_)
 	, use_exact_pl_in_Sv(use_exact_pl_in_Sv_)
 	, use_exact_Sa_in_Sv(use_exact_Sa_in_Sv_)
-	, time(time_)
-	, timestep_number(timestep_number_)
 	, second_order_time_derivative(second_order_time_derivative_)
 	, second_order_extrapolation(second_order_extrapolation_)
     , Stab_v(Stab_v_)
@@ -247,16 +236,7 @@ VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &tri
 	, use_direct_solver(use_direct_solver_)
 	, project_Darcy_with_gravity(project_Darcy_with_gravity_)
 	, project_only_kappa(project_only_kappa_)
-	, pl_solution(pl_solution_)
-	, pl_solution_n(pl_solution_n_)
-	, pl_solution_nminus1(pl_solution_nminus1_)
-	, Sa_solution(Sa_solution_)
-	, Sa_solution_n(Sa_solution_n_)
-	, Sa_solution_nminus1(Sa_solution_nminus1_)
-	, Sv_solution_n(Sv_solution_n_)
-	, Sv_solution_nminus1(Sv_solution_nminus1_)
 	, kappa_abs_vec(kappa_abs_vec_)
-	, totalDarcyvelocity_RT(totalDarcyvelocity_RT_)
 	, dof_handler(triangulation)
 	, dof_handler_RT(triangulation)
 	, fe_dg0(0)
@@ -312,9 +292,20 @@ void VaporSaturationProblem<dim>::setup_system()
 }
 
 template <int dim>
-void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
+void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation( double time_step_,double time_, unsigned int timestep_number_,
+                                const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
 {
 	setup_system();
+
+    // time terms
+    time_step = time_step_;
+    time = time_;
+    timestep_number = timestep_number_;
 
 	const FEValuesExtractors::Vector velocities(0);
 
@@ -424,21 +415,21 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 					  locally_relevant_dofs_dg0,
 					  mpi_communicator);
 
-	temp_pl_solution = pl_solution;
-	temp_pl_solution_n = pl_solution_n;
-	temp_pl_solution_nminus1 = pl_solution_nminus1;
+	temp_pl_solution = pl_solution_;
+	temp_pl_solution_n = pl_solution_n_;
+	temp_pl_solution_nminus1 = pl_solution_nminus1_;
 
 
-    temp_Sa_solution = Sa_solution;
-	temp_Sa_solution_n = Sa_solution_n;
-	temp_Sa_solution_nminus1 = Sa_solution_nminus1;
+    temp_Sa_solution = Sa_solution_;
+	temp_Sa_solution_n = Sa_solution_n_;
+	temp_Sa_solution_nminus1 = Sa_solution_nminus1_;
 
 
-    temp_Sv_solution_n = Sv_solution_n;
-	temp_Sv_solution_nminus1 = Sv_solution_nminus1;
+    temp_Sv_solution_n = Sv_solution_n_;
+	temp_Sv_solution_nminus1 = Sv_solution_nminus1_;
 
 
-    temp_totalDarcyVelocity_RT = totalDarcyvelocity_RT;
+    temp_totalDarcyVelocity_RT = totalDarcyvelocity_RT_;
 
 	temp_kappa = kappa_abs_vec;
 

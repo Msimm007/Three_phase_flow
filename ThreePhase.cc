@@ -177,10 +177,6 @@ namespace CouplingPressureSaturation {
                               "true",
                               Patterns::Bool());
 
-            prm.declare_entry("Stab_t",
-                              "true",
-                              Patterns::Bool());
-
             prm.declare_entry("Stab_a",
                               "true",
                               Patterns::Bool());
@@ -546,7 +542,8 @@ namespace CouplingPressureSaturation {
 
 
         incompressible = prm.get_bool("Incompressible");
-        Stab_t = prm.get_bool("Stab_t");
+
+
         Stab_a = prm.get_bool("Stab_a");
         Stab_v = prm.get_bool("Stab_v");
 
@@ -1618,13 +1615,14 @@ namespace CouplingPressureSaturation {
 
         unsigned int index_time = 0;
         double total_time = 0.0;
+
         // call constructor for unknowns
         LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree,
                                                               theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl,
                                                               use_exact_Sa_in_pl,
                                                               use_exact_Sv_in_pl,
                                                               second_order_time_derivative, second_order_extrapolation,
-                                                              use_direct_solver, Stab_t, incompressible,
+                                                              use_direct_solver, incompressible,
                                                               implicit_time_pl,
                                                               kappa_abs_vec, mpi_communicator, n_mpi_processes,
                                                               this_mpi_process);
@@ -1643,8 +1641,18 @@ namespace CouplingPressureSaturation {
                                                                     mpi_communicator, n_mpi_processes,
                                                                     this_mpi_process);
 
-
-
+        VaporSaturation::VaporSaturationProblem<dim> Sv_problem(triangulation, degree, theta_n_time,
+                                                                theta_Sv, penalty_Sv, penalty_Sv_bdry,
+                                                                dirichlet_id_sv, use_exact_pl_in_Sv,
+                                                                use_exact_Sa_in_Sv,
+                                                                second_order_time_derivative,
+                                                                second_order_extrapolation,
+                                                                use_direct_solver, Stab_v, incompressible,
+                                                                project_Darcy_with_gravity,
+                                                                kappa_abs_vec,
+                                                                degreeRT, project_only_kappa,
+                                                                mpi_communicator, n_mpi_processes,
+                                                                this_mpi_process);
 
         // start of sequential scheme
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
@@ -1655,23 +1663,19 @@ namespace CouplingPressureSaturation {
             timestep_number << " at t=" << time
                   << std::endl;
 
-
-
-            pl_problem.update_pl_values(time_step, time, timestep_number,
-              pl_solution_n,
-              pl_solution_nminus1,
-              pl_solution_nminus2,
-              Sa_solution_n,
-              Sa_solution_nminus1,
-              Sa_solution_nminus2,
-              Sv_solution_n,
-              Sv_solution_nminus1,
-              Sv_solution_nminus2);
-
                 // first assemble system matrix for pl
                 timer.reset();
                 timer.start();
-                pl_problem.assemble_system_matrix_pressure();
+                pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,
+                                                           pl_solution_n,
+                                                           pl_solution_nminus1,
+                                                           pl_solution_nminus2,
+                                                           Sa_solution_n,
+                                                           Sa_solution_nminus1,
+                                                           Sa_solution_nminus2,
+                                                           Sv_solution_n,
+                                                           Sv_solution_nminus1,
+                                                           Sv_solution_nminus2);
                 timer.stop();
 
                 assemble_time[index_time] = timer.cpu_time();
@@ -1819,24 +1823,25 @@ namespace CouplingPressureSaturation {
 
                 pcout << std::endl;
 
-
-                Sa_problem.update_sa_values( time_step,
-                                            time, timestep_number,
-                                            pl_solution, pl_solution_n, pl_solution_nminus1,
-                                            Sa_solution_n, Sa_solution_nminus1,
-                                            Sv_solution_n, Sv_solution_nminus1,
-                                            totalDarcyvelocity_RT_Sa
-                        );
-
                     timer.reset();
                     timer.start();
-                    Sa_problem.assemble_system_matrix_aqueous_saturation();
+                    Sa_problem.assemble_system_matrix_aqueous_saturation( time_step,
+                                                                          time, timestep_number,
+                                                                          pl_solution, pl_solution_n, pl_solution_nminus1,
+                                                                          Sa_solution_n, Sa_solution_nminus1,
+                                                                          Sv_solution_n, Sv_solution_nminus1,
+                                                                          totalDarcyvelocity_RT_Sa);
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa matrix assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
                     timer.reset();
                     timer.start();
-                    Sa_problem.assemble_rhs_aqueous_saturation();
+                    Sa_problem.assemble_rhs_aqueous_saturation( time_step,
+                                                                time, timestep_number,
+                                                                pl_solution, pl_solution_n, pl_solution_nminus1,
+                                                                Sa_solution_n, Sa_solution_nminus1,
+                                                                Sv_solution_n, Sv_solution_nminus1,
+                                                                totalDarcyvelocity_RT_Sa);
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
@@ -1856,26 +1861,15 @@ namespace CouplingPressureSaturation {
             // else start solving for Sv
             else
             {
-                VaporSaturation::VaporSaturationProblem<dim> Sv_problem(triangulation, degree, time_step, theta_n_time,
-                                                                        theta_Sv, penalty_Sv, penalty_Sv_bdry,
-                                                                        dirichlet_id_sv, use_exact_pl_in_Sv,
-                                                                        use_exact_Sa_in_Sv, time, timestep_number,
-                                                                        second_order_time_derivative,
-                                                                        second_order_extrapolation,
-                                                                        use_direct_solver, Stab_v, incompressible,
-                                                                        project_Darcy_with_gravity,
-                                                                        pl_solution, pl_solution_n, pl_solution_nminus1,
-                                                                        Sa_solution, Sa_solution_n, Sa_solution_nminus1,
-                                                                        Sv_solution_n, Sv_solution_nminus1,
-                                                                        kappa_abs_vec, totalDarcyvelocity_RT_Sv,
-                                                                        degreeRT, project_only_kappa,
-                                                                        mpi_communicator, n_mpi_processes,
-                                                                        this_mpi_process);
+
 
                 // Assemble system for Sv
                 timer.reset();
                 timer.start();
-                Sv_problem.assemble_system_matrix_vapor_saturation();
+                Sv_problem.assemble_system_matrix_vapor_saturation(time_step,time,timestep_number,
+                                                                   pl_solution, pl_solution_n, pl_solution_nminus1,
+                                                                   Sa_solution, Sa_solution_n, Sa_solution_nminus1,
+                                                                   Sv_solution_n, Sv_solution_nminus1,totalDarcyvelocity_RT_Sv);
                 timer.stop();
 
                 assemble_time[index_time] += timer.cpu_time();

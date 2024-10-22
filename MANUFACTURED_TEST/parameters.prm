@@ -33,9 +33,6 @@ subsection Spatial discretization parameters
   # Dimension (2 or 3)
   set Dimension = 2
 
-  # If true, then stability method is used For pl
-  set Stab_t = false
-
   # If true, then stability method is used For Sa
   set Stab_a = true
 
