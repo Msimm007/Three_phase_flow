@@ -1657,7 +1657,6 @@ namespace CouplingPressureSaturation {
         // start of sequential scheme
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
         {
-
             // first print time step
             pcout << "Time step " <<
             timestep_number << " at t=" << time
@@ -1845,11 +1844,10 @@ namespace CouplingPressureSaturation {
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                    auto &Sa_matrix = Sa_problem.stored_matrix;
                     // Solve for Sa
                     timer.reset();
                     timer.start();
-                    Sa_problem.solve_aqueous_saturation(Sa_matrix);
+                    Sa_problem.solve_aqueous_saturation();
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
                     Sa_solution = Sa_problem.Sa_solution;
@@ -1861,8 +1859,6 @@ namespace CouplingPressureSaturation {
             // else start solving for Sv
             else
             {
-
-
                 // Assemble system for Sv
                 timer.reset();
                 timer.start();

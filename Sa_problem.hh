@@ -101,28 +101,20 @@ namespace AqueousSaturation
                                  MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
         void assemble_system_matrix_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,                                 PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
-                                                       const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                       const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                       const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                                       const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
+                                             const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                             const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                             const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                             const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
         void assemble_rhs_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,                                 const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
                                              const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                                              const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
                                              const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
                                              const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
-
-
-        // modified so that solve function takes in an argument.
-        void solve_aqueous_saturation(PETScWrappers::MPI::SparseMatrix &mat);
-
-
-        // storing matrix for use in main file
-        PETScWrappers::MPI::SparseMatrix stored_matrix;
+        void solve_aqueous_saturation();
 
         PETScWrappers::MPI::Vector Sa_solution;
     private:
-        void setup_mat();
-        void setup_rhs();
+        void setup_system();
 
         parallel::shared::Triangulation<dim>   triangulation;
         const MappingQ1<dim> mapping;
@@ -206,12 +198,7 @@ namespace AqueousSaturation
         DoFHandler<dim> dof_handler_RT;
 
         AffineConstraints<double> constraints;
-
-
     };
-
-
-
 
     template <int dim>
     AqueousSaturationProblem<dim>::AqueousSaturationProblem(
@@ -265,7 +252,7 @@ namespace AqueousSaturation
     }
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::setup_mat()
+    void AqueousSaturationProblem<dim>::setup_system()
     {
         dof_handler.distribute_dofs(fe);
         dof_handler_RT.distribute_dofs(fe_RT);
@@ -288,43 +275,6 @@ namespace AqueousSaturation
                                                 sparsity_pattern,
                                                 mpi_communicator);
 
-        Sa_solution.reinit(locally_owned_dofs, mpi_communicator);
-
-        const std::vector<IndexSet> locally_owned_dofs_per_proc_RT =
-                DoFTools::locally_owned_dofs_per_subdomain(dof_handler_RT);
-        locally_owned_dofs_RT = locally_owned_dofs_per_proc_RT[this_mpi_process];
-
-        DoFTools::extract_locally_relevant_dofs(dof_handler_RT, locally_relevant_dofs_RT);
-
-        dof_handler_dg0.distribute_dofs(fe_dg0);
-        const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 =
-                DoFTools::locally_owned_dofs_per_subdomain(dof_handler_dg0);
-        locally_owned_dofs_dg0 = locally_owned_dofs_per_proc_dg0[this_mpi_process];
-
-        DoFTools::extract_locally_relevant_dofs(dof_handler_dg0, locally_relevant_dofs_dg0);
-    }
-
-    template <int dim>
-    void AqueousSaturationProblem<dim>::setup_rhs()
-    {
-
-        dof_handler.distribute_dofs(fe);
-        dof_handler_RT.distribute_dofs(fe_RT);
-
-        constraints.clear();
-        constraints.close();
-
-        DynamicSparsityPattern dsp(dof_handler.n_dofs());
-        DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
-        sparsity_pattern.copy_from(dsp);
-
-        const std::vector<IndexSet> locally_owned_dofs_per_proc =
-                DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
-        locally_owned_dofs = locally_owned_dofs_per_proc[this_mpi_process];
-
-        DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
-
-        // only reinit RHS as opposed to both matrix and rhs
         right_hand_side_aqueous_saturation.reinit(locally_owned_dofs, mpi_communicator);
 
         Sa_solution.reinit(locally_owned_dofs, mpi_communicator);
@@ -351,7 +301,7 @@ namespace AqueousSaturation
                                         const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
     {
 
-        setup_mat();
+        setup_system();
 
         // updating time terms
         time_step = time_step_;
@@ -462,6 +412,7 @@ namespace AqueousSaturation
                           locally_relevant_dofs_dg0,
                           mpi_communicator);
 
+        // solution on this processor
         temp_pl_solution = pl_solution_;
         temp_pl_solution_n = pl_solution_n_;
         temp_pl_solution_nminus1 = pl_solution_nminus1_;
@@ -1509,22 +1460,19 @@ namespace AqueousSaturation
 
             system_matrix_aqueous_saturation.compress(VectorOperation::add);
 
-            stored_matrix.reinit(system_matrix_aqueous_saturation);
-            stored_matrix.copy_from(system_matrix_aqueous_saturation);
-
 
     }
 
     template <int dim>
     void AqueousSaturationProblem<dim>::assemble_rhs_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,
-                                                                        const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
-                                                                        const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                                        const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                                        const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                                                        const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
+                                        const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                        const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                        const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                        const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                        const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
     {
-        setup_rhs();
 
+        // update time terms
         time_step = time_step_;
         time = time_;
         timestep_number = timestep_number_;
@@ -2730,7 +2678,7 @@ namespace AqueousSaturation
 
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::solve_aqueous_saturation(PETScWrappers::MPI::SparseMatrix &mat)
+    void AqueousSaturationProblem<dim>::solve_aqueous_saturation()
     {
 //	std::map<types::global_dof_index, double> boundary_values;
 //	        VectorTools::interpolate_boundary_values(dof_handler,
@@ -2746,7 +2694,7 @@ namespace AqueousSaturation
             SolverControl cn;
             PETScWrappers::SparseDirectMUMPS solver(cn, mpi_communicator);
             //	solver.set_symmetric_mode(true);
-            solver.solve( mat, Sa_solution, right_hand_side_aqueous_saturation);
+            solver.solve( system_matrix_aqueous_saturation, Sa_solution, right_hand_side_aqueous_saturation);
 
 
         }
@@ -2755,9 +2703,9 @@ namespace AqueousSaturation
             SolverControl solver_control(pl_solution.size(), 1.e-7 * right_hand_side_aqueous_saturation.l2_norm());
 
             PETScWrappers::SolverGMRES gmres(solver_control, mpi_communicator);
-            PETScWrappers::PreconditionBoomerAMG preconditioner(mat);
+            PETScWrappers::PreconditionBoomerAMG preconditioner(system_matrix_aqueous_saturation);
 
-            gmres.solve(/*mat*/ mat,Sa_solution, right_hand_side_aqueous_saturation, preconditioner);
+            gmres.solve(system_matrix_aqueous_saturation,Sa_solution, right_hand_side_aqueous_saturation, preconditioner);
 
             Vector<double> localized_solution(Sa_solution);
             constraints.distribute(localized_solution);
