@@ -100,7 +100,7 @@ namespace AqueousSaturation
                                  const unsigned int degreeRT_, bool project_only_kappa_,
                                  MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
-        void assemble_system_matrix_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,                                 PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
+        void assemble_system_matrix_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,                                 const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
                                              const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                                              const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
                                              const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
@@ -294,13 +294,13 @@ namespace AqueousSaturation
     }
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::assemble_system_matrix_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,                                 PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
+    void AqueousSaturationProblem<dim>::assemble_system_matrix_aqueous_saturation(double time_step_,double time_,unsigned int timestep_number_,
+                                        const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
                                         const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                                         const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
                                         const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
                                         const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
     {
-
         setup_system();
 
         // updating time terms
@@ -847,7 +847,18 @@ namespace AqueousSaturation
                     if(artificial_visc_exp || artificial_visc_imp)
                         nu_h_artificial_visc = 0.5*sqrt(cell->measure())*art_visc_multiple_Sa*maximum_Darcy*2.0*maximum_Sa;
 
-                    double gamma_Sa_e = fabs(rho_a*lambda_a*kappa*dpca_dSa);
+
+                    double gamma_Sa_e;
+
+                    if (Stab_a)
+                    {
+                        gamma_Sa_e = fabs(kappa_tilde_a*kappa);
+                    }
+                    else
+                    {
+                        gamma_Sa_e = fabs(rho_a*lambda_a*kappa*dpca_dSa);
+
+                    }
 
                     if(artificial_visc_imp)
                         gamma_Sa_e += nu_h_artificial_visc;
@@ -1286,7 +1297,17 @@ namespace AqueousSaturation
                     coef1_diff += nu_h_artificial_visc1;
                 }
 
-                double gamma_Sa_e = fabs(2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20));
+                double gamma_Sa_e;
+
+                if (Stab_a)
+                {
+                    gamma_Sa_e = fabs(2.0*coef0_diff_stab*coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20));
+                }
+                else
+                {
+                    gamma_Sa_e = fabs(2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20));
+
+                }
 
                 double h_e = cell->face(f)->measure();
                 double penalty_factor = (penalty_Sa/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
@@ -1984,7 +2005,18 @@ namespace AqueousSaturation
                     if(artificial_visc_exp || artificial_visc_imp)
                         nu_h_artificial_visc = 0.5*sqrt(cell->measure())*art_visc_multiple_Sa*maximum_Darcy*2.0*maximum_Sa;
 
-                    double gamma_Sa_e = fabs(rho_a*lambda_a*kappa*dpca_dSa);
+
+                    double gamma_Sa_e;
+
+                    if (Stab_a)
+                    {
+                        gamma_Sa_e = fabs(kappa_tilde_a*kappa);
+                    }
+                    else
+                    {
+                        gamma_Sa_e = fabs(rho_a*lambda_a*kappa*dpca_dSa);
+
+                    }
 
                     if(artificial_visc_imp)
                         gamma_Sa_e += nu_h_artificial_visc;
@@ -2462,7 +2494,17 @@ namespace AqueousSaturation
                     coef1_diff += nu_h_artificial_visc1;
                 }
 
-                double gamma_Sa_e = fabs(2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20));
+                double gamma_Sa_e;
+
+                if (Stab_a)
+                {
+                    gamma_Sa_e = fabs(2.0*coef0_diff_stab*coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20));
+                }
+                else
+                {
+                    gamma_Sa_e = fabs(2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20));
+
+                }
 
                 double h_e = cell->face(f)->measure();
                 double penalty_factor = (penalty_Sa/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
@@ -2657,8 +2699,6 @@ namespace AqueousSaturation
             PETScWrappers::SparseDirectMUMPS solver(cn, mpi_communicator);
             //	solver.set_symmetric_mode(true);
             solver.solve( system_matrix_aqueous_saturation, Sa_solution, right_hand_side_aqueous_saturation);
-
-
         }
         else
         {
@@ -2675,9 +2715,6 @@ namespace AqueousSaturation
             Sa_solution = localized_solution;
         }
     }
-
-
-
 
 } // namespace AqueousSaturation
 

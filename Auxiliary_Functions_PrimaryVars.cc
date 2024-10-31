@@ -48,7 +48,7 @@ double mu_a_data = 1.0;
 double mu_v_data = 0.25;
 
 // stability terms
-double kappa_tilde_a_data = 1.0;
+double kappa_tilde_a_data = 10.0;
 double kappa_tilde_v_data = 1.0;
 
 // Mesh creator
@@ -529,7 +529,7 @@ public:
     virtual Tensor<1,dim> gradient(const Point<dim> & p,
                                    const unsigned int component = 0) const override;
 
-    virtual Tensor<1,dim> num_gradient(const double Sv,
+    virtual Tensor<1,dim> num_gradient(double Sv,
                                        const Tensor<1,dim> grad_Sv,
                                        const unsigned int component = 0) const;
 
