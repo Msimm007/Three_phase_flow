@@ -51,11 +51,6 @@
 #include "pl_problem.hh"
 #include "Sa_problem.hh"
 #include "Sv_problem.hh"
-#include "midpoint_method.hh"
-
-// for midpoint method
-#include "Sa_problem_midpoint.hh"
-#include "Sv_problem_midpoint.hh"
 
 
 // PETSc stuff
