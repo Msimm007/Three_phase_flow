@@ -1636,6 +1636,8 @@ namespace CouplingPressureSaturation {
                                                                     mpi_communicator, n_mpi_processes,
                                                                     this_mpi_process);
 
+        Sa_problem.setup_system();
+
         VaporSaturation::VaporSaturationProblem<dim> Sv_problem(triangulation, degree, theta_n_time,
                                                                 theta_Sv, penalty_Sv, penalty_Sv_bdry,
                                                                 dirichlet_id_sv, use_exact_pl_in_Sv,
@@ -1650,12 +1652,24 @@ namespace CouplingPressureSaturation {
                                                                 this_mpi_process);
 
         // start of sequential scheme
+
+        bool rebuild_Sa_mat = true;
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
         {
             // first print time step
-            pcout << "Time step " <<
-            timestep_number << " at t=" << time
+            pcout << "Time step " << timestep_number << " at t=" << time
                   << std::endl;
+            // Midpoint method
+            if (midpoint_method && incompressible)
+            {
+                std::cerr << "ERROR! Midpoint method DISABLED" << std::endl;
+                std::abort();
+            }
+            else if (midpoint_method && !incompressible)
+            {
+                std::cerr << "ERROR! Midpoint method must have incompressible to be true" << std::endl;
+                std::abort();
+            }
 
                 // first assemble system matrix for pl
                 timer.reset();
@@ -1820,7 +1834,7 @@ namespace CouplingPressureSaturation {
                     timer.reset();
                     timer.start();
                     Sa_problem.assemble_system_matrix_aqueous_saturation( time_step,
-                                                                          time, timestep_number,
+                                                                          time, timestep_number, rebuild_Sa_mat,
                                                                           pl_solution, pl_solution_n, pl_solution_nminus1,
                                                                           Sa_solution_n, Sa_solution_nminus1,
                                                                           Sv_solution_n, Sv_solution_nminus1,
@@ -1830,24 +1844,19 @@ namespace CouplingPressureSaturation {
 
                     timer.reset();
                     timer.start();
-                    Sa_problem.assemble_rhs_aqueous_saturation( time_step,
-                                                                time, timestep_number,
-                                                                pl_solution, pl_solution_n, pl_solution_nminus1,
-                                                                Sa_solution_n, Sa_solution_nminus1,
-                                                                Sv_solution_n, Sv_solution_nminus1,
-                                                                totalDarcyvelocity_RT_Sa);
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
-                     // adding for github purposes
+
 
                     // Solve for Sa
                     timer.reset();
                     timer.start();
-                    Sa_problem.solve_aqueous_saturation();
+                    Sa_problem.solve_aqueous_saturation(pl_solution);
                     timer.stop();
                     pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
                     Sa_solution = Sa_problem.Sa_solution;
 
+            //if (Stab_a) rebuild_Sa_mat = false;
             // stop here for two phase
             if (two_phase)
                 Sv_solution = 0.0;
