@@ -1833,30 +1833,31 @@ namespace CouplingPressureSaturation {
 
                     timer.reset();
                     timer.start();
-                    Sa_problem.assemble_system_matrix_aqueous_saturation( time_step,
-                                                                          time, timestep_number, rebuild_Sa_mat,
-                                                                          pl_solution, pl_solution_n, pl_solution_nminus1,
-                                                                          Sa_solution_n, Sa_solution_nminus1,
-                                                                          Sv_solution_n, Sv_solution_nminus1,
-                                                                          totalDarcyvelocity_RT_Sa);
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa matrix assemble: " << timer.cpu_time() << " seconds." << std::endl;
+            Sa_problem.assemble_system_Sa(time_step,
+                                          time, timestep_number, rebuild_Sa_mat,
+                                          pl_solution, pl_solution_n, pl_solution_nminus1,
+                                          Sa_solution_n, Sa_solution_nminus1,
+                                          Sv_solution_n, Sv_solution_nminus1,
+                                          totalDarcyvelocity_RT_Sa);
+            timer.stop();
+            pcout << "Elapsed CPU time for Sa system assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                    timer.reset();
-                    timer.start();
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
+//                    timer.reset();
+//                    timer.start();
+//                    timer.stop();
+//                    pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
 
-                    // Solve for Sa
-                    timer.reset();
-                    timer.start();
-                    Sa_problem.solve_aqueous_saturation(pl_solution);
-                    timer.stop();
-                    pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
-                    Sa_solution = Sa_problem.Sa_solution;
+            // Solve for Sa
+            timer.reset();
+            timer.start();
+            Sa_problem.solve_aqueous_saturation(pl_solution);
+            timer.stop();
+            pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
+            Sa_solution = Sa_problem.Sa_solution;
 
-            //if (Stab_a) rebuild_Sa_mat = false;
+            if (Stab_a) rebuild_Sa_mat = false;
+
             // stop here for two phase
             if (two_phase)
                 Sv_solution = 0.0;

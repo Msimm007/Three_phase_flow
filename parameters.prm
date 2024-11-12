@@ -6,8 +6,7 @@ subsection Time discretization parameters
   set Final time = 1
   
   # Initial time step
-  #set Initial time step = 0.25
-  set Initial time step = 0.10
+  set Initial time step = 0.25
 
   # Second order time derivative
   set Second order time derivative = false
@@ -50,7 +49,7 @@ subsection Spatial discretization parameters
   set Initial level of refinement = 2
 
   # Final level of refinement
-  set Final level of refinement = 3
+  set Final level of refinement = 5
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1

@@ -112,18 +112,18 @@ namespace AqueousSaturation
                                  const unsigned int n_mpi_processes_,
                                  const unsigned int this_mpi_process_);
 
-        void assemble_system_matrix_aqueous_saturation(double time_step_,
-                                                       double time_,
-                                                       unsigned int timestep_number_,
-                                                       bool rebuild_matrix_,
-                                                       PETScWrappers::MPI::Vector pl_solution_,
-                                                       PETScWrappers::MPI::Vector pl_solution_n_,
-                                                       PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                                                       PETScWrappers::MPI::Vector Sa_solution_n_,
-                                                       PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                                                       PETScWrappers::MPI::Vector Sv_solution_n_,
-                                                       PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                                                       PETScWrappers::MPI::Vector totalDarcyvelocity_RT_);
+        void assemble_system_Sa(double time_step_,
+                                double time_,
+                                unsigned int timestep_number_,
+                                bool rebuild_matrix_,
+                                PETScWrappers::MPI::Vector pl_solution_,
+                                PETScWrappers::MPI::Vector pl_solution_n_,
+                                PETScWrappers::MPI::Vector pl_solution_nminus1_,
+                                PETScWrappers::MPI::Vector Sa_solution_n_,
+                                PETScWrappers::MPI::Vector Sa_solution_nminus1_,
+                                PETScWrappers::MPI::Vector Sv_solution_n_,
+                                PETScWrappers::MPI::Vector Sv_solution_nminus1_,
+                                PETScWrappers::MPI::Vector totalDarcyvelocity_RT_);
 
         void solve_aqueous_saturation(PETScWrappers::MPI::Vector pl_solution_);
 
@@ -313,20 +313,19 @@ namespace AqueousSaturation
 
     template <int dim>
     void AqueousSaturationProblem<dim>::
-    assemble_system_matrix_aqueous_saturation(double time_step_,
-                                              double time_,
-                                              unsigned int timestep_number_,
-                                              bool rebuild_matrix_,
-                                              PETScWrappers::MPI::Vector pl_solution_,
-                                              PETScWrappers::MPI::Vector pl_solution_n_,
-                                              PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                                              PETScWrappers::MPI::Vector Sa_solution_n_,
-                                              PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                                              PETScWrappers::MPI::Vector Sv_solution_n_,
-                                              PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                                              PETScWrappers::MPI::Vector totalDarcyvelocity_RT_)
+    assemble_system_Sa(double time_step_,
+                       double time_,
+                       unsigned int timestep_number_,
+                       bool rebuild_matrix_,
+                       PETScWrappers::MPI::Vector pl_solution_,
+                       PETScWrappers::MPI::Vector pl_solution_n_,
+                       PETScWrappers::MPI::Vector pl_solution_nminus1_,
+                       PETScWrappers::MPI::Vector Sa_solution_n_,
+                       PETScWrappers::MPI::Vector Sa_solution_nminus1_,
+                       PETScWrappers::MPI::Vector Sv_solution_n_,
+                       PETScWrappers::MPI::Vector Sv_solution_nminus1_,
+                       PETScWrappers::MPI::Vector totalDarcyvelocity_RT_)
     {
-        setup_system();
 
         // Update rebuild_matrix
         rebuild_matrix = rebuild_matrix_;
