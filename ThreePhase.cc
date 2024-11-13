@@ -1852,7 +1852,7 @@ namespace CouplingPressureSaturation {
             pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
             Sa_solution = Sa_problem.Sa_solution;
 
-            if (Stab_a) rebuild_Sa_mat = false;
+            //if (Stab_a) rebuild_Sa_mat = false;
 
             // stop here for two phase
             if (two_phase)
