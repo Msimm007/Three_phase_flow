@@ -26,13 +26,14 @@ SET(TARGET_SRC
   FE_RTProj.cc
   ${TARGET}.cc
 )
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 # FILE(GLOB_RECURSE TARGET_SRC  ${TARGET}.cc)
 # FILE(GLOB_RECURSE TARGET_SRC  "*.cc")
 # FILE(GLOB_RECURSE TARGET_INC  "*.hh")
 # SET(TARGET_SRC ${TARGET_SRC}  ${TARGET_INC})
 
 # Usually, you will not need to modify anything beyond this point...
+
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
