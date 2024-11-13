@@ -26,7 +26,10 @@ SET(TARGET_SRC
   FE_RTProj.cc
   ${TARGET}.cc
 )
+# used to suppress warnings when compiling
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
+
+
 # FILE(GLOB_RECURSE TARGET_SRC  ${TARGET}.cc)
 # FILE(GLOB_RECURSE TARGET_SRC  "*.cc")
 # FILE(GLOB_RECURSE TARGET_INC  "*.hh")

@@ -103,18 +103,19 @@ public:
 			PETScWrappers::MPI::Vector kappa_abs_vec_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
-	void assemble_system_matrix_pressure(double time_step_,double time_,
-                                         unsigned int timestep_number_,const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                         const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
-                                         const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                         const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
-                                         const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                         const PETScWrappers::MPI::Vector& Sv_solution_nminus2_);
+	void assemble_system_pl(double time_step_, double time_,
+                            unsigned int timestep_number_, const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                            const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
+                            const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                            const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
+                            const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                            const PETScWrappers::MPI::Vector& Sv_solution_nminus2_);
 	void solve_pressure();
+    void setup_system();
+
 
 	PETScWrappers::MPI::Vector pl_solution;
 private:
-    void setup_system();
 
     parallel::shared::Triangulation<dim> triangulation;
     const MappingQ1<dim> mapping;
@@ -246,15 +247,6 @@ void LiquidPressureProblem<dim>::setup_system()
 
 	DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
 
-    system_matrix_pressure.reinit(locally_owned_dofs,
-			  	  	  	  	  	  locally_owned_dofs,
-								  sparsity_pattern,
-								  mpi_communicator);
-
-    right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
-    pl_solution.reinit(locally_owned_dofs, mpi_communicator);
-
-
     dof_handler_dg0.distribute_dofs(fe_dg0);
 	const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 =
 			DoFTools::locally_owned_dofs_per_subdomain(dof_handler_dg0);
@@ -265,15 +257,21 @@ void LiquidPressureProblem<dim>::setup_system()
 }
 
 template <int dim>
-void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_step_,double time_,
-                                                                 unsigned int timestep_number_,const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                                 const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
-                                                                 const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                                 const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
-                                                                 const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                                                 const PETScWrappers::MPI::Vector& Sv_solution_nminus2_)
+void LiquidPressureProblem<dim>::assemble_system_pl(double time_step_, double time_,
+                                                    unsigned int timestep_number_, const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                                    const PETScWrappers::MPI::Vector& pl_solution_nminus2_,
+                                                    const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                                    const PETScWrappers::MPI::Vector& Sa_solution_nminus2_,
+                                                    const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                                    const PETScWrappers::MPI::Vector& Sv_solution_nminus2_)
 {
-	setup_system();
+
+    system_matrix_pressure.reinit(locally_owned_dofs,
+                                  locally_owned_dofs,
+                                  sparsity_pattern,
+                                  mpi_communicator);
+
+    right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
 
     // initialize time terms
     time_step = time_step_;
@@ -1492,10 +1490,11 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 
 
 }
-
 template <int dim>
 void LiquidPressureProblem<dim>::solve_pressure()
 {
+    pl_solution.reinit(locally_owned_dofs, mpi_communicator);
+
 //    std::map<types::global_dof_index, double> boundary_values;
 //        VectorTools::interpolate_boundary_values(dof_handler,
 //                                                 1,

@@ -1621,6 +1621,7 @@ namespace CouplingPressureSaturation {
                                                               implicit_time_pl,
                                                               kappa_abs_vec, mpi_communicator, n_mpi_processes,
                                                               this_mpi_process);
+        pl_problem.setup_system();
 
         AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree,
                                                                     theta_Sa, penalty_Sa, penalty_Sa_bdry,
@@ -1674,16 +1675,16 @@ namespace CouplingPressureSaturation {
                 // first assemble system matrix for pl
                 timer.reset();
                 timer.start();
-                pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,
-                                                           pl_solution_n,
-                                                           pl_solution_nminus1,
-                                                           pl_solution_nminus2,
-                                                           Sa_solution_n,
-                                                           Sa_solution_nminus1,
-                                                           Sa_solution_nminus2,
-                                                           Sv_solution_n,
-                                                           Sv_solution_nminus1,
-                                                           Sv_solution_nminus2);
+            pl_problem.assemble_system_pl(time_step, time, timestep_number,
+                                          pl_solution_n,
+                                          pl_solution_nminus1,
+                                          pl_solution_nminus2,
+                                          Sa_solution_n,
+                                          Sa_solution_nminus1,
+                                          Sa_solution_nminus2,
+                                          Sv_solution_n,
+                                          Sv_solution_nminus1,
+                                          Sv_solution_nminus2);
                 timer.stop();
 
                 assemble_time[index_time] = timer.cpu_time();
@@ -1841,11 +1842,6 @@ namespace CouplingPressureSaturation {
                                           totalDarcyvelocity_RT_Sa);
             timer.stop();
             pcout << "Elapsed CPU time for Sa system assemble: " << timer.cpu_time() << " seconds." << std::endl;
-
-//                    timer.reset();
-//                    timer.start();
-//                    timer.stop();
-//                    pcout << "Elapsed CPU time for Sa rhs assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
 
             // Solve for Sa
