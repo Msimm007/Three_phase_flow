@@ -95,13 +95,13 @@ class LiquidPressureProblem
 public:
     // constructor
 	LiquidPressureProblem(Triangulation<dim, dim> &triangulation_,
-			const unsigned int degree_,  double theta_pl_, double penalty_pl_,
+			unsigned int degree_,  double theta_pl_, double penalty_pl_,
 			double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
 			bool use_exact_Sv_in_pl_,
 			bool second_order_time_derivative_, bool second_order_extrapolation_,
 			bool use_direct_solver_, bool incompressible_, bool implicit_time_pl_,
 			PETScWrappers::MPI::Vector kappa_abs_vec_,
-			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
+			MPI_Comm mpi_communicator_, unsigned int n_mpi_processes_, unsigned int this_mpi_process_);
 
 	void assemble_system_pl(double time_step_, double time_,
                             unsigned int timestep_number_, const PETScWrappers::MPI::Vector& pl_solution_n_, const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
