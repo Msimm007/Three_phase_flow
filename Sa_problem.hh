@@ -44,6 +44,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <utility>
 
 namespace AqueousSaturation
 {
@@ -54,8 +55,6 @@ namespace AqueousSaturation
         FullMatrix<double>                   cell_matrix;
         Vector<double>                       cell_rhs;
         std::vector<types::global_dof_index> joint_dof_indices;
-        std::array<unsigned int, 2>          cell_indices;
-        std::array<double, 2>                values;
     };
 
     struct CopyData
@@ -64,8 +63,6 @@ namespace AqueousSaturation
         Vector<double>                       cell_rhs;
         std::vector<types::global_dof_index> local_dof_indices;
         std::vector<CopyDataFace>            face_data;
-        double                               value;
-        unsigned int                         cell_index;
 
         template <class Iterator>
         void reinit_matrix(const Iterator &cell, unsigned int dofs_per_cell)
@@ -89,7 +86,7 @@ namespace AqueousSaturation
     {
     public:
         AqueousSaturationProblem(Triangulation<dim, dim> &triangulation_,
-                                 const unsigned int degree_,
+                                 unsigned int degree_,
                                  double theta_Sa_,
                                  double penalty_Sa_,
                                  double penalty_Sa_bdry_,
@@ -106,26 +103,26 @@ namespace AqueousSaturation
                                  bool artificial_visc_imp_,
                                  double art_visc_multiple_Sa_,
                                  PETScWrappers::MPI::Vector kappa_abs_vec_,
-                                 const unsigned int degreeRT_,
+                                 unsigned int degreeRT_,
                                  bool project_only_kappa_,
                                  MPI_Comm mpi_communicator_,
-                                 const unsigned int n_mpi_processes_,
-                                 const unsigned int this_mpi_process_);
+                                 unsigned int n_mpi_processes_,
+                                 unsigned int this_mpi_process_);
 
         void assemble_system_Sa(double time_step_,
                                 double time_,
                                 unsigned int timestep_number_,
                                 bool rebuild_matrix_,
-                                PETScWrappers::MPI::Vector pl_solution_,
-                                PETScWrappers::MPI::Vector pl_solution_n_,
-                                PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                                PETScWrappers::MPI::Vector Sa_solution_n_,
-                                PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                                PETScWrappers::MPI::Vector Sv_solution_n_,
-                                PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                                PETScWrappers::MPI::Vector totalDarcyvelocity_RT_);
+                                const PETScWrappers::MPI::Vector& pl_solution_,
+                                const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_n_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sv_solution_n_,
+                                const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
 
-        void solve_aqueous_saturation(PETScWrappers::MPI::Vector pl_solution_);
+        void solve_aqueous_saturation(const PETScWrappers::MPI::Vector& pl_solution_);
 
         PETScWrappers::MPI::Vector Sa_solution;
         void setup_system();
@@ -252,7 +249,7 @@ namespace AqueousSaturation
             , theta_Sa(theta_Sa_)
             , penalty_Sa(penalty_Sa_)
             , penalty_Sa_bdry(penalty_Sa_bdry_)
-            , dirichlet_id_sa(dirichlet_id_sa_)
+            , dirichlet_id_sa(std::move(dirichlet_id_sa_))
             , use_exact_pl_in_Sa(use_exact_pl_in_Sa_)
             , use_exact_Sv_in_Sa(use_exact_Sv_in_Sa_)
             , second_order_time_derivative(second_order_time_derivative_)
@@ -317,14 +314,14 @@ namespace AqueousSaturation
                        double time_,
                        unsigned int timestep_number_,
                        bool rebuild_matrix_,
-                       PETScWrappers::MPI::Vector pl_solution_,
-                       PETScWrappers::MPI::Vector pl_solution_n_,
-                       PETScWrappers::MPI::Vector pl_solution_nminus1_,
-                       PETScWrappers::MPI::Vector Sa_solution_n_,
-                       PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-                       PETScWrappers::MPI::Vector Sv_solution_n_,
-                       PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                       PETScWrappers::MPI::Vector totalDarcyvelocity_RT_)
+                       const PETScWrappers::MPI::Vector& pl_solution_,
+                       const PETScWrappers::MPI::Vector& pl_solution_n_,
+                       const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                       const PETScWrappers::MPI::Vector& Sa_solution_n_,
+                       const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                       const PETScWrappers::MPI::Vector& Sv_solution_n_,
+                       const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                       const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
     {
 
         // Update rebuild_matrix
@@ -662,7 +659,7 @@ namespace AqueousSaturation
                     nu_h_artificial_visc = 0.5*sqrt(cell->measure())
                                            *art_visc_multiple_Sa*maximum_Darcy*2.0*maximum_Sa;
 
-                // This is where the main formulation starts
+                // start of volume terms 
                 for (unsigned int i = 0; i < n_dofs; ++i)
                 {
                     if (rebuild_matrix)
@@ -687,7 +684,7 @@ namespace AqueousSaturation
                                         * 1.5
                                         * phi_nplus1
                                         * rho_a
-                                        * fe_v.shape_value(i, point)
+                                       * fe_v.shape_value(i, point)
                                         * fe_v.shape_value(j, point)
                                         * JxW[point];
                             }
@@ -969,12 +966,17 @@ namespace AqueousSaturation
 
                     }
 
-                    if (artificial_visc_imp)
+                    if (artificial_visc_imp){
+
                         gamma_Sa_e += nu_h_artificial_visc;
-
-                    gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
-
-                    double h_e = cell->face(face_no)->measure();
+			
+                    	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
+		    }
+			//pcout << gamma_Sa_e << std:: endl;
+                    //	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
+				
+			//pcout << gamma_Sa_e << std:: endl;
+                    double h_e = cell->face(face_no)->measure(); // I think this is the term that is changing
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
 
                     // start of boundary terms
@@ -987,22 +989,22 @@ namespace AqueousSaturation
                                 if (Stab_a)
                                 {
                                     // Diffusion term
-                                    copy_data.cell_matrix(i, j) -=
-                                            kappa_tilde_a
-                                            * kappa
+                                   copy_data.cell_matrix(i, j) -=
+                                           kappa_tilde_a
+                                           * kappa
                                             * fe_face.shape_value(i, point)
                                             * fe_face.shape_grad(j, point)
                                             * normals[point]
                                             * JxW[point];
                                     // Theta term
                                     copy_data.cell_matrix(i, j) +=
-                                            kappa_tilde_a
+                                           kappa_tilde_a
                                             * kappa
                                             * theta_Sa
                                             * fe_face.shape_grad(i, point)
                                             * normals[point]
                                             * fe_face.shape_value(j, point)
-                                            * JxW[point];
+                                           * JxW[point];
                                 }
                                 else
                                 {
@@ -1045,11 +1047,11 @@ namespace AqueousSaturation
                                             * nu_h_artificial_visc
                                             * fe_face.shape_grad(i, point)
                                             * normals[point]
-                                            * fe_face.shape_value(j, point)
+                                           * fe_face.shape_value(j, point)
                                             * JxW[point];
                                 }
 
-                                // Boundary condition
+                                // Boundary condition // CHANING IT
                                 copy_data.cell_matrix(i, j) +=
                                         penalty_factor
                                         * fe_face.shape_value(i, point)
@@ -1863,11 +1865,13 @@ namespace AqueousSaturation
             system_matrix_aqueous_saturation.compress(VectorOperation::add);
         }
 
+	pcout << system_matrix_aqueous_saturation.frobenius_norm() << std::endl;
+
         right_hand_side_aqueous_saturation.compress(VectorOperation::add);
     }
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::solve_aqueous_saturation(PETScWrappers::MPI::Vector pl_solution_)
+    void AqueousSaturationProblem<dim>::solve_aqueous_saturation(const PETScWrappers::MPI::Vector& pl_solution_)
     {
         // reinit vector solution
         Sa_solution.reinit(locally_owned_dofs, mpi_communicator);

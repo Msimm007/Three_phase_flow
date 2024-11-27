@@ -22,21 +22,34 @@
 
 using namespace dealii;
 
+// boolean for incompressible or not. must match parameter file or error will occur
+bool inc = true;
 
-bool inc = false; // MUST MATCH PARAMETER FILE.
-double amp_factor_cap_pressure = 300.0; //not used here
+// porosity
 double porosity_data = 0.2;
-double kappa_abs_data = 1.0;
+
+
+// relative permeability
 double kappa_rl_data = 1.0; //not used here
 double kappa_ra_data = 1.0; // not used here
 double kappa_rv_data = 1.0; // not used here
-double kappa = kappa_abs_data; //Kept here because used in RHS and boundary term
+
+// absolute permeability
+double kappa = 1.0;
+
+// density
 double rho_l_data = 3.0;
 double rho_a_data = 5.0;
 double rho_v_data = 1.0;
+
+// viscosity
 double mu_l_data = 0.75;
 double mu_a_data = 1.0;
 double mu_v_data = 0.25;
+
+// stability terms
+double kappa_tilde_a_data = 1.0;
+double kappa_tilde_v_data = 1.0;
 
 // Mesh creator
 template <int dim>
@@ -125,59 +138,40 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
 template <int dim>
 double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator &cell)
 {
-    double kappa_abs = 1.0;
-
-    return kappa_abs;
+    return kappa;
 };
 
-
 template <int dim>
-class Kappa_tilde_t : public Function<dim>
+class StabAqueousSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_t()
+    StabAqueousSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
 template <int dim>
-double Kappa_tilde_t<dim>::value()const
+double StabAqueousSaturation<dim>::value()const
 {
-    return 2.5;
-    //return 21.0;
-}
-template <int dim>
-class Kappa_tilde_a : public Function<dim>
-{
-public:
-    Kappa_tilde_a()
-            : Function<dim>(1)
-    {}
 
-    virtual double value() const;
-};
-template <int dim>
-double Kappa_tilde_a<dim>::value()const
-{
-    //return 10.0;
-    return 1.0;
+    return kappa_tilde_a_data;
 }
 
 template <int dim>
-class Kappa_tilde_v : public Function<dim>
+class StabVaporSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_v()
+    StabVaporSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
 template <int dim>
-double Kappa_tilde_v<dim>::value()const
+double StabVaporSaturation<dim>::value()const
 {
-    return 1.0;
+    return kappa_tilde_v_data;
 }
 
 
@@ -535,7 +529,7 @@ public:
     virtual Tensor<1,dim> gradient(const Point<dim> & p,
                                    const unsigned int component = 0) const override;
 
-    virtual Tensor<1,dim> num_gradient(const double Sv,
+    virtual Tensor<1,dim> num_gradient(double Sv,
                                        const Tensor<1,dim> grad_Sv,
                                        const unsigned int component = 0) const;
 

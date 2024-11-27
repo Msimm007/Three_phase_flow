@@ -1,0 +1,14 @@
+
+cappanera's suggestion:
+1.) comment one of the terms (vol,bd,interior) and see if frobenius norm changes
+even with the matrix being reassembled.
+
+
+current ideas:
+1.) comment out 
+
+
+
+goal: 
+1.) I think the goal as of right now is that even when we reassemble the matrix
+at every time step that our frobenius norm isn't changing.

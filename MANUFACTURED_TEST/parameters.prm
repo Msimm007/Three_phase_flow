@@ -3,8 +3,9 @@
 
 subsection Time discretization parameters
   # Final time of simulation
-  set Final time = 1
-  
+  #set Final time = 1
+  set Final time = 0.75
+
   # Initial time step
   set Initial time step = 0.25
 
@@ -40,16 +41,16 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = false
+  set Incompressible = true
 
   # Polynomial degree for FE space
   set Degree = 1
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 2
 
   # Final level of refinement
-  set Final level of refinement = 5
+  set Final level of refinement = 4
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -85,7 +86,7 @@ subsection Spatial discretization parameters
   #set Penalty Sv boundary = 1000.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = false
+  set Project to RT0 = true
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
