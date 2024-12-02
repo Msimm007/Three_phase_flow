@@ -1,4 +1,0 @@
-
-FROBENIUS NORM time step 0.5 = 16.2025
-
-FROBENIUS NORM time step 0.75 = 16.2025
