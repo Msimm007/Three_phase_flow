@@ -1611,6 +1611,7 @@ namespace CouplingPressureSaturation {
 	// define rebuilding of matrix
         bool rebuild_Sa_mat = true;
 	bool rebuild_Sv_mat = true;
+
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
         {
             // first print time step
@@ -1821,7 +1822,7 @@ namespace CouplingPressureSaturation {
                 // Assemble system for Sv
                 timer.reset();
                 timer.start();
-                Sv_problem.assemble_system_matrix_vapor_saturation(time_step,time,timestep_number,rebuild_Sv_mat,
+                Sv_problem.assemble_system_Sv(time_step,time,timestep_number,rebuild_Sv_mat,
                                                                    pl_solution, pl_solution_n, pl_solution_nminus1,
                                                                    Sa_solution, Sa_solution_n, Sa_solution_nminus1,
                                                                    Sv_solution_n, Sv_solution_nminus1,totalDarcyvelocity_RT_Sv);
@@ -1842,6 +1843,8 @@ namespace CouplingPressureSaturation {
 
                 // Store solution for Sv
                 Sv_solution = Sv_problem.Sv_solution;
+		//if (Stab_v)
+		   // rebuild_Sv_mat = false;
 
             }
 

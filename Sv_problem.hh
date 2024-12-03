@@ -58,65 +58,77 @@ namespace VaporSaturation
 
 	struct CopyDataFace
 	{
-    		FullMatrix<double>                   cell_matrix;
-    		Vector<double>                       cell_rhs;
-    		std::vector<types::global_dof_index> joint_dof_indices;
-    		std::array<unsigned int, 2>          cell_indices;
-    		std::array<double, 2>                values;
+		FullMatrix<double>                   cell_matrix;
+    	Vector<double>                       cell_rhs;
+    	std::vector<types::global_dof_index> joint_dof_indices;
+    	std::array<unsigned int, 2>          cell_indices;
+    	std::array<double, 2>                values;
 	};
 
+	struct CopyData
+	{
+    	FullMatrix<double>                   cell_matrix;
+    	Vector<double>                       cell_rhs;
+    	std::vector<types::global_dof_index> local_dof_indices;
+    	std::vector<CopyDataFace>            face_data;
+   	 	double                               value;
+    	unsigned int                         cell_index;
 
+    	template <class Iterator>
+    	void reinit(const Iterator &cell, unsigned int dofs_per_cell)
+    	{
+       		cell_matrix.reinit(dofs_per_cell, dofs_per_cell);
+        	cell_rhs.reinit(dofs_per_cell);
 
-struct CopyData
-{
-    FullMatrix<double>                   cell_matrix;
-    Vector<double>                       cell_rhs;
-    std::vector<types::global_dof_index> local_dof_indices;
-    std::vector<CopyDataFace>            face_data;
-    double                               value;
-    unsigned int                         cell_index;
-
-    template <class Iterator>
-    void reinit(const Iterator &cell, unsigned int dofs_per_cell)
-    {
-        cell_matrix.reinit(dofs_per_cell, dofs_per_cell);
-        cell_rhs.reinit(dofs_per_cell);
-
-        local_dof_indices.resize(dofs_per_cell);
-        cell->get_dof_indices(local_dof_indices);
-    }
+        	local_dof_indices.resize(dofs_per_cell);
+        	cell->get_dof_indices(local_dof_indices);
+    	}
 };
 
-template <int dim>
-class VaporSaturationProblem
-{
-public:
-	VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
-			const unsigned int degree_,double theta_n_time_,
-			double theta_Sv_, double penalty_Sv_,
-			double penalty_Sv_bdry_, std::vector<unsigned int> dirichlet_id_sv_, bool use_exact_pl_in_Sv_,
-			bool use_exact_Sa_in_Sv_,
-			bool second_order_time_derivative_, bool second_order_extrapolation_,
-			bool use_direct_solver_, bool Stab_v_, bool incompressible_, bool project_Darcy_with_gravity_,
-			PETScWrappers::MPI::Vector kappa_abs_vec_,
-			const unsigned int degreeRT_, bool project_only_kappa_,
-			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
+	template <int dim>
+	class VaporSaturationProblem
+	{
+	public:
+		VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
+							   const unsigned int degree_,
+							   double theta_n_time_,
+			     			   double theta_Sv_,  
+							   double penalty_Sv_,
+							   double penalty_Sv_bdry_, 
+                               std::vector<unsigned int> dirichlet_id_sv_,  
+                               bool use_exact_pl_in_Sv_,
+							   bool use_exact_Sa_in_Sv_,
+			                   bool second_order_time_derivative_,
+                               bool second_order_extrapolation_,
+			                   bool use_direct_solver_, 
+                               bool Stab_v_, 
+                               bool incompressible_, 
+                               bool project_Darcy_with_gravity_,
+			                   PETScWrappers::MPI::Vector kappa_abs_vec_,
+			                   const unsigned int degreeRT_, 
+                               bool project_only_kappa_,
+			                   MPI_Comm mpi_communicator_,
+                               const unsigned int n_mpi_processes_, 
+                               const unsigned int this_mpi_process_);
 
-	void assemble_system_matrix_vapor_saturation(double time_step_,
-						     double time_,
-						     unsigned int timestep_number_,
-						bool rebuild_matrix_,
-                                                  const PETScWrappers::MPI::Vector& pl_solution_,						 const PETScWrappers::MPI::Vector& pl_solution_n_,
-                                                  const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                  const PETScWrappers::MPI::Vector& Sa_solution_,
-                                                  const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                  const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                                  const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
-	void solve_vapor_saturation();
+		void assemble_system_Sv(double time_step_,
+						                             double time_,
+						                             unsigned int timestep_number_,
+						                             bool rebuild_matrix_,
+                                                     const PETScWrappers::MPI::Vector& pl_solution_,
+                      						         const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                                     const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                                     const PETScWrappers::MPI::Vector& Sa_solution_,
+                                                     const PETScWrappers::MPI::Vector& Sa_solution_n_,
+													 const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                                     const PETScWrappers::MPI::Vector& Sv_solution_n_,
+													 const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                                  	 const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
+		void solve_vapor_saturation();
 
     	void setup_system();
 
-	PETScWrappers::MPI::Vector Sv_solution;
+		PETScWrappers::MPI::Vector Sv_solution;
 private:
 
     parallel::shared::Triangulation<dim> triangulation;
@@ -282,7 +294,7 @@ void VaporSaturationProblem<dim>::setup_system()
 }
 
 template <int dim>
-void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation( double time_step_,
+void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 				double time_, 	
 				unsigned int timestep_number_,
 				bool rebuild_matrix_,
@@ -603,7 +615,6 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation( doubl
 					// Time term
 					if(timestep_number == 1 || !second_order_time_derivative)
 					{
-                        // Time term
 						copy_data.cell_matrix(i,j) +=
 							(1.0/time_step)
 							* phi_n
