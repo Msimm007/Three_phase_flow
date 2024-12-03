@@ -266,25 +266,14 @@ void VaporSaturationProblem<dim>::setup_system()
     DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
     sparsity_pattern.copy_from(dsp);
 
-	const std::vector<IndexSet> locally_owned_dofs_per_proc =
+    const std::vector<IndexSet> locally_owned_dofs_per_proc =
 		  DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
 	locally_owned_dofs = locally_owned_dofs_per_proc[this_mpi_process];
 
 	DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
 
-
-
 	Sv_solution.reinit(locally_owned_dofs, mpi_communicator);
-
-	right_hand_side_vapor_saturation.reinit(locally_owned_dofs, mpi_communicator);
-
-	const std::vector<IndexSet> locally_owned_dofs_per_proc_RT =
-		  DoFTools::locally_owned_dofs_per_subdomain(dof_handler_RT);
-	locally_owned_dofs_RT = locally_owned_dofs_per_proc_RT[this_mpi_process];
-
-	DoFTools::extract_locally_relevant_dofs(dof_handler_RT, locally_relevant_dofs_RT);
-
-    dof_handler_dg0.distribute_dofs(fe_dg0);
+        dof_handler_dg0.distribute_dofs(fe_dg0);
 	const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 =
 			DoFTools::locally_owned_dofs_per_subdomain(dof_handler_dg0);
 	locally_owned_dofs_dg0 = locally_owned_dofs_per_proc_dg0[this_mpi_process];
@@ -307,18 +296,24 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation( doubl
 				const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
                                 const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
 {
-	setup_system();
 
 	// time terms
 	time_step = time_step_;
 	time = time_;
 	timestep_number = timestep_number_;
 
+	rebuild_matrix = rebuild_matrix_;
+	
+	if (rebuild_matrix){
+
 	system_matrix_vapor_saturation.reinit(locally_owned_dofs,
 					  locally_owned_dofs,
 					  sparsity_pattern,
 					  mpi_communicator);
-	
+	}	
+
+	right_hand_side_vapor_saturation.reinit(locally_owned_dofs, mpi_communicator);
+
 	const FEValuesExtractors::Vector velocities(0);
 
 	using Iterator = typename DoFHandler<dim>::active_cell_iterator;
