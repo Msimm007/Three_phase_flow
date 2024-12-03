@@ -970,12 +970,10 @@ namespace AqueousSaturation
 
                         gamma_Sa_e += nu_h_artificial_visc;
 			
-                    	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
-		    }
-			//pcout << gamma_Sa_e << std:: endl;
+		            }
+                    // This is the problematic term. Commenting it out for now
                     //	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
 				
-			//pcout << gamma_Sa_e << std:: endl;
                     double h_e = cell->face(face_no)->measure(); // I think this is the term that is changing
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
 

@@ -48,7 +48,7 @@ double mu_a_data = 1.0;
 double mu_v_data = 0.25;
 
 // stability terms
-double kappa_tilde_a_data = 10.0;
+double kappa_tilde_a_data = 5.0;
 double kappa_tilde_v_data = 1.0;
 
 // Mesh creator

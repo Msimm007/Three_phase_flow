@@ -54,16 +54,16 @@
 
 namespace VaporSaturation
 {
-using namespace dealii;
+	using namespace dealii;
 
-struct CopyDataFace
-{
-    FullMatrix<double>                   cell_matrix;
-    Vector<double>                       cell_rhs;
-    std::vector<types::global_dof_index> joint_dof_indices;
-    std::array<unsigned int, 2>          cell_indices;
-    std::array<double, 2>                values;
-};
+	struct CopyDataFace
+	{
+    		FullMatrix<double>                   cell_matrix;
+    		Vector<double>                       cell_rhs;
+    		std::vector<types::global_dof_index> joint_dof_indices;
+    		std::array<unsigned int, 2>          cell_indices;
+    		std::array<double, 2>                values;
+	};
 
 
 
@@ -102,8 +102,11 @@ public:
 			const unsigned int degreeRT_, bool project_only_kappa_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
-	void assemble_system_matrix_vapor_saturation( double time_step_,double time_, unsigned int timestep_number_,
-                                                  const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+	void assemble_system_matrix_vapor_saturation(double time_step_,
+						     double time_,
+						     unsigned int timestep_number_,
+						bool rebuild_matrix_,
+                                                  const PETScWrappers::MPI::Vector& pl_solution_,						 const PETScWrappers::MPI::Vector& pl_solution_n_,
                                                   const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                                                   const PETScWrappers::MPI::Vector& Sa_solution_,
                                                   const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
@@ -111,10 +114,10 @@ public:
                                                   const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
 	void solve_vapor_saturation();
 
+    	void setup_system();
 
 	PETScWrappers::MPI::Vector Sv_solution;
 private:
-    void setup_system();
 
     parallel::shared::Triangulation<dim> triangulation;
     const MappingQ1<dim> mapping;
@@ -169,6 +172,7 @@ private:
     double 		 time_step;
     double       time;
     unsigned int timestep_number;
+    bool rebuild_matrix;	
     double       theta_n_time;
 
     double penalty_Sv;
@@ -268,10 +272,7 @@ void VaporSaturationProblem<dim>::setup_system()
 
 	DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
 
-    system_matrix_vapor_saturation.reinit(locally_owned_dofs,
-										  locally_owned_dofs,
-										  sparsity_pattern,
-										  mpi_communicator);
+
 
 	Sv_solution.reinit(locally_owned_dofs, mpi_communicator);
 
@@ -292,21 +293,32 @@ void VaporSaturationProblem<dim>::setup_system()
 }
 
 template <int dim>
-void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation( double time_step_,double time_, unsigned int timestep_number_,
-                                const PETScWrappers::MPI::Vector& pl_solution_, const PETScWrappers::MPI::Vector& pl_solution_n_,
+void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation( double time_step_,
+				double time_, 	
+				unsigned int timestep_number_,
+				bool rebuild_matrix_,
+                                const PETScWrappers::MPI::Vector& pl_solution_,
+				const PETScWrappers::MPI::Vector& pl_solution_n_,
                                 const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
                                 const PETScWrappers::MPI::Vector& Sa_solution_,
-                                const PETScWrappers::MPI::Vector& Sa_solution_n_, const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                const PETScWrappers::MPI::Vector& Sv_solution_n_, const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_n_, 
+				const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sv_solution_n_,
+				const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
                                 const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
 {
 	setup_system();
 
-    // time terms
-    time_step = time_step_;
-    time = time_;
-    timestep_number = timestep_number_;
+	// time terms
+	time_step = time_step_;
+	time = time_;
+	timestep_number = timestep_number_;
 
+	system_matrix_vapor_saturation.reinit(locally_owned_dofs,
+					  locally_owned_dofs,
+					  sparsity_pattern,
+					  mpi_communicator);
+	
 	const FEValuesExtractors::Vector velocities(0);
 
 	using Iterator = typename DoFHandler<dim>::active_cell_iterator;

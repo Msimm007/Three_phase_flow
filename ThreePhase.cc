@@ -1604,9 +1604,12 @@ namespace CouplingPressureSaturation {
                                                                 mpi_communicator, n_mpi_processes,
                                                                 this_mpi_process);
 
+	Sv_problem.setup_system();
+
         // start of sequential scheme
 
         bool rebuild_Sa_mat = true;
+	bool rebuild_Sv_mat = true;
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
         {
             // first print time step
@@ -1625,8 +1628,8 @@ namespace CouplingPressureSaturation {
             }
 
                 // first assemble system matrix for pl
-                timer.reset();
-                timer.start();
+            timer.reset();
+            timer.start();
             pl_problem.assemble_system_pl(time_step, time, timestep_number,
                                           pl_solution_n,
                                           pl_solution_nminus1,
@@ -1637,27 +1640,27 @@ namespace CouplingPressureSaturation {
                                           Sv_solution_n,
                                           Sv_solution_nminus1,
                                           Sv_solution_nminus2);
-                timer.stop();
+            timer.stop();
 
-                assemble_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for pl assemble: " << timer.cpu_time() << " seconds." << std::endl;
+            assemble_time[index_time] = timer.cpu_time();
+            pcout << "Elapsed CPU time for pl assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
-                // solve for pl
-                timer.reset();
-                timer.start();
-                pl_problem.solve_pressure();
-                timer.stop();
+            // solve for pl
+            timer.reset();
+            timer.start();
+            pl_problem.solve_pressure();
+            timer.stop();
 
-                solver_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl;
+            solver_time[index_time] = timer.cpu_time();
+            pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl;
 
-                //store solution
-                pl_solution = pl_problem.pl_solution;
+            //store solution
+            pl_solution = pl_problem.pl_solution;
 
-                // Project to appropriate RT space depending on user input
-                if (project_to_RT0)
-                {
-                    if (project_Darcy_with_gravity)
+            // Project to appropriate RT space depending on user input
+            if (project_to_RT0)
+            {
+                if (project_Darcy_with_gravity)
                     {
                         totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection_with_gravity(triangulation,
                                                                                                       degree, theta_pl,
@@ -1729,7 +1732,7 @@ namespace CouplingPressureSaturation {
                         totalDarcyvelocity_RT_Sv = totalDarcyvelocity_RT_Sa;
                     }
 
-                } else // Project to RTk
+            } else // Project to RTk
                 {
                     if (project_Darcy_with_gravity)
                     {
@@ -1775,14 +1778,14 @@ namespace CouplingPressureSaturation {
                     }
                 }
 
-                timer.stop();
-                RTproj_time[index_time] = timer.cpu_time();
-                pcout << "Elapsed CPU time for RT Projection: " << timer.cpu_time() << " seconds." << std::endl;
+            timer.stop();
+            RTproj_time[index_time] = timer.cpu_time();
+            pcout << "Elapsed CPU time for RT Projection: " << timer.cpu_time() << " seconds." << std::endl;
 
-                totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
-                totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
+            totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
+            totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
 
-                pcout << std::endl;
+            pcout << std::endl;
 
                     timer.reset();
                     timer.start();
@@ -1804,7 +1807,8 @@ namespace CouplingPressureSaturation {
             pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
             Sa_solution = Sa_problem.Sa_solution;
 
-            if (Stab_a) rebuild_Sa_mat = false;
+            if (Stab_a)
+                rebuild_Sa_mat = false;
 
             // stop here for two phase
             if (two_phase)
@@ -1816,7 +1820,7 @@ namespace CouplingPressureSaturation {
                 // Assemble system for Sv
                 timer.reset();
                 timer.start();
-                Sv_problem.assemble_system_matrix_vapor_saturation(time_step,time,timestep_number,
+                Sv_problem.assemble_system_matrix_vapor_saturation(time_step,time,timestep_number,rebuild_Sv_mat,
                                                                    pl_solution, pl_solution_n, pl_solution_nminus1,
                                                                    Sa_solution, Sa_solution_n, Sa_solution_nminus1,
                                                                    Sv_solution_n, Sv_solution_nminus1,totalDarcyvelocity_RT_Sv);
@@ -1992,7 +1996,7 @@ int main(int argc, char *argv[])
 				dgmethod.run();
         	}
 
-			delta_t /= 2.0;
+			delta_t /= 4.0;
         }
     }
     catch (std::exception &exc)
