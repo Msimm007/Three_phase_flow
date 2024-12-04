@@ -8,7 +8,7 @@ subsection Time discretization parameters
 
   # Initial time step
   #set Initial time step = 0.25
-  set Initial time step = 0.10
+  set Initial time step = 0.25
 
 
   # Second order time derivative
@@ -40,7 +40,7 @@ subsection Spatial discretization parameters
   set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = false
+  set Stab_v = true
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
   set Incompressible = true

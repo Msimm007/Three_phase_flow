@@ -73,7 +73,6 @@ namespace AqueousSaturation
             cell->get_dof_indices(local_dof_indices);
         }
         template <class Iterator>
-
         void reinit_rhs(const Iterator &cell, unsigned int dofs_per_cell)
         {
             cell_rhs.reinit(dofs_per_cell);

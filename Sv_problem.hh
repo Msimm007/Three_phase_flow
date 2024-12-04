@@ -51,6 +51,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <utility>
 
 namespace VaporSaturation
 {
@@ -75,22 +76,28 @@ namespace VaporSaturation
     	unsigned int                         cell_index;
 
     	template <class Iterator>
-    	void reinit(const Iterator &cell, unsigned int dofs_per_cell)
+    	void reinit_matrix(const Iterator &cell, unsigned int dofs_per_cell)
     	{
        		cell_matrix.reinit(dofs_per_cell, dofs_per_cell);
-        	cell_rhs.reinit(dofs_per_cell);
-
         	local_dof_indices.resize(dofs_per_cell);
         	cell->get_dof_indices(local_dof_indices);
     	}
-};
+
+        template<class Iterator>
+        void reinit_rhs(const Iterator &cell, unsigned int dofs_per_cell)
+        {
+            cell_rhs.reinit(dofs_per_cell);
+            local_dof_indices.resize(dofs_per_cell);
+            cell->get_dof_indices(local_dof_indices);
+        }
+	};
 
 	template <int dim>
 	class VaporSaturationProblem
 	{
 	public:
 		VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
-							   const unsigned int degree_,
+							   unsigned int degree_,
 							   double theta_n_time_,
 			     			   double theta_Sv_,  
 							   double penalty_Sv_,
@@ -105,122 +112,122 @@ namespace VaporSaturation
                                bool incompressible_, 
                                bool project_Darcy_with_gravity_,
 			                   PETScWrappers::MPI::Vector kappa_abs_vec_,
-			                   const unsigned int degreeRT_, 
+			                   unsigned int degreeRT_,
                                bool project_only_kappa_,
 			                   MPI_Comm mpi_communicator_,
-                               const unsigned int n_mpi_processes_, 
-                               const unsigned int this_mpi_process_);
+                               unsigned int n_mpi_processes_,
+                               unsigned int this_mpi_process_);
 
 		void assemble_system_Sv(double time_step_,
-						                             double time_,
-						                             unsigned int timestep_number_,
-						                             bool rebuild_matrix_,
-                                                     const PETScWrappers::MPI::Vector& pl_solution_,
-                      						         const PETScWrappers::MPI::Vector& pl_solution_n_,
-                                                     const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                                     const PETScWrappers::MPI::Vector& Sa_solution_,
-                                                     const PETScWrappers::MPI::Vector& Sa_solution_n_,
-													 const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                                     const PETScWrappers::MPI::Vector& Sv_solution_n_,
-													 const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                                  	 const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
-		void solve_vapor_saturation();
+						        double time_,
+						        unsigned int timestep_number_,
+						        bool rebuild_matrix_,
+                                const PETScWrappers::MPI::Vector& pl_solution_,
+                      			const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_,
+                                const PETScWrappers::MPI::Vector& Sa_solution_n_,
+								const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& Sv_solution_n_,
+								const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_);
+		void solve_vapor_saturation(const PETScWrappers::MPI::Vector& pl_solution_);
 
     	void setup_system();
 
 		PETScWrappers::MPI::Vector Sv_solution;
-private:
 
-    parallel::shared::Triangulation<dim> triangulation;
-    const MappingQ1<dim> mapping;
+	private:
 
-    const QGauss<dim>     quadrature;
-    const QGauss<dim - 1> face_quadrature;
+    	parallel::shared::Triangulation<dim> triangulation;
+    	const MappingQ1<dim> mapping;
 
-    using ScratchData = MeshWorker::ScratchData<dim>;
+    	const QGauss<dim>     quadrature;
+    	const QGauss<dim - 1> face_quadrature;
 
-    FE_DGQ<dim>     fe;
-    DoFHandler<dim> dof_handler;
-    const unsigned int degree;
+    	using ScratchData = MeshWorker::ScratchData<dim>;
 
-    MPI_Comm mpi_communicator;
+    	FE_DGQ<dim>     fe;
+    	DoFHandler<dim> dof_handler;
+    	const unsigned int degree;
 
-	const unsigned int n_mpi_processes;
-	const unsigned int this_mpi_process;
+    	MPI_Comm mpi_communicator;
 
-	ConditionalOStream pcout;
+		const unsigned int n_mpi_processes;
+		const unsigned int this_mpi_process;
 
-	IndexSet locally_owned_dofs;
-	IndexSet locally_relevant_dofs;
+		ConditionalOStream pcout;
 
-	IndexSet locally_owned_dofs_RT;
-	IndexSet locally_relevant_dofs_RT;
+		IndexSet locally_owned_dofs;
+		IndexSet locally_relevant_dofs;
 
-    SparsityPattern      sparsity_pattern;
+		IndexSet locally_owned_dofs_RT;
+		IndexSet locally_relevant_dofs_RT;
 
-    PETScWrappers::MPI::SparseMatrix system_matrix_vapor_saturation;
-	PETScWrappers::MPI::Vector right_hand_side_vapor_saturation;
+    	SparsityPattern      sparsity_pattern;
 
-    PETScWrappers::MPI::Vector pl_solution_nminus1;
-    PETScWrappers::MPI::Vector pl_solution_n;
-    PETScWrappers::MPI::Vector pl_solution;
+    	PETScWrappers::MPI::SparseMatrix system_matrix_vapor_saturation;
+		PETScWrappers::MPI::Vector right_hand_side_vapor_saturation;
 
-
-    PETScWrappers::MPI::Vector Sv_solution_nminus1;
-    PETScWrappers::MPI::Vector Sv_solution_n;
+    	PETScWrappers::MPI::Vector pl_solution_nminus1;
+    	PETScWrappers::MPI::Vector pl_solution_n;
+    	PETScWrappers::MPI::Vector pl_solution;
 
 
-    PETScWrappers::MPI::Vector Sa_solution_nminus1;
-    PETScWrappers::MPI::Vector Sa_solution;
-    PETScWrappers::MPI::Vector Sa_solution_n;
+    	PETScWrappers::MPI::Vector Sv_solution_nminus1;
+    	PETScWrappers::MPI::Vector Sv_solution_n;
+
+	    PETScWrappers::MPI::Vector Sa_solution_nminus1;
+	    PETScWrappers::MPI::Vector Sa_solution;
+ 	    PETScWrappers::MPI::Vector Sa_solution_n;
 
 
-    FE_DGQ<dim> fe_dg0;
-	DoFHandler<dim> dof_handler_dg0;
-	IndexSet locally_owned_dofs_dg0;
-	IndexSet locally_relevant_dofs_dg0;
-    PETScWrappers::MPI::Vector kappa_abs_vec;
+    	FE_DGQ<dim> fe_dg0;
+		DoFHandler<dim> dof_handler_dg0;
+		IndexSet locally_owned_dofs_dg0;
+		IndexSet locally_relevant_dofs_dg0;
+    	PETScWrappers::MPI::Vector kappa_abs_vec;
 
-    double 		 time_step;
-    double       time;
-    unsigned int timestep_number;
-    bool rebuild_matrix;	
-    double       theta_n_time;
+    	double 		 time_step;
+    	double       time;
+    	unsigned int timestep_number;
+    	bool         rebuild_matrix;
+    	double       theta_n_time;
 
-    double penalty_Sv;
-    double penalty_Sv_bdry;
+    	double penalty_Sv;
+    	double penalty_Sv_bdry;
 
-    std::vector<unsigned int> dirichlet_id_sv;
+    	std::vector<unsigned int> dirichlet_id_sv;
 
-    double theta_Sv;
-    bool Stab_v;
+    	double theta_Sv;
+    	bool Stab_v;
 
-    bool incompressible;
-    bool second_order_time_derivative;
-    bool second_order_extrapolation;
+    	bool incompressible;
+    	bool second_order_time_derivative;
+    	bool second_order_extrapolation;
 
-    bool use_direct_solver;
+    	bool use_direct_solver;
 
-    bool project_Darcy_with_gravity;
-    bool project_only_kappa;
+    	bool project_Darcy_with_gravity;
+    	bool project_only_kappa;
 
-    bool use_exact_pl_in_Sv;
-    bool use_exact_Sa_in_Sv;
+    	bool use_exact_pl_in_Sv;
+    	bool use_exact_Sa_in_Sv;
 
 	
-    PETScWrappers::MPI::Vector totalDarcyvelocity_RT;
+    	PETScWrappers::MPI::Vector totalDarcyvelocity_RT;
 
-    const unsigned int degreeRT;
-	FE_RaviartThomas<dim> fe_RT;
-	DoFHandler<dim> dof_handler_RT;
+    	const unsigned int degreeRT;
+		FE_RaviartThomas<dim> fe_RT;
+		DoFHandler<dim> dof_handler_RT;
 
-    AffineConstraints<double> constraints;
+    	AffineConstraints<double> constraints;
 
-};
+	};
 
 
-template <int dim>
-VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
+	template <int dim>
+	VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &triangulation_,
 		const unsigned int degree_,  double theta_n_time_,
 		double theta_Sv_, double penalty_Sv_,
 		double penalty_Sv_bdry_, std::vector<unsigned int> dirichlet_id_sv_, bool use_exact_pl_in_Sv_,
@@ -230,7 +237,7 @@ VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &tri
 		PETScWrappers::MPI::Vector kappa_abs_vec_,
 		const unsigned int degreeRT_, bool project_only_kappa_,
 		MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_)
-	: triangulation(MPI_COMM_WORLD)
+		: triangulation(MPI_COMM_WORLD)
 	, mapping()
 	, degree(degree_)
 	, fe(degree_)
@@ -242,7 +249,7 @@ VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &tri
 	, theta_Sv(theta_Sv_)
 	, penalty_Sv(penalty_Sv_)
 	, penalty_Sv_bdry(penalty_Sv_bdry_)
-	, dirichlet_id_sv(dirichlet_id_sv_)
+	, dirichlet_id_sv(std::move(dirichlet_id_sv_))
 	, use_exact_pl_in_Sv(use_exact_pl_in_Sv_)
 	, use_exact_Sa_in_Sv(use_exact_Sa_in_Sv_)
 	, second_order_time_derivative(second_order_time_derivative_)
@@ -261,445 +268,461 @@ VaporSaturationProblem<dim>::VaporSaturationProblem(Triangulation<dim, dim> &tri
 	, n_mpi_processes(n_mpi_processes_)
     , this_mpi_process(this_mpi_process_)
     , pcout(std::cout, (this_mpi_process == 0))
-{
+	{
 	triangulation.copy_triangulation(triangulation_);
-}
+	}
 
-template <int dim>
-void VaporSaturationProblem<dim>::setup_system()
-{
-    dof_handler.distribute_dofs(fe);
-    dof_handler_RT.distribute_dofs(fe_RT);
+	template <int dim>
+	void VaporSaturationProblem<dim>::setup_system()
+	{
+    	dof_handler.distribute_dofs(fe);
+    	dof_handler_RT.distribute_dofs(fe_RT);
 
-    constraints.clear();
-    constraints.close();
+    	constraints.clear();
+    	constraints.close();
 
-    DynamicSparsityPattern dsp(dof_handler.n_dofs());
-    DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
-    sparsity_pattern.copy_from(dsp);
+    	DynamicSparsityPattern dsp(dof_handler.n_dofs());
+    	DoFTools::make_flux_sparsity_pattern(dof_handler, dsp);
+    	sparsity_pattern.copy_from(dsp);
 
-    const std::vector<IndexSet> locally_owned_dofs_per_proc =
-		  DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
-	locally_owned_dofs = locally_owned_dofs_per_proc[this_mpi_process];
+    	const std::vector<IndexSet> locally_owned_dofs_per_proc = DoFTools::locally_owned_dofs_per_subdomain(dof_handler);
+		locally_owned_dofs = locally_owned_dofs_per_proc[this_mpi_process];
 
-	DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
+		DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
 
-	Sv_solution.reinit(locally_owned_dofs, mpi_communicator);
+        const std::vector<IndexSet> locally_owned_dofs_per_proc_RT =
+                DoFTools::locally_owned_dofs_per_subdomain(dof_handler_RT);
+        locally_owned_dofs_RT = locally_owned_dofs_per_proc_RT[this_mpi_process];
+
+        DoFTools::extract_locally_relevant_dofs(dof_handler_RT, locally_relevant_dofs_RT);
+
+
         dof_handler_dg0.distribute_dofs(fe_dg0);
-	const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 =
-			DoFTools::locally_owned_dofs_per_subdomain(dof_handler_dg0);
-	locally_owned_dofs_dg0 = locally_owned_dofs_per_proc_dg0[this_mpi_process];
+		const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 = DoFTools::locally_owned_dofs_per_subdomain(dof_handler_dg0);
 
-	DoFTools::extract_locally_relevant_dofs(dof_handler_dg0, locally_relevant_dofs_dg0);
-}
+		locally_owned_dofs_dg0 = locally_owned_dofs_per_proc_dg0[this_mpi_process];
 
-template <int dim>
-void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
-				double time_, 	
-				unsigned int timestep_number_,
-				bool rebuild_matrix_,
-                                const PETScWrappers::MPI::Vector& pl_solution_,
-				const PETScWrappers::MPI::Vector& pl_solution_n_,
-                                const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
-                                const PETScWrappers::MPI::Vector& Sa_solution_,
-                                const PETScWrappers::MPI::Vector& Sa_solution_n_, 
-				const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
-                                const PETScWrappers::MPI::Vector& Sv_solution_n_,
-				const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
-                                const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
-{
+		DoFTools::extract_locally_relevant_dofs(dof_handler_dg0, locally_relevant_dofs_dg0);
+	}
 
-	// time terms
-	time_step = time_step_;
-	time = time_;
-	timestep_number = timestep_number_;
+	template <int dim>
+	void VaporSaturationProblem<dim>::assemble_system_Sv(double time_step_,
+														double time_,
+														unsigned int timestep_number_,
+														bool rebuild_matrix_,
+                                						const PETScWrappers::MPI::Vector& pl_solution_,
+														const PETScWrappers::MPI::Vector& pl_solution_n_,
+                                						const PETScWrappers::MPI::Vector& pl_solution_nminus1_,
+                                						const PETScWrappers::MPI::Vector& Sa_solution_,
+                               							const PETScWrappers::MPI::Vector& Sa_solution_n_,
+														const PETScWrappers::MPI::Vector& Sa_solution_nminus1_,
+                                						const PETScWrappers::MPI::Vector& Sv_solution_n_,
+														const PETScWrappers::MPI::Vector& Sv_solution_nminus1_,
+                                						const PETScWrappers::MPI::Vector& totalDarcyvelocity_RT_)
+	{
+        //update rebuild_matrix
+        rebuild_matrix = rebuild_matrix_;
 
-	rebuild_matrix = rebuild_matrix_;
-	
-	if (rebuild_matrix){
+        // reinit LHS matrix
+        if (rebuild_matrix){
 
-	system_matrix_vapor_saturation.reinit(locally_owned_dofs,
-					  locally_owned_dofs,
-					  sparsity_pattern,
-					  mpi_communicator);
-	}	
+            system_matrix_vapor_saturation.reinit(locally_owned_dofs,
+                                                  locally_owned_dofs,
+                                                  sparsity_pattern,
+                                                  mpi_communicator);
+        }
+        // reinit RHS matrix
+        right_hand_side_vapor_saturation.reinit(locally_owned_dofs, mpi_communicator);
 
-	right_hand_side_vapor_saturation.reinit(locally_owned_dofs, mpi_communicator);
-
-	const FEValuesExtractors::Vector velocities(0);
-
-	using Iterator = typename DoFHandler<dim>::active_cell_iterator;
-	BoundaryValuesVaporSaturation<dim> boundary_function;
-	RightHandSideVaporSaturation<dim> right_hand_side_fcn;
-	GravitySourceTerm<dim> gravity_fcn;
-
-	// Liquid Pressure
-	ExactLiquidPressure<dim> pl_fcn;
-
-	// Saturations
-	ExactAqueousSaturation<dim> Sa_fcn;
-
-	// Vapor saturation
-	ExactVaporSaturation<dim> Sv_fcn;
-
-	// Porosity
-	porosity<dim> porosity_fcn;
-
-	// Densities
-	rho_l<dim> rho_l_fcn;
-	rho_v<dim> rho_v_fcn;
-	rho_a<dim> rho_a_fcn;
-
-	// Mobilities
-	lambda_l<dim> lambda_l_fcn;
-	lambda_v<dim> lambda_v_fcn;
-	lambda_a<dim> lambda_a_fcn;
-
-    // Stabilization term
-    StabVaporSaturation<dim> kappa_tilde_v_fcn;
-    double kappa_tilde_v = kappa_tilde_v_fcn.value();
-
-	// Capillary pressures
-	CapillaryPressurePcv<dim> cap_p_pcv_fcn;
-
-	// Neumann term
-	NeumannTermVaporSaturation<dim> neumann_fcn;
-
-	PETScWrappers::MPI::Vector temp_pl_solution;
-	PETScWrappers::MPI::Vector temp_pl_solution_n;
-	PETScWrappers::MPI::Vector temp_pl_solution_nminus1;
-    PETScWrappers::MPI::Vector temp_pl_solution_kplus1;
-
-	PETScWrappers::MPI::Vector temp_Sa_solution;
-	PETScWrappers::MPI::Vector temp_Sa_solution_n;
-	PETScWrappers::MPI::Vector temp_Sa_solution_nminus1;
-    PETScWrappers::MPI::Vector temp_Sa_solution_kplus1;
-
-	PETScWrappers::MPI::Vector temp_Sv_solution_n;
-	PETScWrappers::MPI::Vector temp_Sv_solution_nminus1;
-    PETScWrappers::MPI::Vector temp_Sv_solution_k;
+        // update time terms
+		time_step = time_step_;
+		time = time_;
+		timestep_number = timestep_number_;
 
 
-    PETScWrappers::MPI::Vector temp_totalDarcyVelocity_RT;
 
-	PETScWrappers::MPI::Vector temp_kappa;
+		const FEValuesExtractors::Vector velocities(0);
 
-	temp_pl_solution.reinit(locally_owned_dofs,
-							locally_relevant_dofs,
-							mpi_communicator);
+		using Iterator = typename DoFHandler<dim>::active_cell_iterator;
+		BoundaryValuesVaporSaturation<dim> boundary_function;
+		RightHandSideVaporSaturation<dim> right_hand_side_fcn;
+		GravitySourceTerm<dim> gravity_fcn;
 
-	temp_pl_solution_n.reinit(locally_owned_dofs,
-							  locally_relevant_dofs,
-							  mpi_communicator);
+		// Liquid Pressure
+		ExactLiquidPressure<dim> pl_fcn;
 
-	temp_pl_solution_nminus1.reinit(locally_owned_dofs,
-									locally_relevant_dofs,
-									mpi_communicator);
-    temp_pl_solution_kplus1.reinit(locally_owned_dofs,
-                                   locally_relevant_dofs,
-                                   mpi_communicator);
+		// Saturations
+		ExactAqueousSaturation<dim> Sa_fcn;
 
+		// Vapor saturation
+		ExactVaporSaturation<dim> Sv_fcn;
 
-    temp_Sa_solution.reinit(locally_owned_dofs,
-							locally_relevant_dofs,
-							mpi_communicator);
+		// Porosity
+		porosity<dim> porosity_fcn;
 
-	temp_Sa_solution_n.reinit(locally_owned_dofs,
-							  locally_relevant_dofs,
-							  mpi_communicator);
+		// Densities
+		rho_l<dim> rho_l_fcn;
+		rho_v<dim> rho_v_fcn;
+		rho_a<dim> rho_a_fcn;
 
-	temp_Sa_solution_nminus1.reinit(locally_owned_dofs,
-									locally_relevant_dofs,
-									mpi_communicator);
-    temp_Sa_solution_kplus1.reinit(locally_owned_dofs,
-                                   locally_relevant_dofs,
-                                   mpi_communicator);
+		// Mobilities
+		lambda_l<dim> lambda_l_fcn;
+		lambda_v<dim> lambda_v_fcn;
+		lambda_a<dim> lambda_a_fcn;
 
-	temp_Sv_solution_n.reinit(locally_owned_dofs,
-							  locally_relevant_dofs,
-							  mpi_communicator);
+    	// Stabilization term
+    	StabVaporSaturation<dim> kappa_tilde_v_fcn;
+    	double kappa_tilde_v = kappa_tilde_v_fcn.value();
 
-	temp_Sv_solution_nminus1.reinit(locally_owned_dofs,
-									locally_relevant_dofs,
-									mpi_communicator);
-    temp_Sv_solution_k.reinit(locally_owned_dofs,
-                              locally_relevant_dofs,
-                              mpi_communicator);
+	    // Capillary pressures
+	    CapillaryPressurePcv<dim> cap_p_pcv_fcn;
 
-	temp_totalDarcyVelocity_RT.reinit(locally_owned_dofs_RT,
-									  locally_relevant_dofs_RT,
-									  mpi_communicator);
+	    // Neumann term
+	    NeumannTermVaporSaturation<dim> neumann_fcn;
 
-	temp_kappa.reinit(locally_owned_dofs_dg0,
-					  locally_relevant_dofs_dg0,
-					  mpi_communicator);
+	    PETScWrappers::MPI::Vector temp_pl_solution;
+	    PETScWrappers::MPI::Vector temp_pl_solution_n;
+	    PETScWrappers::MPI::Vector temp_pl_solution_nminus1;
+        PETScWrappers::MPI::Vector temp_pl_solution_kplus1;
 
-	temp_pl_solution = pl_solution_;
-	temp_pl_solution_n = pl_solution_n_;
-	temp_pl_solution_nminus1 = pl_solution_nminus1_;
+	    PETScWrappers::MPI::Vector temp_Sa_solution;
+	    PETScWrappers::MPI::Vector temp_Sa_solution_n;
+	    PETScWrappers::MPI::Vector temp_Sa_solution_nminus1;
+        PETScWrappers::MPI::Vector temp_Sa_solution_kplus1;
+
+	    PETScWrappers::MPI::Vector temp_Sv_solution_n;
+	    PETScWrappers::MPI::Vector temp_Sv_solution_nminus1;
+        PETScWrappers::MPI::Vector temp_Sv_solution_k;
 
 
-    temp_Sa_solution = Sa_solution_;
-	temp_Sa_solution_n = Sa_solution_n_;
-	temp_Sa_solution_nminus1 = Sa_solution_nminus1_;
+        PETScWrappers::MPI::Vector temp_totalDarcyVelocity_RT;
+
+	    PETScWrappers::MPI::Vector temp_kappa;
+
+	    temp_pl_solution.reinit(locally_owned_dofs,
+	    						locally_relevant_dofs,
+	    						mpi_communicator);
+
+	    temp_pl_solution_n.reinit(locally_owned_dofs,
+	    						  locally_relevant_dofs,
+	    						  mpi_communicator);
+
+	    temp_pl_solution_nminus1.reinit(locally_owned_dofs,
+	    								locally_relevant_dofs,
+	    								mpi_communicator);
+        temp_pl_solution_kplus1.reinit(locally_owned_dofs,
+                                       locally_relevant_dofs,
+                                       mpi_communicator);
 
 
-    temp_Sv_solution_n = Sv_solution_n_;
-	temp_Sv_solution_nminus1 = Sv_solution_nminus1_;
+        temp_Sa_solution.reinit(locally_owned_dofs,
+	    						locally_relevant_dofs,
+	    						mpi_communicator);
+
+	    temp_Sa_solution_n.reinit(locally_owned_dofs,
+	    						  locally_relevant_dofs,
+	    						  mpi_communicator);
+
+	    temp_Sa_solution_nminus1.reinit(locally_owned_dofs,
+	    								locally_relevant_dofs,
+	    								mpi_communicator);
+        temp_Sa_solution_kplus1.reinit(locally_owned_dofs,
+                                       locally_relevant_dofs,
+                                       mpi_communicator);
+
+	    temp_Sv_solution_n.reinit(locally_owned_dofs,
+	    						  locally_relevant_dofs,
+	    						  mpi_communicator);
+
+	    temp_Sv_solution_nminus1.reinit(locally_owned_dofs,
+	    								locally_relevant_dofs,
+	    								mpi_communicator);
+        temp_Sv_solution_k.reinit(locally_owned_dofs,
+                                  locally_relevant_dofs,
+                                  mpi_communicator);
+
+	    temp_totalDarcyVelocity_RT.reinit(locally_owned_dofs_RT,
+	    								  locally_relevant_dofs_RT,
+	    								  mpi_communicator);
+
+	    temp_kappa.reinit(locally_owned_dofs_dg0,
+	    				  locally_relevant_dofs_dg0,
+	    				  mpi_communicator);
+
+	    temp_pl_solution = pl_solution_;
+	    temp_pl_solution_n = pl_solution_n_;
+	    temp_pl_solution_nminus1 = pl_solution_nminus1_;
 
 
-    temp_totalDarcyVelocity_RT = totalDarcyvelocity_RT_;
+        temp_Sa_solution = Sa_solution_;
+	    temp_Sa_solution_n = Sa_solution_n_;
+	    temp_Sa_solution_nminus1 = Sa_solution_nminus1_;
 
-	temp_kappa = kappa_abs_vec;
 
-	// Volume integrals
-	const auto cell_worker = [&](const auto &cell,
+        temp_Sv_solution_n = Sv_solution_n_;
+	    temp_Sv_solution_nminus1 = Sv_solution_nminus1_;
+
+
+        temp_totalDarcyVelocity_RT = totalDarcyvelocity_RT_;
+
+	    temp_kappa = kappa_abs_vec;
+
+	    // Volume integrals
+	    const auto cell_worker = [&](const auto &cell,
 								 auto &scratch_data,
 								 auto & copy_data)
-	{
-		const FEValues<dim> &fe_v = scratch_data.reinit(cell);
+	    {
+		    const FEValues<dim> &fe_v = scratch_data.reinit(cell);
 
-		const unsigned int n_dofs = fe_v.dofs_per_cell;
-		copy_data.reinit(cell, n_dofs);
+		    const unsigned int n_dofs = fe_v.dofs_per_cell;
 
-		const auto &q_points = fe_v.get_quadrature_points();
-		const int n_qpoints = q_points.size();
+            if(rebuild_matrix)
+            {
+                copy_data.reinit_matrix(cell, n_dofs);
+            }
 
-		const std::vector<double> &JxW  = fe_v.get_JxW_values();
+            copy_data.reinit_rhs(cell, n_dofs);
 
-		FEValues<dim> fe_values_RT(fe_RT,
+		    const auto &q_points = fe_v.get_quadrature_points();
+		    const int n_qpoints = q_points.size();
+
+		    const std::vector<double> &JxW  = fe_v.get_JxW_values();
+
+		    FEValues<dim> fe_values_RT(fe_RT,
 								   quadrature,
 								   update_values);
 
-		typename DoFHandler<dim>::cell_iterator cell_RT(&triangulation,
+		    typename DoFHandler<dim>::cell_iterator cell_RT(&triangulation,
 				cell->level(), cell->index(), &dof_handler_RT);
 
-		fe_values_RT.reinit(cell_RT);
+		    fe_values_RT.reinit(cell_RT);
 
-		std::vector<double>         rhs_values(n_qpoints);
-		right_hand_side_fcn.set_time(time);
-		right_hand_side_fcn.value_list(q_points, rhs_values);
+		    std::vector<double>         rhs_values(n_qpoints);
+		    right_hand_side_fcn.set_time(time);
+		    right_hand_side_fcn.value_list(q_points, rhs_values);
 
-		gravity_fcn.set_time(time);
+		    gravity_fcn.set_time(time);
 
-		std::vector<double> pl_vals(n_qpoints);
-		std::vector<double> old_pl_vals(n_qpoints);
-		std::vector<double> old_pl_vals_nminus1(n_qpoints);
-		std::vector<Tensor<1, dim>> pl_grads(n_qpoints);
+            // Vectors containing discrete solutions at int points
+		    std::vector<double> pl_vals(n_qpoints);
+		    std::vector<double> old_pl_vals(n_qpoints);
+		    std::vector<double> old_pl_vals_nminus1(n_qpoints);
+		    std::vector<Tensor<1, dim>> pl_grads(n_qpoints);
 
-		std::vector<double> Sa_vals(n_qpoints);
-		std::vector<double> old_Sa_vals(n_qpoints);
-		std::vector<double> old_Sa_vals_nminus1(n_qpoints);
+		    std::vector<double> Sa_vals(n_qpoints);
+		    std::vector<double> old_Sa_vals(n_qpoints);
+		    std::vector<double> old_Sa_vals_nminus1(n_qpoints);
 
-		std::vector<double> old_Sv_vals(n_qpoints);
-		std::vector<double> old_Sv_vals_nminus1(n_qpoints);
-        std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+		    std::vector<double> old_Sv_vals(n_qpoints);
+		    std::vector<double> old_Sv_vals_nminus1(n_qpoints);
+            std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
 
-		fe_v.get_function_values(temp_pl_solution, pl_vals);
-		fe_v.get_function_values(temp_pl_solution_n, old_pl_vals);
-		fe_v.get_function_values(temp_pl_solution_nminus1, old_pl_vals_nminus1);
-		fe_v.get_function_gradients(temp_pl_solution, pl_grads);
+		    fe_v.get_function_values(temp_pl_solution, pl_vals);
+		    fe_v.get_function_values(temp_pl_solution_n, old_pl_vals);
+		    fe_v.get_function_values(temp_pl_solution_nminus1, old_pl_vals_nminus1);
+		    fe_v.get_function_gradients(temp_pl_solution, pl_grads);
 
-		fe_v.get_function_values(temp_Sa_solution, Sa_vals);
-		fe_v.get_function_values(temp_Sa_solution_n, old_Sa_vals);
-		fe_v.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
+		    fe_v.get_function_values(temp_Sa_solution, Sa_vals);
+		    fe_v.get_function_values(temp_Sa_solution_n, old_Sa_vals);
+		    fe_v.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
 
-		fe_v.get_function_values(temp_Sv_solution_n, old_Sv_vals);
-		fe_v.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
-        fe_v.get_function_gradients(temp_Sv_solution_n, old_Sv_grads);
+		    fe_v.get_function_values(temp_Sv_solution_n, old_Sv_vals);
+		    fe_v.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
+            fe_v.get_function_gradients(temp_Sv_solution_n, old_Sv_grads);
 
-		std::vector<Tensor<1, dim>> DarcyVelocities(n_qpoints);
-		fe_values_RT[velocities].get_function_values(temp_totalDarcyVelocity_RT, DarcyVelocities);
+		    std::vector<Tensor<1, dim>> DarcyVelocities(n_qpoints);
+		    fe_values_RT[velocities].get_function_values(temp_totalDarcyVelocity_RT, DarcyVelocities);
 
 
-		double kappa = temp_kappa[cell->global_active_cell_index()];
+		    double kappa = temp_kappa[cell->global_active_cell_index()];
 
-		for (unsigned int point = 0; point < n_qpoints; ++point)
-		{
-			double pl_value = pl_vals[point];
-			double pl_value_n = old_pl_vals[point];
-			double pl_value_nminus1 = old_pl_vals_nminus1[point];
-			Tensor<1,dim> pl_grad = pl_grads[point];
+            for (unsigned int point = 0; point < n_qpoints; ++point)
+		    {
+			    double pl_value = pl_vals[point];
+			    double pl_value_n = old_pl_vals[point];
+			    double pl_value_nminus1 = old_pl_vals_nminus1[point];
+			    Tensor<1,dim> pl_grad = pl_grads[point];
 
-			if(use_exact_pl_in_Sv)
-			{
-				pl_fcn.set_time(time);
+			    if(use_exact_pl_in_Sv)
+			    {
+				    pl_fcn.set_time(time);
 
-				pl_value = pl_fcn.value(q_points[point]);
-				pl_grad = pl_fcn.gradient(q_points[point]);
+				    pl_value = pl_fcn.value(q_points[point]);
+				    pl_grad = pl_fcn.gradient(q_points[point]);
 
-				pl_fcn.set_time(time - time_step);
+				    pl_fcn.set_time(time - time_step);
 
-				pl_value_n = pl_fcn.value(q_points[point]);
+				    pl_value_n = pl_fcn.value(q_points[point]);
 
-				pl_fcn.set_time(time - 2.0*time_step);
+				    pl_fcn.set_time(time - 2.0*time_step);
 
-				pl_value_nminus1 = pl_fcn.value(q_points[point]);
-			}
+				    pl_value_nminus1 = pl_fcn.value(q_points[point]);
+			    }
 
-			double Sa_value = Sa_vals[point];
-			double Sa_value_n = old_Sa_vals[point];
-			double Sa_value_nminus1 = old_Sa_vals_nminus1[point];
+			    double Sa_value = Sa_vals[point];
+			    double Sa_value_n = old_Sa_vals[point];
+			    double Sa_value_nminus1 = old_Sa_vals_nminus1[point];
 
-			if(use_exact_Sa_in_Sv)
-			{
-				Sa_fcn.set_time(time);
+			    if(use_exact_Sa_in_Sv)
+			    {
+				    Sa_fcn.set_time(time);
 
-				Sa_value = Sa_fcn.value(q_points[point]);
+				    Sa_value = Sa_fcn.value(q_points[point]);
 
-				Sa_fcn.set_time(time - time_step);
+				    Sa_fcn.set_time(time - time_step);
 
-				Sa_value_n = Sa_fcn.value(q_points[point]);
+				    Sa_value_n = Sa_fcn.value(q_points[point]);
 
-				Sa_fcn.set_time(time - 2.0*time_step);
+				    Sa_fcn.set_time(time - 2.0*time_step);
 
-				Sa_value_nminus1 = Sa_fcn.value(q_points[point]);
+				    Sa_value_nminus1 = Sa_fcn.value(q_points[point]);
 
-			}
+                }
 
-			double Sv_value_n = old_Sv_vals[point];
-			double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
-                        Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
-			Tensor<1,dim> totalDarcyVelo = DarcyVelocities[point];
+			    double Sv_value_n = old_Sv_vals[point];
+			    double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
+                Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
+			    Tensor<1,dim> totalDarcyVelo = DarcyVelocities[point];
 
-			double Sv_nplus1_extrapolation = Sv_value_n;
-			double Sa_nplus1_extrapolation = Sa_value_n;
-			Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
+			    double Sv_nplus1_extrapolation = Sv_value_n;
+			    double Sa_nplus1_extrapolation = Sa_value_n;
+			    Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
 
-			if(second_order_extrapolation)
-			{
-				Sv_nplus1_extrapolation *= 2.0;
-				Sv_nplus1_extrapolation -= Sv_value_nminus1;
+			    if(second_order_extrapolation)
+			    {
+			    	Sv_nplus1_extrapolation *= 2.0;
+			    	Sv_nplus1_extrapolation -= Sv_value_nminus1;
 
-				Sa_nplus1_extrapolation *= 2.0;
-				Sa_nplus1_extrapolation -= Sa_value_nminus1;
+			    	Sa_nplus1_extrapolation *= 2.0;
+			    	Sa_nplus1_extrapolation -= Sa_value_nminus1;
 
-			}
+			    }
 
-			double phi_nplus1 = porosity_fcn.value(pl_value);
-			double phi_n = porosity_fcn.value(pl_value_n);
-			double phi_nminus1 = porosity_fcn.value(pl_value_nminus1);
+			    double phi_nplus1 = porosity_fcn.value(pl_value);
+			    double phi_n = porosity_fcn.value(pl_value_n);
+			    double phi_nminus1 = porosity_fcn.value(pl_value_nminus1);
 
-			double rho_l = rho_l_fcn.value(pl_value);
-			double rho_v = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double rho_v_extr = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double rho_a = rho_a_fcn.value(pl_value);
+			    double rho_l = rho_l_fcn.value(pl_value);
+			    double rho_v = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double rho_v_extr = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double rho_a = rho_a_fcn.value(pl_value);
 
-			double rho_v_n = rho_v_fcn.value(pl_value_n, Sa_value_n, Sv_value_n);
-			double rho_v_nminus1 = rho_v_fcn.value(pl_value_nminus1, Sa_value_nminus1, Sv_value_nminus1);
+			    double rho_v_n = rho_v_fcn.value(pl_value_n, Sa_value_n, Sv_value_n);
+			    double rho_v_nminus1 = rho_v_fcn.value(pl_value_nminus1, Sa_value_nminus1, Sv_value_nminus1);
 
-			if(incompressible)
-			{
-				rho_l = rho_v = rho_a = 1.0;
-				rho_v_n = 1.0;
-				rho_v_nminus1 = 1.0;
-			}
+			    if(incompressible)
+			    {
+			    	rho_l = rho_v = rho_a = 1.0;
+			    	rho_v_n = 1.0;
+			    	rho_v_nminus1 = 1.0;
+			    }
 
-			double lambda_l = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_v = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_a = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double lambda_l = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double lambda_v = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double lambda_a = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
 
-			double lambda_l_extr = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_v_extr = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_a_extr = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double lambda_l_extr = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double lambda_v_extr = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			    double lambda_a_extr = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
 
-			double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
-			double rholambda_t_extr = rho_l*lambda_l_extr + rho_v_extr*lambda_v_extr + rho_a*lambda_a_extr;
+			    double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
+			    double rholambda_t_extr = rho_l*lambda_l_extr + rho_v_extr*lambda_v_extr + rho_a*lambda_a_extr;
 
-			double dpcv_dSv = cap_p_pcv_fcn.derivative_wrt_Sv(Sv_nplus1_extrapolation);
+			    double dpcv_dSv = cap_p_pcv_fcn.derivative_wrt_Sv(Sv_nplus1_extrapolation);
 
-			for (unsigned int i = 0; i < n_dofs; ++i)
-			{
-				for (unsigned int j = 0; j < n_dofs; ++j)
-				{
-					// Time term
-					if(timestep_number == 1 || !second_order_time_derivative)
-					{
-						copy_data.cell_matrix(i,j) +=
-							(1.0/time_step)
-							* phi_n
-							* rho_v_n
-							* fe_v.shape_value(i, point)
-							* fe_v.shape_value(j, point)
-							* JxW[point];
-					}
-					else
-					{
-						copy_data.cell_matrix(i,j) +=
-							(1.0/time_step)
-							* 1.5
-							* phi_nplus1
-							* rho_v
-							* fe_v.shape_value(i, point)
-							* fe_v.shape_value(j, point)
-							* JxW[point];
-					}
-					// Diffusion Term
-                    if(Stab_v)
-                    {
-                        copy_data.cell_matrix(i,j) +=
-                                kappa_tilde_v
+			    // start of volume terms
+			    for (unsigned int i = 0; i < n_dofs; ++i)
+			    {
+				    if(rebuild_matrix)
+				    {
+					    for (unsigned int j = 0; j < n_dofs; ++j)
+					    {
+						// Time term
+						    if(timestep_number == 1 || !second_order_time_derivative)
+						    {
+							    copy_data.cell_matrix(i,j) +=
+								(1.0/time_step)
+								* phi_n
+								* rho_v_n
+								* fe_v.shape_value(i, point)
+								* fe_v.shape_value(j, point)
+								* JxW[point];
+						    }
+						    else
+						    {
+							copy_data.cell_matrix(i,j) +=
+								(1.0/time_step)
+								* 1.5
+								* phi_nplus1
+								* rho_v
+								* fe_v.shape_value(i, point)
+								* fe_v.shape_value(j, point)
+								* JxW[point];
+						    }
+                            // Diffusion Term
+                    	    if(Stab_v)
+                    	    {
+                        	    copy_data.cell_matrix(i,j) +=
+                            	kappa_tilde_v
                                 * kappa
                                 * fe_v.shape_grad(i, point)
                                 * fe_v.shape_grad(j, point)
                                 * JxW[point];
-                    }
-                    else
-                    {
-                        copy_data.cell_matrix(i,j) +=
-                                 rho_v
-                                * lambda_v
-                                * dpcv_dSv
-                                * kappa
-                                * fe_v.shape_grad(i, point)
-                                * fe_v.shape_grad(j, point)
-                                * JxW[point];
-                    }
-				}
-				// Source term
-				copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point])
+                    	    }
+                    	    else
+                            {
+                                copy_data.cell_matrix(i, j) +=
+                                    rho_v
+                                    * lambda_v
+                                    * dpcv_dSv
+                                    * kappa
+                                    * fe_v.shape_grad(i, point)
+                                    * fe_v.shape_grad(j, point)
+                                    * JxW[point];
+                        	}
+                        }
+				    }
+				    // Source term
+				    copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point])
 						* fe_v.shape_value(i, point)
 						* JxW[point];
-				// Time term
-				if(timestep_number == 1 || !second_order_time_derivative)
-				{
+				    // Time term
+				    if(timestep_number == 1 || !second_order_time_derivative)
+				    {
 					copy_data.cell_rhs(i) += (1.0/time_step) * phi_n * rho_v_n * Sv_value_n
 							* fe_v.shape_value(i, point) * JxW[point];
-
-				}
-				else
-				{
+				    }
+				    else
+				    {
 					copy_data.cell_rhs(i) += (1.0/time_step)
 											* (2.0 * phi_n * rho_v_n * Sv_value_n
 													- 0.5 * phi_nminus1 * rho_v_nminus1 * Sv_value_nminus1)
 											* fe_v.shape_value(i, point) * JxW[point];
-				}
-
-                // Diffusion term moved to RHS - stab method
-                if (Stab_v)
-                {
-                    copy_data.cell_rhs(i) += (-rho_v * lambda_v * dpcv_dSv + kappa_tilde_v)
+				    }
+                    // Diffusion term moved to RHS - stab method
+                    if (Stab_v)
+                    {
+                        copy_data.cell_rhs(i) += (-rho_v * lambda_v * dpcv_dSv + kappa_tilde_v)
                                              * kappa * Sv_grad_n
                                              * fe_v.shape_grad(i, point) * JxW[point];
-                }
-
+                    }
 				// Darcy term. Coefficient depends on what was projected
-				if(project_only_kappa)
-					copy_data.cell_rhs(i) += (rho_v*lambda_v) * totalDarcyVelo_extrapolation
+				    if(project_only_kappa)
+					    copy_data.cell_rhs(i) += (rho_v*lambda_v) * totalDarcyVelo_extrapolation
 							* fe_v.shape_grad(i, point) * JxW[point];
-				else
-					copy_data.cell_rhs(i) += (rho_v*lambda_v/rholambda_t_extr) * totalDarcyVelo_extrapolation
+				    else
+					    copy_data.cell_rhs(i) += (rho_v*lambda_v/rholambda_t_extr) * totalDarcyVelo_extrapolation
 							* fe_v.shape_grad(i, point) * JxW[point];
 
 				// Gravity term
-				if(!project_Darcy_with_gravity)
-					copy_data.cell_rhs(i) += kappa*rho_v_fcn.value(pl_value_n, Sa_value_n, Sv_value_n)*rho_v*lambda_v
+				    if(!project_Darcy_with_gravity)
+					    copy_data.cell_rhs(i) += kappa*rho_v_fcn.value(pl_value_n, Sa_value_n, Sv_value_n)*rho_v*lambda_v
 							* gravity_fcn.vector_value(q_points[point])
 							* fe_v.shape_grad(i, point)
 							* JxW[point];
-			}
-		}
-	};
+			    }
+		    }
+	    };
 	// Boundary face integrals
     const auto boundary_worker = [&](const auto &cell,
                                      const unsigned int &face_no,
@@ -848,22 +871,30 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 
 				double dpcv_dSv = cap_p_pcv_fcn.derivative_wrt_Sv(Sv_nplus1_extrapolation);
 
-				double gamma_Sv_e = fabs(rho_v*lambda_v*kappa*dpcv_dSv);
-				gamma_Sv_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
+				double gamma_Sv_e;
+				if(Stab_v)
+				{
+					gamma_Sv_e = fabs(kappa_tilde_v*kappa);
+				}
+				else
+				{
+					gamma_Sv_e = fabs(rho_v*lambda_v*kappa*dpcv_dSv);
+				}
+				//gamma_Sv_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
 
 				double h_e = cell->face(face_no)->measure();
 				double penalty_factor = (penalty_Sv_bdry/h_e) * gamma_Sv_e * degree*(degree + dim - 1);
 
 				for (unsigned int i = 0; i < n_facet_dofs; ++i)
 				{
-
-					for (unsigned int j = 0; j < n_facet_dofs; ++j)
+					if(rebuild_matrix)
 					{
-
-                        if(Stab_v)
-                        {
-                            // Diffusion term
-                            copy_data.cell_matrix(i, j) -=
+						for (unsigned int j = 0; j < n_facet_dofs; ++j)
+						{
+                        	if(Stab_v)
+                        	{
+                            	// Diffusion term
+                            	copy_data.cell_matrix(i, j) -=
                                     kappa_tilde_v
                                     * kappa
                                     * fe_face.shape_value(i, point)
@@ -871,8 +902,8 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
                                     * normals[point]
                                     * JxW[point];
 
-                            //Theta term
-                            copy_data.cell_matrix(i, j) +=
+                            	//Theta term
+                            	copy_data.cell_matrix(i, j) +=
                                     theta_Sv
                                     * kappa_tilde_v
                                     * kappa
@@ -880,11 +911,11 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
                                     * normals[point]
                                     * fe_face.shape_value(j, point)
                                     * JxW[point];
-                        }
-                        else
-                        {
-                            // Diffusion term
-                            copy_data.cell_matrix(i, j) -=
+                        	}
+                        	else
+                        	{
+                            	// Diffusion term
+                            	copy_data.cell_matrix(i, j) -=
                                     rho_v
                                     * lambda_v
                                     * dpcv_dSv
@@ -894,8 +925,8 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
                                     * normals[point]
                                     * JxW[point];
 
-                            //theta term
-                            copy_data.cell_matrix(i, j) +=
+                            	//theta term
+                            	copy_data.cell_matrix(i, j) +=
                                     theta_Sv
                                     * rho_v
                                     * lambda_v
@@ -906,20 +937,20 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
                                     * fe_face.shape_value(j, point)
                                     * JxW[point];
 
-                        }
-						// Boundary condition
-						copy_data.cell_matrix(i, j) +=
+                        	}
+							// Boundary condition
+							copy_data.cell_matrix(i, j) +=
 								penalty_factor
 								* fe_face.shape_value(i, point)
 								* fe_face.shape_value(j, point)
 								* JxW[point];
-					}
+						}
 						// Boundary condition
-						copy_data.cell_rhs(i) += penalty_factor
-							* fe_face.shape_value(i, point)
-							* g[point]
-							* JxW[point];
-
+					}
+                    copy_data.cell_rhs(i) += penalty_factor
+                                             * fe_face.shape_value(i, point)
+                                             * g[point]
+                                             * JxW[point];
                     if (Stab_v)
                     {
                         copy_data.cell_rhs(i) += (rho_v*lambda_v*dpcv_dSv - kappa_tilde_v) // added to RHS
@@ -970,8 +1001,6 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 							* normals[point]
 							* fe_face.shape_value(i, point)
 							* JxW[point];
-
-
 				}
 			}
 		}
@@ -989,7 +1018,6 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 					pl_value = pl_fcn.value(q_points[point]);
 					pl_grad = pl_fcn.gradient(q_points[point]);
 				}
-
 				double Sa_value = Sa_vals[point];
 
 				if(use_exact_Sa_in_Sv)
@@ -1285,11 +1313,11 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 			double weight1_diff = coef0_diff/(coef0_diff + coef1_diff + 1.e-20);
 
             // Diffusion coefficients and weights for stab method
-             double coef0_diff_stab = fabs(kappa0*kappa_tilde_v);
-             double coef1_diff_stab = fabs(kappa1*kappa_tilde_v);
+            double coef0_diff_stab = fabs(kappa0*kappa_tilde_v);
+            double coef1_diff_stab = fabs(kappa1*kappa_tilde_v);
 
-             double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
-             double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+            double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+            double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
 
 		    double coef0_Sv_stab = (-rho_v0*lambda_v0*dpcv_dSv0+kappa_tilde_v)*kappa0;
             double coef1_Sv_stab = (-rho_v1*lambda_v1*dpcv_dSv1+kappa_tilde_v)*kappa1;
@@ -1297,79 +1325,91 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
             double weight0_Sv_stab = coef1_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
             double weight1_Sv_stab = coef0_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
 
-			double gamma_Sv_e = fabs(2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20));
+			double gamma_Sv_e;
+
+			if(Stab_v)
+			{
+				
+				gamma_Sv_e = fabs(2.0*coef0_diff_stab*coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20));
+			}
+			else
+			{
+				gamma_Sv_e = fabs(2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20));
+			}
 
 			double h_e = cell->face(f)->measure();
 			double penalty_factor = (penalty_Sv/h_e) * gamma_Sv_e * degree*(degree + dim - 1);
 
 			for (unsigned int i = 0; i < n_dofs; ++i)
 			{
-				for (unsigned int j = 0; j < n_dofs; ++j)
-				{
-					// Interior face terms from diffusion
-					copy_data_face.cell_matrix(i, j) +=
+				if(rebuild_matrix)
+				{	
+					for (unsigned int j = 0; j < n_dofs; ++j)
+					{
+						// Interior face terms from diffusion
+						copy_data_face.cell_matrix(i, j) +=
 						penalty_factor
 						* fe_iv.jump(i, point)
 						* fe_iv.jump(j, point)
 						* JxW[point];
 
-                    if (Stab_v)
-                    {
-                        double weighted_aver_j_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
+                    	if (Stab_v)
+                    	{
+                        	double weighted_aver_j_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
                                                                                                            nsf, fe_iv,
                                                                                                            normals[point],
                                                                                                            j, point,
                                                                                                            coef0_diff_stab, coef1_diff_stab,
                                                                                                            weight0_diff_stab, weight1_diff_stab);
-                        copy_data_face.cell_matrix(i, j) -=
+                        	copy_data_face.cell_matrix(i, j) -=
                                 fe_iv.jump(i, point)
                                 * weighted_aver_j_stab
                                 * JxW[point];
 
-                        double weighted_aver_i_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
+                        	double weighted_aver_i_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
                                                                                                            nsf, fe_iv,
                                                                                                            normals[point],
                                                                                                            i, point,
                                                                                                            coef0_diff_stab, coef1_diff_stab,
                                                                                                            weight0_diff_stab, weight1_diff_stab);
-                        copy_data_face.cell_matrix(i, j) +=
+                        	copy_data_face.cell_matrix(i, j) +=
                                 theta_Sv
                                 * fe_iv.jump(j, point)
                                 * weighted_aver_i_stab
                                 * JxW[point];
-                    }
-                    else
-                    {
-                        double weighted_aver_j = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
+                    	}
+                    	else
+                    	{
+                        	double weighted_aver_j = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
                                                                                                       nsf, fe_iv,
                                                                                                       normals[point],
                                                                                                       j, point,
                                                                                                       coef0_diff, coef1_diff,
                                                                                                       weight0_diff, weight1_diff);
-                        copy_data_face.cell_matrix(i, j) -=
+                        	copy_data_face.cell_matrix(i, j) -=
                                 fe_iv.jump(i, point)
                                 * weighted_aver_j
                                 * JxW[point];
 
-                        double weighted_aver_i = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
+                        	double weighted_aver_i = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
                                                                                                       nsf, fe_iv,
                                                                                                       normals[point],
                                                                                                       i, point,
                                                                                                       coef0_diff, coef1_diff,
                                                                                                       weight0_diff, weight1_diff);
-                        copy_data_face.cell_matrix(i, j) +=
+                        	copy_data_face.cell_matrix(i, j) +=
                                 theta_Sv
                                 * fe_iv.jump(j, point)
                                 * weighted_aver_i
                                 * JxW[point];
-                    }
-
+                    	}
+					}
 				}
 
                             // Sv term added to the RHS
-                            if (Stab_v)
-                            {
-                                double weighted_aver_rhs0_stab = AverageGradOperators::weighted_average_rhs<dim>(normals[point],
+                if (Stab_v)
+                {
+                      double weighted_aver_rhs0_stab = AverageGradOperators::weighted_average_rhs<dim>(normals[point],
                                                                                                                  Sv_grad0_n, Sv_grad1_n,
                                                                                                                  coef0_Sv_stab, coef1_Sv_stab,
                                                                                                                  weight0_Sv_stab, weight1_Sv_stab);
@@ -1378,7 +1418,7 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
                                         weighted_aver_rhs0_stab
                                         * fe_iv.jump(i, point)
                                         * JxW[point];
-                            }
+                }
 				// Darcy velocity and upwind stuff
 				Tensor<1,dim> g_val = gravity_fcn.vector_value(q_points[point]);
 				double coef0_darcy, coef1_darcy;
@@ -1446,19 +1486,36 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 	};
 
 	const auto copier = [&](const CopyData &c) {
-		constraints.distribute_local_to_global(c.cell_matrix,
+		if (rebuild_matrix)
+		{
+			
+			constraints.distribute_local_to_global(c.cell_matrix,
 							   c.cell_rhs,
 							   c.local_dof_indices,
 							   system_matrix_vapor_saturation,
 							   right_hand_side_vapor_saturation);
 
-		for (auto &cdf : c.face_data)
-		{
-			constraints.distribute_local_to_global(cdf.cell_matrix,
+			for (auto &cdf : c.face_data)
+			{
+				constraints.distribute_local_to_global(cdf.cell_matrix,
 								   cdf.cell_rhs,
 								   cdf.joint_dof_indices,
 								   system_matrix_vapor_saturation,
 								   right_hand_side_vapor_saturation);
+			}
+		}
+		else
+		{
+			constraints.distribute_local_to_global(c.cell_rhs,
+							   					   c.local_dof_indices, 
+							                       right_hand_side_vapor_saturation);
+			for (auto &cdf : c.face_data)
+			{
+				constraints.distribute_local_to_global(cdf.cell_rhs,
+								   					   cdf.joint_dof_indices,
+								                       right_hand_side_vapor_saturation);
+		
+			}
 		}
 	};
 
@@ -1487,14 +1544,21 @@ void VaporSaturationProblem<dim>::assemble_system_Sv( double time_step_,
 						  MeshWorker::assemble_own_interior_faces_once,
 						  boundary_worker,
 						  face_worker);
+	if (rebuild_matrix)
+	{
+    	system_matrix_vapor_saturation.compress(VectorOperation::add);
+	}
+	
+	//pcout << system_matrix_vapor_saturation.frobenius_norm() << std::endl;
 
-    system_matrix_vapor_saturation.compress(VectorOperation::add);
     right_hand_side_vapor_saturation.compress(VectorOperation::add);
 }
 
 template <int dim>
-void VaporSaturationProblem<dim>::solve_vapor_saturation()
+void VaporSaturationProblem<dim>::solve_vapor_saturation(const PETScWrappers::MPI::Vector& pl_solution_)
 {
+    Sv_solution.reinit(locally_owned_dofs, mpi_communicator);
+
 	if(use_direct_solver)
 	{
 		SolverControl cn;

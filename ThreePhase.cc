@@ -1835,7 +1835,7 @@ namespace CouplingPressureSaturation {
                 // Solve for Sv
                 timer.reset();
                 timer.start();
-                Sv_problem.solve_vapor_saturation();
+                Sv_problem.solve_vapor_saturation(pl_solution);
                 timer.stop();
 
                 solver_time[index_time] += timer.cpu_time();
@@ -1843,8 +1843,9 @@ namespace CouplingPressureSaturation {
 
                 // Store solution for Sv
                 Sv_solution = Sv_problem.Sv_solution;
-		//if (Stab_v)
-		   // rebuild_Sv_mat = false;
+
+				if (Stab_v)
+		   			rebuild_Sv_mat = false;
 
             }
 
