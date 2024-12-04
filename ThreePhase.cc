@@ -1610,7 +1610,7 @@ namespace CouplingPressureSaturation {
 
 	// define rebuilding of matrix
         bool rebuild_Sa_mat = true;
-	bool rebuild_Sv_mat = true;
+	    bool rebuild_Sv_mat = true;
 
         for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
         {
