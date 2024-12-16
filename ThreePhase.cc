@@ -1604,7 +1604,7 @@ namespace CouplingPressureSaturation {
                                                                 mpi_communicator, n_mpi_processes,
                                                                 this_mpi_process);
 
-	Sv_problem.setup_system();
+	    Sv_problem.setup_system();
 
         // start of sequential scheme
 
@@ -1809,9 +1809,9 @@ namespace CouplingPressureSaturation {
             pcout << "Elapsed CPU time for Sa solve " << timer.cpu_time() << " seconds." << std::endl;
             Sa_solution = Sa_problem.Sa_solution;
 
-            if (Stab_a)
+            if (Stab_a) {
                 rebuild_Sa_mat = false;
-
+            }
             // stop here for two phase
             if (two_phase)
                 Sv_solution = 0.0;
@@ -1846,7 +1846,6 @@ namespace CouplingPressureSaturation {
 
 				if (Stab_v)
 		   			rebuild_Sv_mat = false;
-
             }
 
             pl_solution_nminus2 = pl_solution_nminus1;

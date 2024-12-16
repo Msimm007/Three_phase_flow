@@ -972,9 +972,9 @@ namespace AqueousSaturation
 			
 		            }
                     // This is the problematic term. Commenting it out for now
-                    //	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
+                    	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
 				
-                    double h_e = cell->face(face_no)->measure(); // I think this is the term that is changing
+                    double h_e = cell->face(face_no)->measure();
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
 
                     // start of boundary terms

@@ -1549,7 +1549,7 @@ namespace VaporSaturation
     	system_matrix_vapor_saturation.compress(VectorOperation::add);
 	}
 	// testing to see if matrix changes at every time step
-	//pcout << system_matrix_vapor_saturation.frobenius_norm() << std::endl;
+	pcout << system_matrix_vapor_saturation.frobenius_norm() << std::endl;
 
     right_hand_side_vapor_saturation.compress(VectorOperation::add);
 }
@@ -1568,7 +1568,7 @@ void VaporSaturationProblem<dim>::solve_vapor_saturation(const PETScWrappers::MP
 	}
 	else
 	{
-		SolverControl solver_control(pl_solution.size(), 1.e-7 * right_hand_side_vapor_saturation.l2_norm());
+		SolverControl solver_control(pl_solution_.size(), 1.e-7 * right_hand_side_vapor_saturation.l2_norm());
 
 		PETScWrappers::SolverGMRES gmres(solver_control, mpi_communicator);
 		PETScWrappers::PreconditionBoomerAMG preconditioner(system_matrix_vapor_saturation);
