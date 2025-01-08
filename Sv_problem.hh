@@ -1106,7 +1106,9 @@ namespace VaporSaturation
 		const unsigned int n_dofs        = fe_iv.n_current_interface_dofs();
 		copy_data_face.joint_dof_indices = fe_iv.get_interface_dof_indices();
 
-		copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
+        if (rebuild_matrix)
+		    copy_data_face.cell_matrix.reinit(n_dofs, n_dofs);
+
 		copy_data_face.cell_rhs.reinit(n_dofs);
 
 		const std::vector<double> &        JxW     = fe_iv.get_JxW_values();

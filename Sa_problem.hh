@@ -658,7 +658,6 @@ namespace AqueousSaturation
                 if (artificial_visc_exp || artificial_visc_imp)
                     nu_h_artificial_visc = 0.5*sqrt(cell->measure())
                                            *art_visc_multiple_Sa*maximum_Darcy*2.0*maximum_Sa;
-
                 // start of volume terms 
                 for (unsigned int i = 0; i < n_dofs; ++i)
                 {
@@ -971,8 +970,9 @@ namespace AqueousSaturation
                         gamma_Sa_e += nu_h_artificial_visc;
 			
 		            }
-                    // This is the problematic term. Commenting it out for now
-                    	gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
+                    // This is the problematic term. Commenting it out for now.
+                    // NECESSARY FOR VISCOUS FINGERING
+                    //gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
 				
                     double h_e = cell->face(face_no)->measure();
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
@@ -1631,6 +1631,7 @@ namespace AqueousSaturation
                                         fe_iv.jump(i, point)
                                         * weighted_aver_j_stab
                                         * JxW[point];
+
                                 double weighted_aver_i_stab =
                                         AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf,
                                                                                              ncell, nf,
