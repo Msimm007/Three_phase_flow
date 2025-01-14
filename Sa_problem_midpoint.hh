@@ -1224,8 +1224,8 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 					// Interior face terms from diffusion
 					copy_data_face.cell_matrix(i, j) +=
 						penalty_factor
-						* fe_iv.jump(i, point)
-						* fe_iv.jump(j, point)
+						* fe_iv.jump_in_shape_values(i, point)
+						* fe_iv.jump_in_shape_values(j, point)
 						* JxW[point];
 
 					if (Stab_a)
@@ -1237,7 +1237,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                                                                                                                coef0_diff_stab, coef1_diff_stab,
                                                                                                                weight0_diff_stab, weight1_diff_stab);
                             copy_data_face.cell_matrix(i, j) -=
-                                    fe_iv.jump(i, point)
+                                    fe_iv.jump_in_shape_values(i, point)
                                     * weighted_aver_j_stab
                                     * JxW[point];
                             double weighted_aver_i_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
@@ -1248,7 +1248,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                                                                                                                weight0_diff_stab, weight1_diff_stab);
                             copy_data_face.cell_matrix(i, j) +=
                                     theta_Sa
-                                    * fe_iv.jump(j, point)
+                                    * fe_iv.jump_in_shape_values(j, point)
                                     * weighted_aver_i_stab
                                     * JxW[point];
                         }
@@ -1261,7 +1261,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                                                                                                           coef0_diff, coef1_diff,
                                                                                                           weight0_diff, weight1_diff);
                             copy_data_face.cell_matrix(i, j) -=
-                                    fe_iv.jump(i, point)
+                                    fe_iv.jump_in_shape_values(i, point)
                                     * weighted_aver_j
                                     * JxW[point];
                             double weighted_aver_i = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
@@ -1272,7 +1272,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                                                                                                           weight0_diff, weight1_diff);
                             copy_data_face.cell_matrix(i, j) +=
                                     theta_Sa
-                                    * fe_iv.jump(j, point)
+                                    * fe_iv.jump_in_shape_values(j, point)
                                     * weighted_aver_i
                                     * JxW[point];
                         }
@@ -1288,7 +1288,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 
                         copy_data_face.cell_rhs(i) -=
                                 weighted_aver_rhs0_stab
-                                * fe_iv.jump(i, point)
+                                * fe_iv.jump_in_shape_values(i, point)
                                 * JxW[point];
                     }
                     // Sv term added to RHS
@@ -1298,7 +1298,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
                                                                                                 weight0_Sv, weight1_Sv);
                     copy_data_face.cell_rhs(i) -=
                             weighted_aver_rhs1
-                            * fe_iv.jump(i, point)
+                            * fe_iv.jump_in_shape_values(i, point)
                             * JxW[point];
 				// Darcy velocity stuff
 				Tensor<1,dim> g_val = gravity_fcn.vector_value(q_points[point]);
@@ -1328,7 +1328,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 					copy_data_face.cell_rhs(i) -=
 							coef0_darcy
 							* average_uRT
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 				else
@@ -1336,7 +1336,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 					copy_data_face.cell_rhs(i) -=
 							coef1_darcy
 							* average_uRT
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 
@@ -1357,7 +1357,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 								weight0_g, weight1_g);
 
 					copy_data_face.cell_rhs(i) -= weighted_aver_rhs3
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 
@@ -1376,7 +1376,7 @@ void AqueousSaturationProblem_midpoint<dim>::assemble_system_matrix_aqueous_satu
 								weight0_nu, weight1_nu);
 
 					copy_data_face.cell_rhs(i) += weighted_aver_rhs_nu
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 

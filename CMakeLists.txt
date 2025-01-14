@@ -34,7 +34,7 @@ SET(TARGET_SRC
 # SET(TARGET_SRC ${TARGET_SRC}  ${TARGET_INC})
 
 # Usually, you will not need to modify anything beyond this point...
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
 FIND_PACKAGE(deal.II 9.2.0

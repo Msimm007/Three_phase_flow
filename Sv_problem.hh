@@ -1310,8 +1310,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 					// Interior face terms from diffusion
 					copy_data_face.cell_matrix(i, j) +=
 						penalty_factor
-						* fe_iv.jump(i, point)
-						* fe_iv.jump(j, point)
+						* fe_iv.jump_in_shape_values(i, point)
+						* fe_iv.jump_in_shape_values(j, point)
 						* JxW[point];
 
                     if (Stab_v)
@@ -1323,7 +1323,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                                                                                                            coef0_diff_stab, coef1_diff_stab,
                                                                                                            weight0_diff_stab, weight1_diff_stab);
                         copy_data_face.cell_matrix(i, j) -=
-                                fe_iv.jump(i, point)
+                                fe_iv.jump_in_shape_values(i, point)
                                 * weighted_aver_j_stab
                                 * JxW[point];
 
@@ -1335,7 +1335,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                                                                                                            weight0_diff_stab, weight1_diff_stab);
                         copy_data_face.cell_matrix(i, j) +=
                                 theta_Sv
-                                * fe_iv.jump(j, point)
+                                * fe_iv.jump_in_shape_values(j, point)
                                 * weighted_aver_i_stab
                                 * JxW[point];
                     }
@@ -1348,7 +1348,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                                                                                                       coef0_diff, coef1_diff,
                                                                                                       weight0_diff, weight1_diff);
                         copy_data_face.cell_matrix(i, j) -=
-                                fe_iv.jump(i, point)
+                                fe_iv.jump_in_shape_values(i, point)
                                 * weighted_aver_j
                                 * JxW[point];
 
@@ -1360,7 +1360,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
                                                                                                       weight0_diff, weight1_diff);
                         copy_data_face.cell_matrix(i, j) +=
                                 theta_Sv
-                                * fe_iv.jump(j, point)
+                                * fe_iv.jump_in_shape_values(j, point)
                                 * weighted_aver_i
                                 * JxW[point];
                     }
@@ -1377,7 +1377,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 
                                 copy_data_face.cell_rhs(i) -=
                                         weighted_aver_rhs0_stab
-                                        * fe_iv.jump(i, point)
+                                        * fe_iv.jump_in_shape_values(i, point)
                                         * JxW[point];
                             }
 				// Darcy velocity and upwind stuff
@@ -1409,7 +1409,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 					copy_data_face.cell_rhs(i) -=
 							coef0_darcy
 							* average_uRT
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 				else
@@ -1417,7 +1417,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 					copy_data_face.cell_rhs(i) -=
 							coef1_darcy
 							* average_uRT
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 
@@ -1438,7 +1438,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 								weight0_g, weight1_g);
 
 					copy_data_face.cell_rhs(i) -= weighted_aver_rhs3
-							* fe_iv.jump(i, point)
+							* fe_iv.jump_in_shape_values(i, point)
 							* JxW[point];
 				}
 

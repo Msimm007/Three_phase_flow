@@ -1460,8 +1460,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
                     // Interior face terms from diffusion
                     copy_data_face.cell_matrix(i, j) +=
 						penalty_factor
-                        * fe_iv.jump(i, point)
-                        * fe_iv.jump(j, point)
+                        * fe_iv.jump_in_shape_values(i, point)
+                        * fe_iv.jump_in_shape_values(j, point)
                         * JxW[point];
 
 //					if(Stab_t)
@@ -1473,7 +1473,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 //                                                                                                               coef0_diff_stab, coef1_diff_stab,
 //                                                                                                               weight0_diff_stab, weight1_diff_stab);
 //                            copy_data_face.cell_matrix(i, j) +=
-//                                    -fe_iv.jump(i, point)
+//                                    -fe_iv.jump_in_shape_values(i, point)
 //                                    * weighted_aver_j_stab
 //                                    * JxW[point];
 //                            double weighted_aver_i_stab = AverageGradOperators::weighted_average_gradient<dim>(cell, f, sf, ncell, nf,
@@ -1484,7 +1484,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 //                                                                                                               weight0_diff_stab, weight1_diff_stab);
 //                            copy_data_face.cell_matrix(i, j) +=
 //                                    theta_pl
-//                                    * fe_iv.jump(j, point)
+//                                    * fe_iv.jump_in_shape_values(j, point)
 //                                    * weighted_aver_i_stab
 //                                    * JxW[point];
 //					}
@@ -1498,7 +1498,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
                                     weight0_diff, weight1_diff);
 
                             copy_data_face.cell_matrix(i, j) +=
-                                - fe_iv.jump(i, point)
+                                - fe_iv.jump_in_shape_values(i, point)
                                 * weighted_aver_j
                                 * JxW[point];
 
@@ -1511,7 +1511,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 
                     copy_data_face.cell_matrix(i, j) +=
                     	theta_pl
-						* fe_iv.jump(j, point)
+						* fe_iv.jump_in_shape_values(j, point)
 						* weighted_aver_i
 						* JxW[point];
 					}
@@ -1527,7 +1527,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 //
 //                    copy_data_face.cell_rhs(i) -=
 //                            weighted_aver_rhs0_stab
-//                            * fe_iv.jump(i, point)
+//                            * fe_iv.jump_in_shape_values(i, point)
 //                            * JxW[point];
 //                }
 
@@ -1539,7 +1539,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 
                 copy_data_face.cell_rhs(i) +=
                 		weighted_aver_rhs1
-						* fe_iv.jump(i, point)
+						* fe_iv.jump_in_shape_values(i, point)
 						* JxW[point];
 
                 // pca term
@@ -1550,7 +1550,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 
                 copy_data_face.cell_rhs(i) -=
                 		weighted_aver_rhs2
-						* fe_iv.jump(i, point)
+						* fe_iv.jump_in_shape_values(i, point)
 						* JxW[point];
 
                 // Gravity term
@@ -1560,7 +1560,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 							weight0_g, weight1_g);
 
 				copy_data_face.cell_rhs(i) -= weighted_aver_rhs3
-						* fe_iv.jump(i, point)
+						* fe_iv.jump_in_shape_values(i, point)
 						* JxW[point];
 
 
