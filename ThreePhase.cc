@@ -2000,7 +2000,7 @@ int main(int argc, char *argv[])
 				dgmethod.run();
         	}
 
-			delta_t /= 4.0;
+			delta_t /= 2.0;
         }
     }
     catch (std::exception &exc)
