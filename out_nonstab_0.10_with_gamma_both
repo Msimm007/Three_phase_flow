@@ -1,0 +1,1930 @@
+    Number of active cells:       16 (by partition: 8+8)
+    Number of degrees of freedom: 64 (by partition: 32+32)
+Time step 2 at t=0.2
+Elapsed CPU time for pl assemble: 0.004267 seconds.
+Elapsed CPU time for pl solve: 0.01245 seconds.
+Elapsed CPU time for RT Projection: 0.01245 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004967 seconds.
+Elapsed CPU time for Sa solve 0.004965 seconds.
+10.3805
+
+Elapsed CPU time for Sv assemble: 0.00495 seconds.
+Elapsed CPU time for Sv solve: 0.003616 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 3 at t=0.3
+Elapsed CPU time for pl assemble: 0.003106 seconds.
+Elapsed CPU time for pl solve: 0.003436 seconds.
+Elapsed CPU time for RT Projection: 0.003436 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004513 seconds.
+Elapsed CPU time for Sa solve 0.003616 seconds.
+10.9026
+
+Elapsed CPU time for Sv assemble: 0.004523 seconds.
+Elapsed CPU time for Sv solve: 0.003471 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 4 at t=0.4
+Elapsed CPU time for pl assemble: 0.003572 seconds.
+Elapsed CPU time for pl solve: 0.003334 seconds.
+Elapsed CPU time for RT Projection: 0.003334 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004495 seconds.
+Elapsed CPU time for Sa solve 0.003668 seconds.
+11.4863
+
+Elapsed CPU time for Sv assemble: 0.004179 seconds.
+Elapsed CPU time for Sv solve: 0.00296 seconds.
+Elapsed CPU time for output results: 0 seconds.
+
+Time step 5 at t=0.5
+Elapsed CPU time for pl assemble: 0.003038 seconds.
+Elapsed CPU time for pl solve: 0.00334 seconds.
+Elapsed CPU time for RT Projection: 0.00334 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004467 seconds.
+Elapsed CPU time for Sa solve 0.003646 seconds.
+12.1947
+
+Elapsed CPU time for Sv assemble: 0.004524 seconds.
+Elapsed CPU time for Sv solve: 0.003419 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 6 at t=0.6
+Elapsed CPU time for pl assemble: 0.003105 seconds.
+Elapsed CPU time for pl solve: 0.003236 seconds.
+Elapsed CPU time for RT Projection: 0.003236 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.003319 seconds.
+Elapsed CPU time for Sa solve 0.003584 seconds.
+13.0398
+
+Elapsed CPU time for Sv assemble: 0.004567 seconds.
+Elapsed CPU time for Sv solve: 0.003444 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 7 at t=0.7
+Elapsed CPU time for pl assemble: 0.003059 seconds.
+Elapsed CPU time for pl solve: 0.00329 seconds.
+Elapsed CPU time for RT Projection: 0.00329 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.00454 seconds.
+Elapsed CPU time for Sa solve 0.003613 seconds.
+13.9905
+
+Elapsed CPU time for Sv assemble: 0.004706 seconds.
+Elapsed CPU time for Sv solve: 0.003464 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 8 at t=0.8
+Elapsed CPU time for pl assemble: 0.00323 seconds.
+Elapsed CPU time for pl solve: 0.003306 seconds.
+Elapsed CPU time for RT Projection: 0.003306 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004494 seconds.
+Elapsed CPU time for Sa solve 0.003563 seconds.
+15.0031
+
+Elapsed CPU time for Sv assemble: 0.004688 seconds.
+Elapsed CPU time for Sv solve: 0.003409 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 9 at t=0.9
+Elapsed CPU time for pl assemble: 0.002832 seconds.
+Elapsed CPU time for pl solve: 0.003307 seconds.
+Elapsed CPU time for RT Projection: 0.003307 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004502 seconds.
+Elapsed CPU time for Sa solve 0.003441 seconds.
+16.0487
+
+Elapsed CPU time for Sv assemble: 0.004687 seconds.
+Elapsed CPU time for Sv solve: 0.003408 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 10 at t=1
+Elapsed CPU time for pl assemble: 0.003048 seconds.
+Elapsed CPU time for pl solve: 0.003248 seconds.
+Elapsed CPU time for RT Projection: 0.003248 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.004492 seconds.
+Elapsed CPU time for Sa solve 0.003578 seconds.
+17.1229
+
+Elapsed CPU time for Sv assemble: 0.004724 seconds.
+Elapsed CPU time for Sv solve: 0.003433 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Errors: 
+||e_pl||_L2 = 0.0203489
+||e_Sa||_L2 = 0.00371414
+||e_Sv||_L2 = 0.0110061
+Triple norm error p_l: 
+|||e_pl||| = 0.121958
+    Number of active cells:       64 (by partition: 32+32)
+    Number of degrees of freedom: 256 (by partition: 128+128)
+Time step 2 at t=0.1
+Elapsed CPU time for pl assemble: 0.005602 seconds.
+Elapsed CPU time for pl solve: 0.005127 seconds.
+Elapsed CPU time for RT Projection: 0.005127 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012379 seconds.
+Elapsed CPU time for Sa solve 0.005147 seconds.
+16.9306
+
+Elapsed CPU time for Sv assemble: 0.012035 seconds.
+Elapsed CPU time for Sv solve: 0.005617 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 3 at t=0.15
+Elapsed CPU time for pl assemble: 0.007087 seconds.
+Elapsed CPU time for pl solve: 0.005914 seconds.
+Elapsed CPU time for RT Projection: 0.005914 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.011463 seconds.
+Elapsed CPU time for Sa solve 0.005098 seconds.
+17.3278
+
+Elapsed CPU time for Sv assemble: 0.012044 seconds.
+Elapsed CPU time for Sv solve: 0.004751 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 4 at t=0.2
+Elapsed CPU time for pl assemble: 0.006953 seconds.
+Elapsed CPU time for pl solve: 0.004864 seconds.
+Elapsed CPU time for RT Projection: 0.004864 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012353 seconds.
+Elapsed CPU time for Sa solve 0.004209 seconds.
+17.7225
+
+Elapsed CPU time for Sv assemble: 0.01203 seconds.
+Elapsed CPU time for Sv solve: 0.004987 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 5 at t=0.25
+Elapsed CPU time for pl assemble: 0.006921 seconds.
+Elapsed CPU time for pl solve: 0.00491 seconds.
+Elapsed CPU time for RT Projection: 0.00491 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.011707 seconds.
+Elapsed CPU time for Sa solve 0.004719 seconds.
+18.1731
+
+Elapsed CPU time for Sv assemble: 0.011957 seconds.
+Elapsed CPU time for Sv solve: 0.004957 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 6 at t=0.3
+Elapsed CPU time for pl assemble: 0.006881 seconds.
+Elapsed CPU time for pl solve: 0.004801 seconds.
+Elapsed CPU time for RT Projection: 0.004801 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.011256 seconds.
+Elapsed CPU time for Sa solve 0.004766 seconds.
+18.7067
+
+Elapsed CPU time for Sv assemble: 0.012469 seconds.
+Elapsed CPU time for Sv solve: 0.004939 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 7 at t=0.35
+Elapsed CPU time for pl assemble: 0.006957 seconds.
+Elapsed CPU time for pl solve: 0.004852 seconds.
+Elapsed CPU time for RT Projection: 0.004852 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012303 seconds.
+Elapsed CPU time for Sa solve 0.004998 seconds.
+19.3291
+
+Elapsed CPU time for Sv assemble: 0.012084 seconds.
+Elapsed CPU time for Sv solve: 0.004913 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 8 at t=0.4
+Elapsed CPU time for pl assemble: 0.00694 seconds.
+Elapsed CPU time for pl solve: 0.004882 seconds.
+Elapsed CPU time for RT Projection: 0.004882 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012325 seconds.
+Elapsed CPU time for Sa solve 0.005058 seconds.
+20.0274
+
+Elapsed CPU time for Sv assemble: 0.012025 seconds.
+Elapsed CPU time for Sv solve: 0.005013 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 9 at t=0.45
+Elapsed CPU time for pl assemble: 0.006868 seconds.
+Elapsed CPU time for pl solve: 0.004857 seconds.
+Elapsed CPU time for RT Projection: 0.004857 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.01071 seconds.
+Elapsed CPU time for Sa solve 0.004777 seconds.
+20.7793
+
+Elapsed CPU time for Sv assemble: 0.011996 seconds.
+Elapsed CPU time for Sv solve: 0.004928 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 10 at t=0.5
+Elapsed CPU time for pl assemble: 0.006909 seconds.
+Elapsed CPU time for pl solve: 0.004887 seconds.
+Elapsed CPU time for RT Projection: 0.004887 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012405 seconds.
+Elapsed CPU time for Sa solve 0.004966 seconds.
+21.5641
+
+Elapsed CPU time for Sv assemble: 0.013454 seconds.
+Elapsed CPU time for Sv solve: 0.005075 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 11 at t=0.55
+Elapsed CPU time for pl assemble: 0.007085 seconds.
+Elapsed CPU time for pl solve: 0.004816 seconds.
+Elapsed CPU time for RT Projection: 0.004816 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.01228 seconds.
+Elapsed CPU time for Sa solve 0.004326 seconds.
+22.3712
+
+Elapsed CPU time for Sv assemble: 0.012053 seconds.
+Elapsed CPU time for Sv solve: 0.006207 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 12 at t=0.6
+Elapsed CPU time for pl assemble: 0.007265 seconds.
+Elapsed CPU time for pl solve: 0.004879 seconds.
+Elapsed CPU time for RT Projection: 0.004879 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012242 seconds.
+Elapsed CPU time for Sa solve 0.005039 seconds.
+23.2014
+
+Elapsed CPU time for Sv assemble: 0.012136 seconds.
+Elapsed CPU time for Sv solve: 0.004917 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 13 at t=0.65
+Elapsed CPU time for pl assemble: 0.006938 seconds.
+Elapsed CPU time for pl solve: 0.004855 seconds.
+Elapsed CPU time for RT Projection: 0.004855 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012192 seconds.
+Elapsed CPU time for Sa solve 0.004961 seconds.
+24.0618
+
+Elapsed CPU time for Sv assemble: 0.012084 seconds.
+Elapsed CPU time for Sv solve: 0.005046 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 14 at t=0.7
+Elapsed CPU time for pl assemble: 0.005091 seconds.
+Elapsed CPU time for pl solve: 0.004884 seconds.
+Elapsed CPU time for RT Projection: 0.004884 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.011558 seconds.
+Elapsed CPU time for Sa solve 0.004797 seconds.
+24.9599
+
+Elapsed CPU time for Sv assemble: 0.012098 seconds.
+Elapsed CPU time for Sv solve: 0.004982 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 15 at t=0.75
+Elapsed CPU time for pl assemble: 0.006888 seconds.
+Elapsed CPU time for pl solve: 0.003353 seconds.
+Elapsed CPU time for RT Projection: 0.003353 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.010416 seconds.
+Elapsed CPU time for Sa solve 0.005046 seconds.
+25.8994
+
+Elapsed CPU time for Sv assemble: 0.012076 seconds.
+Elapsed CPU time for Sv solve: 0.004816 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 16 at t=0.8
+Elapsed CPU time for pl assemble: 0.007439 seconds.
+Elapsed CPU time for pl solve: 0.004912 seconds.
+Elapsed CPU time for RT Projection: 0.004912 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012202 seconds.
+Elapsed CPU time for Sa solve 0.004237 seconds.
+26.8793
+
+Elapsed CPU time for Sv assemble: 0.011211 seconds.
+Elapsed CPU time for Sv solve: 0.00492 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 17 at t=0.85
+Elapsed CPU time for pl assemble: 0.006982 seconds.
+Elapsed CPU time for pl solve: 0.004869 seconds.
+Elapsed CPU time for RT Projection: 0.004869 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012462 seconds.
+Elapsed CPU time for Sa solve 0.004954 seconds.
+27.8955
+
+Elapsed CPU time for Sv assemble: 0.011401 seconds.
+Elapsed CPU time for Sv solve: 0.004735 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 18 at t=0.9
+Elapsed CPU time for pl assemble: 0.006976 seconds.
+Elapsed CPU time for pl solve: 0.004885 seconds.
+Elapsed CPU time for RT Projection: 0.004885 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.01236 seconds.
+Elapsed CPU time for Sa solve 0.005037 seconds.
+28.9431
+
+Elapsed CPU time for Sv assemble: 0.012203 seconds.
+Elapsed CPU time for Sv solve: 0.004834 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 19 at t=0.95
+Elapsed CPU time for pl assemble: 0.007037 seconds.
+Elapsed CPU time for pl solve: 0.004861 seconds.
+Elapsed CPU time for RT Projection: 0.004861 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012455 seconds.
+Elapsed CPU time for Sa solve 0.004225 seconds.
+30.018
+
+Elapsed CPU time for Sv assemble: 0.012013 seconds.
+Elapsed CPU time for Sv solve: 0.004983 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 20 at t=1
+Elapsed CPU time for pl assemble: 0.006953 seconds.
+Elapsed CPU time for pl solve: 0.004858 seconds.
+Elapsed CPU time for RT Projection: 0.004858 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.012184 seconds.
+Elapsed CPU time for Sa solve 0.005145 seconds.
+31.1174
+
+Elapsed CPU time for Sv assemble: 0.012009 seconds.
+Elapsed CPU time for Sv solve: 0.004881 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Errors: 
+||e_pl||_L2 = 0.00602497
+||e_Sa||_L2 = 0.00159641
+||e_Sv||_L2 = 0.00701941
+Triple norm error p_l: 
+|||e_pl||| = 0.0587615
+    Number of active cells:       256 (by partition: 128+128)
+    Number of degrees of freedom: 1024 (by partition: 512+512)
+Time step 2 at t=0.05
+Elapsed CPU time for pl assemble: 0.022742 seconds.
+Elapsed CPU time for pl solve: 0.010562 seconds.
+Elapsed CPU time for RT Projection: 0.010562 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041681 seconds.
+Elapsed CPU time for Sa solve 0.011138 seconds.
+29.7717
+
+Elapsed CPU time for Sv assemble: 0.0402 seconds.
+Elapsed CPU time for Sv solve: 0.010729 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 3 at t=0.075
+Elapsed CPU time for pl assemble: 0.021602 seconds.
+Elapsed CPU time for pl solve: 0.010384 seconds.
+Elapsed CPU time for RT Projection: 0.010384 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042058 seconds.
+Elapsed CPU time for Sa solve 0.010569 seconds.
+30.1158
+
+Elapsed CPU time for Sv assemble: 0.041112 seconds.
+Elapsed CPU time for Sv solve: 0.01128 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 4 at t=0.1
+Elapsed CPU time for pl assemble: 0.021549 seconds.
+Elapsed CPU time for pl solve: 0.011927 seconds.
+Elapsed CPU time for RT Projection: 0.011927 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.040423 seconds.
+Elapsed CPU time for Sa solve 0.011338 seconds.
+30.4374
+
+Elapsed CPU time for Sv assemble: 0.039972 seconds.
+Elapsed CPU time for Sv solve: 0.011394 seconds.
+Elapsed CPU time for output results: 3e-06 seconds.
+
+Time step 5 at t=0.125
+Elapsed CPU time for pl assemble: 0.021552 seconds.
+Elapsed CPU time for pl solve: 0.011458 seconds.
+Elapsed CPU time for RT Projection: 0.011458 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041804 seconds.
+Elapsed CPU time for Sa solve 0.011857 seconds.
+30.7742
+
+Elapsed CPU time for Sv assemble: 0.040072 seconds.
+Elapsed CPU time for Sv solve: 0.010442 seconds.
+Elapsed CPU time for output results: 0 seconds.
+
+Time step 6 at t=0.15
+Elapsed CPU time for pl assemble: 0.021952 seconds.
+Elapsed CPU time for pl solve: 0.011483 seconds.
+Elapsed CPU time for RT Projection: 0.011483 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.04297 seconds.
+Elapsed CPU time for Sa solve 0.011496 seconds.
+31.1456
+
+Elapsed CPU time for Sv assemble: 0.039494 seconds.
+Elapsed CPU time for Sv solve: 0.011317 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 7 at t=0.175
+Elapsed CPU time for pl assemble: 0.023354 seconds.
+Elapsed CPU time for pl solve: 0.010476 seconds.
+Elapsed CPU time for RT Projection: 0.010476 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.044667 seconds.
+Elapsed CPU time for Sa solve 0.010513 seconds.
+31.5625
+
+Elapsed CPU time for Sv assemble: 0.03903 seconds.
+Elapsed CPU time for Sv solve: 0.009439 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 8 at t=0.2
+Elapsed CPU time for pl assemble: 0.022875 seconds.
+Elapsed CPU time for pl solve: 0.01111 seconds.
+Elapsed CPU time for RT Projection: 0.01111 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.040745 seconds.
+Elapsed CPU time for Sa solve 0.01013 seconds.
+32.0278
+
+Elapsed CPU time for Sv assemble: 0.040004 seconds.
+Elapsed CPU time for Sv solve: 0.0104 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 9 at t=0.225
+Elapsed CPU time for pl assemble: 0.022905 seconds.
+Elapsed CPU time for pl solve: 0.010473 seconds.
+Elapsed CPU time for RT Projection: 0.010473 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041347 seconds.
+Elapsed CPU time for Sa solve 0.011674 seconds.
+32.5382
+
+Elapsed CPU time for Sv assemble: 0.042779 seconds.
+Elapsed CPU time for Sv solve: 0.0113 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 10 at t=0.25
+Elapsed CPU time for pl assemble: 0.02325 seconds.
+Elapsed CPU time for pl solve: 0.010402 seconds.
+Elapsed CPU time for RT Projection: 0.010402 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041918 seconds.
+Elapsed CPU time for Sa solve 0.00954 seconds.
+33.0865
+
+Elapsed CPU time for Sv assemble: 0.039964 seconds.
+Elapsed CPU time for Sv solve: 0.010653 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 11 at t=0.275
+Elapsed CPU time for pl assemble: 0.022621 seconds.
+Elapsed CPU time for pl solve: 0.011192 seconds.
+Elapsed CPU time for RT Projection: 0.011192 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041663 seconds.
+Elapsed CPU time for Sa solve 0.01143 seconds.
+33.6647
+
+Elapsed CPU time for Sv assemble: 0.039852 seconds.
+Elapsed CPU time for Sv solve: 0.010221 seconds.
+Elapsed CPU time for output results: 0 seconds.
+
+Time step 12 at t=0.3
+Elapsed CPU time for pl assemble: 0.021194 seconds.
+Elapsed CPU time for pl solve: 0.010492 seconds.
+Elapsed CPU time for RT Projection: 0.010492 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042104 seconds.
+Elapsed CPU time for Sa solve 0.010478 seconds.
+34.266
+
+Elapsed CPU time for Sv assemble: 0.038096 seconds.
+Elapsed CPU time for Sv solve: 0.011812 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 13 at t=0.325
+Elapsed CPU time for pl assemble: 0.022838 seconds.
+Elapsed CPU time for pl solve: 0.010191 seconds.
+Elapsed CPU time for RT Projection: 0.010191 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042043 seconds.
+Elapsed CPU time for Sa solve 0.010433 seconds.
+34.886
+
+Elapsed CPU time for Sv assemble: 0.038979 seconds.
+Elapsed CPU time for Sv solve: 0.010439 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 14 at t=0.35
+Elapsed CPU time for pl assemble: 0.02289 seconds.
+Elapsed CPU time for pl solve: 0.009222 seconds.
+Elapsed CPU time for RT Projection: 0.009222 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.043816 seconds.
+Elapsed CPU time for Sa solve 0.010479 seconds.
+35.5232
+
+Elapsed CPU time for Sv assemble: 0.039855 seconds.
+Elapsed CPU time for Sv solve: 0.011467 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 15 at t=0.375
+Elapsed CPU time for pl assemble: 0.022822 seconds.
+Elapsed CPU time for pl solve: 0.008555 seconds.
+Elapsed CPU time for RT Projection: 0.008555 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.040843 seconds.
+Elapsed CPU time for Sa solve 0.011373 seconds.
+36.1781
+
+Elapsed CPU time for Sv assemble: 0.038848 seconds.
+Elapsed CPU time for Sv solve: 0.010871 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 16 at t=0.4
+Elapsed CPU time for pl assemble: 0.022864 seconds.
+Elapsed CPU time for pl solve: 0.01126 seconds.
+Elapsed CPU time for RT Projection: 0.01126 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.043193 seconds.
+Elapsed CPU time for Sa solve 0.009689 seconds.
+36.8522
+
+Elapsed CPU time for Sv assemble: 0.039861 seconds.
+Elapsed CPU time for Sv solve: 0.010545 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 17 at t=0.425
+Elapsed CPU time for pl assemble: 0.022885 seconds.
+Elapsed CPU time for pl solve: 0.011248 seconds.
+Elapsed CPU time for RT Projection: 0.011248 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042587 seconds.
+Elapsed CPU time for Sa solve 0.01154 seconds.
+37.5466
+
+Elapsed CPU time for Sv assemble: 0.039997 seconds.
+Elapsed CPU time for Sv solve: 0.011468 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 18 at t=0.45
+Elapsed CPU time for pl assemble: 0.022782 seconds.
+Elapsed CPU time for pl solve: 0.010225 seconds.
+Elapsed CPU time for RT Projection: 0.010225 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042115 seconds.
+Elapsed CPU time for Sa solve 0.010499 seconds.
+38.2621
+
+Elapsed CPU time for Sv assemble: 0.040841 seconds.
+Elapsed CPU time for Sv solve: 0.009341 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 19 at t=0.475
+Elapsed CPU time for pl assemble: 0.022826 seconds.
+Elapsed CPU time for pl solve: 0.009538 seconds.
+Elapsed CPU time for RT Projection: 0.009538 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041698 seconds.
+Elapsed CPU time for Sa solve 0.010394 seconds.
+38.9987
+
+Elapsed CPU time for Sv assemble: 0.040138 seconds.
+Elapsed CPU time for Sv solve: 0.011331 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 20 at t=0.5
+Elapsed CPU time for pl assemble: 0.022839 seconds.
+Elapsed CPU time for pl solve: 0.010466 seconds.
+Elapsed CPU time for RT Projection: 0.010466 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.039966 seconds.
+Elapsed CPU time for Sa solve 0.011401 seconds.
+39.7558
+
+Elapsed CPU time for Sv assemble: 0.039117 seconds.
+Elapsed CPU time for Sv solve: 0.011304 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 21 at t=0.525
+Elapsed CPU time for pl assemble: 0.022826 seconds.
+Elapsed CPU time for pl solve: 0.011465 seconds.
+Elapsed CPU time for RT Projection: 0.011465 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.040863 seconds.
+Elapsed CPU time for Sa solve 0.011593 seconds.
+40.5326
+
+Elapsed CPU time for Sv assemble: 0.041101 seconds.
+Elapsed CPU time for Sv solve: 0.01047 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 22 at t=0.55
+Elapsed CPU time for pl assemble: 0.02269 seconds.
+Elapsed CPU time for pl solve: 0.012038 seconds.
+Elapsed CPU time for RT Projection: 0.012038 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041472 seconds.
+Elapsed CPU time for Sa solve 0.011004 seconds.
+41.3284
+
+Elapsed CPU time for Sv assemble: 0.038483 seconds.
+Elapsed CPU time for Sv solve: 0.01051 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 23 at t=0.575
+Elapsed CPU time for pl assemble: 0.022747 seconds.
+Elapsed CPU time for pl solve: 0.01033 seconds.
+Elapsed CPU time for RT Projection: 0.01033 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.04206 seconds.
+Elapsed CPU time for Sa solve 0.01159 seconds.
+42.143
+
+Elapsed CPU time for Sv assemble: 0.038969 seconds.
+Elapsed CPU time for Sv solve: 0.01144 seconds.
+Elapsed CPU time for output results: 3e-06 seconds.
+
+Time step 24 at t=0.6
+Elapsed CPU time for pl assemble: 0.022755 seconds.
+Elapsed CPU time for pl solve: 0.011311 seconds.
+Elapsed CPU time for RT Projection: 0.011311 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042243 seconds.
+Elapsed CPU time for Sa solve 0.010513 seconds.
+42.9763
+
+Elapsed CPU time for Sv assemble: 0.038657 seconds.
+Elapsed CPU time for Sv solve: 0.011108 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 25 at t=0.625
+Elapsed CPU time for pl assemble: 0.022832 seconds.
+Elapsed CPU time for pl solve: 0.011238 seconds.
+Elapsed CPU time for RT Projection: 0.011238 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.040192 seconds.
+Elapsed CPU time for Sa solve 0.011462 seconds.
+43.8284
+
+Elapsed CPU time for Sv assemble: 0.04016 seconds.
+Elapsed CPU time for Sv solve: 0.011477 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 26 at t=0.65
+Elapsed CPU time for pl assemble: 0.022737 seconds.
+Elapsed CPU time for pl solve: 0.010347 seconds.
+Elapsed CPU time for RT Projection: 0.010347 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.043153 seconds.
+Elapsed CPU time for Sa solve 0.009735 seconds.
+44.6995
+
+Elapsed CPU time for Sv assemble: 0.039967 seconds.
+Elapsed CPU time for Sv solve: 0.011462 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 27 at t=0.675
+Elapsed CPU time for pl assemble: 0.022777 seconds.
+Elapsed CPU time for pl solve: 0.011196 seconds.
+Elapsed CPU time for RT Projection: 0.011196 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042111 seconds.
+Elapsed CPU time for Sa solve 0.011516 seconds.
+45.5897
+
+Elapsed CPU time for Sv assemble: 0.041233 seconds.
+Elapsed CPU time for Sv solve: 0.011364 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 28 at t=0.7
+Elapsed CPU time for pl assemble: 0.022847 seconds.
+Elapsed CPU time for pl solve: 0.010449 seconds.
+Elapsed CPU time for RT Projection: 0.010449 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042028 seconds.
+Elapsed CPU time for Sa solve 0.011526 seconds.
+46.4989
+
+Elapsed CPU time for Sv assemble: 0.039041 seconds.
+Elapsed CPU time for Sv solve: 0.01126 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 29 at t=0.725
+Elapsed CPU time for pl assemble: 0.022788 seconds.
+Elapsed CPU time for pl solve: 0.011131 seconds.
+Elapsed CPU time for RT Projection: 0.011131 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042139 seconds.
+Elapsed CPU time for Sa solve 0.010491 seconds.
+47.4269
+
+Elapsed CPU time for Sv assemble: 0.040226 seconds.
+Elapsed CPU time for Sv solve: 0.011393 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 30 at t=0.75
+Elapsed CPU time for pl assemble: 0.022746 seconds.
+Elapsed CPU time for pl solve: 0.011406 seconds.
+Elapsed CPU time for RT Projection: 0.011406 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042166 seconds.
+Elapsed CPU time for Sa solve 0.00949 seconds.
+48.3735
+
+Elapsed CPU time for Sv assemble: 0.040476 seconds.
+Elapsed CPU time for Sv solve: 0.011369 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 31 at t=0.775
+Elapsed CPU time for pl assemble: 0.022868 seconds.
+Elapsed CPU time for pl solve: 0.011278 seconds.
+Elapsed CPU time for RT Projection: 0.011278 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042173 seconds.
+Elapsed CPU time for Sa solve 0.011535 seconds.
+49.3384
+
+Elapsed CPU time for Sv assemble: 0.040177 seconds.
+Elapsed CPU time for Sv solve: 0.011447 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 32 at t=0.8
+Elapsed CPU time for pl assemble: 0.022925 seconds.
+Elapsed CPU time for pl solve: 0.011378 seconds.
+Elapsed CPU time for RT Projection: 0.011378 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042164 seconds.
+Elapsed CPU time for Sa solve 0.011565 seconds.
+50.3212
+
+Elapsed CPU time for Sv assemble: 0.040453 seconds.
+Elapsed CPU time for Sv solve: 0.011432 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 33 at t=0.825
+Elapsed CPU time for pl assemble: 0.022909 seconds.
+Elapsed CPU time for pl solve: 0.01047 seconds.
+Elapsed CPU time for RT Projection: 0.01047 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042161 seconds.
+Elapsed CPU time for Sa solve 0.012154 seconds.
+51.3214
+
+Elapsed CPU time for Sv assemble: 0.038881 seconds.
+Elapsed CPU time for Sv solve: 0.01142 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 34 at t=0.85
+Elapsed CPU time for pl assemble: 0.022707 seconds.
+Elapsed CPU time for pl solve: 0.010308 seconds.
+Elapsed CPU time for RT Projection: 0.010308 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042012 seconds.
+Elapsed CPU time for Sa solve 0.010706 seconds.
+52.3389
+
+Elapsed CPU time for Sv assemble: 0.039713 seconds.
+Elapsed CPU time for Sv solve: 0.01047 seconds.
+Elapsed CPU time for output results: 3e-06 seconds.
+
+Time step 35 at t=0.875
+Elapsed CPU time for pl assemble: 0.022852 seconds.
+Elapsed CPU time for pl solve: 0.011717 seconds.
+Elapsed CPU time for RT Projection: 0.011717 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041223 seconds.
+Elapsed CPU time for Sa solve 0.009469 seconds.
+53.3733
+
+Elapsed CPU time for Sv assemble: 0.039132 seconds.
+Elapsed CPU time for Sv solve: 0.009427 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 36 at t=0.9
+Elapsed CPU time for pl assemble: 0.022179 seconds.
+Elapsed CPU time for pl solve: 0.011378 seconds.
+Elapsed CPU time for RT Projection: 0.011378 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041795 seconds.
+Elapsed CPU time for Sa solve 0.011944 seconds.
+54.4242
+
+Elapsed CPU time for Sv assemble: 0.039235 seconds.
+Elapsed CPU time for Sv solve: 0.011341 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 37 at t=0.925
+Elapsed CPU time for pl assemble: 0.023021 seconds.
+Elapsed CPU time for pl solve: 0.009376 seconds.
+Elapsed CPU time for RT Projection: 0.009376 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041117 seconds.
+Elapsed CPU time for Sa solve 0.011544 seconds.
+55.4914
+
+Elapsed CPU time for Sv assemble: 0.038047 seconds.
+Elapsed CPU time for Sv solve: 0.011435 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 38 at t=0.95
+Elapsed CPU time for pl assemble: 0.023242 seconds.
+Elapsed CPU time for pl solve: 0.010392 seconds.
+Elapsed CPU time for RT Projection: 0.010392 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.045365 seconds.
+Elapsed CPU time for Sa solve 0.01174 seconds.
+56.5744
+
+Elapsed CPU time for Sv assemble: 0.038874 seconds.
+Elapsed CPU time for Sv solve: 0.010514 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 39 at t=0.975
+Elapsed CPU time for pl assemble: 0.022736 seconds.
+Elapsed CPU time for pl solve: 0.009441 seconds.
+Elapsed CPU time for RT Projection: 0.009441 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.042138 seconds.
+Elapsed CPU time for Sa solve 0.010559 seconds.
+57.6729
+
+Elapsed CPU time for Sv assemble: 0.038042 seconds.
+Elapsed CPU time for Sv solve: 0.011281 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 40 at t=1
+Elapsed CPU time for pl assemble: 0.022073 seconds.
+Elapsed CPU time for pl solve: 0.011467 seconds.
+Elapsed CPU time for RT Projection: 0.011467 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.041278 seconds.
+Elapsed CPU time for Sa solve 0.009433 seconds.
+58.7863
+
+Elapsed CPU time for Sv assemble: 0.040832 seconds.
+Elapsed CPU time for Sv solve: 0.01062 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Errors: 
+||e_pl||_L2 = 0.00290706
+||e_Sa||_L2 = 0.000703099
+||e_Sv||_L2 = 0.00433261
+Triple norm error p_l: 
+|||e_pl||| = 0.0328924
+    Number of active cells:       1024 (by partition: 513+511)
+    Number of degrees of freedom: 4096 (by partition: 2052+2044)
+Time step 2 at t=0.025
+Elapsed CPU time for pl assemble: 0.082617 seconds.
+Elapsed CPU time for pl solve: 0.039224 seconds.
+Elapsed CPU time for RT Projection: 0.039224 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159098 seconds.
+Elapsed CPU time for Sa solve 0.035516 seconds.
+55.204
+
+Elapsed CPU time for Sv assemble: 0.155022 seconds.
+Elapsed CPU time for Sv solve: 0.039621 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 3 at t=0.0375
+Elapsed CPU time for pl assemble: 0.080672 seconds.
+Elapsed CPU time for pl solve: 0.036237 seconds.
+Elapsed CPU time for RT Projection: 0.036237 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157367 seconds.
+Elapsed CPU time for Sa solve 0.037871 seconds.
+55.5323
+
+Elapsed CPU time for Sv assemble: 0.150026 seconds.
+Elapsed CPU time for Sv solve: 0.036823 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 4 at t=0.05
+Elapsed CPU time for pl assemble: 0.080643 seconds.
+Elapsed CPU time for pl solve: 0.03827 seconds.
+Elapsed CPU time for RT Projection: 0.03827 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.162607 seconds.
+Elapsed CPU time for Sa solve 0.037596 seconds.
+55.8423
+
+Elapsed CPU time for Sv assemble: 0.148089 seconds.
+Elapsed CPU time for Sv solve: 0.034174 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 5 at t=0.0625
+Elapsed CPU time for pl assemble: 0.080684 seconds.
+Elapsed CPU time for pl solve: 0.041124 seconds.
+Elapsed CPU time for RT Projection: 0.041124 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157914 seconds.
+Elapsed CPU time for Sa solve 0.04015 seconds.
+56.1531
+
+Elapsed CPU time for Sv assemble: 0.14816 seconds.
+Elapsed CPU time for Sv solve: 0.037944 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 6 at t=0.075
+Elapsed CPU time for pl assemble: 0.083837 seconds.
+Elapsed CPU time for pl solve: 0.038599 seconds.
+Elapsed CPU time for RT Projection: 0.038599 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163244 seconds.
+Elapsed CPU time for Sa solve 0.039693 seconds.
+56.4745
+
+Elapsed CPU time for Sv assemble: 0.148655 seconds.
+Elapsed CPU time for Sv solve: 0.038828 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 7 at t=0.0875
+Elapsed CPU time for pl assemble: 0.081912 seconds.
+Elapsed CPU time for pl solve: 0.033721 seconds.
+Elapsed CPU time for RT Projection: 0.033721 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.164998 seconds.
+Elapsed CPU time for Sa solve 0.037979 seconds.
+56.8124
+
+Elapsed CPU time for Sv assemble: 0.150344 seconds.
+Elapsed CPU time for Sv solve: 0.036315 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 8 at t=0.1
+Elapsed CPU time for pl assemble: 0.080485 seconds.
+Elapsed CPU time for pl solve: 0.039156 seconds.
+Elapsed CPU time for RT Projection: 0.039156 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155361 seconds.
+Elapsed CPU time for Sa solve 0.037287 seconds.
+57.1704
+
+Elapsed CPU time for Sv assemble: 0.155142 seconds.
+Elapsed CPU time for Sv solve: 0.038183 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 9 at t=0.1125
+Elapsed CPU time for pl assemble: 0.081174 seconds.
+Elapsed CPU time for pl solve: 0.039279 seconds.
+Elapsed CPU time for RT Projection: 0.039279 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159197 seconds.
+Elapsed CPU time for Sa solve 0.035126 seconds.
+57.5504
+
+Elapsed CPU time for Sv assemble: 0.155866 seconds.
+Elapsed CPU time for Sv solve: 0.039716 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 10 at t=0.125
+Elapsed CPU time for pl assemble: 0.082193 seconds.
+Elapsed CPU time for pl solve: 0.036799 seconds.
+Elapsed CPU time for RT Projection: 0.036799 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163694 seconds.
+Elapsed CPU time for Sa solve 0.039061 seconds.
+57.9526
+
+Elapsed CPU time for Sv assemble: 0.14928 seconds.
+Elapsed CPU time for Sv solve: 0.0387 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 11 at t=0.1375
+Elapsed CPU time for pl assemble: 0.080689 seconds.
+Elapsed CPU time for pl solve: 0.033896 seconds.
+Elapsed CPU time for RT Projection: 0.033896 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.160542 seconds.
+Elapsed CPU time for Sa solve 0.03501 seconds.
+58.3761
+
+Elapsed CPU time for Sv assemble: 0.150804 seconds.
+Elapsed CPU time for Sv solve: 0.036436 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 12 at t=0.15
+Elapsed CPU time for pl assemble: 0.08274 seconds.
+Elapsed CPU time for pl solve: 0.036988 seconds.
+Elapsed CPU time for RT Projection: 0.036988 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161611 seconds.
+Elapsed CPU time for Sa solve 0.04003 seconds.
+58.8196
+
+Elapsed CPU time for Sv assemble: 0.152322 seconds.
+Elapsed CPU time for Sv solve: 0.037427 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 13 at t=0.1625
+Elapsed CPU time for pl assemble: 0.081793 seconds.
+Elapsed CPU time for pl solve: 0.038897 seconds.
+Elapsed CPU time for RT Projection: 0.038897 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157199 seconds.
+Elapsed CPU time for Sa solve 0.037054 seconds.
+59.2812
+
+Elapsed CPU time for Sv assemble: 0.14947 seconds.
+Elapsed CPU time for Sv solve: 0.035076 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 14 at t=0.175
+Elapsed CPU time for pl assemble: 0.081679 seconds.
+Elapsed CPU time for pl solve: 0.037407 seconds.
+Elapsed CPU time for RT Projection: 0.037407 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155199 seconds.
+Elapsed CPU time for Sa solve 0.038478 seconds.
+59.7591
+
+Elapsed CPU time for Sv assemble: 0.150917 seconds.
+Elapsed CPU time for Sv solve: 0.03903 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 15 at t=0.1875
+Elapsed CPU time for pl assemble: 0.08196 seconds.
+Elapsed CPU time for pl solve: 0.037571 seconds.
+Elapsed CPU time for RT Projection: 0.037571 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159319 seconds.
+Elapsed CPU time for Sa solve 0.037093 seconds.
+60.2516
+
+Elapsed CPU time for Sv assemble: 0.154513 seconds.
+Elapsed CPU time for Sv solve: 0.040787 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 16 at t=0.2
+Elapsed CPU time for pl assemble: 0.083609 seconds.
+Elapsed CPU time for pl solve: 0.037845 seconds.
+Elapsed CPU time for RT Projection: 0.037845 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161265 seconds.
+Elapsed CPU time for Sa solve 0.035961 seconds.
+60.7575
+
+Elapsed CPU time for Sv assemble: 0.149884 seconds.
+Elapsed CPU time for Sv solve: 0.037037 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 17 at t=0.2125
+Elapsed CPU time for pl assemble: 0.08189 seconds.
+Elapsed CPU time for pl solve: 0.039134 seconds.
+Elapsed CPU time for RT Projection: 0.039134 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.154002 seconds.
+Elapsed CPU time for Sa solve 0.036178 seconds.
+61.2755
+
+Elapsed CPU time for Sv assemble: 0.151171 seconds.
+Elapsed CPU time for Sv solve: 0.04112 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 18 at t=0.225
+Elapsed CPU time for pl assemble: 0.081664 seconds.
+Elapsed CPU time for pl solve: 0.036416 seconds.
+Elapsed CPU time for RT Projection: 0.036416 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159272 seconds.
+Elapsed CPU time for Sa solve 0.036634 seconds.
+61.8051
+
+Elapsed CPU time for Sv assemble: 0.150779 seconds.
+Elapsed CPU time for Sv solve: 0.037303 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 19 at t=0.2375
+Elapsed CPU time for pl assemble: 0.082082 seconds.
+Elapsed CPU time for pl solve: 0.038578 seconds.
+Elapsed CPU time for RT Projection: 0.038578 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.156599 seconds.
+Elapsed CPU time for Sa solve 0.03924 seconds.
+62.3457
+
+Elapsed CPU time for Sv assemble: 0.150326 seconds.
+Elapsed CPU time for Sv solve: 0.040471 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 20 at t=0.25
+Elapsed CPU time for pl assemble: 0.083811 seconds.
+Elapsed CPU time for pl solve: 0.039195 seconds.
+Elapsed CPU time for RT Projection: 0.039195 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157626 seconds.
+Elapsed CPU time for Sa solve 0.038641 seconds.
+62.8969
+
+Elapsed CPU time for Sv assemble: 0.145278 seconds.
+Elapsed CPU time for Sv solve: 0.036335 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 21 at t=0.2625
+Elapsed CPU time for pl assemble: 0.082384 seconds.
+Elapsed CPU time for pl solve: 0.034573 seconds.
+Elapsed CPU time for RT Projection: 0.034573 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.162745 seconds.
+Elapsed CPU time for Sa solve 0.038818 seconds.
+63.4586
+
+Elapsed CPU time for Sv assemble: 0.150332 seconds.
+Elapsed CPU time for Sv solve: 0.037535 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 22 at t=0.275
+Elapsed CPU time for pl assemble: 0.079746 seconds.
+Elapsed CPU time for pl solve: 0.035952 seconds.
+Elapsed CPU time for RT Projection: 0.035952 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.160464 seconds.
+Elapsed CPU time for Sa solve 0.035171 seconds.
+64.0306
+
+Elapsed CPU time for Sv assemble: 0.150189 seconds.
+Elapsed CPU time for Sv solve: 0.038021 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 23 at t=0.2875
+Elapsed CPU time for pl assemble: 0.078877 seconds.
+Elapsed CPU time for pl solve: 0.036943 seconds.
+Elapsed CPU time for RT Projection: 0.036943 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161404 seconds.
+Elapsed CPU time for Sa solve 0.037309 seconds.
+64.6128
+
+Elapsed CPU time for Sv assemble: 0.150769 seconds.
+Elapsed CPU time for Sv solve: 0.038604 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 24 at t=0.3
+Elapsed CPU time for pl assemble: 0.081281 seconds.
+Elapsed CPU time for pl solve: 0.038864 seconds.
+Elapsed CPU time for RT Projection: 0.038864 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.1595 seconds.
+Elapsed CPU time for Sa solve 0.037987 seconds.
+65.2051
+
+Elapsed CPU time for Sv assemble: 0.158382 seconds.
+Elapsed CPU time for Sv solve: 0.039581 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 25 at t=0.3125
+Elapsed CPU time for pl assemble: 0.080364 seconds.
+Elapsed CPU time for pl solve: 0.037743 seconds.
+Elapsed CPU time for RT Projection: 0.037743 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.158627 seconds.
+Elapsed CPU time for Sa solve 0.036782 seconds.
+65.8075
+
+Elapsed CPU time for Sv assemble: 0.149461 seconds.
+Elapsed CPU time for Sv solve: 0.039135 seconds.
+Elapsed CPU time for output results: 4e-06 seconds.
+
+Time step 26 at t=0.325
+Elapsed CPU time for pl assemble: 0.080661 seconds.
+Elapsed CPU time for pl solve: 0.037782 seconds.
+Elapsed CPU time for RT Projection: 0.037782 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.158911 seconds.
+Elapsed CPU time for Sa solve 0.036423 seconds.
+66.4199
+
+Elapsed CPU time for Sv assemble: 0.144131 seconds.
+Elapsed CPU time for Sv solve: 0.036639 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 27 at t=0.3375
+Elapsed CPU time for pl assemble: 0.080646 seconds.
+Elapsed CPU time for pl solve: 0.03826 seconds.
+Elapsed CPU time for RT Projection: 0.03826 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.156471 seconds.
+Elapsed CPU time for Sa solve 0.037834 seconds.
+67.0423
+
+Elapsed CPU time for Sv assemble: 0.153364 seconds.
+Elapsed CPU time for Sv solve: 0.037682 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 28 at t=0.35
+Elapsed CPU time for pl assemble: 0.078514 seconds.
+Elapsed CPU time for pl solve: 0.035221 seconds.
+Elapsed CPU time for RT Projection: 0.035221 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.16572 seconds.
+Elapsed CPU time for Sa solve 0.036123 seconds.
+67.6747
+
+Elapsed CPU time for Sv assemble: 0.148852 seconds.
+Elapsed CPU time for Sv solve: 0.033648 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 29 at t=0.3625
+Elapsed CPU time for pl assemble: 0.079422 seconds.
+Elapsed CPU time for pl solve: 0.035393 seconds.
+Elapsed CPU time for RT Projection: 0.035393 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163557 seconds.
+Elapsed CPU time for Sa solve 0.034677 seconds.
+68.317
+
+Elapsed CPU time for Sv assemble: 0.159968 seconds.
+Elapsed CPU time for Sv solve: 0.034171 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 30 at t=0.375
+Elapsed CPU time for pl assemble: 0.082918 seconds.
+Elapsed CPU time for pl solve: 0.037467 seconds.
+Elapsed CPU time for RT Projection: 0.037467 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.154019 seconds.
+Elapsed CPU time for Sa solve 0.035682 seconds.
+68.9693
+
+Elapsed CPU time for Sv assemble: 0.155974 seconds.
+Elapsed CPU time for Sv solve: 0.033928 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 31 at t=0.3875
+Elapsed CPU time for pl assemble: 0.078078 seconds.
+Elapsed CPU time for pl solve: 0.03707 seconds.
+Elapsed CPU time for RT Projection: 0.03707 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157591 seconds.
+Elapsed CPU time for Sa solve 0.036464 seconds.
+69.6316
+
+Elapsed CPU time for Sv assemble: 0.157425 seconds.
+Elapsed CPU time for Sv solve: 0.037287 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 32 at t=0.4
+Elapsed CPU time for pl assemble: 0.079711 seconds.
+Elapsed CPU time for pl solve: 0.036469 seconds.
+Elapsed CPU time for RT Projection: 0.036469 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.156934 seconds.
+Elapsed CPU time for Sa solve 0.036759 seconds.
+70.3038
+
+Elapsed CPU time for Sv assemble: 0.157639 seconds.
+Elapsed CPU time for Sv solve: 0.03529 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 33 at t=0.4125
+Elapsed CPU time for pl assemble: 0.07934 seconds.
+Elapsed CPU time for pl solve: 0.037067 seconds.
+Elapsed CPU time for RT Projection: 0.037067 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159941 seconds.
+Elapsed CPU time for Sa solve 0.038216 seconds.
+70.9861
+
+Elapsed CPU time for Sv assemble: 0.153907 seconds.
+Elapsed CPU time for Sv solve: 0.036832 seconds.
+Elapsed CPU time for output results: 3e-06 seconds.
+
+Time step 34 at t=0.425
+Elapsed CPU time for pl assemble: 0.08011 seconds.
+Elapsed CPU time for pl solve: 0.035685 seconds.
+Elapsed CPU time for RT Projection: 0.035685 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155965 seconds.
+Elapsed CPU time for Sa solve 0.038863 seconds.
+71.6783
+
+Elapsed CPU time for Sv assemble: 0.146096 seconds.
+Elapsed CPU time for Sv solve: 0.036589 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 35 at t=0.4375
+Elapsed CPU time for pl assemble: 0.081687 seconds.
+Elapsed CPU time for pl solve: 0.035516 seconds.
+Elapsed CPU time for RT Projection: 0.035516 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.16058 seconds.
+Elapsed CPU time for Sa solve 0.033932 seconds.
+72.3806
+
+Elapsed CPU time for Sv assemble: 0.156909 seconds.
+Elapsed CPU time for Sv solve: 0.036892 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 36 at t=0.45
+Elapsed CPU time for pl assemble: 0.0799 seconds.
+Elapsed CPU time for pl solve: 0.036942 seconds.
+Elapsed CPU time for RT Projection: 0.036942 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.162031 seconds.
+Elapsed CPU time for Sa solve 0.038582 seconds.
+73.0928
+
+Elapsed CPU time for Sv assemble: 0.154516 seconds.
+Elapsed CPU time for Sv solve: 0.039423 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 37 at t=0.4625
+Elapsed CPU time for pl assemble: 0.079842 seconds.
+Elapsed CPU time for pl solve: 0.03661 seconds.
+Elapsed CPU time for RT Projection: 0.03661 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.169472 seconds.
+Elapsed CPU time for Sa solve 0.040038 seconds.
+73.815
+
+Elapsed CPU time for Sv assemble: 0.150278 seconds.
+Elapsed CPU time for Sv solve: 0.03716 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 38 at t=0.475
+Elapsed CPU time for pl assemble: 0.08055 seconds.
+Elapsed CPU time for pl solve: 0.037518 seconds.
+Elapsed CPU time for RT Projection: 0.037518 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.166531 seconds.
+Elapsed CPU time for Sa solve 0.037882 seconds.
+74.5473
+
+Elapsed CPU time for Sv assemble: 0.150983 seconds.
+Elapsed CPU time for Sv solve: 0.037326 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 39 at t=0.4875
+Elapsed CPU time for pl assemble: 0.076966 seconds.
+Elapsed CPU time for pl solve: 0.035547 seconds.
+Elapsed CPU time for RT Projection: 0.035547 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.162157 seconds.
+Elapsed CPU time for Sa solve 0.037059 seconds.
+75.2895
+
+Elapsed CPU time for Sv assemble: 0.148041 seconds.
+Elapsed CPU time for Sv solve: 0.037518 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 40 at t=0.5
+Elapsed CPU time for pl assemble: 0.081348 seconds.
+Elapsed CPU time for pl solve: 0.038002 seconds.
+Elapsed CPU time for RT Projection: 0.038002 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163076 seconds.
+Elapsed CPU time for Sa solve 0.037344 seconds.
+76.0418
+
+Elapsed CPU time for Sv assemble: 0.147296 seconds.
+Elapsed CPU time for Sv solve: 0.037611 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 41 at t=0.5125
+Elapsed CPU time for pl assemble: 0.079522 seconds.
+Elapsed CPU time for pl solve: 0.035676 seconds.
+Elapsed CPU time for RT Projection: 0.035676 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.164851 seconds.
+Elapsed CPU time for Sa solve 0.036616 seconds.
+76.804
+
+Elapsed CPU time for Sv assemble: 0.148624 seconds.
+Elapsed CPU time for Sv solve: 0.036215 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 42 at t=0.525
+Elapsed CPU time for pl assemble: 0.080775 seconds.
+Elapsed CPU time for pl solve: 0.038074 seconds.
+Elapsed CPU time for RT Projection: 0.038074 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.167133 seconds.
+Elapsed CPU time for Sa solve 0.035988 seconds.
+77.5762
+
+Elapsed CPU time for Sv assemble: 0.155988 seconds.
+Elapsed CPU time for Sv solve: 0.034754 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 43 at t=0.5375
+Elapsed CPU time for pl assemble: 0.08124 seconds.
+Elapsed CPU time for pl solve: 0.036371 seconds.
+Elapsed CPU time for RT Projection: 0.036371 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.165181 seconds.
+Elapsed CPU time for Sa solve 0.037128 seconds.
+78.3584
+
+Elapsed CPU time for Sv assemble: 0.156725 seconds.
+Elapsed CPU time for Sv solve: 0.03942 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 44 at t=0.55
+Elapsed CPU time for pl assemble: 0.081192 seconds.
+Elapsed CPU time for pl solve: 0.035632 seconds.
+Elapsed CPU time for RT Projection: 0.035632 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.154532 seconds.
+Elapsed CPU time for Sa solve 0.037846 seconds.
+79.1505
+
+Elapsed CPU time for Sv assemble: 0.145946 seconds.
+Elapsed CPU time for Sv solve: 0.034799 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 45 at t=0.5625
+Elapsed CPU time for pl assemble: 0.080706 seconds.
+Elapsed CPU time for pl solve: 0.039155 seconds.
+Elapsed CPU time for RT Projection: 0.039155 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.164397 seconds.
+Elapsed CPU time for Sa solve 0.036028 seconds.
+79.9526
+
+Elapsed CPU time for Sv assemble: 0.148247 seconds.
+Elapsed CPU time for Sv solve: 0.03573 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 46 at t=0.575
+Elapsed CPU time for pl assemble: 0.081356 seconds.
+Elapsed CPU time for pl solve: 0.033939 seconds.
+Elapsed CPU time for RT Projection: 0.033939 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.160388 seconds.
+Elapsed CPU time for Sa solve 0.034496 seconds.
+80.7647
+
+Elapsed CPU time for Sv assemble: 0.150004 seconds.
+Elapsed CPU time for Sv solve: 0.035131 seconds.
+Elapsed CPU time for output results: 0 seconds.
+
+Time step 47 at t=0.5875
+Elapsed CPU time for pl assemble: 0.079035 seconds.
+Elapsed CPU time for pl solve: 0.039029 seconds.
+Elapsed CPU time for RT Projection: 0.039029 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157504 seconds.
+Elapsed CPU time for Sa solve 0.036998 seconds.
+81.5867
+
+Elapsed CPU time for Sv assemble: 0.156808 seconds.
+Elapsed CPU time for Sv solve: 0.037196 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 48 at t=0.6
+Elapsed CPU time for pl assemble: 0.079655 seconds.
+Elapsed CPU time for pl solve: 0.037453 seconds.
+Elapsed CPU time for RT Projection: 0.037453 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159356 seconds.
+Elapsed CPU time for Sa solve 0.037797 seconds.
+82.4185
+
+Elapsed CPU time for Sv assemble: 0.149091 seconds.
+Elapsed CPU time for Sv solve: 0.036551 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 49 at t=0.6125
+Elapsed CPU time for pl assemble: 0.082646 seconds.
+Elapsed CPU time for pl solve: 0.037688 seconds.
+Elapsed CPU time for RT Projection: 0.037688 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.156652 seconds.
+Elapsed CPU time for Sa solve 0.036439 seconds.
+83.2603
+
+Elapsed CPU time for Sv assemble: 0.148709 seconds.
+Elapsed CPU time for Sv solve: 0.038227 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 50 at t=0.625
+Elapsed CPU time for pl assemble: 0.081708 seconds.
+Elapsed CPU time for pl solve: 0.036971 seconds.
+Elapsed CPU time for RT Projection: 0.036971 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.154259 seconds.
+Elapsed CPU time for Sa solve 0.038164 seconds.
+84.112
+
+Elapsed CPU time for Sv assemble: 0.157308 seconds.
+Elapsed CPU time for Sv solve: 0.037428 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 51 at t=0.6375
+Elapsed CPU time for pl assemble: 0.080777 seconds.
+Elapsed CPU time for pl solve: 0.037043 seconds.
+Elapsed CPU time for RT Projection: 0.037043 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155232 seconds.
+Elapsed CPU time for Sa solve 0.035259 seconds.
+84.9735
+
+Elapsed CPU time for Sv assemble: 0.160685 seconds.
+Elapsed CPU time for Sv solve: 0.038314 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 52 at t=0.65
+Elapsed CPU time for pl assemble: 0.082075 seconds.
+Elapsed CPU time for pl solve: 0.038473 seconds.
+Elapsed CPU time for RT Projection: 0.038473 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.153501 seconds.
+Elapsed CPU time for Sa solve 0.037726 seconds.
+85.8448
+
+Elapsed CPU time for Sv assemble: 0.145792 seconds.
+Elapsed CPU time for Sv solve: 0.03651 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 53 at t=0.6625
+Elapsed CPU time for pl assemble: 0.080852 seconds.
+Elapsed CPU time for pl solve: 0.037188 seconds.
+Elapsed CPU time for RT Projection: 0.037188 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.158121 seconds.
+Elapsed CPU time for Sa solve 0.03741 seconds.
+86.7259
+
+Elapsed CPU time for Sv assemble: 0.147982 seconds.
+Elapsed CPU time for Sv solve: 0.036901 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 54 at t=0.675
+Elapsed CPU time for pl assemble: 0.081676 seconds.
+Elapsed CPU time for pl solve: 0.038381 seconds.
+Elapsed CPU time for RT Projection: 0.038381 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161141 seconds.
+Elapsed CPU time for Sa solve 0.038194 seconds.
+87.6168
+
+Elapsed CPU time for Sv assemble: 0.151609 seconds.
+Elapsed CPU time for Sv solve: 0.037618 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 55 at t=0.6875
+Elapsed CPU time for pl assemble: 0.079198 seconds.
+Elapsed CPU time for pl solve: 0.03843 seconds.
+Elapsed CPU time for RT Projection: 0.03843 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163799 seconds.
+Elapsed CPU time for Sa solve 0.038412 seconds.
+88.5174
+
+Elapsed CPU time for Sv assemble: 0.149504 seconds.
+Elapsed CPU time for Sv solve: 0.038206 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 56 at t=0.7
+Elapsed CPU time for pl assemble: 0.079822 seconds.
+Elapsed CPU time for pl solve: 0.038602 seconds.
+Elapsed CPU time for RT Projection: 0.038602 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.158716 seconds.
+Elapsed CPU time for Sa solve 0.035826 seconds.
+89.4276
+
+Elapsed CPU time for Sv assemble: 0.156474 seconds.
+Elapsed CPU time for Sv solve: 0.039221 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 57 at t=0.7125
+Elapsed CPU time for pl assemble: 0.078949 seconds.
+Elapsed CPU time for pl solve: 0.039086 seconds.
+Elapsed CPU time for RT Projection: 0.039086 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.164256 seconds.
+Elapsed CPU time for Sa solve 0.035919 seconds.
+90.3476
+
+Elapsed CPU time for Sv assemble: 0.159112 seconds.
+Elapsed CPU time for Sv solve: 0.035722 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 58 at t=0.725
+Elapsed CPU time for pl assemble: 0.078581 seconds.
+Elapsed CPU time for pl solve: 0.038988 seconds.
+Elapsed CPU time for RT Projection: 0.038988 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159696 seconds.
+Elapsed CPU time for Sa solve 0.037158 seconds.
+91.2771
+
+Elapsed CPU time for Sv assemble: 0.155484 seconds.
+Elapsed CPU time for Sv solve: 0.038398 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 59 at t=0.7375
+Elapsed CPU time for pl assemble: 0.080478 seconds.
+Elapsed CPU time for pl solve: 0.036741 seconds.
+Elapsed CPU time for RT Projection: 0.036741 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155378 seconds.
+Elapsed CPU time for Sa solve 0.036929 seconds.
+92.2162
+
+Elapsed CPU time for Sv assemble: 0.147999 seconds.
+Elapsed CPU time for Sv solve: 0.033542 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 60 at t=0.75
+Elapsed CPU time for pl assemble: 0.080488 seconds.
+Elapsed CPU time for pl solve: 0.034521 seconds.
+Elapsed CPU time for RT Projection: 0.034521 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.15778 seconds.
+Elapsed CPU time for Sa solve 0.035215 seconds.
+93.1648
+
+Elapsed CPU time for Sv assemble: 0.156238 seconds.
+Elapsed CPU time for Sv solve: 0.036437 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 61 at t=0.7625
+Elapsed CPU time for pl assemble: 0.079752 seconds.
+Elapsed CPU time for pl solve: 0.032313 seconds.
+Elapsed CPU time for RT Projection: 0.032313 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.160539 seconds.
+Elapsed CPU time for Sa solve 0.037629 seconds.
+94.1228
+
+Elapsed CPU time for Sv assemble: 0.146594 seconds.
+Elapsed CPU time for Sv solve: 0.035301 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 62 at t=0.775
+Elapsed CPU time for pl assemble: 0.079387 seconds.
+Elapsed CPU time for pl solve: 0.040119 seconds.
+Elapsed CPU time for RT Projection: 0.040119 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155904 seconds.
+Elapsed CPU time for Sa solve 0.038716 seconds.
+95.0903
+
+Elapsed CPU time for Sv assemble: 0.146346 seconds.
+Elapsed CPU time for Sv solve: 0.038495 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 63 at t=0.7875
+Elapsed CPU time for pl assemble: 0.079236 seconds.
+Elapsed CPU time for pl solve: 0.034559 seconds.
+Elapsed CPU time for RT Projection: 0.034559 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163554 seconds.
+Elapsed CPU time for Sa solve 0.038133 seconds.
+96.0671
+
+Elapsed CPU time for Sv assemble: 0.147981 seconds.
+Elapsed CPU time for Sv solve: 0.036619 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 64 at t=0.8
+Elapsed CPU time for pl assemble: 0.07899 seconds.
+Elapsed CPU time for pl solve: 0.035477 seconds.
+Elapsed CPU time for RT Projection: 0.035477 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.156752 seconds.
+Elapsed CPU time for Sa solve 0.035367 seconds.
+97.0532
+
+Elapsed CPU time for Sv assemble: 0.155208 seconds.
+Elapsed CPU time for Sv solve: 0.036655 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 65 at t=0.8125
+Elapsed CPU time for pl assemble: 0.079198 seconds.
+Elapsed CPU time for pl solve: 0.03761 seconds.
+Elapsed CPU time for RT Projection: 0.03761 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.156205 seconds.
+Elapsed CPU time for Sa solve 0.035341 seconds.
+98.0485
+
+Elapsed CPU time for Sv assemble: 0.150249 seconds.
+Elapsed CPU time for Sv solve: 0.03612 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 66 at t=0.825
+Elapsed CPU time for pl assemble: 0.078818 seconds.
+Elapsed CPU time for pl solve: 0.03513 seconds.
+Elapsed CPU time for RT Projection: 0.03513 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157442 seconds.
+Elapsed CPU time for Sa solve 0.03868 seconds.
+99.053
+
+Elapsed CPU time for Sv assemble: 0.156543 seconds.
+Elapsed CPU time for Sv solve: 0.035818 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 67 at t=0.8375
+Elapsed CPU time for pl assemble: 0.079218 seconds.
+Elapsed CPU time for pl solve: 0.036793 seconds.
+Elapsed CPU time for RT Projection: 0.036793 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161713 seconds.
+Elapsed CPU time for Sa solve 0.038112 seconds.
+100.067
+
+Elapsed CPU time for Sv assemble: 0.155591 seconds.
+Elapsed CPU time for Sv solve: 0.03797 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 68 at t=0.85
+Elapsed CPU time for pl assemble: 0.078004 seconds.
+Elapsed CPU time for pl solve: 0.034898 seconds.
+Elapsed CPU time for RT Projection: 0.034898 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.159818 seconds.
+Elapsed CPU time for Sa solve 0.035663 seconds.
+101.089
+
+Elapsed CPU time for Sv assemble: 0.147778 seconds.
+Elapsed CPU time for Sv solve: 0.033208 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 69 at t=0.8625
+Elapsed CPU time for pl assemble: 0.079801 seconds.
+Elapsed CPU time for pl solve: 0.036353 seconds.
+Elapsed CPU time for RT Projection: 0.036353 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161604 seconds.
+Elapsed CPU time for Sa solve 0.03771 seconds.
+102.121
+
+Elapsed CPU time for Sv assemble: 0.148723 seconds.
+Elapsed CPU time for Sv solve: 0.033157 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 70 at t=0.875
+Elapsed CPU time for pl assemble: 0.079124 seconds.
+Elapsed CPU time for pl solve: 0.038367 seconds.
+Elapsed CPU time for RT Projection: 0.038367 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.158881 seconds.
+Elapsed CPU time for Sa solve 0.03537 seconds.
+103.161
+
+Elapsed CPU time for Sv assemble: 0.15521 seconds.
+Elapsed CPU time for Sv solve: 0.034984 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 71 at t=0.8875
+Elapsed CPU time for pl assemble: 0.080519 seconds.
+Elapsed CPU time for pl solve: 0.035314 seconds.
+Elapsed CPU time for RT Projection: 0.035314 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.162858 seconds.
+Elapsed CPU time for Sa solve 0.034204 seconds.
+104.21
+
+Elapsed CPU time for Sv assemble: 0.148732 seconds.
+Elapsed CPU time for Sv solve: 0.036265 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 72 at t=0.9
+Elapsed CPU time for pl assemble: 0.080029 seconds.
+Elapsed CPU time for pl solve: 0.035169 seconds.
+Elapsed CPU time for RT Projection: 0.035169 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.163311 seconds.
+Elapsed CPU time for Sa solve 0.039585 seconds.
+105.268
+
+Elapsed CPU time for Sv assemble: 0.157929 seconds.
+Elapsed CPU time for Sv solve: 0.033958 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 73 at t=0.9125
+Elapsed CPU time for pl assemble: 0.080352 seconds.
+Elapsed CPU time for pl solve: 0.036472 seconds.
+Elapsed CPU time for RT Projection: 0.036472 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157503 seconds.
+Elapsed CPU time for Sa solve 0.03843 seconds.
+106.334
+
+Elapsed CPU time for Sv assemble: 0.149017 seconds.
+Elapsed CPU time for Sv solve: 0.038135 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 74 at t=0.925
+Elapsed CPU time for pl assemble: 0.078741 seconds.
+Elapsed CPU time for pl solve: 0.036257 seconds.
+Elapsed CPU time for RT Projection: 0.036257 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.160233 seconds.
+Elapsed CPU time for Sa solve 0.03699 seconds.
+107.409
+
+Elapsed CPU time for Sv assemble: 0.158831 seconds.
+Elapsed CPU time for Sv solve: 0.03737 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 75 at t=0.9375
+Elapsed CPU time for pl assemble: 0.079835 seconds.
+Elapsed CPU time for pl solve: 0.035007 seconds.
+Elapsed CPU time for RT Projection: 0.035007 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.160416 seconds.
+Elapsed CPU time for Sa solve 0.035121 seconds.
+108.492
+
+Elapsed CPU time for Sv assemble: 0.147834 seconds.
+Elapsed CPU time for Sv solve: 0.036527 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 76 at t=0.95
+Elapsed CPU time for pl assemble: 0.078799 seconds.
+Elapsed CPU time for pl solve: 0.034694 seconds.
+Elapsed CPU time for RT Projection: 0.034694 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.15904 seconds.
+Elapsed CPU time for Sa solve 0.036882 seconds.
+109.584
+
+Elapsed CPU time for Sv assemble: 0.15614 seconds.
+Elapsed CPU time for Sv solve: 0.034151 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 77 at t=0.9625
+Elapsed CPU time for pl assemble: 0.079122 seconds.
+Elapsed CPU time for pl solve: 0.033694 seconds.
+Elapsed CPU time for RT Projection: 0.033694 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.155315 seconds.
+Elapsed CPU time for Sa solve 0.037915 seconds.
+110.684
+
+Elapsed CPU time for Sv assemble: 0.145632 seconds.
+Elapsed CPU time for Sv solve: 0.036694 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 78 at t=0.975
+Elapsed CPU time for pl assemble: 0.078576 seconds.
+Elapsed CPU time for pl solve: 0.038604 seconds.
+Elapsed CPU time for RT Projection: 0.038604 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.169129 seconds.
+Elapsed CPU time for Sa solve 0.035761 seconds.
+111.792
+
+Elapsed CPU time for Sv assemble: 0.149241 seconds.
+Elapsed CPU time for Sv solve: 0.038158 seconds.
+Elapsed CPU time for output results: 1e-06 seconds.
+
+Time step 79 at t=0.9875
+Elapsed CPU time for pl assemble: 0.076848 seconds.
+Elapsed CPU time for pl solve: 0.034992 seconds.
+Elapsed CPU time for RT Projection: 0.034992 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.161656 seconds.
+Elapsed CPU time for Sa solve 0.03534 seconds.
+112.907
+
+Elapsed CPU time for Sv assemble: 0.163858 seconds.
+Elapsed CPU time for Sv solve: 0.039169 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Time step 80 at t=1
+Elapsed CPU time for pl assemble: 0.078757 seconds.
+Elapsed CPU time for pl solve: 0.035101 seconds.
+Elapsed CPU time for RT Projection: 0.035101 seconds.
+
+Elapsed CPU time for Sa system assemble: 0.157021 seconds.
+Elapsed CPU time for Sa solve 0.03741 seconds.
+114.031
+
+Elapsed CPU time for Sv assemble: 0.148152 seconds.
+Elapsed CPU time for Sv solve: 0.035182 seconds.
+Elapsed CPU time for output results: 2e-06 seconds.
+
+Errors: 
+||e_pl||_L2 = 0.00178686
+||e_Sa||_L2 = 0.000298175
+||e_Sv||_L2 = 0.00264538
+Triple norm error p_l: 
+|||e_pl||| = 0.0199292

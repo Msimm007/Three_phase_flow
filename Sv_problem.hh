@@ -1551,7 +1551,7 @@ namespace VaporSaturation
     	system_matrix_vapor_saturation.compress(VectorOperation::add);
 	}
 	// testing to see if matrix changes at every time step
-	pcout << system_matrix_vapor_saturation.frobenius_norm() << std::endl;
+	//pcout << system_matrix_vapor_saturation.frobenius_norm() << std::endl;
 
     right_hand_side_vapor_saturation.compress(VectorOperation::add);
 }
