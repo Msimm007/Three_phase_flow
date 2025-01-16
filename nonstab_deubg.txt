@@ -1,0 +1,4 @@
+1.) it has to be a couple of things of why sv or pl is not working well:
+
+	i) the way in which rebuild matrix is done as an extra conditional loop
+	ii)the variables being called in the constructor at every time step	
