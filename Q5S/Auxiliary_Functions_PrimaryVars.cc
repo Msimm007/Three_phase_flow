@@ -26,9 +26,8 @@ double amp_factor_cap_pressure = 1.e7;
 double kappa = 1.0;
 
 // stability terms
-double kappa_tilde_a_data = 1.0;
-double kappa_tilde_v_data = 1.0;
-
+double kappa_tilde_a_data = 5.0;
+double kappa_tilde_v_data = 5.0;
 // Mesh creator
 template <int dim>
 void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,

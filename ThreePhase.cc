@@ -820,7 +820,7 @@ namespace CouplingPressureSaturation {
     template<int dim>
     void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const {
         DataOutBase::VtkFlags flags;
-        flags.compression_level = DataOutBase::VtkFlags::best_speed;
+        //flags.compression_level = DataOutBase::VtkFlags::best_speed;
 
         // To print kappa_abs vector
         kappa_abs_vec.update_ghost_values();
@@ -923,7 +923,7 @@ namespace CouplingPressureSaturation {
     template<int dim>
     void CoupledPressureSaturationProblem<dim>::output_vtk() const {
         DataOutBase::VtkFlags flags;
-        flags.compression_level = DataOutBase::VtkFlags::best_speed;
+        //flags.compression_level = DataOutBase::VtkFlags::best_speed;
 
         pl_solution.update_ghost_values();
 
