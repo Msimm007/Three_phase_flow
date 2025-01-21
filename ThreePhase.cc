@@ -1682,6 +1682,16 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 	pl_problem.setup_system();
 
+	AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree,
+					theta_Sa, penalty_Sa, penalty_Sa_bdry, dirichlet_id_sa, use_exact_pl_in_Sa,use_exact_Sv_in_Sa,
+					second_order_time_derivative, second_order_extrapolation,
+					use_direct_solver,Stab_a, incompressible, project_Darcy_with_gravity, artificial_visc_exp,
+					artificial_visc_imp, art_visc_multiple_Sa,
+					kappa_abs_vec, degreeRT, project_only_kappa,
+					mpi_communicator, n_mpi_processes, this_mpi_process);
+
+	Sa_problem.setup_system();
+
 
     for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
     {
@@ -1795,21 +1805,13 @@ void CoupledPressureSaturationProblem<dim>::run()
 		totalDarcyvelocity_RT_Sa_n = totalDarcyvelocity_RT_Sa;
 		totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
 
-		AqueousSaturation::AqueousSaturationProblem<dim> Sa_problem(triangulation, degree, time_step,
-					theta_Sa, penalty_Sa, penalty_Sa_bdry, dirichlet_id_sa, use_exact_pl_in_Sa,
-					use_exact_Sv_in_Sa, time, timestep_number,
-					second_order_time_derivative, second_order_extrapolation,
-					use_direct_solver,Stab_a, incompressible, project_Darcy_with_gravity, artificial_visc_exp,
-					artificial_visc_imp, art_visc_multiple_Sa,
-					pl_solution, pl_solution_n, pl_solution_nminus1,
-					Sa_solution_n, Sa_solution_nminus1,
-					Sv_solution_n, Sv_solution_nminus1,
-					kappa_abs_vec, totalDarcyvelocity_RT_Sa, degreeRT, project_only_kappa,
-					mpi_communicator, n_mpi_processes, this_mpi_process);
-
 		timer.reset();
 		timer.start();
-		Sa_problem.assemble_system_matrix_aqueous_saturation();
+		Sa_problem.assemble_system_matrix_aqueous_saturation(time_step,time, timestep_number,
+														pl_solution, pl_solution_n, pl_solution_nminus1,
+														Sa_solution_n, Sa_solution_nminus1,
+														Sv_solution_n, Sv_solution_nminus1,
+														totalDarcyvelocity_RT_Sa);
 		timer.stop();
 
 		assemble_time[index_time] += timer.cpu_time();
