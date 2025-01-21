@@ -93,27 +93,25 @@ class LiquidPressureProblem
 {
 public:
 	LiquidPressureProblem(Triangulation<dim, dim> &triangulation_,
-			const unsigned int degree_, double time_step_, double theta_pl_, double penalty_pl_,
+			const unsigned int degree_, double theta_pl_, double penalty_pl_,
 			double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
-			bool use_exact_Sv_in_pl_, double time_, unsigned int timestep_number_,
-			bool second_order_time_derivative_, bool second_order_extrapolation_,
+			bool use_exact_Sv_in_pl_, bool second_order_time_derivative_, bool second_order_extrapolation_,
 			bool use_direct_solver_, bool Stab_t_, bool incompressible_, bool implicit_time_pl_,
-			PETScWrappers::MPI::Vector pl_solution_n_, PETScWrappers::MPI::Vector pl_solution_nminus1_,
-			PETScWrappers::MPI::Vector pl_solution_nminus2_,
-			PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-			PETScWrappers::MPI::Vector Sa_solution_nminus2_,
-			PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-			PETScWrappers::MPI::Vector Sv_solution_nminus2_,
 			PETScWrappers::MPI::Vector kappa_abs_vec_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
-    void setup_system();
+	void setup_system();
 
-	void assemble_system_matrix_pressure();
+	void assemble_system_matrix_pressure(double time_step_, double time_,unsigned int timestep_number_,PETScWrappers::MPI::Vector pl_solution_n_,
+										PETScWrappers::MPI::Vector pl_solution_nminus1_, PETScWrappers::MPI::Vector pl_solution_nminus2_,
+										PETScWrappers::MPI::Vector Sa_solution_n_,		PETScWrappers::MPI::Vector Sa_solution_nminus1_,
+										PETScWrappers::MPI::Vector Sa_solution_nminus2_,PETScWrappers::MPI::Vector Sv_solution_n_,
+										PETScWrappers::MPI::Vector Sv_solution_nminus1_,PETScWrappers::MPI::Vector Sv_solution_nminus2_);
 	void solve_pressure();
 
 	PETScWrappers::MPI::Vector pl_solution;
 private:
+
 
     parallel::shared::Triangulation<dim> triangulation;
     const MappingQ1<dim> mapping;
@@ -188,17 +186,11 @@ private:
 
 template <int dim>
 LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &triangulation_,
-		const unsigned int degree_, double time_step_, double theta_pl_, double penalty_pl_,
+		const unsigned int degree_, double theta_pl_, double penalty_pl_,
 		double penalty_pl_bdry_, std::vector<unsigned int> dirichlet_id_pl_, bool use_exact_Sa_in_pl_,
-		bool use_exact_Sv_in_pl_, double time_, unsigned int timestep_number_,
+		bool use_exact_Sv_in_pl_,
 		bool second_order_time_derivative_, bool second_order_extrapolation_,
 		bool use_direct_solver_, bool Stab_t_, bool incompressible_, bool implicit_time_pl_,
-		PETScWrappers::MPI::Vector pl_solution_n_, PETScWrappers::MPI::Vector pl_solution_nminus1_,
-		PETScWrappers::MPI::Vector pl_solution_nminus2_,
-		PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
-		PETScWrappers::MPI::Vector Sa_solution_nminus2_,
-		PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-		PETScWrappers::MPI::Vector Sv_solution_nminus2_,
 		PETScWrappers::MPI::Vector kappa_abs_vec_,
 		MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_)
 	: triangulation(MPI_COMM_WORLD)
@@ -207,30 +199,18 @@ LiquidPressureProblem<dim>::LiquidPressureProblem(Triangulation<dim, dim> &trian
 	, fe(degree_)
 	, quadrature(degree_ + 1)
   	, face_quadrature(degree_ + 1)
-	, time_step(time_step_)
 	, theta_pl(theta_pl_)
 	, penalty_pl(penalty_pl_)
 	, penalty_pl_bdry(penalty_pl_bdry_)
 	, dirichlet_id_pl(dirichlet_id_pl_)
 	, use_exact_Sa_in_pl(use_exact_Sa_in_pl_)
 	, use_exact_Sv_in_pl(use_exact_Sv_in_pl_)
-	, time(time_)
-	, timestep_number(timestep_number_)
 	, second_order_time_derivative(second_order_time_derivative_)
 	, second_order_extrapolation(second_order_extrapolation_)
 	, Stab_t(Stab_t_)
 	, incompressible(incompressible_)
 	, implicit_time_pl(implicit_time_pl_)
 	, use_direct_solver(use_direct_solver_)
-	, pl_solution_n(pl_solution_n_)
-	, pl_solution_nminus1(pl_solution_nminus1_)
-	, pl_solution_nminus2(pl_solution_nminus2_)
-	, Sa_solution_n(Sa_solution_n_)
-	, Sa_solution_nminus1(Sa_solution_nminus1_)
-	, Sa_solution_nminus2(Sa_solution_nminus2_)
-	, Sv_solution_n(Sv_solution_n_)
-	, Sv_solution_nminus1(Sv_solution_nminus1_)
-	, Sv_solution_nminus2(Sv_solution_nminus2_)
 	, kappa_abs_vec(kappa_abs_vec_)
 	, dof_handler(triangulation)
 	, fe_dg0(0)
@@ -247,9 +227,12 @@ template <int dim>
 void LiquidPressureProblem<dim>::setup_system()
 
 {
+    //    if_incompressible<dim>(incompressible);
     dof_handler.distribute_dofs(fe);
 
     constraints.clear();
+
+
 	constraints.close();
 
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
@@ -272,16 +255,30 @@ void LiquidPressureProblem<dim>::setup_system()
 }
 
 template <int dim>
-void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
+void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_step_, double time_, unsigned int timestep_number_,
+																PETScWrappers::MPI::Vector pl_solution_n_,
+																PETScWrappers::MPI::Vector pl_solution_nminus1_,
+																PETScWrappers::MPI::Vector pl_solution_nminus2_,
+																PETScWrappers::MPI::Vector Sa_solution_n_,
+																PETScWrappers::MPI::Vector Sa_solution_nminus1_,
+																PETScWrappers::MPI::Vector Sa_solution_nminus2_,
+																PETScWrappers::MPI::Vector Sv_solution_n_,
+																PETScWrappers::MPI::Vector Sv_solution_nminus1_,
+																PETScWrappers::MPI::Vector Sv_solution_nminus2_)
 {
-	system_matrix_pressure.reinit(locally_owned_dofs,
+	
+    system_matrix_pressure.reinit(locally_owned_dofs,
 			  	  	  	  	  	  locally_owned_dofs,
 								  sparsity_pattern,
 								  mpi_communicator);
 
+	right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
 
-    right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
-	//setup_system();
+	// update time terms
+	time_step = time_step_;
+	time = time_;
+	timestep_number = timestep_number_;
+
 
     using Iterator = typename DoFHandler<dim>::active_cell_iterator;
     BoundaryValuesLiquidPressure<dim> boundary_function;
@@ -378,17 +375,17 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 					  locally_relevant_dofs_dg0,
 					  mpi_communicator);
 
-    temp_pl_solution_n = pl_solution_n;
-	temp_pl_solution_nminus1 = pl_solution_nminus1;
-	temp_pl_solution_nminus2 = pl_solution_nminus2;
+    temp_pl_solution_n = pl_solution_n_;
+	temp_pl_solution_nminus1 = pl_solution_nminus1_;
+	temp_pl_solution_nminus2 = pl_solution_nminus2_;
 
-    temp_Sa_solution_n = Sa_solution_n;
-	temp_Sa_solution_nminus1 = Sa_solution_nminus1;
-	temp_Sa_solution_nminus2 = Sa_solution_nminus2;
+    temp_Sa_solution_n = Sa_solution_n_;
+	temp_Sa_solution_nminus1 = Sa_solution_nminus1_;
+	temp_Sa_solution_nminus2 = Sa_solution_nminus2_;
 
-    temp_Sv_solution_n = Sv_solution_n;
-	temp_Sv_solution_nminus1 = Sv_solution_nminus1;
-	temp_Sv_solution_nminus2 = Sv_solution_nminus2;
+    temp_Sv_solution_n = Sv_solution_n_;
+	temp_Sv_solution_nminus1 = Sv_solution_nminus1_;
+	temp_Sv_solution_nminus2 = Sv_solution_nminus2_;
 
 	temp_kappa = kappa_abs_vec;
 
@@ -1620,7 +1617,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 template <int dim>
 void LiquidPressureProblem<dim>::solve_pressure()
 {
-	pl_solution.reinit(locally_owned_dofs, mpi_communicator);
+	   pl_solution.reinit(locally_owned_dofs, mpi_communicator);
 //    std::map<types::global_dof_index, double> boundary_values;
 //        VectorTools::interpolate_boundary_values(dof_handler,
 //                                                 1,

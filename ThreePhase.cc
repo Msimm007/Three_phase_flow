@@ -1673,8 +1673,14 @@ void CoupledPressureSaturationProblem<dim>::run()
     unsigned int index_time = 0;
     double total_time = 0.0;
 
-    total_timer.reset();
-    total_timer.start();
+	LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree,
+    			theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
+    			use_exact_Sv_in_pl,
+    			second_order_time_derivative, second_order_extrapolation,
+				use_direct_solver, Stab_t, incompressible, implicit_time_pl,
+    			kappa_abs_vec, mpi_communicator, n_mpi_processes, this_mpi_process);
+
+	pl_problem.setup_system();
 
 
     for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
@@ -1695,25 +1701,13 @@ void CoupledPressureSaturationProblem<dim>::run()
 		else
 		// run normal bdf scheme
 		{
-			        // call constructor for unknowns
-        LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree, time_step,
-    			theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
-    			use_exact_Sv_in_pl, time, timestep_number,
-    			second_order_time_derivative, second_order_extrapolation,
-				use_direct_solver, Stab_t, incompressible, implicit_time_pl,
-				pl_solution_n, pl_solution_nminus1,
-				pl_solution_nminus2,
-				Sa_solution_n, Sa_solution_nminus1,
-				Sa_solution_nminus2,
-    			Sv_solution_n, Sv_solution_nminus1,
-				Sv_solution_nminus2,
-    			kappa_abs_vec, mpi_communicator, n_mpi_processes, this_mpi_process);
-
-		pl_problem.setup_system();
-
         timer.reset();
 		timer.start();
-        pl_problem.assemble_system_matrix_pressure();
+        pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,pl_solution_n,
+													pl_solution_nminus1,pl_solution_nminus2, Sa_solution_n,
+													Sa_solution_nminus1,Sa_solution_nminus2,Sv_solution_n,
+													Sv_solution_nminus1,
+													Sv_solution_nminus2);
         timer.stop();
 
         assemble_time[index_time] = timer.cpu_time();
