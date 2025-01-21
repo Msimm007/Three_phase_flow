@@ -1,15 +1,17 @@
 message(
 "###
 #
-#  Project  ThreePhase  set up with  deal.II-9.6.0  found at
-#      /project/dsi/apps/easybuild/software/deal.II/9.6.0-foss-2023a
+#  Project  ThreePhase  set up with  deal.II-9.7.0-pre  found at
+#      /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL
 #
-#  CMAKE_BUILD_TYPE:          Release
+#  CMAKE_BUILD_TYPE:          Debug
 #
 #  You can now run
 #       $ make                - to compile and link the program
 #       $ make run            - to (compile, link and) run the program
 #
+#       $ make debug          - to switch the build type to 'Debug'
+#       $ make release        - to switch the build type to 'Release'
 #
 #       $ make edit_cache     - to change (cached) configuration variables
 #                               and rerun the configure and generate phases of CMake

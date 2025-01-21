@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /project/cappanera/Three_phase_flow
+CMAKE_SOURCE_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /project/cappanera/Three_phase_flow
+CMAKE_BINARY_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW
 
 # Utility rule file for distclean.
 
@@ -67,11 +67,11 @@ include CMakeFiles/distclean.dir/compiler_depend.make
 include CMakeFiles/distclean.dir/progress.make
 
 CMakeFiles/distclean:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/project/cappanera/Three_phase_flow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
-	/project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake --build /project/cappanera/Three_phase_flow --target clean
-	/project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake --build /project/cappanera/Three_phase_flow --target runclean
-	/project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake -E remove_directory CMakeFiles
-	/project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake -E remove CMakeCache.txt cmake_install.cmake compile_commands.json Makefile build.ninja rules.ninja .ninja_deps .ninja_log
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
+	/usr/bin/cmake --build /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW --target clean
+	/usr/bin/cmake --build /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW --target runclean
+	/usr/bin/cmake -E remove_directory CMakeFiles
+	/usr/bin/cmake -E remove CMakeCache.txt cmake_install.cmake compile_commands.json Makefile build.ninja rules.ninja .ninja_deps .ninja_log
 
 distclean: CMakeFiles/distclean
 distclean: CMakeFiles/distclean.dir/build.make
@@ -86,6 +86,6 @@ CMakeFiles/distclean.dir/clean:
 .PHONY : CMakeFiles/distclean.dir/clean
 
 CMakeFiles/distclean.dir/depend:
-	cd /project/cappanera/Three_phase_flow && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow/CMakeFiles/distclean.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/CMakeFiles/distclean.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/distclean.dir/depend
 

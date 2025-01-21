@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /project/cappanera/Three_phase_flow
+CMAKE_SOURCE_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /project/cappanera/Three_phase_flow
+CMAKE_BINARY_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW
 
 # Utility rule file for strip_comments.
 
@@ -67,8 +67,8 @@ include CMakeFiles/strip_comments.dir/compiler_depend.make
 include CMakeFiles/strip_comments.dir/progress.make
 
 CMakeFiles/strip_comments:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/project/cappanera/Three_phase_flow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
-	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' /project/cappanera/Three_phase_flow/LocalPolynomialsRT.cc FE_RTProj.cc ThreePhase.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
+	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/LocalPolynomialsRT.cc FE_RTProj.cc ThreePhase.cc
 
 strip_comments: CMakeFiles/strip_comments
 strip_comments: CMakeFiles/strip_comments.dir/build.make
@@ -83,6 +83,6 @@ CMakeFiles/strip_comments.dir/clean:
 .PHONY : CMakeFiles/strip_comments.dir/clean
 
 CMakeFiles/strip_comments.dir/depend:
-	cd /project/cappanera/Three_phase_flow && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow /project/cappanera/Three_phase_flow/CMakeFiles/strip_comments.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/CMakeFiles/strip_comments.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/strip_comments.dir/depend
 

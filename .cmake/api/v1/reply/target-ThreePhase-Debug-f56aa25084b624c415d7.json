@@ -1,0 +1,1231 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "ThreePhase"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"DEAL_II_INVOKE_AUTOPILOT",
+			"target_link_options",
+			"target_link_flags",
+			"deal_ii_setup_target",
+			"target_link_libraries",
+			"set_target_properties",
+			"include",
+			"target_compile_options",
+			"target_compile_flags"
+		],
+		"files" : 
+		[
+			"/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake",
+			"CMakeLists.txt",
+			"/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_target_link_flags.cmake",
+			"/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_setup_target.cmake",
+			"/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IITargets.cmake",
+			"/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_target_compile_flags.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 88,
+				"parent" : 1
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 108,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 98,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 50,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 3,
+				"line" : 103,
+				"parent" : 3
+			},
+			{
+				"command" : 7,
+				"file" : 3,
+				"line" : 51,
+				"parent" : 3
+			},
+			{
+				"file" : 4,
+				"parent" : 7
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 70,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 136,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 127,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 154,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 92,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 99,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 170,
+				"parent" : 8
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 92,
+				"parent" : 3
+			},
+			{
+				"command" : 8,
+				"file" : 5,
+				"line" : 49,
+				"parent" : 16
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -w"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-pedantic"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wmissing-braces"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Woverloaded-virtual"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wpointer-arith"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wsign-compare"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wsuggest-override"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wswitch"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wsynth"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wwrite-strings"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wno-placement-new"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wno-deprecated-declarations"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wno-literal-suffix"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wno-psabi"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wno-parentheses"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wno-unused-local-typedefs"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-fopenmp-simd"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-O0"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-Wa,--compress-debug-sections"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "_GLIBCXX_ASSERTIONS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/bundled"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "/usr/include/openmpi-x86_64"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/include"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "/usr/include/vtk"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"id" : "ThreePhase::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-w",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-rdynamic",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-rdynamic",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-fuse-ld=gold",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-ggdb",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-Wl,--compress-debug-sections=zlib",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-Wl,-rpath",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-Wl,/usr/lib64/openmpi/lib",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-Wl,--enable-new-dtags",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib:/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib:/usr/lib64/openmpi/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib/libdeal_II.g.so.9.7.0-pre",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lz",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_iostreams",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_serialization",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_system",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_thread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_regex",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_chrono",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_atomic",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libpetsc.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libHYPRE.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libdmumps.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libmumps_common.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libpord.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libparmetis.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 11,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libmetis.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "-lgfortran",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "-lm",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "-lquadmath",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgsl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgslcblas",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 12,
+				"fragment" : "/usr/lib64/openmpi/lib/libhdf5.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 13,
+				"fragment" : "-lm",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 13,
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/lib/libscalapack.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lflexiblas",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 14,
+				"fragment" : "/usr/lib64/openmpi/lib/libmpi_usempif08.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 14,
+				"fragment" : "/usr/lib64/openmpi/lib/libmpi_usempi_ignore_tkr.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 14,
+				"fragment" : "/usr/lib64/openmpi/lib/libmpi_mpifh.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 14,
+				"fragment" : "/usr/lib64/openmpi/lib/libmpi.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkWrappingTools.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkWebCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtksys.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkWebGLExporter.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkViewsQt.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkViewsInfovis.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonColor.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkJava.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkViewsContext2D.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkloguru.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkTestingRendering.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingQt.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingVolumeOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingLabel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingLOD.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingLICOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingImage.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingContextOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOVeraOut.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOTecplotTable.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOSegY.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOParallelXML.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOPLY.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOOggTheora.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIONetCDF.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOMySQL.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkTestingIOSQL.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOMotionFX.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOParallel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingParallel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOMINC.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOLSDyna.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOInfovis.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOImport.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOIOSS.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkfmt.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkioss.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkexodusII.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOVideo.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOMovie.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOExportPDF.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOExportGL2PS.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingGL2PSOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkgl2ps.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOExport.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingVtkJS.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingSceneGraph.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOExodus.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOEnSight.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOCityGML.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOChemistry.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOCesium3DTiles.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOGeometry.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOCONVERGECFD.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOHDF.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOCGNSReader.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOAsynchronous.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOAMR.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkInteractionImage.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkInfovisBoostGraphAlgorithms.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingStencil.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingStatistics.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingMorphological.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingMath.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingFourier.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkGUISupportQtSQL.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOSQL.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkGUISupportQtQuick.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkGUISupportQt.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkGeovisGDAL.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOGDAL.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkGeovisCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkInfovisLayout.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkViewsCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkInteractionWidgets.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingVolume.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingAnnotation.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingHybrid.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingColor.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkInteractionStyle.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersTopology.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersSelection.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersSMP.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersProgrammable.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersPoints.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersVerdict.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkverdict.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersParallelImaging.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersImaging.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingGeneral.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersGeneric.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkTestingGenericBridge.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersFlowPaths.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersAMR.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersParallel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOParallelExodus.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersTexture.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersModeling.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkDomainsMicroscopy.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkDomainsChemistryOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingOpenGL2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingHyperTreeGrid.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingUI.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersHyperTree.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersHybrid.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkDomainsChemistry.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonArchive.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkChartsCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkInfovisCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersExtraction.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkParallelDIY.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOXML.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkTestingDataModel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOXMLParser.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkParallelCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOLegacy.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersStatistics.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingSources.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkIOImage.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkDICOMParser.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkmetaio.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingContext2D.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingFreeType.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkRenderingCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersSources.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkImagingCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersGeometry.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersGeneral.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonComputationalGeometry.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersCore.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkFiltersParallelDIY2.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonExecutionModel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonDataModel.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonSystem.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonMisc.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonTransforms.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonMath.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkkissfft.so.9.2.6",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "/usr/lib64/libvtkCommonCore.so.9.2.6",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "ThreePhase",
+	"nameOnDisk" : "ThreePhase",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "LocalPolynomialsRT.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "FE_RTProj.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "ThreePhase.cc",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

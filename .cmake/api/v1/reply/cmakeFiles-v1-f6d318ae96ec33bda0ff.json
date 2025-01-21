@@ -1,0 +1,215 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IIConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IIConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_add_test.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_initialize_cached_variables.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_pickup_tests.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_query_git_information.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_deal_ii_setup_target.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_shell_escape_option_groups.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_target_compile_flags.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/share/deal.II/macros/macro_target_link_flags.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.30.5/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.30.5/CMakeCCompiler.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.30.5/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IITargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/lib/cmake/deal.II/deal.IITargets-debugrelease.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/FindPerl.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/FindCygwin.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/FindMsys.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake/Modules/FindPackageMessage.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW",
+		"source" : "/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}

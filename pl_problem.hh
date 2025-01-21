@@ -107,12 +107,13 @@ public:
 			PETScWrappers::MPI::Vector kappa_abs_vec_,
 			MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
+    void setup_system();
+
 	void assemble_system_matrix_pressure();
 	void solve_pressure();
 
 	PETScWrappers::MPI::Vector pl_solution;
 private:
-    void setup_system();
 
     parallel::shared::Triangulation<dim> triangulation;
     const MappingQ1<dim> mapping;
@@ -246,12 +247,9 @@ template <int dim>
 void LiquidPressureProblem<dim>::setup_system()
 
 {
-    //    if_incompressible<dim>(incompressible);
     dof_handler.distribute_dofs(fe);
 
     constraints.clear();
-
-
 	constraints.close();
 
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
@@ -263,14 +261,6 @@ void LiquidPressureProblem<dim>::setup_system()
 	locally_owned_dofs = locally_owned_dofs_per_proc[this_mpi_process];
 
 	DoFTools::extract_locally_relevant_dofs(dof_handler, locally_relevant_dofs);
-
-    system_matrix_pressure.reinit(locally_owned_dofs,
-			  	  	  	  	  	  locally_owned_dofs,
-								  sparsity_pattern,
-								  mpi_communicator);
-
-    pl_solution.reinit(locally_owned_dofs, mpi_communicator);
-    right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
 
     dof_handler_dg0.distribute_dofs(fe_dg0);
 	const std::vector<IndexSet> locally_owned_dofs_per_proc_dg0 =
@@ -284,7 +274,14 @@ void LiquidPressureProblem<dim>::setup_system()
 template <int dim>
 void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 {
-	setup_system();
+	system_matrix_pressure.reinit(locally_owned_dofs,
+			  	  	  	  	  	  locally_owned_dofs,
+								  sparsity_pattern,
+								  mpi_communicator);
+
+
+    right_hand_side_pressure.reinit(locally_owned_dofs, mpi_communicator);
+	//setup_system();
 
     using Iterator = typename DoFHandler<dim>::active_cell_iterator;
     BoundaryValuesLiquidPressure<dim> boundary_function;
@@ -1623,6 +1620,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure()
 template <int dim>
 void LiquidPressureProblem<dim>::solve_pressure()
 {
+	pl_solution.reinit(locally_owned_dofs, mpi_communicator);
 //    std::map<types::global_dof_index, double> boundary_values;
 //        VectorTools::interpolate_boundary_values(dof_handler,
 //                                                 1,
