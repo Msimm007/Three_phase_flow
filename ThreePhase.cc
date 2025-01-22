@@ -1677,7 +1677,7 @@ void CoupledPressureSaturationProblem<dim>::run()
     			theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
     			use_exact_Sv_in_pl,
     			second_order_time_derivative, second_order_extrapolation,
-				use_direct_solver, Stab_t, incompressible, implicit_time_pl,
+				use_direct_solver, incompressible, implicit_time_pl,
     			kappa_abs_vec, mpi_communicator, n_mpi_processes, this_mpi_process);
 
 	pl_problem.setup_system();
@@ -1692,7 +1692,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 	Sa_problem.setup_system();
 
-
+    bool rebuild_Sa_mat = true;
     for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
     {
         pcout << "Time step " << timestep_number << " at t=" << time << std::endl;
@@ -1807,7 +1807,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 		timer.reset();
 		timer.start();
-		Sa_problem.assemble_system_matrix_aqueous_saturation(time_step,time, timestep_number,
+		Sa_problem.assemble_system_matrix_aqueous_saturation(time_step,time, timestep_number,								 rebuild_Sa_mat,
 														pl_solution, pl_solution_n, pl_solution_nminus1,
 														Sa_solution_n, Sa_solution_nminus1,
 														Sv_solution_n, Sv_solution_nminus1,
@@ -1820,7 +1820,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 		timer.reset();
 		timer.start();
-		Sa_problem.solve_aqueous_saturation();
+		Sa_problem.solve_aqueous_saturation(pl_solution);
 		timer.stop();
 
 		solver_time[index_time] += timer.cpu_time();

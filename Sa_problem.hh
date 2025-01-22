@@ -77,11 +77,16 @@ namespace AqueousSaturation
         unsigned int                         cell_index;
 
         template <class Iterator>
-        void reinit(const Iterator &cell, unsigned int dofs_per_cell)
+        void reinit_matrix(const Iterator &cell, unsigned int dofs_per_cell)
         {
             cell_matrix.reinit(dofs_per_cell, dofs_per_cell);
+            local_dof_indices.resize(dofs_per_cell);
+            cell->get_dof_indices(local_dof_indices);
+        }
+        template <class Iterator>
+        void reinit_rhs(const Iterator &cell, unsigned int dofs_per_cell)
+        {
             cell_rhs.reinit(dofs_per_cell);
-
             local_dof_indices.resize(dofs_per_cell);
             cell->get_dof_indices(local_dof_indices);
         }
@@ -99,19 +104,22 @@ namespace AqueousSaturation
                                  bool use_direct_solver_,bool Stab_a_, bool incompressible_, bool project_Darcy_with_gravity_,
                                  bool artificial_visc_exp_, bool artificial_visc_imp_,
                                  double art_visc_multiple_Sa_,
-                                 PETScWrappers::MPI::Vector kappa_abs_vec_, /* PETScWrappers::MPI::Vector totalDarcyvelocity_RT_, */
+                                 PETScWrappers::MPI::Vector kappa_abs_vec_,
                                  const unsigned int degreeRT_, bool project_only_kappa_,
                                  MPI_Comm mpi_communicator_, const unsigned int n_mpi_processes_, const unsigned int this_mpi_process_);
 
         void setup_system();
 
-        void assemble_system_matrix_aqueous_saturation(double time_step_,double time_, unsigned int timestep_number_,
+        void assemble_system_matrix_aqueous_saturation(double time_step_,double time_,
+                                         unsigned int timestep_number_,
+                                         bool rebuild_matrix_,
                                          PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
                                          PETScWrappers::MPI::Vector pl_solution_nminus1_,
                                          PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
                                          PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
-                                          PETScWrappers::MPI::Vector totalDarcyvelocity_RT_);
-        void solve_aqueous_saturation();
+                                         PETScWrappers::MPI::Vector totalDarcyvelocity_RT_);
+                                          
+        void solve_aqueous_saturation(PETScWrappers::MPI::Vector pl_solution_);
 
         PETScWrappers::MPI::Vector Sa_solution;
     private:
@@ -165,6 +173,7 @@ namespace AqueousSaturation
         double 		 time_step;
         double       time;
         unsigned int timestep_number;
+        bool rebuild_matrix;
 
         double penalty_Sa;
         double penalty_Sa_bdry;
@@ -284,13 +293,15 @@ namespace AqueousSaturation
     }
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::assemble_system_matrix_aqueous_saturation(double time_step_, double time_,unsigned int timestep_number_,
+    void AqueousSaturationProblem<dim>::assemble_system_matrix_aqueous_saturation(double time_step_, double time_,unsigned int timestep_number_,bool rebuild_matrix_,
                                      PETScWrappers::MPI::Vector pl_solution_, PETScWrappers::MPI::Vector pl_solution_n_,
                                      PETScWrappers::MPI::Vector pl_solution_nminus1_,
                                      PETScWrappers::MPI::Vector Sa_solution_n_, PETScWrappers::MPI::Vector Sa_solution_nminus1_,
                                      PETScWrappers::MPI::Vector Sv_solution_n_, PETScWrappers::MPI::Vector Sv_solution_nminus1_,
                                      PETScWrappers::MPI::Vector totalDarcyvelocity_RT_)
     {
+        rebuild_matrix = rebuild_matrix_;
+
         
         system_matrix_aqueous_saturation.reinit(locally_owned_dofs,
                                                 locally_owned_dofs,
@@ -302,7 +313,7 @@ namespace AqueousSaturation
         //time terms
         time_step = time_step_;
         time = time_;
-        timestep_number =timestep_number_;
+        timestep_number = timestep_number_;
         
 
         FEFaceValues<dim> fe_face_values_RT(fe_RT,
@@ -429,7 +440,12 @@ namespace AqueousSaturation
             const FEValues<dim> &fe_v = scratch_data.reinit(cell);
 
             const unsigned int n_dofs = fe_v.dofs_per_cell;
-            copy_data.reinit(cell, n_dofs);
+
+            // reinit used here for copy data
+
+            copy_data.reinit_matrix(cell, n_dofs);
+            copy_data.reinit_rhs(cell, n_dofs);
+            
 
             const auto &q_points = fe_v.get_quadrature_points();
             const int n_qpoints = q_points.size();
@@ -1694,7 +1710,7 @@ namespace AqueousSaturation
     }
 
     template <int dim>
-    void AqueousSaturationProblem<dim>::solve_aqueous_saturation()
+    void AqueousSaturationProblem<dim>::solve_aqueous_saturation( PETScWrappers::MPI::Vector pl_solution_)
     {
         Sa_solution.reinit(locally_owned_dofs, mpi_communicator);
 
@@ -1715,7 +1731,7 @@ namespace AqueousSaturation
         }
         else
         {
-            SolverControl solver_control(pl_solution.size(), 1.e-7 * right_hand_side_aqueous_saturation.l2_norm());
+            SolverControl solver_control(pl_solution_.size(), 1.e-7 * right_hand_side_aqueous_saturation.l2_norm());
 
             PETScWrappers::SolverGMRES gmres(solver_control, mpi_communicator);
             PETScWrappers::PreconditionBoomerAMG preconditioner(system_matrix_aqueous_saturation);
@@ -1731,4 +1747,3 @@ namespace AqueousSaturation
 } // namespace AqueousSaturation
 
 #endif //SA_PROBLEM_HH
-                                                                   

@@ -2,8 +2,8 @@
 # ---------------------
 
 subsection Time discretization parameters
-  # Final time of simulation
-  set Final time = 750.0
+  # Final time of simulation (default 750.0)
+  set Final time = 250.0
   
   # Initial time step (must be chosen so that at least one time step is performed)
   set Initial time step = 0.25
@@ -29,7 +29,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = true
@@ -74,7 +74,7 @@ subsection Spatial discretization parameters
   set Penalty Sv boundary = 1.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = false
+  set Project to RT0 = true
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
@@ -134,7 +134,7 @@ subsection Output parameters
   set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
-  set Frequency for vtk printing = 10
+  set Frequency for vtk printing = 20
   
   # Compute errors (manufactured sol test case)
   set Compute errors = false

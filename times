@@ -1,4 +1,4 @@
-Average assemble time = 0.39105
-Average solver time = 0.00311184
-Average RT Projection time = 0.0605073
-Average total time = 0.468763
+Average assemble time = 0.102074
+Average solver time = 0.00269133
+Average RT Projection time = 0.02176
+Average total time = 0.137691
