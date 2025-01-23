@@ -54,10 +54,10 @@
 
 // for midpoint method
 
-#include "RT_projection_midpoint.hh"
-#include "pl_problem_midpoint.hh"
-#include "Sa_problem_midpoint.hh"
-#include "Sv_problem_midpoint.hh"
+// #include "RT_projection_midpoint.hh"
+// #include "pl_problem_midpoint.hh"
+// #include "Sa_problem_midpoint.hh"
+// #include "Sv_problem_midpoint.hh"
 
 // PETSc stuff
 #include <deal.II/lac/petsc_vector.h>
@@ -1693,6 +1693,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 	Sa_problem.setup_system();
 
     bool rebuild_Sa_mat = true;
+	
     for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
     {
         pcout << "Time step " << timestep_number << " at t=" << time << std::endl;
@@ -1827,6 +1828,10 @@ void CoupledPressureSaturationProblem<dim>::run()
 		pcout << "Elapsed CPU time for Sa solve: " << timer.cpu_time() << " seconds." << std::endl;
 
 		Sa_solution = Sa_problem.Sa_solution;
+
+		if(Stab_a){
+			rebuild_Sa_mat = false;
+		}
 
 		if(two_phase)
 			Sv_solution = 0.0;

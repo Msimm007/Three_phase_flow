@@ -29,13 +29,13 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = false
+  set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = true
+  set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = true
+  set Incompressible = false
 
   # Polynomial degree for FE space
   set Degree = 1
@@ -77,7 +77,7 @@ subsection Spatial discretization parameters
   set Project to RT0 = true
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
-  set Project to RT0 with kappa only = false
+  set Project to RT0 with kappa only = true
   
   # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
   # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise

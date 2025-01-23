@@ -2817,13 +2817,9 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/FE_RTProj.hh
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/LocalPolynomialsRT.hh
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/RT_projection.hh
- /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/RT_projection_midpoint.hh
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/Sa_problem.hh
- /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/Sa_problem_midpoint.hh
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/Sv_problem.hh
- /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/Sv_problem_midpoint.hh
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/pl_problem.hh
- /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/pl_problem_midpoint.hh
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/algorithms/any_data.h
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/algorithms/general_data_storage.h
  /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/algorithms/named_selection.h

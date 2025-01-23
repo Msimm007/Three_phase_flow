@@ -2814,13 +2814,9 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: ThreePhase.cc \
   FE_RTProj.hh \
   LocalPolynomialsRT.hh \
   RT_projection.hh \
-  RT_projection_midpoint.hh \
   Sa_problem.hh \
-  Sa_problem_midpoint.hh \
   Sv_problem.hh \
-  Sv_problem_midpoint.hh \
   pl_problem.hh \
-  pl_problem_midpoint.hh \
   /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/algorithms/any_data.h \
   /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/algorithms/general_data_storage.h \
   /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/algorithms/named_selection.h \
@@ -7084,12 +7080,6 @@ CMakeFiles/ThreePhase.dir/ThreePhase.cc.o: ThreePhase.cc \
 
 /usr/include/boost/geometry/policies/relate/direction.hpp:
 
-/usr/include/boost/geometry/strategies/cartesian/distance_pythagoras_point_box.hpp:
-
-/usr/include/boost/geometry/iterators/segment_iterator.hpp:
-
-/usr/include/boost/geometry/iterators/point_iterator.hpp:
-
 /usr/include/boost/variant/detail/enable_recursive_fwd.hpp:
 
 /usr/include/boost/preprocessor/logical/bitor.hpp:
@@ -8960,12 +8950,6 @@ LocalPolynomialsRT.hh:
 
 /usr/include/boost/container/detail/copy_move_algo.hpp:
 
-/usr/include/boost/mpl/bitand.hpp:
-
-/usr/include/boost/geometry/policies/disjoint_interrupt_policy.hpp:
-
-/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_AnonymousSpace.hpp:
-
 /usr/include/boost/geometry/util/select_most_precise.hpp:
 
 /usr/include/boost/range/distance.hpp:
@@ -9227,8 +9211,6 @@ FE_RTProj.templates.hh:
 /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/bundled/taskflow/utility/stream.hpp:
 
 /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/bundled/Serial/Kokkos_Serial_Parallel_Team.hpp:
-
-Sv_problem_midpoint.hh:
 
 /usr/include/boost/iostreams/read.hpp:
 
@@ -9500,6 +9482,8 @@ RT_projection.hh:
 
 /usr/include/bits/fp-fast.h:
 
+/usr/include/c++/14/x86_64-redhat-linux/bits/gthr.h:
+
 /usr/include/boost/config/no_tr1/memory.hpp:
 
 /usr/include/boost/parameter/aux_/tag.hpp:
@@ -9595,6 +9579,10 @@ RT_projection.hh:
 /usr/include/boost/geometry/algorithms/detail/overlay/inconsistent_turns_exception.hpp:
 
 /usr/include/bits/posix2_lim.h:
+
+/usr/include/boost/geometry/strategies/cartesian/distance_pythagoras_point_box.hpp:
+
+/usr/include/boost/geometry/iterators/segment_iterator.hpp:
 
 /usr/include/boost/mpl/assert.hpp:
 
@@ -10208,6 +10196,8 @@ RT_projection.hh:
 
 /usr/include/boost/geometry/iterators/dispatch/point_iterator.hpp:
 
+/usr/include/boost/geometry/iterators/point_iterator.hpp:
+
 /usr/include/boost/math/special_functions/detail/lanczos_sse2.hpp:
 
 /usr/include/boost/range/algorithm/equal.hpp:
@@ -10369,6 +10359,12 @@ ThreePhase.cc:
 /usr/include/bits/confname.h:
 
 /usr/include/boost/signals2/detail/auto_buffer.hpp:
+
+/usr/include/boost/mpl/bitand.hpp:
+
+/storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/bundled/Kokkos_AnonymousSpace.hpp:
+
+/usr/include/boost/geometry/policies/disjoint_interrupt_policy.hpp:
 
 /usr/include/boost/serialization/is_bitwise_serializable.hpp:
 
@@ -10857,8 +10853,6 @@ ThreePhase.cc:
 /usr/include/boost/mpl/aux_/preprocessor/params.hpp:
 
 /usr/include/boost/variant/detail/apply_visitor_unary.hpp:
-
-Sa_problem_midpoint.hh:
 
 /usr/include/boost/qvm/detail/remove_const.hpp:
 
@@ -11452,17 +11446,11 @@ Auxiliary_Functions_PrimaryVars.cc:
 
 AverageGradientOperators.hh:
 
-/usr/include/c++/14/x86_64-redhat-linux/bits/gthr.h:
-
-RT_projection_midpoint.hh:
-
 /usr/include/boost/core/detail/sp_thread_yield.hpp:
 
 Sa_problem.hh:
 
 Sv_problem.hh:
-
-pl_problem_midpoint.hh:
 
 /usr/include/boost/archive/detail/iserializer.hpp:
 

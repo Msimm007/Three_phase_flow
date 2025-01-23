@@ -23,7 +23,7 @@
 using namespace dealii;
 
 
-bool inc = false; // MUST MATCH PARAMETER FILE.
+bool inc = true; // MUST MATCH PARAMETER FILE.
 double amp_factor_cap_pressure = 300.0; //not used here
 double porosity_data = 0.2;
 double kappa_abs_data = 1.0;
@@ -164,7 +164,7 @@ template <int dim>
 double Kappa_tilde_a<dim>::value()const
 {
     //return 10.0;
-    return 1.0;
+    return 5.0;
 }
 
 template <int dim>
