@@ -1,0 +1,30 @@
+# removing .vtu output files
+*.vtu
+
+# remove testing
+Testing
+
+
+# ignore log and bacup files
+*.log
+*.bak
+
+# ignore CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+.cmake
+build.ninja
+
+# files for later that don't need to be tracked currently
+energies
+errors
+kappa.vtu
+iterations_old
+times
+
+# misc
+.idea
+compile_commands.json
+ThreePhase

@@ -5,7 +5,7 @@ subsection Time discretization parameters
   # Final time of simulation (default 750.0)
   set Final time = 250.0
   
-  # Initial time step (must be chosen so that at least one time step is performed)
+  # Initial time step (default 0.25. must be chosen so that at least one time step is performed)
   set Initial time step = 0.25
   
   # Second order time derivative
@@ -29,7 +29,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = false
