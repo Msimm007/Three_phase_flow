@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW
+CMAKE_SOURCE_DIR = /project/cappanera/Three_phase_flow
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW
+CMAKE_BINARY_DIR = /project/cappanera/Three_phase_flow
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_F
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/project/dsi/apps/easybuild/software/CMake/3.30.5-GCCcore-12.3.0/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/CMakeFiles /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /project/cappanera/Three_phase_flow/CMakeFiles /project/cappanera/Three_phase_flow//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/THREE_PHASE_FLOW/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /project/cappanera/Three_phase_flow/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -141,19 +141,6 @@ run: cmake_check_build_system
 run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
-
-#=============================================================================
-# Target rules for targets named debug
-
-# Build rule for target.
-debug: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 debug
-.PHONY : debug
-
-# fast build rule for target.
-debug/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug.dir/build.make CMakeFiles/debug.dir/build
-.PHONY : debug/fast
 
 #=============================================================================
 # Target rules for targets named release
@@ -300,7 +287,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... debug"
 	@echo "... distclean"
 	@echo "... info"
 	@echo "... release"
