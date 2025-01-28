@@ -328,7 +328,7 @@ public:
 template <int dim>
 double Kappa_tilde_a<dim>::value()const
 {
-    return 5.0;
+    return 100.0;
 }
 
 
