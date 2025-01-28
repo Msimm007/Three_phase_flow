@@ -6,5 +6,5 @@ CXX_DEFINES = -DDEBUG -D_GLIBCXX_ASSERTIONS
 
 CXX_INCLUDES = -isystem /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include -isystem /storage/mbsimmon/CODES_DEAL_II/DEAL_II_INSTALL/include/deal.II/bundled -isystem /usr/include/openmpi-x86_64 -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/arch-linux2-c-debug/include -isystem /storage/mbsimmon/EXTERNAL_SOFTWARES/COMPUTE_12/petsc/include -isystem /usr/include/vtk
 
-CXX_FLAGS =  -w -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections
+CXX_FLAGS = -pedantic -Wall -Wextra -Wmissing-braces -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wsuggest-override -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-deprecated-declarations -Wno-literal-suffix -Wno-psabi -Wno-parentheses -Wno-unused-local-typedefs -fopenmp-simd -O0 -ggdb -Wa,--compress-debug-sections
 

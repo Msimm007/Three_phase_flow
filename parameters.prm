@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 750.0)
-  set Final time = 5.0
+  set Final time = 32.0
   
   # Initial time step (default 0.25. must be chosen so that at least one time step is performed)
   set Initial time step = 0.25
@@ -55,13 +55,13 @@ subsection Spatial discretization parameters
   # theta Sv (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta Sv = 1
   
-  # Penalty parameter pl
+  # Penalty parameter pl(default 1.0)
   set Penalty pl = 1.0
   
-  # Penalty parameter Sa
+  # Penalty parameter Sa (default 1.0)
   set Penalty Sa = 1.0
   
-  # Penalty parameter Sv
+  # Penalty parameter Sv (default 1.0)
   set Penalty Sv = 1.0
   
   # Penalty parameter pl for enforcing BC
@@ -74,7 +74,7 @@ subsection Spatial discretization parameters
   set Penalty Sv boundary = 1.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = true
+  set Project to RT0 = false
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = true
@@ -128,10 +128,9 @@ subsection Spatial discretization parameters
   set Two phase problem = true
 end
 
-
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = false
+  set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 20

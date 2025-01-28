@@ -924,7 +924,6 @@ namespace AqueousSaturation
                     else
                     {
                         gamma_Sa_e = fabs(rho_a*lambda_a*kappa*dpca_dSa);
-
                     }
 
                     if(artificial_visc_imp)
@@ -934,8 +933,8 @@ namespace AqueousSaturation
                     gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
                     }
 
-                    pcout << "sqrt of darcy: " << sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation)
-                      << std::endl;
+                    // pcout << "sqrt of darcy: " << sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation)
+                    //   << std::endl;
 
                     double h_e = cell->face(face_no)->measure();
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
