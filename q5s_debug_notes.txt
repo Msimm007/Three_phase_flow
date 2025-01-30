@@ -2,3 +2,7 @@ still not sure exactly where the bug is. Here's what I do know:
 1.) increasing the penal paramters to 100 doesn't change output at all
 2.) making " set Project to RT0 with kappa only" to true doesn't affect the solution
 
+we need to find the value of ka_tilde so we calculate highest value of ka 
+
+how we calculate ka = rho_a*lambda_a*dpca_dSa (leave out kappa since it's in both terms)
+

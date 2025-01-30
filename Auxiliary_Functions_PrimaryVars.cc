@@ -86,7 +86,7 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 	
 	//GridGenerator::hyper_cube(triangulation, 0.0, 1.0);
 	triangulation.refine_global(ref_level);
-
+ 
 	// Boundary classification
 	// 1: 0 < x < 5, y = 5
 	// 2: x = 5, 0 < y < 5
@@ -328,7 +328,7 @@ public:
 template <int dim>
 double Kappa_tilde_a<dim>::value()const
 {
-    return 100.0;
+    return 10000000.0;
 }
 
 
