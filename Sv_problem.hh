@@ -353,7 +353,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation()
 	lambda_a<dim> lambda_a_fcn;
 
     // Stabilization term
-    Kappa_tilde_v<dim> Kappa_tilde_v_fcn;
+    StabVaporSaturation<dim> Kappa_tilde_v_fcn;
     double Kappa_tilde_v = Kappa_tilde_v_fcn.value();
 
 	// Capillary pressures

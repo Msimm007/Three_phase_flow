@@ -86,7 +86,7 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 	
 	//GridGenerator::hyper_cube(triangulation, 0.0, 1.0);
 	triangulation.refine_global(ref_level);
-
+ 
 	// Boundary classification
 	// 1: 0 < x < 5, y = 5
 	// 2: x = 5, 0 < y < 5
@@ -297,62 +297,54 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 {
 //	double kappa_abs = 3.72e-13;
 	double kappa_abs = 5.e-8;
-	// double xx = cell->center()[0];
-	// double yy = cell->center()[1];
+	double xx = cell->center()[0];
+	double yy = cell->center()[1];
 
-	// double zz;
-	// if(dim == 3){
-	// 	zz = cell->center()[2];
-	// }
+	double zz;
+	if(dim == 3){
+		zz = cell->center()[2];
+	}
 
 
-	// if(xx >= 25.0 && xx <= 50.0)
-	// 	if((yy >= 25.0 && yy <= 50.0))
-	// 		kappa_abs /= 1000.0;
+	if(xx >= 25.0 && xx <= 50.0)
+		if((yy >= 25.0 && yy <= 50.0))
+			kappa_abs /= 1000.0;
 	return kappa_abs;
 };
 
 
 
 template <int dim>
-class Kappa_tilde_a : public Function<dim>
+class StabAqueousSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_a()
-            : Function<dim>(1)
-    {} 
-
-    virtual double value() const;
-};
-
-template <int dim>
-double Kappa_tilde_a<dim>::value()const
-{
-    //return 1000.0; 
-    //return 200.0; 
-    //return 5.0; 
-    return 10.0;
-}
-
-
-template <int dim>
-class Kappa_tilde_v : public Function<dim>
-{
-public:
-    Kappa_tilde_v()
+    StabAqueousSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
+template <int dim>
+double StabAqueousSaturation<dim>::value()const
+{
+
+    return 10000000.0;
+}
 
 template <int dim>
-double Kappa_tilde_v<dim>::value()const
+class StabVaporSaturation : public Function<dim>
 {
-    //return 1000.0;
-    //return 200.0;
-    //return 5.0; 
-    return 1.0;
+public:
+    StabVaporSaturation()
+            : Function<dim>(1)
+    {}
+
+    virtual double value() const;
+};
+template <int dim>
+double StabVaporSaturation<dim>::value()const
+{
+    return 10.0;
 }
 
 template <int dim>

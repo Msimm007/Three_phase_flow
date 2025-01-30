@@ -360,7 +360,7 @@ namespace AqueousSaturation
         lambda_a<dim> lambda_a_fcn;
 
         // Stabilization term. Declared and defined
-        Kappa_tilde_a<dim> Kappa_tilde_a_fcn;
+        StabAqueousSaturation<dim> Kappa_tilde_a_fcn;
         double Kappa_tilde_a = Kappa_tilde_a_fcn.value();
 
         // Capillary pressures

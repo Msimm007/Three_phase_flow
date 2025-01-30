@@ -132,55 +132,36 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 
 
 template <int dim>
-class Kappa_tilde_t : public Function<dim>
+class StabAqueousSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_t()
+    StabAqueousSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
 template <int dim>
-double Kappa_tilde_t<dim>::value()const
+double StabAqueousSaturation<dim>::value()const
 {
-    return 2.5;
-    //return 21.0;
-}
 
-
-
-template <int dim>
-class Kappa_tilde_a : public Function<dim>
-{
-public:
-    Kappa_tilde_a()
-            : Function<dim>(1)
-    {}
-
-    virtual double value() const;
-};
-template <int dim>
-double Kappa_tilde_a<dim>::value()const
-{
-    //return 10.0;
     return 5.0;
 }
 
 template <int dim>
-class Kappa_tilde_v : public Function<dim>
+class StabVaporSaturation : public Function<dim>
 {
 public:
-    Kappa_tilde_v()
+    StabVaporSaturation()
             : Function<dim>(1)
     {}
 
     virtual double value() const;
 };
 template <int dim>
-double Kappa_tilde_v<dim>::value()const
+double StabVaporSaturation<dim>::value()const
 {
-    return 1.0;
+    return 5.0;
 }
 
 

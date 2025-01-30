@@ -3,9 +3,9 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 750.0)
-  set Final time = 250.0
+  set Final time = 750.0
   
-  # Initial time step (default 0.25. must be chosen so that at least one time step is performed)
+  # Initial time step (default 0.25)
   set Initial time step = 0.25
   
   # Second order time derivative
@@ -29,7 +29,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = false
+  set Stab_a = true
 
   # If true, then stability method is used For Sv
   set Stab_v = false
@@ -55,13 +55,13 @@ subsection Spatial discretization parameters
   # theta Sv (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta Sv = 1
   
-  # Penalty parameter pl
+  # Penalty parameter pl(default 1.0)
   set Penalty pl = 1.0
   
-  # Penalty parameter Sa
+  # Penalty parameter Sa (default 1.0)
   set Penalty Sa = 1.0
   
-  # Penalty parameter Sv
+  # Penalty parameter Sv (default 1.0)
   set Penalty Sv = 1.0
   
   # Penalty parameter pl for enforcing BC
@@ -127,7 +127,6 @@ subsection Spatial discretization parameters
   # Otherwise, it solves all three phases
   set Two phase problem = true
 end
-
 
 subsection Output parameters
   # Print vtk files with solution
