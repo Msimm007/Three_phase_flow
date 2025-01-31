@@ -400,7 +400,7 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
     if(fabs(this->get_time()) < 1.e-10)
     {
         // For t = 0, read from sa_perturbation file
-        std::ifstream infile("sa_perturbation");
+        std::ifstream infile("sa_perturbation_fine");
 
         double x1, x2, y1, y2, z1, z2, sa;
         int current_size = 1;

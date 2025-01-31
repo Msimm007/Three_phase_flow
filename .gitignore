@@ -30,3 +30,15 @@ times
 .idea
 compile_commands.json
 ThreePhase
+
+# Outputs only for local use. No need to be on github
+OUT_Q5S/
+OUT_VF/
+OUT_RESULTS/
+out_*
+
+# debug notes
+q5s_debug_notes.txt
+
+# no midpoint files for right now. will look into integrating later
+MIDPOINT/
