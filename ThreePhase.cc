@@ -1692,7 +1692,19 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 	Sa_problem.setup_system();
 
+	VaporSaturation::VaporSaturationProblem<dim> Sv_problem(triangulation, degree,
+						theta_Sv, penalty_Sv, penalty_Sv_bdry, dirichlet_id_sv, use_exact_pl_in_Sv,
+						use_exact_Sa_in_Sv, 
+						second_order_time_derivative, second_order_extrapolation,
+						use_direct_solver, Stab_v, incompressible, project_Darcy_with_gravity,
+						kappa_abs_vec, degreeRT, project_only_kappa,
+						mpi_communicator, n_mpi_processes, this_mpi_process);
+
+	Sv_problem.setup_system();
+
+
     bool rebuild_Sa_mat = true;
+    bool rebuild_Sv_mat = true;
 	
     for (; time <= final_time + 1.e-12; time += time_step, ++timestep_number)
     {
@@ -1837,20 +1849,13 @@ void CoupledPressureSaturationProblem<dim>::run()
 			Sv_solution = 0.0;
 		else
 		{
-			VaporSaturation::VaporSaturationProblem<dim> Sv_problem(triangulation, degree, time_step,theta_n_time,
-						theta_Sv, penalty_Sv, penalty_Sv_bdry, dirichlet_id_sv, use_exact_pl_in_Sv,
-						use_exact_Sa_in_Sv, time, timestep_number,
-						second_order_time_derivative, second_order_extrapolation,
-						use_direct_solver, Stab_v, incompressible, project_Darcy_with_gravity,
-						pl_solution, pl_solution_n, pl_solution_nminus1,pl_solution_kplus1,
-						Sa_solution, Sa_solution_n, Sa_solution_nminus1, Sa_solution_kplus1,
-						Sv_solution_n, Sv_solution_nminus1, Sv_solution_k,
-						kappa_abs_vec, totalDarcyvelocity_RT_Sv, degreeRT, project_only_kappa,
-						mpi_communicator, n_mpi_processes, this_mpi_process);
-
 			timer.reset();
 			timer.start();
-			Sv_problem.assemble_system_matrix_vapor_saturation();
+			Sv_problem.assemble_system_matrix_vapor_saturation(time_step,time, timestep_number,rebuild_Sv_mat,
+															pl_solution, pl_solution_n, pl_solution_nminus1,
+															Sa_solution, Sa_solution_n, Sa_solution_nminus1,
+															Sv_solution_n, Sv_solution_nminus1,
+															totalDarcyvelocity_RT_Sv);
 			timer.stop();
 
 			assemble_time[index_time] += timer.cpu_time();
@@ -1859,13 +1864,17 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 			timer.reset();
 			timer.start();
-			Sv_problem.solve_vapor_saturation();
+			Sv_problem.solve_vapor_saturation(pl_solution);
 			timer.stop();
 
 			solver_time[index_time] += timer.cpu_time();
 			pcout << "Elapsed CPU time for Sv solve: " << timer.cpu_time() << " seconds." << std::endl;
 
 			Sv_solution = Sv_problem.Sv_solution;
+
+			if(Stab_v){
+				rebuild_Sv_mat = false;
+			}
 		}
 
 		pl_solution_nminus2 = pl_solution_nminus1;

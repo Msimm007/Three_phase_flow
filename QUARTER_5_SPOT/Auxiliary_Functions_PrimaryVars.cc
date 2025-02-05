@@ -25,6 +25,10 @@ using namespace dealii;
 double amp_factor_cap_pressure = 1.e7;
 double kappa = 1.0;
 
+double stab_ka_data = 200000000.0;
+double stab_kv_data = 5.0;
+
+
 // Mesh creator
 template <int dim>
 void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
@@ -297,18 +301,18 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 {
 //	double kappa_abs = 3.72e-13;
 	double kappa_abs = 5.e-8;
-	double xx = cell->center()[0];
-	double yy = cell->center()[1];
+	// double xx = cell->center()[0];
+	// double yy = cell->center()[1];
 
-	double zz;
-	if(dim == 3){
-		zz = cell->center()[2];
-	}
+	// double zz;
+	// if(dim == 3){
+	// 	zz = cell->center()[2];
+	// }
 
 
-	if(xx >= 25.0 && xx <= 50.0)
-		if((yy >= 25.0 && yy <= 50.0))
-			kappa_abs /= 1000.0;
+	// if(xx >= 25.0 && xx <= 50.0)
+	// 	if((yy >= 25.0 && yy <= 50.0))
+	// 		kappa_abs /= 1000.0;
 	return kappa_abs;
 };
 
@@ -328,7 +332,7 @@ template <int dim>
 double StabAqueousSaturation<dim>::value()const
 {
 
-    return 10000000.0;
+    return stab_ka_data;
 }
 
 template <int dim>
@@ -344,7 +348,7 @@ public:
 template <int dim>
 double StabVaporSaturation<dim>::value()const
 {
-    return 10.0;
+    return stab_kv_data;
 }
 
 template <int dim>
