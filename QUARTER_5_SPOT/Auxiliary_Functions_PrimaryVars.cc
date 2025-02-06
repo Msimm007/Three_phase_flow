@@ -25,8 +25,11 @@ using namespace dealii;
 double amp_factor_cap_pressure = 1.e7;
 double kappa = 1.0;
 
-double stab_ka_data = 200000000.0;
-double stab_kv_data = 5.0;
+double stab_sa_data = 200000000.0;
+double stab_sv_data = 5.0;
+
+// if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50]
+bool hetero = false;
 
 
 // Mesh creator
@@ -36,59 +39,78 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 		std::vector<unsigned int> &dirichlet_id_sa,
 		std::vector<unsigned int> &dirichlet_id_sv)
 {
+
+	
 	Triangulation<dim> triangulation1;
 
-	Point<dim> v0;
-	Point<dim> v1;
+    Point<dim> v0;
+    Point<dim> v1;
 
-	// bottom left corner of the domain
-	v0[0] = 5.0;
-	v0[1] = 0.0;
+    v0[0] = 0.0;
+    v0[1] = 0.0;
 
-	// top right corner of the domain
-	v1[0] = 95.0;
-	v1[1] = 100.0;
+    if(dim == 3)
+        v0[2] = 0.0;
 
-	std::vector<unsigned int> repetitions(dim);
+    v1[0] = 50.0;
+    v1[1] = 100.0;
 
-	repetitions[0] = 18;
-	repetitions[1] = 20;
+    if(dim == 3)
+        v1[2] = 100.0;
 
-	GridGenerator::subdivided_hyper_rectangle(triangulation1, repetitions, v0, v1);
+    std::vector<unsigned int> repetitions(dim);
+    repetitions[0] = 10;
+    repetitions[1] = 20;
 
-	Triangulation<dim> triangulation2;
+    if (dim == 3)
+        repetitions[2] = 20;
 
-	// bottom left corner of the domain
-	v0[0] = 0.0;
-	v0[1] = 5.0;
+    std::vector<int> n_cells_to_remove(dim);
+    n_cells_to_remove[0] = 1;
+    n_cells_to_remove[1] = 1;
 
-	// top right corner of the domain
-	v1[0] = 5.0;
-	v1[1] = 100.0;
+    if (dim == 3)
+        n_cells_to_remove[2] = -1;
 
-	repetitions[0] = 1;
-	repetitions[1] = 19;
+    GridGenerator::subdivided_hyper_L(triangulation1, repetitions, v0, v1, n_cells_to_remove);
 
-	GridGenerator::subdivided_hyper_rectangle(triangulation2, repetitions, v0, v1);
+    //*---------------------------------
+    Triangulation<dim> triangulation2;
 
-	Triangulation<dim> triangulation3;
+    Point<dim> v0_2;
+    Point<dim> v1_2;
 
-	// bottom left corner of the domain
-	v0[0] = 95.0;
-	v0[1] = 0.0;
+    v0_2[0] = 50.0;
+    v0_2[1] = 0.0;
 
-	// top right corner of the domain
-	v1[0] = 100.0;
-	v1[1] = 95.0;
+    if (dim == 3)
+        v0_2[2] = 0.0;
 
-	repetitions[0] = 1;
-	repetitions[1] = 19;
+    v1_2[0] = 100.0;
+    v1_2[1] = 100.0;
 
-	GridGenerator::subdivided_hyper_rectangle(triangulation3, repetitions, v0, v1);
+    if (dim == 3)
+        v1_2[2] = 100.0;
 
-	GridGenerator::merge_triangulations	({&triangulation1, &triangulation2, &triangulation3}, triangulation);
-	
-	//GridGenerator::hyper_cube(triangulation, 0.0, 1.0);
+    std::vector<unsigned int> repetitions_2(dim);
+    repetitions_2[0] = 10;
+    repetitions_2[1] = 20;
+
+    if (dim == 3)
+        repetitions_2[2] = 20;
+
+    std::vector<int> n_cells_to_remove_2(dim);
+
+    n_cells_to_remove_2[0] = -1;
+    n_cells_to_remove_2[1] = -1;
+
+    if (dim == 3)
+        n_cells_to_remove_2[2] = 1;
+
+    GridGenerator::subdivided_hyper_L(triangulation2, repetitions_2, v0_2, v1_2, n_cells_to_remove_2);
+
+    GridGenerator::merge_triangulations({&triangulation1,&triangulation2},triangulation);
+
 	triangulation.refine_global(ref_level);
  
 	// Boundary classification
@@ -301,18 +323,22 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 {
 //	double kappa_abs = 3.72e-13;
 	double kappa_abs = 5.e-8;
-	// double xx = cell->center()[0];
-	// double yy = cell->center()[1];
 
-	// double zz;
-	// if(dim == 3){
-	// 	zz = cell->center()[2];
-	// }
+	if (hetero)
+	{	
+		double xx = cell->center()[0];
+		double yy = cell->center()[1];
+
+		double zz;
+		if(dim == 3){
+			zz = cell->center()[2];
+		}
 
 
-	// if(xx >= 25.0 && xx <= 50.0)
-	// 	if((yy >= 25.0 && yy <= 50.0))
-	// 		kappa_abs /= 1000.0;
+		if(xx >= 25.0 && xx <= 50.0)
+			if((yy >= 25.0 && yy <= 50.0))
+				kappa_abs /= 1000.0;
+	}
 	return kappa_abs;
 };
 
@@ -332,7 +358,7 @@ template <int dim>
 double StabAqueousSaturation<dim>::value()const
 {
 
-    return stab_ka_data;
+    return stab_sa_data;
 }
 
 template <int dim>
@@ -348,7 +374,7 @@ public:
 template <int dim>
 double StabVaporSaturation<dim>::value()const
 {
-    return stab_kv_data;
+    return stab_sv_data;
 }
 
 template <int dim>

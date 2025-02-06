@@ -25,8 +25,8 @@ double M = 200;
 double amp_factor_cap_pressure = 300.0;
 
 // stability terms
-double kappa_tilde_a_data = 1.0;
-double kappa_tilde_v_data = 1.0;
+double stab_sa_data = 5.0;
+double stab_sv_data = 5.0;
 
 // Mesh creator
 template <int dim>
@@ -311,7 +311,7 @@ template <int dim>
 double StabAqueousSaturation<dim>::value()const
 {
 
-    return kappa_tilde_a_data;
+    return stab_sa_data;
 }
 
 template <int dim>
@@ -327,7 +327,7 @@ public:
 template <int dim>
 double StabVaporSaturation<dim>::value()const
 {
-    return kappa_tilde_v_data;
+    return stab_sv_data;
 }
 
 

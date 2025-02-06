@@ -1820,7 +1820,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 		timer.reset();
 		timer.start();
-		Sa_problem.assemble_system_matrix_aqueous_saturation(time_step,time, timestep_number,								 rebuild_Sa_mat,
+		Sa_problem.assemble_system_matrix_aqueous_saturation(time_step,time, timestep_number, rebuild_Sa_mat,
 														pl_solution, pl_solution_n, pl_solution_nminus1,
 														Sa_solution_n, Sa_solution_nminus1,
 														Sv_solution_n, Sv_solution_nminus1,
@@ -2072,7 +2072,7 @@ int main(int argc, char *argv[])
 				dgmethod.run();
         	}
 
-			delta_t /= 2.0;
+			delta_t /= 4.0;
         }
     }
     catch (std::exception &exc)

@@ -25,18 +25,27 @@ using namespace dealii;
 
 bool inc = false; // MUST MATCH PARAMETER FILE.
 double amp_factor_cap_pressure = 300.0; //not used here
+
+
 double porosity_data = 0.2;
-double kappa_abs_data = 1.0;
+
 double kappa_rl_data = 1.0; //not used here
 double kappa_ra_data = 1.0; // not used here
 double kappa_rv_data = 1.0; // not used here
-double kappa = kappa_abs_data; //Kept here because used in RHS and boundary term
+
+double kappa = 1.0;
+
 double rho_l_data = 3.0;
 double rho_a_data = 5.0;
 double rho_v_data = 1.0;
+
 double mu_l_data = 0.75;
 double mu_a_data = 1.0;
 double mu_v_data = 0.25;
+
+
+double stab_sa_data = 5.0;
+double stab_sv_data = 5.0;
 
 // Mesh creator
 template <int dim>
@@ -145,7 +154,7 @@ template <int dim>
 double StabAqueousSaturation<dim>::value()const
 {
 
-    return 5.0;
+    return stab_sa_data;
 }
 
 template <int dim>
@@ -161,7 +170,7 @@ public:
 template <int dim>
 double StabVaporSaturation<dim>::value()const
 {
-    return 10.0;
+    return stab_sv_data;
 }
 
 
