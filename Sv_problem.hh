@@ -436,7 +436,12 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 		const FEValues<dim> &fe_v = scratch_data.reinit(cell);
 
 		const unsigned int n_dofs = fe_v.dofs_per_cell;
-		copy_data.reinit_matrix(cell, n_dofs);
+
+		if (rebuild_matrix)
+		{
+			copy_data.reinit_matrix(cell, n_dofs);
+
+		}
 		copy_data.reinit_rhs(cell, n_dofs);
 
 
