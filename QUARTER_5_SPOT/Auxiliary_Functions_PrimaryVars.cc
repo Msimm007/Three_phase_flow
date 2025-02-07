@@ -23,13 +23,12 @@
 using namespace dealii;
 
 double amp_factor_cap_pressure = 1.e7;
-double kappa = 1.0;
 
-double stab_sa_data = 200000000.0;
+double stab_sa_data = 1000.0;
 double stab_sv_data = 5.0;
 
 // if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50]
-bool hetero = false;
+bool hetero = true;
 
 
 // Mesh creator
@@ -126,8 +125,6 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 	typename Triangulation<dim>::active_cell_iterator
 		cell = triangulation.begin_active(),
 		endc = triangulation.end();
-
-
 
 	for (; cell != endc; cell++)
 	{

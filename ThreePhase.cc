@@ -156,6 +156,10 @@ void ParameterReader::declare_parameters()
         prm.declare_entry("Theta_n",
                           "0.5",
                           Patterns::Double(0.0));
+
+		prm.declare_entry("delta_t div 4",
+						"false",
+						 Patterns::Bool());
 		
 	}
 	prm.leave_subsection();
@@ -450,10 +454,11 @@ private:
 	bool 		 midpoint_method;
     double       theta_n_time;
 
+	bool div4_delta_t;
+
     bool incompressible;
 
-	bool Stab_t;
-    bool Stab_a;
+	bool Stab_a;
     bool Stab_v;
 
     double penalty_pl;
@@ -546,13 +551,13 @@ CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const un
     theta_n_time = prm.get_double("Theta_n");
 
 
+
 	prm.leave_subsection();
 
 	prm.enter_subsection("Spatial discretization parameters");
 
 
     incompressible = prm.get_bool("Incompressible");
-	Stab_t = prm.get_bool("Stab_t");
     Stab_a = prm.get_bool("Stab_a");
     Stab_v = prm.get_bool("Stab_v");
 
@@ -2039,6 +2044,8 @@ int main(int argc, char *argv[])
 
         double init_delta_t = prm.get_double("Initial time step");
 
+		bool div4_delta_t = prm.get_bool("delta_t div 4");
+
         prm.leave_subsection();
 
         double delta_t = init_delta_t;
@@ -2071,8 +2078,15 @@ int main(int argc, char *argv[])
 						delta_t, tf, refinement_level, prm);
 				dgmethod.run();
         	}
+			if(div4_delta_t){
 
-			delta_t /= 4.0;
+				delta_t /= 4.0;
+			}
+			else
+			{
+				delta_t /= 2.0;
+			}
+
         }
     }
     catch (std::exception &exc)

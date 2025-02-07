@@ -26,6 +26,9 @@ subsection Time discretization parameters
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation"
   set Create initial perturbation = false
+
+  # delta_t = h^2 if true. if false, delta_t = h
+  set delta_t div 4 = false
 end
 
 

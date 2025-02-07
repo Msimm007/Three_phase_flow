@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 750.0)
-  set Final time = 250.0
+  set Final time = 750.0
   
   # Initial time step (default 0.25)
   set Initial time step = 0.25
@@ -21,6 +21,9 @@ subsection Time discretization parameters
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation"
   set Create initial perturbation = false
+
+  # delta_t = h^2 if true. if false, delta_t = h
+  set delta_t div 4 = false
 end
 
 
@@ -31,11 +34,11 @@ subsection Spatial discretization parameters
   # If true, then stability method is used For Sa
   set Stab_a = true
 
-  # If true, then stability method is used For Sv
+  # If true, then stability method is used For Sv (irrelevant now for 2-phase q5s)
   set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = false
+  set Incompressible = true
 
   # Polynomial degree for FE space
   set Degree = 1
