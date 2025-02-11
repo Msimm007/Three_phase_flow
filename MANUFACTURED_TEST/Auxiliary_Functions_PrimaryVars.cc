@@ -1,4 +1,5 @@
 #include <deal.II/base/function.h>
+#include <deal.II/base/parameter_handler.h>
 #include <deal.II/lac/vector.h>
 #include <deal.II/base/tensor_function.h>
 

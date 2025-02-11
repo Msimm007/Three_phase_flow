@@ -25,7 +25,7 @@ double M = 200;
 double amp_factor_cap_pressure = 300.0;
 
 // stability terms
-double stab_sa_data = 5.0;
+double stab_sa_data = 3000.0;
 double stab_sv_data = 5.0;
 
 // Mesh creator
@@ -400,7 +400,7 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
     if(fabs(this->get_time()) < 1.e-10)
     {
         // For t = 0, read from sa_perturbation file
-        std::ifstream infile("sa_perturbation_fine");
+        std::ifstream infile("sa_perturbation");
 
         double x1, x2, y1, y2, z1, z2, sa;
         int current_size = 1;

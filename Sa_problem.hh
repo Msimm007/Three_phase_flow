@@ -933,9 +933,6 @@ namespace AqueousSaturation
                     gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
                     }
 
-                    // pcout << "sqrt of darcy: " << sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation)
-                    //   << std::endl;
-
                     double h_e = cell->face(face_no)->measure();
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
 
@@ -1062,7 +1059,7 @@ namespace AqueousSaturation
                                                      * g[point]
                                                      * JxW[point];
 
-                        copy_data.cell_rhs(i) -= rho_a
+                            copy_data.cell_rhs(i) -= rho_a
                                                  * lambda_a
                                                  * dpca_dSv
                                                  * kappa
@@ -1466,7 +1463,6 @@ namespace AqueousSaturation
                     nu_h_artificial_visc1 = 0.5*sqrt(ncell->measure())*art_visc_multiple_Sa*maximum_Darcy1*2.0*maximum_Sa1;
                 }
 
-                // Diffusion coefficients and weights for stab method
                 double coef0_diff = fabs(rho_a0*lambda_a0*kappa0*dpca_dSa0);
                 double coef1_diff = fabs(rho_a1*lambda_a1*kappa1*dpca_dSa1);
 
@@ -1512,9 +1508,6 @@ namespace AqueousSaturation
                 //Sa coefficients and weights for stab method
                 double coef0_Sa_stab = (rho_a0*lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
                 double coef1_Sa_stab = (rho_a1*lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;
-                //TEST DEBUG LC --> BAD
-                //double coef0_Sa_stab = fabs(rho_a0*lambda_a0*dpca_dSa0+Kappa_tilde_a)*kappa0;
-                //double coef1_Sa_stab = fabs(rho_a1*lambda_a1*dpca_dSa1+Kappa_tilde_a)*kappa1;
 
                 double weight0_Sa_stab = coef1_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);
                 double weight1_Sa_stab = coef0_Sa_stab/(coef0_Sa_stab + coef1_Sa_stab + 1.e-20);

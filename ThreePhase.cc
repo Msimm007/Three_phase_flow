@@ -185,11 +185,7 @@ void ParameterReader::declare_parameters()
 
 		prm.declare_entry("Incompressible",
 						  "true",
-						  Patterns::Bool());
-
-        prm.declare_entry("Stab_t",
-                          "true",
-                          Patterns::Bool());						  
+						  Patterns::Bool());					  
 
         prm.declare_entry("Stab_a",
                           "true",
@@ -361,6 +357,7 @@ public:
 			double delta_t, double tf, const unsigned int refinement, ParameterHandler &param);
     void run();
 
+
 private:
     void load_gmsh_mesh();
 
@@ -517,8 +514,6 @@ private:
 
 };
 
-
-
 template <int dim>
 CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const unsigned int degree, const unsigned int degreeRT_,
 		double delta_t, double tf, const unsigned int refinement, ParameterHandler &param)
@@ -619,6 +614,8 @@ CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const un
 
 	time = timestep_number*time_step;
 }
+
+
 template <int dim>
 void CoupledPressureSaturationProblem<dim>::create_kappa_abs_vector()
 {

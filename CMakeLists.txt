@@ -1,6 +1,3 @@
-##
-#  CMake script for the step-12 tutorial program:
-##
 
 # Set the name of the project and target:
 SET(TARGET "ThreePhase")
@@ -33,6 +30,7 @@ SET(TARGET_SRC
 # FILE(GLOB_RECURSE TARGET_INC  "*.hh")
 # SET(TARGET_SRC ${TARGET_SRC}  ${TARGET_INC})
 
+# to remove error messages when compiling
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 
 # Usually, you will not need to modify anything beyond this point...

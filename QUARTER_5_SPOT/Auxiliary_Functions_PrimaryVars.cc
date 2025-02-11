@@ -24,7 +24,7 @@ using namespace dealii;
 
 double amp_factor_cap_pressure = 1.e7;
 
-double stab_sa_data = 1000.0;
+double stab_sa_data = 10000000.0;
 double stab_sv_data = 5.0;
 
 // if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50]
@@ -354,6 +354,21 @@ public:
 template <int dim>
 double StabAqueousSaturation<dim>::value()const
 {
+	if (hetero)
+	{	
+		double xx = cell->center()[0];
+		double yy = cell->center()[1];
+
+		double zz;
+		if(dim == 3){
+			zz = cell->center()[2];
+		}
+
+
+		if(xx >= 25.0 && xx <= 50.0)
+			if((yy >= 25.0 && yy <= 50.0))
+			stab_sa_data /= 10.0;
+	}
 
     return stab_sa_data;
 }

@@ -1,4 +1,5 @@
 #include <deal.II/base/function.h>
+#include <deal.II/base/parameter_handler.h>
 #include <deal.II/lac/vector.h>
 #include <deal.II/base/tensor_function.h>
 
@@ -23,7 +24,7 @@
 using namespace dealii;
 
 
-bool inc = false; // MUST MATCH PARAMETER FILE.
+bool inc = true; // MUST MATCH PARAMETER FILE.
 double amp_factor_cap_pressure = 300.0; //not used here
 
 
@@ -1421,9 +1422,9 @@ double RightHandSideLiquidPressure<dim>::value(const Point<dim> & p,
         rho_l_val = 1.0;
         rho_v_val = 1.0;
         rho_a_val = 1.0;
-        rho_l_val_sq = ex_rho_l.value(pl);
-        rho_v_val_sq = ex_rho_v.value(pl, Sa, Sv);
-        rho_a_val_sq = ex_rho_a.value(pl);
+        rho_l_val_sq = 1.0;
+        rho_v_val_sq = 1.0;
+        rho_a_val_sq = 1.0;
     }
 
 
@@ -1805,6 +1806,12 @@ NeumannTermLiquidPressure<dim>::vector_value(const Point<dim> & p,
     double rho_v_val = ex_rho_v.value(pl_value, Sa_value, Sv_value);
     double rho_a_val = ex_rho_a.value(pl_value);
 
+    if (inc){
+        rho_l_val = 1.0;
+        rho_v_val = 1.0;
+        rho_a_val = 1.0;
+    }
+
     double rho_lambda_t = rho_l_val*lambda_l + rho_v_val*lambda_v + rho_a_val*lambda_a;
 
     Tensor<1,dim> grad_pl = ex_liquid_pressure.gradient(p);
@@ -1881,6 +1888,10 @@ NeumannTermAqueousSaturation<dim>::vector_value(const Point<dim> & p,
 
     double rho_a_val = ex_rho_a.value(pl_value);
 
+    if(inc){
+        rho_a_val = 1.0;
+    }
+
     Tensor<1,dim> grad_pl = ex_liquid_pressure.gradient(p);
     Tensor<1,dim> grad_Sa = ex_aqueous_sat.gradient(p);
     Tensor<1,dim> grad_Sv = ex_vapor_sat.gradient(p);
@@ -1953,6 +1964,10 @@ NeumannTermVaporSaturation<dim>::vector_value(const Point<dim> & p,
     double lambda_v = ex_lambda_v.value(pl_value, Sa_value, Sv_value);
 
     double rho_v_val = ex_rho_v.value(pl_value, Sa_value, Sv_value);
+
+    if (inc){
+        rho_v_val = 1.0;
+    }
 
     Tensor<1,dim> grad_pl = ex_liquid_pressure.gradient(p);
     Tensor<1,dim> grad_Sa = ex_aqueous_sat.gradient(p);

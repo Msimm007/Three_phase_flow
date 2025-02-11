@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 8000)
-  set Final time = 1000
+  set Final time = 8000
 
 
   # Initial time step (must be chosen so that at least one time step is performed)
@@ -28,6 +28,9 @@ subsection Time discretization parameters
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation" #########(KEEP FALSE PLEASE)############ 
   set Create initial perturbation = false
+
+  # delta_t = h^2 if true. if false, delta_t = h
+  set delta_t div 4 = false
 end
 
 
@@ -46,10 +49,10 @@ subsection Spatial discretization parameters
 
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 0
 
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 0
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
