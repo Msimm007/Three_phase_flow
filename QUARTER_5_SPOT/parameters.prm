@@ -6,7 +6,7 @@ subsection Time discretization parameters
   set Final time = 750.0
   
   # Initial time step (default 0.25)
-  set Initial time step = 0.25
+  set Initial time step = 0.10
   
   # Second order time derivative
   set Second order time derivative = false
@@ -41,10 +41,10 @@ subsection Spatial discretization parameters
   set Degree = 1
   
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 2
   
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 2
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -133,7 +133,7 @@ subsection Output parameters
   set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
-  set Frequency for vtk printing = 25
+  set Frequency for vtk printing = 100
   
   # Compute errors (manufactured sol test case)
   set Compute errors = false
