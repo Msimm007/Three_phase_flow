@@ -9,10 +9,10 @@ subsection Time discretization parameters
   set Initial time step = 0.10
 
   # Second order time derivative
-  set Second order time derivative = false
+  set Second order time derivative = true
 
   # Second order extrapolation
-  set Second order extrapolation = false
+  set Second order extrapolation = true
 
   # Use implicit time derivative term in pl
   set Use implicit time term in pl = true
@@ -88,7 +88,7 @@ subsection Spatial discretization parameters
   #set Penalty Sv boundary = 1000.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = true
+  set Project to RT0 = false
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false

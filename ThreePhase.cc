@@ -75,36 +75,6 @@ namespace CouplingPressureSaturation
 {
 using namespace dealii;
 
-struct CopyDataFace
-{
-    FullMatrix<double>                   cell_matrix;
-    Vector<double>                       cell_rhs;
-    std::vector<types::global_dof_index> joint_dof_indices;
-    std::array<unsigned int, 2>          cell_indices;
-    std::array<double, 2>                values;
-};
-
-
-
-struct CopyData
-{
-    FullMatrix<double>                   cell_matrix;
-    Vector<double>                       cell_rhs;
-    std::vector<types::global_dof_index> local_dof_indices;
-    std::vector<CopyDataFace>            face_data;
-    double                               value;
-    unsigned int                         cell_index;
-
-    template <class Iterator>
-    void reinit(const Iterator &cell, unsigned int dofs_per_cell)
-    {
-        cell_matrix.reinit(dofs_per_cell, dofs_per_cell);
-        cell_rhs.reinit(dofs_per_cell);
-
-        local_dof_indices.resize(dofs_per_cell);
-        cell->get_dof_indices(local_dof_indices);
-    }
-};
 
 class ParameterReader : public Subscriptor
 {
@@ -405,23 +375,20 @@ private:
 
     PETScWrappers::MPI::Vector pl_solution;
     PETScWrappers::MPI::Vector pl_solution_n;
-    PETScWrappers::MPI::Vector pl_solution_k;
-    PETScWrappers::MPI::Vector pl_solution_kplus1;
+
     PETScWrappers::MPI::Vector pl_solution_nminus1;
     PETScWrappers::MPI::Vector pl_solution_nminus2;
 
 
     PETScWrappers::MPI::Vector Sa_solution;
     PETScWrappers::MPI::Vector Sa_solution_n;
-    PETScWrappers::MPI::Vector Sa_solution_k;
-    PETScWrappers::MPI::Vector Sa_solution_kplus1;
+
     PETScWrappers::MPI::Vector Sa_solution_nminus1;
     PETScWrappers::MPI::Vector Sa_solution_nminus2;
 
     PETScWrappers::MPI::Vector Sv_solution;
     PETScWrappers::MPI::Vector Sv_solution_n;
-    PETScWrappers::MPI::Vector Sv_solution_k;
-    PETScWrappers::MPI::Vector Sv_solution_kplus1;
+
     PETScWrappers::MPI::Vector Sv_solution_nminus1;
     PETScWrappers::MPI::Vector Sv_solution_nminus2;
 
@@ -651,24 +618,21 @@ void CoupledPressureSaturationProblem<dim>::setup_system()
 
 	pl_solution.reinit(locally_owned_dofs, mpi_communicator);
 	pl_solution_n.reinit(locally_owned_dofs, mpi_communicator);
-	pl_solution_k.reinit(locally_owned_dofs, mpi_communicator);
-	pl_solution_kplus1.reinit(locally_owned_dofs, mpi_communicator);
+
 	pl_solution_nminus1.reinit(locally_owned_dofs, mpi_communicator);
 	pl_solution_nminus2.reinit(locally_owned_dofs, mpi_communicator);
 
 
 	Sa_solution.reinit(locally_owned_dofs, mpi_communicator);
 	Sa_solution_n.reinit(locally_owned_dofs, mpi_communicator);
-	Sa_solution_k.reinit(locally_owned_dofs, mpi_communicator);
-	Sa_solution_kplus1.reinit(locally_owned_dofs, mpi_communicator);
+
 	Sa_solution_nminus1.reinit(locally_owned_dofs, mpi_communicator);
 	Sa_solution_nminus2.reinit(locally_owned_dofs, mpi_communicator);
 
 
 	Sv_solution.reinit(locally_owned_dofs, mpi_communicator);
 	Sv_solution_n.reinit(locally_owned_dofs, mpi_communicator);
-	Sv_solution_k.reinit(locally_owned_dofs, mpi_communicator);
-	Sv_solution_kplus1.reinit(locally_owned_dofs, mpi_communicator);
+
 	Sv_solution_nminus1.reinit(locally_owned_dofs, mpi_communicator);
 	Sv_solution_nminus2.reinit(locally_owned_dofs, mpi_communicator);
 	pl_difference.reinit(locally_owned_dofs, mpi_communicator);
@@ -899,8 +863,7 @@ template <int dim>
 void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 {
 	DataOutBase::VtkFlags flags;
-	//flags.compression_level = DataOutBase::VtkFlags::best_speed;
-
+	
     // To print kappa_abs vector
     kappa_abs_vec.update_ghost_values();
 
@@ -1004,7 +967,6 @@ template <int dim>
 void CoupledPressureSaturationProblem<dim>::output_vtk() const
 {
 	DataOutBase::VtkFlags flags;
-	//flags.compression_level = DataOutBase::VtkFlags::best_speed;
 
 	pl_solution.update_ghost_values();
 

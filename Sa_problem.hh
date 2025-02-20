@@ -482,6 +482,8 @@ namespace AqueousSaturation
             std::vector<double> old_Sa_vals(n_qpoints);
             std::vector<double> old_Sa_vals_nminus1(n_qpoints);
             std::vector<Tensor<1, dim>> old_Sa_grads(n_qpoints);
+            std::vector<Tensor<1, dim>> old_Sa_grads_nminus1(n_qpoints);
+
 
             std::vector<double> old_Sv_vals(n_qpoints);
             std::vector<double> old_Sv_vals_nminus1(n_qpoints);
@@ -496,6 +498,8 @@ namespace AqueousSaturation
             fe_v.get_function_values(temp_Sa_solution_n, old_Sa_vals);
             fe_v.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
             fe_v.get_function_gradients(temp_Sa_solution_n, old_Sa_grads);
+            fe_v.get_function_gradients(temp_Sa_solution_nminus1, old_Sa_grads_nminus1);
+
 
             fe_v.get_function_values(temp_Sv_solution_n, old_Sv_vals);
             fe_v.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
@@ -547,6 +551,8 @@ namespace AqueousSaturation
                 double Sa_value_n = old_Sa_vals[point];
                 double Sa_value_nminus1 = old_Sa_vals_nminus1[point];
                 Tensor<1,dim> Sa_grad_n = old_Sa_grads[point];
+                Tensor<1,dim> Sa_grad_nminus1 = old_Sa_grads_nminus1[point];
+
 
                 double Sv_value_n = old_Sv_vals[point];
                 double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
@@ -573,13 +579,19 @@ namespace AqueousSaturation
                 // Second order extrapolations if needed
                 double Sa_nplus1_extrapolation = Sa_value_n;
                 double Sv_nplus1_extrapolation = Sv_value_n;
+
                 Tensor<1,dim> Sv_grad_nplus1_extrapolation = Sv_grad_n;
+                Tensor<1,dim> Sa_grad_nplus1_extrapolation = Sa_grad_n;
+
                 Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
 
                 if(second_order_extrapolation)
                 {
                     Sa_nplus1_extrapolation *= 2.0;
                     Sa_nplus1_extrapolation -= Sa_value_nminus1;
+
+                    Sa_grad_nplus1_extrapolation *= 2.0;
+                    Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
 
                     Sv_nplus1_extrapolation *= 2.0;
                     Sv_nplus1_extrapolation -= Sv_value_nminus1;
@@ -632,7 +644,7 @@ namespace AqueousSaturation
                             if(timestep_number == 1 || !second_order_time_derivative)
                             {
                             // Time term
-                            copy_data.cell_matrix(i,j) +=
+                                copy_data.cell_matrix(i,j) +=
                                     (1.0/time_step)
                                     * phi_nplus1
                                     * rho_a
@@ -642,7 +654,7 @@ namespace AqueousSaturation
                             }
                             else
                             {
-                            copy_data.cell_matrix(i,j) +=
+                                copy_data.cell_matrix(i,j) +=
                                     (1.0/time_step)
                                     * 1.5
                                     * phi_nplus1
@@ -653,8 +665,8 @@ namespace AqueousSaturation
                             }
                             if (Stab_a)
                             {
-                            // Diffusion Term
-                            copy_data.cell_matrix(i,j) -=
+                                // Diffusion Term
+                                copy_data.cell_matrix(i,j) -=
                                     -Kappa_tilde_a
                                     * kappa
                                     * fe_v.shape_grad(i, point)
@@ -663,8 +675,8 @@ namespace AqueousSaturation
                             }
                             else
                             {
-                            // Diffusion Term
-                            copy_data.cell_matrix(i,j) -=
+                                // Diffusion Term
+                                copy_data.cell_matrix(i,j) -=
                                     rho_a
                                     * lambda_a
                                     * dpca_dSa
@@ -673,14 +685,15 @@ namespace AqueousSaturation
                                     * fe_v.shape_grad(j, point)
                                     * JxW[point];
                             }
+
                             if(artificial_visc_imp)
-                            {
-                            copy_data.cell_matrix(i,j) +=
+                                {
+                                    copy_data.cell_matrix(i,j) +=
                                     nu_h_artificial_visc
                                     * fe_v.shape_grad(i, point)
                                     * fe_v.shape_grad(j, point)
                                     * JxW[point];
-                            }
+                                }
                         }
                     }
                     // Source term
@@ -705,7 +718,7 @@ namespace AqueousSaturation
 
                     if(Stab_a)
                     {
-                        copy_data.cell_rhs(i) += (rho_a * lambda_a * dpca_dSa + Kappa_tilde_a) * kappa * Sa_grad_n
+                        copy_data.cell_rhs(i) += (rho_a * lambda_a * dpca_dSa + Kappa_tilde_a) * kappa * Sa_grad_nplus1_extrapolation
                                                  * fe_v.shape_grad(i, point) * JxW[point];
 
                     }
@@ -732,10 +745,8 @@ namespace AqueousSaturation
                                                  * Sa_grad_n
                                                  * fe_v.shape_grad(i, point)
                                                  * JxW[point];
-
                 }
             }
-
         };
 
         // Boundary face integrals
@@ -780,6 +791,8 @@ namespace AqueousSaturation
             std::vector<double> old_Sa_vals(n_qpoints);
             std::vector<double> old_Sa_vals_nminus1(n_qpoints);
             std::vector<Tensor<1, dim>> old_Sa_grads(n_qpoints);
+            std::vector<Tensor<1, dim>> old_Sa_grads_nminus1(n_qpoints);
+
 
             std::vector<double> old_Sv_vals(n_qpoints);
             std::vector<double> old_Sv_vals_nminus1(n_qpoints);
@@ -792,6 +805,8 @@ namespace AqueousSaturation
             fe_face.get_function_values(temp_Sa_solution_n, old_Sa_vals);
             fe_face.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
             fe_face.get_function_gradients(temp_Sa_solution_n, old_Sa_grads);
+            fe_face.get_function_gradients(temp_Sa_solution_nminus1, old_Sa_grads_nminus1);
+
 
             fe_face.get_function_values(temp_Sv_solution_n, old_Sv_vals);
             fe_face.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
@@ -849,6 +864,8 @@ namespace AqueousSaturation
                     double Sa_value_n = old_Sa_vals[point];
                     double Sa_value_nminus1 = old_Sa_vals_nminus1[point];
                     Tensor<1,dim> Sa_grad_n = old_Sa_grads[point];
+                    Tensor<1,dim> Sa_grad_nminus1 = old_Sa_grads_nminus1[point];
+
 
                     double Sv_value_n = old_Sv_vals[point];
                     double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
@@ -872,13 +889,20 @@ namespace AqueousSaturation
                     // Second order extrapolations if needed
                     double Sa_nplus1_extrapolation = Sa_value_n;
                     double Sv_nplus1_extrapolation = Sv_value_n;
+
                     Tensor<1,dim> Sv_grad_nplus1_extrapolation = Sv_grad_n;
+                    Tensor<1,dim> Sa_grad_nplus1_extrapolation = Sa_grad_n;
+
+
                     Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
 
                     if(second_order_extrapolation)
                     {
                         Sa_nplus1_extrapolation *= 2.0;
                         Sa_nplus1_extrapolation -= Sa_value_nminus1;
+
+                        Sa_grad_nplus1_extrapolation *= 2.0;
+                        Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
 
                         Sv_nplus1_extrapolation *= 2.0;
                         Sv_nplus1_extrapolation -= Sv_value_nminus1;
@@ -1027,7 +1051,7 @@ namespace AqueousSaturation
                                                       * lambda_a
                                                       * dpca_dSa + Kappa_tilde_a)
                                                      * kappa
-                                                     * Sa_grad_n
+                                                     * Sa_grad_nplus1_extrapolation
                                                      * normals[point]
                                                      * fe_face.shape_value(i, point)
                                                      * JxW[point];
@@ -1258,10 +1282,14 @@ namespace AqueousSaturation
             std::vector<double> old_Sa_vals(n_qpoints);
             std::vector<double> old_Sa_vals_nminus1(n_qpoints);
             std::vector<Tensor<1, dim>> old_Sa_grads(n_qpoints);
+            std::vector<Tensor<1, dim>> old_Sa_grads_nminus1(n_qpoints);
+
 
             std::vector<double> old_Sa_vals_neighbor(n_qpoints);
             std::vector<double> old_Sa_vals_nminus1_neighbor(n_qpoints);
             std::vector<Tensor<1, dim>> old_Sa_grads_neighbor(n_qpoints);
+            std::vector<Tensor<1, dim>> old_Sa_grads_nminus1_neighbor(n_qpoints);
+
 
             std::vector<double> old_Sv_vals(n_qpoints);
             std::vector<double> old_Sv_vals_nminus1(n_qpoints);
@@ -1282,10 +1310,14 @@ namespace AqueousSaturation
             fe_face.get_function_values(temp_Sa_solution_n, old_Sa_vals);
             fe_face.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
             fe_face.get_function_gradients(temp_Sa_solution_n, old_Sa_grads);
+            fe_face.get_function_gradients(temp_Sa_solution_nminus1, old_Sa_grads_nminus1);
+
 
             fe_face_neighbor.get_function_values(temp_Sa_solution_n, old_Sa_vals_neighbor);
             fe_face_neighbor.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1_neighbor);
             fe_face_neighbor.get_function_gradients(temp_Sa_solution_n, old_Sa_grads_neighbor);
+            fe_face_neighbor.get_function_gradients(temp_Sa_solution_nminus1, old_Sa_grads_nminus1_neighbor);
+
 
             fe_face.get_function_values(temp_Sv_solution_n, old_Sv_vals);
             fe_face.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
@@ -1352,11 +1384,13 @@ namespace AqueousSaturation
 
                 double Sa_value0_n = old_Sa_vals[point];
                 double Sa_value1_n = old_Sa_vals_neighbor[point];
-                Tensor<1,dim> Sa_grad0_n = old_Sa_grads[point];
-                Tensor<1,dim> Sa_grad1_n = old_Sa_grads_neighbor[point];
-
                 double Sa_value0_nminus1 = old_Sa_vals_nminus1[point];
                 double Sa_value1_nminus1 = old_Sa_vals_nminus1_neighbor[point];
+
+                Tensor<1,dim> Sa_grad0_n = old_Sa_grads[point];
+                Tensor<1,dim> Sa_grad1_n = old_Sa_grads_neighbor[point];
+                Tensor<1,dim> Sa_grad0_nminus1 = old_Sa_grads_nminus1[point];
+                Tensor<1,dim> Sa_grad1_nminus1 = old_Sa_grads_nminus1_neighbor[point];
 
                 double Sv_value0_n = old_Sv_vals[point];
                 double Sv_value1_n = old_Sv_vals_neighbor[point];
@@ -1394,8 +1428,12 @@ namespace AqueousSaturation
                 double Sa_nplus1_extrapolation1 = Sa_value1_n;
                 double Sv_nplus1_extrapolation0 = Sv_value0_n;
                 double Sv_nplus1_extrapolation1 = Sv_value1_n;
+
                 Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
                 Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
+                Tensor<1,dim> Sa_grad_nplus1_extrapolation0 = Sa_grad0_n;
+                Tensor<1,dim> Sa_grad_nplus1_extrapolation1 = Sa_grad1_n;
+                
                 Tensor<1,dim> totalDarcyVelo_extrapolation0 = totalDarcyVelo0;
                 Tensor<1,dim> totalDarcyVelo_extrapolation1 = totalDarcyVelo1;
 
@@ -1406,6 +1444,12 @@ namespace AqueousSaturation
 
                     Sa_nplus1_extrapolation1 *= 2.0;
                     Sa_nplus1_extrapolation1 -= Sa_value1_nminus1;
+
+                    Sa_grad_nplus1_extrapolation0 *= 2.0;
+                    Sa_grad_nplus1_extrapolation0 -= Sa_grad0_nminus1;
+
+                    Sa_grad_nplus1_extrapolation1 *= 2.0;
+                    Sa_grad_nplus1_extrapolation1 -= Sa_grad1_nminus1;
 
                     Sv_nplus1_extrapolation0 *= 2.0;
                     Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
@@ -1581,7 +1625,7 @@ namespace AqueousSaturation
                     {
                         // Sa term added to the RHS
                         double weighted_aver_rhs0_stab = AverageGradOperators::weighted_average_rhs<dim>(normals[point],
-                                                                                                         Sa_grad0_n, Sa_grad1_n,
+                                                                                Sa_grad_nplus1_extrapolation0, Sa_grad_nplus1_extrapolation1,
                                                                                                          coef0_Sa_stab, coef1_Sa_stab,
                                                                                                          weight0_Sa_stab, weight1_Sa_stab);
 
@@ -1680,8 +1724,6 @@ namespace AqueousSaturation
                                                       * fe_iv.jump_in_shape_values(i, point)
                                                       * JxW[point];
                     }
-
-
                 }
             }
 
