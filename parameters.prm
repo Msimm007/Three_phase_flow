@@ -6,7 +6,7 @@ subsection Time discretization parameters
   set Final time = 1
   
   # Initial time step
-  set Initial time step = 0.10
+  set Initial time step = 0.01
 
   # Second order time derivative
   set Second order time derivative = true
@@ -43,7 +43,7 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
-  set Incompressible = true
+  set Incompressible = false
 
   # Polynomial degree for FE space
   set Degree = 1

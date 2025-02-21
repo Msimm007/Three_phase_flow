@@ -590,8 +590,8 @@ namespace AqueousSaturation
                     Sa_nplus1_extrapolation *= 2.0;
                     Sa_nplus1_extrapolation -= Sa_value_nminus1;
 
-                    Sa_grad_nplus1_extrapolation *= 2.0;
-                    Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
+                    // Sa_grad_nplus1_extrapolation *= 2.0;
+                    // Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
 
                     Sv_nplus1_extrapolation *= 2.0;
                     Sv_nplus1_extrapolation -= Sv_value_nminus1;
@@ -600,6 +600,8 @@ namespace AqueousSaturation
                     Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
 
                 }
+                // pcout<<"sa_value: " << Sa_value_n<<std::endl;
+                // pcout <<"sa_extrap: " << Sa_nplus1_extrapolation << std::endl;
 
                 // Coefficient values
                 double phi_nplus1 = porosity_fcn.value(pl_value);
@@ -901,8 +903,8 @@ namespace AqueousSaturation
                         Sa_nplus1_extrapolation *= 2.0;
                         Sa_nplus1_extrapolation -= Sa_value_nminus1;
 
-                        Sa_grad_nplus1_extrapolation *= 2.0;
-                        Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
+                        // Sa_grad_nplus1_extrapolation *= 2.0;
+                        // Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
 
                         Sv_nplus1_extrapolation *= 2.0;
                         Sv_nplus1_extrapolation -= Sv_value_nminus1;
@@ -1445,11 +1447,11 @@ namespace AqueousSaturation
                     Sa_nplus1_extrapolation1 *= 2.0;
                     Sa_nplus1_extrapolation1 -= Sa_value1_nminus1;
 
-                    Sa_grad_nplus1_extrapolation0 *= 2.0;
-                    Sa_grad_nplus1_extrapolation0 -= Sa_grad0_nminus1;
+                    // Sa_grad_nplus1_extrapolation0 *= 2.0;
+                    // Sa_grad_nplus1_extrapolation0 -= Sa_grad0_nminus1;
 
-                    Sa_grad_nplus1_extrapolation1 *= 2.0;
-                    Sa_grad_nplus1_extrapolation1 -= Sa_grad1_nminus1;
+                    // Sa_grad_nplus1_extrapolation1 *= 2.0;
+                    // Sa_grad_nplus1_extrapolation1 -= Sa_grad1_nminus1;
 
                     Sv_nplus1_extrapolation0 *= 2.0;
                     Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
@@ -1795,7 +1797,7 @@ namespace AqueousSaturation
 
         right_hand_side_aqueous_saturation.compress(VectorOperation::add);
 
-       //pcout << system_matrix_aqueous_saturation.frobenius_norm() << std::endl;
+       pcout << system_matrix_aqueous_saturation.frobenius_norm() << std::endl;
     }
 
 

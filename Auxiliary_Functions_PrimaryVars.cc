@@ -24,7 +24,7 @@
 using namespace dealii;
 
 
-bool inc = true; // MUST MATCH PARAMETER FILE.
+bool inc = false; // MUST MATCH PARAMETER FILE.
 
 double porosity_data = 0.2;
 
