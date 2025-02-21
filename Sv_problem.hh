@@ -542,11 +542,13 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 			double Sv_value_n = old_Sv_vals[point];
 			double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
-                        Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
+            Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
 			Tensor<1,dim> totalDarcyVelo = DarcyVelocities[point];
 
 			double Sv_nplus1_extrapolation = Sv_value_n;
 			double Sa_nplus1_extrapolation = Sa_value_n;
+
+			
 			Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
 
 			if(second_order_extrapolation)

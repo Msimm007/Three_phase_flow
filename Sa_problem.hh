@@ -590,8 +590,8 @@ namespace AqueousSaturation
                     Sa_nplus1_extrapolation *= 2.0;
                     Sa_nplus1_extrapolation -= Sa_value_nminus1;
 
-                    // Sa_grad_nplus1_extrapolation *= 2.0;
-                    // Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
+                    Sa_grad_nplus1_extrapolation *= 2.0;
+                    Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
 
                     Sv_nplus1_extrapolation *= 2.0;
                     Sv_nplus1_extrapolation -= Sv_value_nminus1;
@@ -903,8 +903,8 @@ namespace AqueousSaturation
                         Sa_nplus1_extrapolation *= 2.0;
                         Sa_nplus1_extrapolation -= Sa_value_nminus1;
 
-                        // Sa_grad_nplus1_extrapolation *= 2.0;
-                        // Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
+                        Sa_grad_nplus1_extrapolation *= 2.0;
+                        Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
 
                         Sv_nplus1_extrapolation *= 2.0;
                         Sv_nplus1_extrapolation -= Sv_value_nminus1;
@@ -1447,11 +1447,11 @@ namespace AqueousSaturation
                     Sa_nplus1_extrapolation1 *= 2.0;
                     Sa_nplus1_extrapolation1 -= Sa_value1_nminus1;
 
-                    // Sa_grad_nplus1_extrapolation0 *= 2.0;
-                    // Sa_grad_nplus1_extrapolation0 -= Sa_grad0_nminus1;
+                    Sa_grad_nplus1_extrapolation0 *= 2.0;
+                    Sa_grad_nplus1_extrapolation0 -= Sa_grad0_nminus1;
 
-                    // Sa_grad_nplus1_extrapolation1 *= 2.0;
-                    // Sa_grad_nplus1_extrapolation1 -= Sa_grad1_nminus1;
+                    Sa_grad_nplus1_extrapolation1 *= 2.0;
+                    Sa_grad_nplus1_extrapolation1 -= Sa_grad1_nminus1;
 
                     Sv_nplus1_extrapolation0 *= 2.0;
                     Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
