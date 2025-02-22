@@ -1797,7 +1797,7 @@ namespace AqueousSaturation
 
         right_hand_side_aqueous_saturation.compress(VectorOperation::add);
 
-       pcout << system_matrix_aqueous_saturation.frobenius_norm() << std::endl;
+       //pcout << system_matrix_aqueous_saturation.frobenius_norm() << std::endl;
     }
 
 

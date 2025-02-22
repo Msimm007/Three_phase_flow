@@ -17,14 +17,15 @@
 #include <deal.II/lac/petsc_full_matrix.h>
 #include <deal.II/lac/full_matrix.h>
 
+#include "utilities.hh"
+
 #include <cmath>
 #include <iostream>
 #include <fstream>
 
 using namespace dealii;
 
-
-bool inc = false; // MUST MATCH PARAMETER FILE.
+bool inc = false;
 
 double porosity_data = 0.2;
 

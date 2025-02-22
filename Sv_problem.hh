@@ -477,6 +477,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 		std::vector<double> old_Sv_vals(n_qpoints);
 		std::vector<double> old_Sv_vals_nminus1(n_qpoints);
         std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+		std::vector<Tensor<1, dim>> old_Sv_grads_nminus1(n_qpoints);
+
 
 		fe_v.get_function_values(temp_pl_solution, pl_vals);
 		fe_v.get_function_values(temp_pl_solution_n, old_pl_vals);
@@ -490,6 +492,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 		fe_v.get_function_values(temp_Sv_solution_n, old_Sv_vals);
 		fe_v.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
         fe_v.get_function_gradients(temp_Sv_solution_n, old_Sv_grads);
+		fe_v.get_function_gradients(temp_Sv_solution_nminus1, old_Sv_grads_nminus1);
+
 
 		std::vector<Tensor<1, dim>> DarcyVelocities(n_qpoints);
 		fe_values_RT[velocities].get_function_values(temp_totalDarcyVelocity_RT, DarcyVelocities);
@@ -543,10 +547,15 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double Sv_value_n = old_Sv_vals[point];
 			double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
             Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
+			Tensor<1,dim> Sv_grad_nminus1 = old_Sv_grads_nminus1[point];
+
+
 			Tensor<1,dim> totalDarcyVelo = DarcyVelocities[point];
 
 			double Sv_nplus1_extrapolation = Sv_value_n;
 			double Sa_nplus1_extrapolation = Sa_value_n;
+
+			Tensor<1,dim> Sv_grad_nplus1_extrapolation = Sv_grad_n;
 
 			
 			Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
@@ -555,6 +564,9 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			{
 				Sv_nplus1_extrapolation *= 2.0;
 				Sv_nplus1_extrapolation -= Sv_value_nminus1;
+
+				Sv_grad_nplus1_extrapolation *=2.0;
+				Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
 
 				Sa_nplus1_extrapolation *= 2.0;
 				Sa_nplus1_extrapolation -= Sa_value_nminus1;
@@ -667,7 +679,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
                 if (Stab_v)
                 {
                     copy_data.cell_rhs(i) += (-rho_v * lambda_v * dpcv_dSv + Kappa_tilde_v)
-                                             * kappa * Sv_grad_n
+                                             * kappa * Sv_grad_nplus1_extrapolation
                                              * fe_v.shape_grad(i, point) * JxW[point];
                 }
 
@@ -730,7 +742,9 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 		std::vector<double> old_Sv_vals(n_qpoints);
 		std::vector<double> old_Sv_vals_nminus1(n_qpoints);
-                std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+        std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+		std::vector<Tensor<1, dim>> old_Sv_grads_nminus1(n_qpoints);
+
 
 		fe_face.get_function_values(temp_pl_solution, pl_vals);
 		fe_face.get_function_gradients(temp_pl_solution, pl_grads);
@@ -741,7 +755,9 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 		fe_face.get_function_values(temp_Sv_solution_n, old_Sv_vals);
 		fe_face.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
-                fe_face.get_function_gradients(temp_Sv_solution_n, old_Sv_grads);
+        fe_face.get_function_gradients(temp_Sv_solution_n, old_Sv_grads);
+		fe_face.get_function_gradients(temp_Sv_solution_nminus1, old_Sv_grads_nminus1);
+
 
 		std::vector<Tensor<1, dim>> DarcyVelocities(n_qpoints);
 		fe_face_values_RT[velocities].get_function_values(temp_totalDarcyVelocity_RT, DarcyVelocities);
@@ -796,17 +812,26 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 				double Sv_value_n = old_Sv_vals[point];
 				double Sv_value_nminus1 = old_Sv_vals_nminus1[point];
-                                Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
+                Tensor<1,dim> Sv_grad_n = old_Sv_grads[point];
+				Tensor<1,dim> Sv_grad_nminus1 = old_Sv_grads_nminus1[point];
+
+
 				Tensor<1,dim> totalDarcyVelo = DarcyVelocities[point];
 
 				double Sv_nplus1_extrapolation = Sv_value_n;
 				double Sa_nplus1_extrapolation = Sa_value_n;
+
+				Tensor<1,dim> Sv_grad_nplus1_extrapolation = Sv_grad_n;
+
 				Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
 
 				if(second_order_extrapolation)
 				{
 					Sv_nplus1_extrapolation *= 2.0;
 					Sv_nplus1_extrapolation -= Sv_value_nminus1;
+					
+                    Sv_grad_nplus1_extrapolation *= 2.0;
+                    Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
 
 					Sa_nplus1_extrapolation *= 2.0;
 					Sa_nplus1_extrapolation -= Sa_value_nminus1;
@@ -922,7 +947,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
                     {
                         copy_data.cell_rhs(i) += (rho_v*lambda_v*dpcv_dSv - Kappa_tilde_v) // added to RHS
                                                  * kappa
-                                                 * Sv_grad_n
+                                                 * Sv_grad_nplus1_extrapolation
                                                  * normals[point]
                                                  * fe_face.shape_value(i, point)
                                                  * JxW[point];
@@ -1118,11 +1143,13 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 		std::vector<double> old_Sv_vals(n_qpoints);
 		std::vector<double> old_Sv_vals_nminus1(n_qpoints);
-        std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+		std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+		std::vector<Tensor<1, dim>> old_Sv_grads_nminus1(n_qpoints);
 
 		std::vector<double> old_Sv_vals_neighbor(n_qpoints);
 		std::vector<double> old_Sv_vals_nminus1_neighbor(n_qpoints);
         std::vector<Tensor<1, dim>> old_Sv_grads_neighbor(n_qpoints);
+		std::vector<Tensor<1, dim>> old_Sv_grads_nminus1_neighbor(n_qpoints);
 
 		fe_face.get_function_values(temp_pl_solution, pl_vals);
 		fe_face_neighbor.get_function_values(temp_pl_solution, pl_vals_neighbor);
@@ -1142,10 +1169,14 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 		fe_face.get_function_values(temp_Sv_solution_n, old_Sv_vals);
 		fe_face.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1);
         fe_face.get_function_gradients(temp_Sv_solution_n, old_Sv_grads);
+		fe_face.get_function_gradients(temp_Sv_solution_nminus1, old_Sv_grads_nminus1);
+
 
 		fe_face_neighbor.get_function_values(temp_Sv_solution_n, old_Sv_vals_neighbor);
 		fe_face_neighbor.get_function_values(temp_Sv_solution_nminus1, old_Sv_vals_nminus1_neighbor);
-                fe_face_neighbor.get_function_gradients(temp_Sv_solution_n, old_Sv_grads_neighbor);
+        fe_face_neighbor.get_function_gradients(temp_Sv_solution_n, old_Sv_grads_neighbor);
+		fe_face_neighbor.get_function_gradients(temp_Sv_solution_nminus1, old_Sv_grads_nminus1_neighbor);
+
 
 		std::vector<Tensor<1, dim>> DarcyVelocities(n_qpoints);
 		fe_face_values_RT[velocities].get_function_values(temp_totalDarcyVelocity_RT, DarcyVelocities);
@@ -1207,6 +1238,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double Sv_value1_nminus1 = old_Sv_vals_nminus1_neighbor[point];
             Tensor<1,dim> Sv_grad0_n = old_Sv_grads[point];
             Tensor<1,dim> Sv_grad1_n = old_Sv_grads_neighbor[point];
+			Tensor<1,dim> Sv_grad0_nminus1 = old_Sv_grads_nminus1[point];
+			Tensor<1,dim> Sv_grad1_nminus1 = old_Sv_grads_nminus1_neighbor[point];
 
 			Tensor<1,dim> totalDarcyVelo0 = DarcyVelocities[point];
 			Tensor<1,dim> totalDarcyVelo1 = DarcyVelocities_neighbor[point];
@@ -1217,6 +1250,9 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double Sa_nplus1_extrapolation1 = Sa_value1_n;
 			Tensor<1,dim> totalDarcyVelo_extrapolation0 = totalDarcyVelo0;
 			Tensor<1,dim> totalDarcyVelo_extrapolation1 = totalDarcyVelo1;
+
+			Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
+			Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
 
 			if(second_order_extrapolation)
 			{
@@ -1231,6 +1267,12 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 				Sa_nplus1_extrapolation1 *= 2.0;
 				Sa_nplus1_extrapolation1 -= Sa_value1_nminus1;
+
+				Sv_grad_nplus1_extrapolation0 *= 2.0;
+				Sv_grad_nplus1_extrapolation0 -= Sv_grad0_nminus1;
+
+				Sv_grad_nplus1_extrapolation1 *= 2.0;
+				Sv_grad_nplus1_extrapolation1 -= Sv_grad1_nminus1;
 
 			}
 
@@ -1380,7 +1422,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
                 if (Stab_v)
                 {
                     double weighted_aver_rhs0_stab = AverageGradOperators::weighted_average_rhs<dim>(normals[point],
-                                                                                                                 Sv_grad0_n, Sv_grad1_n,
+						Sv_grad_nplus1_extrapolation0, Sv_grad_nplus1_extrapolation1,
                                                                                                                  coef0_Sv_stab, coef1_Sv_stab,
                                                                                                                  weight0_Sv_stab, weight1_Sv_stab);
 

@@ -6,13 +6,13 @@ subsection Time discretization parameters
   set Final time = 1
   
   # Initial time step
-  set Initial time step = 0.01
+  set Initial time step = 0.10
 
   # Second order time derivative
-  set Second order time derivative = true
+  set Second order time derivative = false
 
   # Second order extrapolation
-  set Second order extrapolation = true
+  set Second order extrapolation = false
 
   # Use implicit time derivative term in pl
   set Use implicit time term in pl = true
@@ -40,7 +40,7 @@ subsection Spatial discretization parameters
   set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = false
+  set Stab_v = true
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
   set Incompressible = false
@@ -49,7 +49,7 @@ subsection Spatial discretization parameters
   set Degree = 1
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 2
 
   # Final level of refinement
   set Final level of refinement = 4
@@ -88,7 +88,7 @@ subsection Spatial discretization parameters
   #set Penalty Sv boundary = 1000.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = false
+  set Project to RT0 = true
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
