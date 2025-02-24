@@ -16,13 +16,11 @@ SET(TARGET "ThreePhase")
 SET(TARGET_H
   LocalPolynomialsRT.hh
   FE_RTProj.hh
-  utilities.hh
 )
 
 SET(TARGET_SRC
   LocalPolynomialsRT.cc
   FE_RTProj.cc
-  utilities.cc
   ${TARGET}.cc
 )
 
