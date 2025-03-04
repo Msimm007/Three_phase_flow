@@ -519,8 +519,12 @@ namespace AqueousSaturation
 
                 linf_norm_Darcy_vel[kk] = darcy_v.linfty_norm();
             }
-
+            
             double maximum_Darcy = *std::max_element(linf_norm_Darcy_vel.begin(), linf_norm_Darcy_vel.end());
+            // checking max darcy vel
+            
+            pcout << "Max Darcy veloc for SA: " << maximum_Darcy << std::endl;
+
             double maximum_Sa = *std::max_element(old_Sa_vals.begin(), old_Sa_vals.end());
 
             double kappa = temp_kappa[cell->global_active_cell_index()];
