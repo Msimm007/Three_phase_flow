@@ -521,9 +521,7 @@ namespace AqueousSaturation
             }
             
             double maximum_Darcy = *std::max_element(linf_norm_Darcy_vel.begin(), linf_norm_Darcy_vel.end());
-            // checking max darcy vel
-            
-            pcout << "Max Darcy veloc for SA: " << maximum_Darcy << std::endl;
+
 
             double maximum_Sa = *std::max_element(old_Sa_vals.begin(), old_Sa_vals.end());
 
@@ -604,9 +602,6 @@ namespace AqueousSaturation
                     Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
 
                 }
-                // pcout<<"sa_value: " << Sa_value_n<<std::endl;
-                // pcout <<"sa_extrap: " << Sa_nplus1_extrapolation << std::endl;
-
                 // Coefficient values
                 double phi_nplus1 = porosity_fcn.value(pl_value);
                 double phi_n = porosity_fcn.value(pl_value_n);
