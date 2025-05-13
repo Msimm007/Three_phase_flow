@@ -849,6 +849,8 @@ void CoupledPressureSaturationProblem<dim>::output_vtk() const
 			"solution_Sa-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
 	data_out_Sa.write_vtu_in_parallel(filename_Sa, mpi_communicator);
 
+
+
 	// Sv
 	if(!two_phase)
 	{
@@ -864,6 +866,8 @@ void CoupledPressureSaturationProblem<dim>::output_vtk() const
 		const std::string filename_Sv =
 				"solution_Sv-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
 		data_out_Sv.write_vtu_in_parallel(filename_Sv, mpi_communicator);
+
+
 	}
 }
 

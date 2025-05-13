@@ -24,11 +24,11 @@ using namespace dealii;
 
 double amp_factor_cap_pressure = 1.e7;
 
-double stab_sa_data = 8000.0;
+double stab_sa_data = 4000.0;
 double stab_sv_data = 5.0;
 
-// if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50]
-bool hetero = true;
+// if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50] (x [25, 50] if 3d)
+bool hetero = false;
 
 
 // Mesh creator
@@ -326,6 +326,7 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 		double xx = cell->center()[0];
 		double yy = cell->center()[1];
 
+
 		double zz;
 		if(dim == 3){
 			zz = cell->center()[2];
@@ -334,7 +335,8 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 
 		if(xx >= 25.0 && xx <= 50.0)
 			if((yy >= 25.0 && yy <= 50.0))
-				kappa_abs /= 1000.0;
+				if((zz >= 25.0 && zz <= 50.0))
+					kappa_abs /= 1000.0;
 	}
 	return kappa_abs;
 };

@@ -199,8 +199,17 @@ void CoupledPressureSaturationProblem<dim>::run()
     Vector<double> max_Sa_per_time(final_time/time_step - timestep_number + 1);
     Vector<double> min_Sa_per_time(final_time/time_step - timestep_number + 1);
     Vector<double> energy_per_time(final_time/time_step - timestep_number + 1);
+
+	// new for tracking total time in loop
+	Vector<double> total_loop_time(final_time/time_step - timestep_number + 1);
+
+	
+
     Timer timer(mpi_communicator);
     Timer total_timer(mpi_communicator);
+
+	// for keeping track of total time in loop
+	Timer loop_timer(mpi_communicator);
 
 
 
@@ -215,6 +224,12 @@ void CoupledPressureSaturationProblem<dim>::run()
 
     unsigned int index_time = 0;
     double total_time = 0.0;
+
+	double loop_time = 0.0;
+
+
+	loop_timer.reset();
+	loop_timer.start();		
 
 	LiquidPressure::LiquidPressureProblem<dim> pl_problem(triangulation, degree,
     			theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
@@ -448,6 +463,14 @@ void CoupledPressureSaturationProblem<dim>::run()
         totalDarcyvelocity_RT_Sv_n = totalDarcyvelocity_RT_Sv;
         totalDarcyvelocity_RT_Sv = 0.0;
 
+		loop_timer.stop();
+		total_loop_time[loop_time] = loop_timer.cpu_time();
+		pcout << "Elapsed CPU total time for the loop in time iteration: " << loop_timer.cpu_time() << " seconds."<< std::endl;
+
+		loop_timer.reset();
+		loop_timer.start();
+
+
 //        QTrapezoid<1>     q_trapez;
 //        QIterated<dim> quadrature(q_trapez, degree + 2);
 //        PETScWrappers::MPI::Vector temp_Sa_solution;
@@ -537,8 +560,12 @@ void CoupledPressureSaturationProblem<dim>::run()
         index_time ++;
     }
 
+
+
+
     total_timer.stop();
     total_time = total_timer.cpu_time();
+	pcout << "Total Time: " << total_time << " seconds." << std::endl;
 
     // Save computation times
     std::ofstream time_file;

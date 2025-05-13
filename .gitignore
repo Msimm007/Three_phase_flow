@@ -42,3 +42,8 @@ q5s_debug_notes.txt
 
 # no midpoint files for right now. will look into integrating later
 MIDPOINT/
+
+# only for submitting jobs to sabine
+*.sh
+*.o*
+hpc_cluster_notes.txt

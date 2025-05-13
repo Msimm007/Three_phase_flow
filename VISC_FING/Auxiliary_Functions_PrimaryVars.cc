@@ -25,8 +25,9 @@ double M = 200;
 double amp_factor_cap_pressure = 300.0;
 
 // stability terms
-double stab_sa_data = 3000.0;
+double stab_sa_data = 4000.0;
 double stab_sv_data = 5.0;
+
 
 // Mesh creator
 template <int dim>
@@ -222,7 +223,8 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
 
     std::ofstream myfile;
     if(this_mpi_process == 0)
-        myfile.open("sa_perturbation");
+        	myfile.open("sa_perturbation");
+
 
     int n_data = (dim==2)? 5 : 7;
 
@@ -401,6 +403,8 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
     {
         // For t = 0, read from sa_perturbation file
         std::ifstream infile("sa_perturbation");
+
+		
 
         double x1, x2, y1, y2, z1, z2, sa;
         int current_size = 1;
