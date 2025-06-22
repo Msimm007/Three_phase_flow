@@ -1,15 +1,14 @@
 # Three Phase Flow Code
+A codebase using deal.ii that solves the three-phase flow problem in porous media. 
 
+# Installing Deal.ii 
+ If you are using the Sabine UH cluster, then you shouldn't need to download dealii and you can skip to the section on running the code. See https://www.uh.edu/research/rcdc/support-and-services/user-guide/getting-started-clusters.php for more details on using the Sabine cluster.
 
-This code has been designed to solve the three-phase flow problem in porous media using DG. To run the code, the newest version of deal.
-ii must be installed with the proper dependencies. If you are using the Sabine UH cluster, then you shouldn't need to download dealii and you can skip to the section on running the code. 
-
-# Installing Deal.ii on UH Math Department Computer
-Installing deal.ii can be kind of a pain, especially if you are not familiar with using the command line. Make sure you're comfortable with navigating the command line first before installing. There are a lot of helpful videos that can be found here https://www.math.colostate.edu/~bangerth/videos.html
+Installing deal.ii can be kind of a pain, especially if you are not familiar with using the command line or the Linux OS. Make sure you're comfortable with navigating the command line first before installing. There are a lot of helpful videos that can be found here https://www.math.colostate.edu/~bangerth/videos.html
 that serve to better understand installation of large software libraries and FEM theory.
 
 NOTE: It should be noted here that you will not be able to use any IDE's or any microsoft text editors. I have tried using CLION and it works for the most part, but you're best bet is to either work from the terminal using a text editor like vim or nano, or KWrite which is installed already on the department computer.
-# Loging Into Your Department Computer
+## Remote Acess
 Remote access is available to you if you don't want to use your provided department computer. If You have a Windows computer I recommend VSCode to ssh into the department computer. You can use things like PuTTY or XCode, but VSCode is the best modern solution. See https://code.visualstudio.com/docs/remote/ssh for more details. If you have a mac, you can just use the terminal and run 
 ```
 ssh your_username@ssh.math.uh.edu
@@ -20,7 +19,7 @@ NOTE: You will only be on the login node. If you want to run anything you will n
 
 NOTE: You can run the same command in the Ubuntu terminal if you're using a WSL for windows. 
 
-# Installing Software On Your Department Computer
+## Installing Software On Your Department Computer
 
 Do note that you will be limited to the software you are allowed to install on your computer. DO NOT USE THE SUDO COMMAND UNDER ANY CIRCUMSTANCE. The department is super strict about this and it could result in loss of computer privledges.
 
@@ -49,7 +48,7 @@ You should keep this in a directory separate from where you install dealii. Then
 ```
 make all check
 ```
-## Building Dealii
+## Building Deal.ii
 See the dealii website for detailed installation instructions.
 https://www.dealii.org/9.6.0/readme.html
 
