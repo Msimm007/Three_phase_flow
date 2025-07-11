@@ -1,6 +1,46 @@
 # Three Phase Flow Code
 A codebase using deal.ii that solves the three-phase flow problem in porous media. 
 
+# Running The Code
+
+Running the code is pretty straight forward, but you need to be careful on what problem you are solving. The code is meant to be robust and at this point it handles 3 different problems. The main distinguister are the two files 
+```
+Auxiliary_Functions_PrimaryVars.cc
+paramters.prm
+```
+that give the necessary problem parameters. You will find those in 
+```
+\MANUFACTURED_TEST
+\QUARTER_5_SPOT
+\VISC_FING
+```
+By default, the code should have the manufactured test case in the main directory. Just copy from the desired directory and put them in the main directory. Just make sure that when you are done that you save your changes. 
+
+Next,  run 
+```
+cmake .
+```
+to generate the necessary build files. Then
+``` 
+make 
+```
+to compile. you can in addition run 
+```
+make release
+```
+but it's not strictly necessary. Once everything is compiled, you can run the code via
+```
+.\ThreePhase
+```
+or 
+```
+mpirun -np N .\ThreePhase
+```
+if you want to run in parallel. N is the number of processors you give it.
+
+
+# For Future UH students only!!
+
 # Installing Deal.ii 
  If you are using the Sabine UH cluster, then you shouldn't need to download dealii and you can skip to the section on running the code. See https://www.uh.edu/research/rcdc/support-and-services/user-guide/getting-started-clusters.php for more details on using the Sabine cluster.
 
@@ -71,39 +111,3 @@ where N is the number of processors you want to utilize to install. Make sure yo
 
 WARNING: Just because you are able to successfully build and install everything doesn't mean you will pass all the tests. Only proceed using the library if all tests have been passed.
 
-# Running The Code
-
-Running the code is pretty straight forward, but you need to be careful on what problem you are solving. The code is meant to be robust and at this point it handles 3 different problems. The main distinguister are the two files 
-```
-Auxiliary_Functions_PrimaryVars.cc
-paramters.prm
-```
-that give the necessary problem parameters. You will find those in 
-```
-\MANUFACTURED_TEST
-\QUARTER_5_SPOT
-\VISC_FING
-```
-By default, the code should have the manufactured test case in the main directory. Just copy from the desired directory and put them in the main directory. Just make sure that when you are done that you save your changes. 
-
-Next,  run 
-```
-cmake .
-```
-to generate the necessary build files. Then
-``` 
-make 
-```
-to compile. you can in addition run 
-```
-make release
-```
-but it's not strictly necessary. Once everything is compiled, you can run the code via
-```
-.\ThreePhase
-```
-or 
-```
-mpirun -np N .\ThreePhase
-```
-if you want to run in parallel. N is the number of processors you give it. 
