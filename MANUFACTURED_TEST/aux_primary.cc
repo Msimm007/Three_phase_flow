@@ -1,6 +1,6 @@
 #include "aux_primary.hh"
 
-// ----------------- variables for manufactured test -----------------
+
 bool inc = false;
 
 double porosity_data = 0.2;
