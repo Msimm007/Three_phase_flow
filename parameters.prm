@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 750.0 may need to increase for 3d problem)
-  set Final time = 750.0
+  set Final time = 250.0
   
   # Initial time step (default 0.25)
   set Initial time step = 0.25
@@ -26,10 +26,10 @@ end
 
 subsection Spatial discretization parameters
   # Dimension (2 or 3)
-  set Dimension = 3
+  set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = false

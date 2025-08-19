@@ -36,6 +36,7 @@ OUT_Q5S/
 OUT_VF/
 OUT_RESULTS/
 out_*
+OUTPUT_VTU/
 
 # debug notes
 q5s_debug_notes.txt
