@@ -48,16 +48,6 @@
 #include <deal.II/meshworker/scratch_data.h>
 #include <deal.II/base/parameter_handler.h>	
 
-// utilitiy functions
-#include "utilities.hh"
-
-// for midpoint method
-
-// #include "RT_projection_midpoint.hh"
-// #include "pl_problem_midpoint.hh"
-// #include "Sa_problem_midpoint.hh"
-// #include "Sv_problem_midpoint.hh"
-
 // PETSc stuff
 #include <deal.II/lac/petsc_vector.h>
 #include <deal.II/lac/petsc_sparse_matrix.h>

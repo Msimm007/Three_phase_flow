@@ -51,7 +51,7 @@
 #include "Sv_problem.hh"
 
 // utilitiy functions
-#include "utilities.hh"
+#include "utilities/param_tpf_utilities.hh"
 
 // aux functions and primary variables
 #include "aux_primary.hh"

@@ -14,13 +14,13 @@ SET(TARGET "ThreePhase")
 # page of the documentation.
 
 SET(TARGET_H
-  LocalPolynomialsRT.hh
-  FE_RTProj.hh
+  utilities/LocalPolynomialsRT.hh
+  utilities/FE_RTProj.hh
 )
 
 SET(TARGET_SRC
-  LocalPolynomialsRT.cc
-  FE_RTProj.cc
+  utilities/LocalPolynomialsRT.cc
+  utilities/FE_RTProj.cc
   aux_primary.cc
   ${TARGET}.cc
 )

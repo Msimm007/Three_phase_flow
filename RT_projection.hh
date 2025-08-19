@@ -35,10 +35,10 @@
 #include <deal.II/meshworker/mesh_loop.h>
 #include <deal.II/base/parameter_handler.h>
 
-#include "AverageGradientOperators.hh"
+#include "utilities/AverageGradientOperators.hh"
 
 #include "aux_primary.hh"
-#include "FE_RTProj.hh"
+#include "utilities/FE_RTProj.hh"
 
 #include <iostream>
 #include <fstream>
