@@ -51,14 +51,11 @@
 #include "Sv_problem.hh"
 
 // utilitiy functions
-#include "utilities.hh"
+#include "utilities/param_tpf_utilities.hh"
 
-// for midpoint method
+// aux functions and primary variables
+#include "aux_primary.hh"
 
-// #include "RT_projection_midpoint.hh"
-// #include "pl_problem_midpoint.hh"
-// #include "Sa_problem_midpoint.hh"
-// #include "Sv_problem_midpoint.hh"
 
 // PETSc stuff
 #include <deal.II/lac/petsc_vector.h>
@@ -213,14 +210,14 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 
 
-    std::ofstream iter_file;
-	iter_file.open("iterations_old");
+    // std::ofstream iter_file;
+	// iter_file.open("iterations_old");
 
-	std::ofstream errors_file;
-	errors_file.open("errors");
+	// std::ofstream errors_file;
+	// errors_file.open("errors");
 
-	std::ofstream energy_file;
-	energy_file.open("energies");
+	// std::ofstream energy_file;
+	// energy_file.open("energies");
 
     unsigned int index_time = 0;
     double total_time = 0.0;
@@ -470,54 +467,14 @@ void CoupledPressureSaturationProblem<dim>::run()
 		loop_timer.reset();
 		loop_timer.start();
 
+        // double real_energy, num_energy;
 
-//        QTrapezoid<1>     q_trapez;
-//        QIterated<dim> quadrature(q_trapez, degree + 2);
-//        PETScWrappers::MPI::Vector temp_Sa_solution;
-//    	temp_Sa_solution.reinit(locally_owned_dofs,
-//    							  locally_relevant_dofs,
-//    							  mpi_communicator);
-//        temp_Sa_solution = Sa_solution;
-
-//        Vector<double> cellwise_errors_Sa(triangulation.n_active_cells());
-
-        // With this, we can then let the library compute the errors and output
-        // them to the screen:
-//        VectorTools::integrate_difference(dof_handler,
-//        								  temp_Sa_solution,
-//    									  Functions::ZeroFunction<dim>(1),
-//										  cellwise_errors_Sa,
-//                                          quadrature,
-//                                          VectorTools::Linfty_norm);
-//
-//        max_Sa_per_time[index_time] = cellwise_errors_Sa.linfty_norm();
-////        cellwise_errors_Sa *= -1.0;
-//        VectorTools::integrate_difference(dof_handler,
-//        								  temp_Sa_solution,
-//										  Functions::ConstantFunction<dim>(100.0,1),
-//										  cellwise_errors_Sa,
-//                                          quadrature,
-//                                          VectorTools::Linfty_norm);
-//
-//        min_Sa_per_time[index_time] = 100.0 - cellwise_errors_Sa.linfty_norm();
-
-        double real_energy, num_energy;
-
-        if (compute_energy)
-        {
-        	num_energy = calculate_energy(real_energy);
-        	energy_file << num_energy << " " << real_energy;
-			energy_file << std::endl;
-        }
-
-//    	iter_file << min_Sa_per_time[index_time];
-//    	iter_file << std::endl;
-//    	iter_file << max_Sa_per_time[index_time];
-//    	iter_file << std::endl;
-//    	iter_file << num_energy;
-//		iter_file << std::endl;
-//		iter_file << real_energy;
-//		iter_file << std::endl;
+        // if (compute_energy)
+        // {
+        // 	num_energy = calculate_energy(real_energy);
+        // 	energy_file << num_energy << " " << real_energy;
+		// 	energy_file << std::endl;
+        // }
 
 
 		}
@@ -555,7 +512,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 											  cellwise_errors_Sa2,
 											  VectorTools::L2_norm);
 
-		errors_file << pl_l2_error << "  " << Sa_l2_error << std::endl;
+		//errors_file << pl_l2_error << "  " << Sa_l2_error << std::endl;
 
         index_time ++;
     }
@@ -566,27 +523,6 @@ void CoupledPressureSaturationProblem<dim>::run()
     total_timer.stop();
     total_time = total_timer.cpu_time();
 	pcout << "Total Time: " << total_time << " seconds." << std::endl;
-
-    // Save computation times
-    std::ofstream time_file;
-    time_file.open("times");
-
-    time_file << "Average assemble time = " << assemble_time.mean_value() << std::endl;
-    time_file << "Average solver time = " << solver_time.mean_value() << std::endl;
-    time_file << "Average RT Projection time = " << RTproj_time.mean_value() << std::endl;
-    total_time /= index_time;
-    time_file << "Average total time = " << total_time << std::endl;
-
-    time_file.close();
-
-//    std::ofstream iter_file;
-//	iter_file.open("iterations");
-
-//	iter_file << min_Sa_per_time;
-//	iter_file << std::endl;
-//	iter_file << max_Sa_per_time;
-
-	iter_file.close();
 
     if(compute_errors_sol)
     	compute_errors();

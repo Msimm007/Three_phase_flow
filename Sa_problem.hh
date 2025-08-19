@@ -40,7 +40,8 @@
 #include <deal.II/meshworker/scratch_data.h>
 #include <deal.II/base/parameter_handler.h>
 
-#include "AverageGradientOperators.hh"
+#include "utilities/AverageGradientOperators.hh"
+#include "aux_primary.hh"
 
 // PETSc stuff
 #include <deal.II/lac/petsc_vector.h>

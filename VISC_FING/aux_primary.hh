@@ -1,3 +1,5 @@
+#ifndef AUX_PRIMARY_HH
+#define AUX_PRIMARY_HH
 #include <deal.II/base/function.h>
 #include <deal.II/lac/vector.h>
 #include <deal.II/base/tensor_function.h>
@@ -21,12 +23,14 @@
 #include <fstream>
 
 using namespace dealii;
-double M = 200;
-double amp_factor_cap_pressure = 300.0;
+
+extern double M;
+extern double amp_factor_cap_pressure;
 
 // stability terms
-double stab_sa_data = 4000.0;
-double stab_sv_data = 5.0;
+extern double stab_sa_data;
+extern double stab_sv_data;
+
 
 
 // Mesh creator
@@ -1338,3 +1342,4 @@ void BoundaryValuesVaporSaturation<dim>::value_list(const std::vector<Point<dim>
         values[i] = exact_vapor_sat.value(points[i]);
     }
 }
+#endif // AUX_PRIMARY_HH
