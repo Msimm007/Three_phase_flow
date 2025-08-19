@@ -168,6 +168,7 @@ void ParameterReader::read_parameters(const std::string &parameter_file)
 {
     declare_parameters();
     prm.parse_input(parameter_file);
+
 }
 
 template <int dim>
