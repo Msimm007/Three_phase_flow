@@ -1,6 +1,29 @@
 #ifndef AUX_PRIMARY_HH
 #define AUX_PRIMARY_HH
 
+#include <deal.II/base/function.h>
+#include <deal.II/lac/vector.h>
+#include <deal.II/base/tensor_function.h>
+
+#include <deal.II/base/mpi.h>
+#include <deal.II/dofs/dof_handler.h>
+#include <deal.II/distributed/shared_tria.h>
+#include <deal.II/grid/tria.h>
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/grid_in.h>
+#include <deal.II/grid/grid_out.h>
+#include <deal.II/grid/grid_refinement.h>
+
+#include <deal.II/base/conditional_ostream.h>
+#include <deal.II/lac/petsc_vector.h>
+#include <deal.II/lac/petsc_full_matrix.h>
+#include <deal.II/lac/full_matrix.h>
+
+#include <cmath>
+#include <iostream>
+#include <fstream>
+
+
 extern double amp_factor_cap_pressure;
 
 extern double stab_sa_data;
@@ -8,6 +31,7 @@ extern double stab_sv_data;
 
 extern bool hetero;
 
+using namespace dealii;
 // Mesh creator
 template <int dim>
 void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,

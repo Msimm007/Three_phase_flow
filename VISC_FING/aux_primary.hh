@@ -22,12 +22,16 @@
 #include <iostream>
 #include <fstream>
 
+using namespace dealii;
+
 double M = 200;
 double amp_factor_cap_pressure = 300.0;
 
 // stability terms
 double stab_sa_data = 4000.0;
 double stab_sv_data = 5.0;
+
+
 
 // Mesh creator
 template <int dim>
