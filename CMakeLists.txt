@@ -21,16 +21,18 @@ SET(TARGET_H
 SET(TARGET_SRC
   LocalPolynomialsRT.cc
   FE_RTProj.cc
+  aux_primary.cc
   ${TARGET}.cc
 )
+# to remove error messages when compiling
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 
 # FILE(GLOB_RECURSE TARGET_SRC  ${TARGET}.cc)
 # FILE(GLOB_RECURSE TARGET_SRC  "*.cc")
 # FILE(GLOB_RECURSE TARGET_INC  "*.hh")
 # SET(TARGET_SRC ${TARGET_SRC}  ${TARGET_INC})
 
-# to remove error messages when compiling
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
+
 
 # Usually, you will not need to modify anything beyond this point...
 

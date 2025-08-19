@@ -53,12 +53,9 @@
 // utilitiy functions
 #include "utilities.hh"
 
-// for midpoint method
+// aux functions and primary variables
+#include "aux_primary.hh"
 
-// #include "RT_projection_midpoint.hh"
-// #include "pl_problem_midpoint.hh"
-// #include "Sa_problem_midpoint.hh"
-// #include "Sv_problem_midpoint.hh"
 
 // PETSc stuff
 #include <deal.II/lac/petsc_vector.h>

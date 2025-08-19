@@ -26,7 +26,7 @@ kappa.vtu
 iterations_old
 times
 
-# misc
+# misc and executable
 .idea
 compile_commands.json
 ThreePhase

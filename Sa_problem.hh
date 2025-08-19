@@ -41,6 +41,7 @@
 #include <deal.II/base/parameter_handler.h>
 
 #include "AverageGradientOperators.hh"
+#include "aux_primary.hh"
 
 // PETSc stuff
 #include <deal.II/lac/petsc_vector.h>

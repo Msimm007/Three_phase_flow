@@ -6,13 +6,13 @@ subsection Time discretization parameters
   set Final time = 1
   
   # Initial time step
-  set Initial time step = 0.01
+  set Initial time step = 0.10
 
   # Second order time derivative
-  set Second order time derivative = true
+  set Second order time derivative = false
 
   # Second order extrapolation
-  set Second order extrapolation = true
+  set Second order extrapolation = false
 
   # Use implicit time derivative term in pl
   set Use implicit time term in pl = true
@@ -37,7 +37,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = false
@@ -52,7 +52,7 @@ subsection Spatial discretization parameters
   set Initial level of refinement = 2
 
   # Final level of refinement
-  set Final level of refinement = 5
+  set Final level of refinement = 2
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -88,10 +88,10 @@ subsection Spatial discretization parameters
   #set Penalty Sv boundary = 1000.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = false
+  set Project to RT0 = true
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
-  set Project to RT0 with kappa only = false
+  set Project to RT0 with kappa only = true
   
   # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
   # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise

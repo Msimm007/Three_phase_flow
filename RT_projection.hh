@@ -37,7 +37,7 @@
 
 #include "AverageGradientOperators.hh"
 
-#include "Auxiliary_Functions_PrimaryVars.cc"
+#include "aux_primary.hh"
 #include "FE_RTProj.hh"
 
 #include <iostream>
