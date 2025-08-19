@@ -23,7 +23,7 @@
 #include <iostream>
 #include <fstream>
 
-
+using namespace dealii;
 extern double amp_factor_cap_pressure;
 
 extern double stab_sa_data;
@@ -31,7 +31,7 @@ extern double stab_sv_data;
 
 extern bool hetero;
 
-using namespace dealii;
+
 // Mesh creator
 template <int dim>
 void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
