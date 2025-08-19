@@ -210,14 +210,14 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 
 
-    std::ofstream iter_file;
-	iter_file.open("iterations_old");
+    // std::ofstream iter_file;
+	// iter_file.open("iterations_old");
 
-	std::ofstream errors_file;
-	errors_file.open("errors");
+	// std::ofstream errors_file;
+	// errors_file.open("errors");
 
-	std::ofstream energy_file;
-	energy_file.open("energies");
+	// std::ofstream energy_file;
+	// energy_file.open("energies");
 
     unsigned int index_time = 0;
     double total_time = 0.0;
@@ -467,14 +467,14 @@ void CoupledPressureSaturationProblem<dim>::run()
 		loop_timer.reset();
 		loop_timer.start();
 
-        double real_energy, num_energy;
+        // double real_energy, num_energy;
 
-        if (compute_energy)
-        {
-        	num_energy = calculate_energy(real_energy);
-        	energy_file << num_energy << " " << real_energy;
-			energy_file << std::endl;
-        }
+        // if (compute_energy)
+        // {
+        // 	num_energy = calculate_energy(real_energy);
+        // 	energy_file << num_energy << " " << real_energy;
+		// 	energy_file << std::endl;
+        // }
 
 
 		}
@@ -512,7 +512,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 											  cellwise_errors_Sa2,
 											  VectorTools::L2_norm);
 
-		errors_file << pl_l2_error << "  " << Sa_l2_error << std::endl;
+		//errors_file << pl_l2_error << "  " << Sa_l2_error << std::endl;
 
         index_time ++;
     }

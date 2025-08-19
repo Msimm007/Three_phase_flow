@@ -24,12 +24,12 @@
 
 using namespace dealii;
 
-double M = 200;
-double amp_factor_cap_pressure = 300.0;
+extern double M;
+extern double amp_factor_cap_pressure;
 
 // stability terms
-double stab_sa_data = 4000.0;
-double stab_sv_data = 5.0;
+extern double stab_sa_data;
+extern double stab_sv_data;
 
 
 
