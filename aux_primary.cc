@@ -1,9 +1,22 @@
 #include "aux_primary.hh"
 
-double amp_factor_cap_pressure = 1.e7;
 
-double stab_sa_data = 4000.0;
-double stab_sv_data = 5.0;
+bool inc = false;
 
-// if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50] (x [25, 50] if 3d)
-bool hetero = false;
+double porosity_data = 0.2;
+double kappa = 1.0;
+
+double rho_l_data = 3.0;
+double rho_a_data = 5.0;
+double rho_v_data = 1.0;
+
+double mu_l_data = 0.75;
+double mu_a_data = 1.0;
+// double mu_a_data = 0.5;
+double mu_v_data = 0.25;
+
+double stab_sa_data = 2.0;
+double stab_sv_data = 6.0;
+
+
+// Non-template function definitions would also go here
