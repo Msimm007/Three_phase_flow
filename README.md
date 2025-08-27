@@ -3,9 +3,10 @@ A codebase using deal.ii that solves the three-phase flow problem in porous medi
 
 # Running The Code
 
-Running the code is pretty straight forward, but you need to be careful on what problem you are solving. The code is meant to be robust and at this point it handles 3 different problems. The main distinguister are the two files 
+Running the code is pretty straight forward, but you need to be careful on what problem you are solving. The code is meant to be robust and at this point it handles 3 different problems. The main distinguister are the three files 
 ```
-Auxiliary_Functions_PrimaryVars.cc
+aux_primary.cc
+aux_primary.hh
 paramters.prm
 ```
 that give the necessary problem parameters. You will find those in 
