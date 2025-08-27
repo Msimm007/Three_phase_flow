@@ -1566,8 +1566,6 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 	right_hand_side_vapor_saturation.compress(VectorOperation::add);
 
-	//pcout << system_matrix_vapor_saturation.frobenius_norm() << std::endl;
-
 }
 
 template <int dim>

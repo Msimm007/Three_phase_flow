@@ -227,7 +227,7 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
 
     std::ofstream myfile;
     if(this_mpi_process == 0)
-        	myfile.open("sa_perturbation");
+        	myfile.open("sa_perturbation_fine");
 
 
     int n_data = (dim==2)? 5 : 7;
@@ -406,7 +406,7 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
     if(fabs(this->get_time()) < 1.e-10)
     {
         // For t = 0, read from sa_perturbation file
-        std::ifstream infile("sa_perturbation");
+        std::ifstream infile("sa_perturbation_fine");
 
 		
 
