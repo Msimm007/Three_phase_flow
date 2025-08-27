@@ -16,7 +16,7 @@ subsection Time discretization parameters
   
   # Use implicit time derivative term in pl. If false, the term \partial_t(\phi \rho_t) is computed as (\phi^n\rho_t^n - \phi^{n-1}\rho_t^{n-1})/\tau.
   # If true, we apply chain rule and write it as \partial_t(\phi \rho_t) = a1 \partial_t p_\ell + a2 \partial_t s_a + a3 \partial_t s_v
-  set Use implicit time term in pl = true
+  set Use implicit time term in pl = false
   
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation"
@@ -77,7 +77,7 @@ subsection Spatial discretization parameters
   set Project to RT0 = true
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
-  set Project to RT0 with kappa only = true
+  set Project to RT0 with kappa only = false
   
   # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
   # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise

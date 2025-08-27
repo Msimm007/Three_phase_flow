@@ -226,12 +226,9 @@ template <int dim>
 void LiquidPressureProblem<dim>::setup_system()
 
 {
-    //    if_incompressible<dim>(incompressible);
     dof_handler.distribute_dofs(fe);
 
     constraints.clear();
-
-
 	constraints.close();
 
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
@@ -451,7 +448,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 			double pl_value_nminus2 = old_pl_vals_nminus2[point];
 			// added for stab method
 
-			Tensor<1,dim> pl_grad_n = old_pl_grads[point];
 
 			// Get value of sa at current integration point
 			double Sa_value_n = old_Sa_vals[point];
@@ -787,9 +783,6 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 				double pl_value_n = old_pl_vals[point];
 				double pl_value_nminus1 = old_pl_vals_nminus1[point];
 
-				// Added for stabilization method
-				Tensor<1,dim> pl_grad_n = old_pl_grads[point];
-
 				double Sa_value_n = old_Sa_vals[point];
 				double Sa_value_nminus1 = old_Sa_vals_nminus1[point];
 				Tensor<1,dim> Sa_grad_n = old_Sa_grads[point];
@@ -865,20 +858,12 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 	            double lambda_v = lambda_v_fcn.value(pl_nplus1_extrapolation, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
 	            double lambda_a = lambda_a_fcn.value(pl_nplus1_extrapolation, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
 
-//	            double lambda_l = lambda_l_fcn.value(g[point], g_sa[point], Sv_nplus1_extrapolation);
-//				double lambda_v = lambda_v_fcn.value(g[point], g_sa[point], Sv_nplus1_extrapolation);
-//				double lambda_a = lambda_a_fcn.value(g[point], g_sa[point], Sv_nplus1_extrapolation);
-
 	            double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
 
 	            Tensor<1,dim> pca_grad = cap_p_pca_fcn.num_gradient(Sa_nplus1_extrapolation, Sv_nplus1_extrapolation,
 	            		Sa_grad_nplus1_extrapolation, Sv_grad_nplus1_extrapolation);
 	            Tensor<1,dim> pcv_grad = cap_p_pcv_fcn.num_gradient(Sv_nplus1_extrapolation, Sv_grad_nplus1_extrapolation);
-
-//	            Tensor<1,dim> pca_grad = cap_p_pca_fcn.num_gradient(g_sa[point], Sv_nplus1_extrapolation,
-//	            		Sa_grad_nplus1_extrapolation, Sv_grad_nplus1_extrapolation);
-//	            Tensor<1,dim> pcv_grad = cap_p_pcv_fcn.num_gradient(Sv_nplus1_extrapolation, Sv_grad_nplus1_extrapolation);
-
+				
 	            // Penalty factors
 	            double gamma_pl_e = rholambda_t*kappa;
 	            double h_e = cell->face(face_no)->measure();
@@ -1169,10 +1154,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         	double pl_value1_n = old_pl_vals_neighbor[point];
 			
         	double pl_value0_nminus1 = old_pl_vals_nminus1[point];
-        	double pl_value1_nminus1 = old_pl_vals_neighbor_nminus1[point];
-
-			Tensor<1,dim> pl_grad0_n = old_pl_grads[point];
-			Tensor<1,dim> pl_grad1_n = old_pl_grads_neighbor[point];			
+        	double pl_value1_nminus1 = old_pl_vals_neighbor_nminus1[point];			
 
 			double Sa_value0_n = old_Sa_vals[point];
 			double Sa_value1_n = old_Sa_vals_neighbor[point];
