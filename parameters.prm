@@ -6,6 +6,7 @@ subsection Time discretization parameters
   set Final time = 1
   
   # Initial time step
+<<<<<<< Updated upstream
   set Initial time step = 0.01
 
   # Second order time derivative
@@ -16,6 +17,18 @@ subsection Time discretization parameters
 
   # Use implicit time derivative term in pl
   set Use implicit time term in pl = false
+=======
+  set Initial time step = 0.10
+
+  # Second order time derivative
+  set Second order time derivative = false
+
+  # Second order extrapolation
+  set Second order extrapolation = false
+
+  # Use implicit time derivative term in pl
+  set Use implicit time term in pl = true
+>>>>>>> Stashed changes
 
   # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
   set Midpoint method = false
@@ -36,6 +49,9 @@ subsection Spatial discretization parameters
   # Dimension (2 or 3)
   set Dimension = 2
 
+  # If true, then stability method is used For pl
+  set Stab_t = false
+
   # If true, then stability method is used For Sa
   set Stab_a = true
 
@@ -52,7 +68,11 @@ subsection Spatial discretization parameters
   set Initial level of refinement = 2
 
   # Final level of refinement
+<<<<<<< Updated upstream
   set Final level of refinement = 4
+=======
+  set Final level of refinement = 6
+>>>>>>> Stashed changes
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -99,7 +119,7 @@ subsection Spatial discretization parameters
   set Project Darcy with gravity = false
   
   # Use direct solver for linear systems. If false, it uses gmres
-  set Use direct solver for linear systems = false
+  set Use direct solver for linear systems = true
   
   # Use exact pl in Sa (only for manufactured test case)
   set Use exact pl in Sa = false
