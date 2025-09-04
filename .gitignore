@@ -32,11 +32,9 @@ compile_commands.json
 ThreePhase
 
 # Outputs only for local use. No need to be on github
-OUT_Q5S/
-OUT_VF/
-OUT_RESULTS/
+OUT_*/
 out_*
-OUTPUT_VTU/
+OUTPUT_*/
 
 # debug notes
 q5s_debug_notes.txt

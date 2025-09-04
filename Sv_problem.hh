@@ -605,6 +605,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double rholambda_t_extr = rho_l*lambda_l_extr + rho_v_extr*lambda_v_extr + rho_a*lambda_a_extr;
 
 			double dpcv_dSv = cap_p_pcv_fcn.derivative_wrt_Sv(Sv_nplus1_extrapolation);
+			//debug
+			Kappa_tilde_v = rho_v*lambda_v*dpcv_dSv;
 
 			for (unsigned int i = 0; i < n_dofs; ++i)
 			{
@@ -879,6 +881,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 				double h_e = cell->face(face_no)->measure();
 				double penalty_factor = (penalty_Sv_bdry/h_e) * gamma_Sv_e * degree*(degree + dim - 1);
 
+				//debug
+				Kappa_tilde_v = rho_v*lambda_v*dpcv_dSv;
 				for (unsigned int i = 0; i < n_facet_dofs; ++i)
 				{
 					if (rebuild_matrix)
@@ -1330,10 +1334,17 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
              double coef0_diff_stab = fabs(kappa0*Kappa_tilde_v);
              double coef1_diff_stab = fabs(kappa1*Kappa_tilde_v);
 
+			coef0_diff_stab = coef0_diff;
+			coef1_diff_stab = coef1_diff; 
+
              double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
              double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
-
+			// debug
+			 Kappa_tilde_v =rho_v0*lambda_v0*dpcv_dSv0;
 		    double coef0_Sv_stab = (-rho_v0*lambda_v0*dpcv_dSv0+Kappa_tilde_v)*kappa0;
+			//debug
+			 Kappa_tilde_v =rho_v1*lambda_v1*dpcv_dSv1;
+
             double coef1_Sv_stab = (-rho_v1*lambda_v1*dpcv_dSv1+Kappa_tilde_v)*kappa1;
 
             double weight0_Sv_stab = coef1_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);

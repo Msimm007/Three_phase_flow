@@ -36,10 +36,10 @@ end
 
 subsection Spatial discretization parameters
   # Dimension (2 or 3)
-  set Dimension = 2
+  set Dimension = 3
 
   # If true, then stability method is used For Sa
-  set Stab_a = true
+  set Stab_a = false
 
   # If true, then stability method is used For Sv
   set Stab_v = false
@@ -49,10 +49,10 @@ subsection Spatial discretization parameters
 
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 0
 
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 0
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -139,7 +139,7 @@ subsection Spatial discretization parameters
 
   # If true, it solves only for pl and Sa and sets Sv = 0.
   # Otherwise, it solves all three phases
-  set Two phase problem = true
+  set Two phase problem = false
 
 end
 subsection Output parameters

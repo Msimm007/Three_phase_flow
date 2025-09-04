@@ -23,7 +23,7 @@
 #include <fstream>
 
 using namespace dealii;
-
+// ------------------------------- 3D HHM -------------------------
 extern double M;
 extern double amp_factor_cap_pressure;
 
@@ -212,96 +212,33 @@ template <int dim>
 void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm mpi_communicator,
                               const unsigned int n_mpi_processes, const unsigned int this_mpi_process)
 {
-    DoFHandler<dim> dof_handler(triangulation);
-
-    int n_cells = 0;
-    for (const auto &cell : dof_handler.active_cell_iterators())
-    {
-        if(cell->subdomain_id() == this_mpi_process)
-        {
-            double coord_x = cell->center()[0];
-            if(coord_x <= 1.0)
-                n_cells++;
-        }
-    }
-
-    std::ofstream myfile;
-    if(this_mpi_process == 0)
-        	myfile.open("sa_perturbation_fine");
-
-
-    int n_data = (dim==2)? 5 : 7;
-
-    FullMatrix<double> data_mtx(n_cells, n_data);
-
-    int current_cell = 0;
-    for (const auto &cell : dof_handler.active_cell_iterators())
-    {
-        if(cell->subdomain_id() == this_mpi_process)
-        {
-            BoundingBox<dim> box = cell->bounding_box();
-            double lower_x = box.lower_bound(0);
-            double upper_x = box.upper_bound(0);
-            double lower_y = box.lower_bound(1);
-            double upper_y = box.upper_bound(1);
-
-            double lower_z, upper_z;
-
-            if(dim == 3)
-            {
-                lower_z = box.lower_bound(2);
-                upper_z = box.upper_bound(2);
-            }
-
-            // Create initial sa_value.
-            // Start with 0.2 and add a random number only on the first column of mesh elements
-            double sa_init = 0.2;
-
-            double coord_x = cell->center()[0];
-
-            double sa_rand = 1.0;
-
-            // First column of mesh elements
-            if(coord_x <= 1.0)
-            {
-                // Generate random number between -0.05 and 0.05
-                double mean_val = 0.0;
-                double sigma = 0.2;
-                double random_number = -1.0;
-
-                while(random_number < -0.05 || random_number > 0.05)
-                    random_number = Utilities::generate_normal_random_number(mean_val,sigma);
-
-                sa_init += random_number;
-
-                data_mtx.set(current_cell, 0, lower_x);
-                data_mtx.set(current_cell, 1, upper_x);
-                data_mtx.set(current_cell, 2, lower_y);
-                data_mtx.set(current_cell, 3, upper_y);
-
-                if(dim == 2)
-                    data_mtx.set(current_cell, 4, sa_init);
-                else if(dim == 3)
-                {
-                    data_mtx.set(current_cell, 4, lower_z);
-                    data_mtx.set(current_cell, 5, upper_z);
-                    data_mtx.set(current_cell, 6, sa_init);
-                }
-
-                current_cell++;
-            }
-        }
-    }
-
-    MPI_Barrier(mpi_communicator);
-
-    if(this_mpi_process == 0)
-    {
-//		data_mtx.print(myfile,0,5);
-        data_mtx.print_formatted(myfile, 5, true, 0, "0.0", 1.0, 0.0);
-        myfile.close();
-    }
+    
 }
+
+template <int dim>
+double compute_initial_sa_value(const typename DoFHandler<dim>::active_cell_iterator &cell)
+{
+	double sa0 = 0.2;
+
+	double coord_x = cell->center()[0];
+
+	double sa_rand = 1.0;
+
+	if(coord_x <= 4.0)
+	{
+		double mean_val = 0.0;
+		double sigma = 0.1;
+		double random_number = -1.0;
+
+		while(random_number < -0.1 || random_number > 0.1)
+			random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+
+		sa0 += random_number;
+	}
+
+	return sa0;
+};
+
 
 template <int dim>
 class StabAqueousSaturation : public Function<dim>
@@ -341,9 +278,46 @@ double StabVaporSaturation<dim>::value()const
 template <int dim>
 double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator &cell)
 {
-    double kappa_abs = 7.e-10;
+    double kappa_abs = 3.12e-14;
+	double kappa = kappa_abs; // tem
+	double coord;
 
-    return kappa_abs;
+	coord = cell -> center()[dim -1];
+
+	double kappa_rand = 1.0;
+	if (coord <= 2.0)
+	{
+		
+		double mean_val = 5.0;
+		double sigma = mean_val/3.0;
+		double random_number = -1.0;
+		while (random_number < 1.0 || random_number > 10.0)
+			random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+		
+		kappa_rand = random_number;
+	}
+	else if(coord > 2.0 && coord <= 8.0)
+	{
+		double mean_val = 55.0;
+		double sigma = mean_val/3.0;
+		double random_number = -1.0;
+		while(random_number < 10.0 || random_number > 100.0)
+			random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+		kappa_rand = random_number;
+	}
+	else
+	{
+		double mean_val = 550.0;
+		double sigma = mean_val/3.0;
+		double random_number = -1.0;
+
+		while(random_number < 100.0 || random_number > 1000.0)
+			random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+		kappa_rand = random_number;
+	}
+	kappa *=kappa_rand;
+
+    return kappa;
 };
 
 template <int dim>
@@ -363,7 +337,8 @@ double
 ExactLiquidPressure<dim>::value(const Point<dim> &p,
                                 const unsigned int /*component*/) const
 {
-    return 2.e7 + (3.e4 - 2.e5)*p[0];
+    // return 2.e7 + (3.e4 - 2.e5)*p[0];
+    return 2.e8 - 1.e5*p[0];
 }
 
 template <int dim>
@@ -383,7 +358,7 @@ double
 ExactVaporSaturation<dim>::value(const Point<dim> &p,
                                  const unsigned int /*component*/) const
 {
-    return 0.2;
+    return 0.1;
 }
 
 template <int dim>
@@ -403,91 +378,17 @@ double
 ExactAqueousSaturation<dim>::value(const Point<dim> &p,
                                    const unsigned int /*component*/) const
 {
-    if(fabs(this->get_time()) < 1.e-10)
-    {
-        // For t = 0, read from sa_perturbation file
-        std::ifstream infile("sa_perturbation_fine");
-
-		
-
-        double x1, x2, y1, y2, z1, z2, sa;
-        int current_size = 1;
-        Vector<double> x1_vals(current_size), x2_vals(current_size),
-                y1_vals(current_size), y2_vals(current_size),
-                z1_vals(current_size), z2_vals(current_size), sa_vals(current_size);
-
-        if(dim == 2)
+    if(p[0] <= 3.0)
         {
-            while(infile >> x1 >> x2 >> y1 >> y2 >> sa)
-            {
-                x1_vals[current_size-1] = x1;
-                x2_vals[current_size-1] = x2;
-                y1_vals[current_size-1] = y1;
-                y2_vals[current_size-1] = y2;
-                sa_vals[current_size-1] = sa;
+            double mean_val = 0.0;
+		    double sigma = 0.1;//mean_val/3.0;
+		    double random_number = -1.0;
 
-                current_size++;
-
-                x1_vals.grow_or_shrink(current_size);
-                x2_vals.grow_or_shrink(current_size);
-                y1_vals.grow_or_shrink(current_size);
-                y2_vals.grow_or_shrink(current_size);
-                sa_vals.grow_or_shrink(current_size);
-            }
+		    while(random_number < -0.1 || random_number > 0.1)
+			    random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+		    return 0.2 + random_number;
         }
-        else if(dim == 3)
-        {
-            while(infile >> x1 >> x2 >> y1 >> y2 >> z1 >> z2 >> sa)
-            {
-                x1_vals[current_size-1] = x1;
-                x2_vals[current_size-1] = x2;
-                y1_vals[current_size-1] = y1;
-                y2_vals[current_size-1] = y2;
-                z1_vals[current_size-1] = z1;
-                z2_vals[current_size-1] = z2;
-                sa_vals[current_size-1] = sa;
-
-                current_size++;
-
-                x1_vals.grow_or_shrink(current_size);
-                x2_vals.grow_or_shrink(current_size);
-                y1_vals.grow_or_shrink(current_size);
-                y2_vals.grow_or_shrink(current_size);
-                z1_vals.grow_or_shrink(current_size);
-                z2_vals.grow_or_shrink(current_size);
-                sa_vals.grow_or_shrink(current_size);
-            }
-        }
-
-        double sa_value = 0.2;
-
-        for(unsigned int jj = 0; jj < x1_vals.size(); jj++)
-        {
-            if(dim == 2)
-            {
-                if(p[0] >= x1_vals[jj] && p[0] <= x2_vals[jj]
-                   && p[1] >= y1_vals[jj] && p[1] <= y2_vals[jj])
-                {
-                    sa_value = sa_vals[jj];
-                    break;
-                }
-            }
-            else if(dim == 3)
-            {
-                if(p[0] >= x1_vals[jj] && p[0] <= x2_vals[jj]
-                   && p[1] >= y1_vals[jj] && p[1] <= y2_vals[jj]
-                   && p[2] >= z1_vals[jj] && p[2] <= z2_vals[jj])
-                {
-                    sa_value = sa_vals[jj];
-                    break;
-                }
-            }
-        }
-
-        return sa_value;
-    }
-    else
-        return std::min(0.7, 0.2 + 0.5*(this->get_time()*1.e-2));
+    return 0.2;
 }
 
 // pl at t=0
@@ -603,6 +504,8 @@ public:
 template<int dim>
 double ComputeSl(const double pl, const double Sa, const double Sv)
 {
+    Sa = std::min(1.0, std::max(Sa, 0.0));
+	Sv = std::min(1.0, std::max(Sv, 0.0));
     return 1.0 - Sa - Sv;
 }
 
@@ -631,12 +534,12 @@ double
 CapillaryPressurePcv<dim>::value(double Sv,
                                  const unsigned int /*component*/) const
 {
-    Sv = std::min(1.0, std::max(Sv, 0.0));
+	Sv = std::min(1.0, std::max(Sv, 0.0));
 
-//	if(Sv > 0.05)
-    return -amp_factor_cap_pressure/sqrt(Sv);
-//	else
-//		return amp_factor_cap_pressure*(-1.5 + 10.0*Sv)/sqrt(0.05);
+	if(Sv > 0.05)
+		return -amp_factor_cap_pressure/sqrt(Sv);
+	else
+		return amp_factor_cap_pressure*(-1.5 + 10.0*Sv)/sqrt(0.05);   
 }
 
 template <int dim>
@@ -660,12 +563,12 @@ double
 CapillaryPressurePcv<dim>::derivative_wrt_Sv(double Sv,
                                              const unsigned int /*component*/) const
 {
-    Sv = std::min(1.0, std::max(Sv, 0.0));
+	Sv = std::min(1.0, std::max(Sv, 0.0));
 
-//	if(Sv > 0.05)
-    return amp_factor_cap_pressure*0.5*pow(Sv+0.0001, -1.5);
-//	else
-//		return amp_factor_cap_pressure*10.0/sqrt(0.05);
+	if(Sv > 0.05)
+		return amp_factor_cap_pressure*0.5*pow(Sv, -1.5);
+	else
+		return amp_factor_cap_pressure*10.0/sqrt(0.05);
 }
 
 template <int dim>
@@ -699,7 +602,10 @@ CapillaryPressurePca<dim>::value(double Sa, double Sv,
     Sa = std::min(1.0, std::max(Sa, 0.0));
     Sv = std::min(1.0, std::max(Sv, 0.0));
 
-    return amp_factor_cap_pressure/sqrt(Sa);
+	if(Sa > 0.05)
+		return amp_factor_cap_pressure/sqrt(Sa);
+	else
+		return amp_factor_cap_pressure*(1.5 - 10.0*Sa)/sqrt(0.05);
 }
 
 template <int dim>
@@ -733,7 +639,10 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
 {
     Sa = std::min(1.0, std::max(Sa, 0.0));
 
-    return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
+	if(Sa > 0.05)
+		return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
+	else
+		return -amp_factor_cap_pressure*10.0/sqrt(0.05);
 }
 
 template <int dim>
@@ -850,10 +759,7 @@ template <int dim>
 double rho_v<dim>::value(const double pl, const double Sa, const double Sv,
                          const unsigned int /*component*/) const
 {
-    VaporPressure<dim> pv;
-
-//	return 1.0 + 0.01*pv.value(pl, Sa, Sv);
-    return 800.0;
+    return 400.0;
 }
 
 template <int dim>
@@ -923,7 +829,7 @@ double Kappa_l<dim>::value(const double pl, const double Sa, const double Sv,
     Sl = ComputeSl<dim>(pl, Sa, Sv);
 
 
-    return 0.7*Sl;
+    return Sl*Sl;
 }
 
 template <int dim>
@@ -942,7 +848,8 @@ template <int dim>
 double Kappa_v<dim>::value(const double pl, const double Sa, const double Sv,
                            const unsigned int /*component*/) const
 {
-    return 0.05*Sv*Sv;
+    // return 0.05*Sv*Sv;
+    return Sv*Sv;
 }
 
 template <int dim>
@@ -961,7 +868,7 @@ template <int dim>
 double Kappa_a<dim>::value(const double pl, const double Sa, const double Sv,
                            const unsigned int /*component*/) const
 {
-    return 0.05*Sa*Sa;
+    return Sa*Sa;
 }
 
 // Viscosities
@@ -981,7 +888,8 @@ template <int dim>
 double viscosity_l<dim>::value(const double pl,
                                const unsigned int /*component*/) const
 {
-    return M*1.e-3;
+    // return M*1.e-3;
+    return 1.e-3;
 }
 
 template <int dim>
@@ -1281,7 +1189,8 @@ void BoundaryValuesLiquidPressure<dim>::value_list(const std::vector<Point<dim>>
 
     for (unsigned int i = 0; i < values.size(); ++i)
     {
-        values[i] = exact_pressure.value(points[i]);
+        // values[i] = exact_pressure.value(points[i]);
+        values[i] = 2.e8 - 1.e5*points[i](0);
     }
 }
 
@@ -1307,10 +1216,11 @@ void BoundaryValuesAqueousSaturation<dim>::value_list(const std::vector<Point<di
 
     ExactAqueousSaturation<dim> exact_sat;
     exact_sat.set_time(this->get_time());
+    double time = this->get_time();
 
     for (unsigned int i = 0; i < values.size(); ++i)
     {
-        values[i] = exact_sat.value(points[i]);
+        values[i] = 0.2 + 0.1*pow(time,6)/(1.e15 + pow(time,6));
     }
 }
 
@@ -1339,7 +1249,9 @@ void BoundaryValuesVaporSaturation<dim>::value_list(const std::vector<Point<dim>
 
     for (unsigned int i = 0; i < values.size(); ++i)
     {
-        values[i] = exact_vapor_sat.value(points[i]);
+        // values[i] = exact_vapor_sat.value(points[i]);
+        values[i] = 0.1 + 0.6*pow(time,6)/(1.e15 + pow(time,6));
+
     }
 }
 #endif // AUX_PRIMARY_HH
