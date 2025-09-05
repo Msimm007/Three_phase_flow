@@ -3,17 +3,17 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 8000)
-  set Final time = 8000
+  set Final time = 2000
 
 
   # Initial time step (must be chosen so that at least one time step is performed)
   set Initial time step = 1
 
   # Second order time derivative
-  set Second order time derivative = false
+  set Second order time derivative = true
 
   # Second order extrapolation
-  set Second order extrapolation = false
+  set Second order extrapolation = true
 
   # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
   set Midpoint method = false
@@ -49,10 +49,10 @@ subsection Spatial discretization parameters
 
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 2
 
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 2
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -88,7 +88,7 @@ subsection Spatial discretization parameters
   set Penalty Sv boundary = 1.0
 
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = true
+  set Project to RT0 = false
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
@@ -147,7 +147,7 @@ subsection Output parameters
   set print vtk = true
 
   # How often vtk files are printed. Only used if previous variable is true
-  set Frequency for vtk printing = 20
+  set Frequency for vtk printing = 40
 
   # Compute errors (manufactured sol test case)
   set Compute errors = false

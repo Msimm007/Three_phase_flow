@@ -9,10 +9,10 @@ subsection Time discretization parameters
   set Initial time step = 0.01
 
   # Second order time derivative
-  set Second order time derivative = false
+  set Second order time derivative = true
 
   # Second order extrapolation
-  set Second order extrapolation = false
+  set Second order extrapolation = true
 
   # Use implicit time derivative term in pl
   set Use implicit time term in pl = false
@@ -40,7 +40,7 @@ subsection Spatial discretization parameters
   set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = false
+  set Stab_v = true
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
   set Incompressible = false
@@ -52,7 +52,7 @@ subsection Spatial discretization parameters
   set Initial level of refinement = 2
 
   # Final level of refinement
-  set Final level of refinement = 6
+  set Final level of refinement = 4
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
