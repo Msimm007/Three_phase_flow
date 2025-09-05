@@ -105,6 +105,7 @@ void ParameterReader::declare_parameters()
         prm.declare_entry("Final level of refinement", "7", Patterns::Integer(0));
 
         prm.declare_entry("Incompressible", "true", Patterns::Bool());
+        prm.declare_entry("Stab_pl", "true", Patterns::Bool());
         prm.declare_entry("Stab_a", "true", Patterns::Bool());
         prm.declare_entry("Stab_v", "true", Patterns::Bool());
 

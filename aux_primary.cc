@@ -18,6 +18,7 @@ double mu_v_data = 0.25;
 //stab data. 
 double stab_sa_data = 5.0;
 double stab_sv_data = 5.0;
+double stab_pl_data = 5.0;
 
 
 // Non-template function definitions would also go here

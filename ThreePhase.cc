@@ -174,6 +174,7 @@ private:
 
     bool incompressible;
 
+	bool Stab_pl;
 	bool Stab_a;
     bool Stab_v;
 
@@ -269,6 +270,7 @@ CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const un
 	prm.enter_subsection("Spatial discretization parameters");
 
     incompressible = prm.get_bool("Incompressible");
+    Stab_pl = prm.get_bool("Stab_pl");
     Stab_a = prm.get_bool("Stab_a");
     Stab_v = prm.get_bool("Stab_v");
 
@@ -1408,7 +1410,7 @@ void CoupledPressureSaturationProblem<dim>::run()
     			theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
     			use_exact_Sv_in_pl,
     			second_order_time_derivative, second_order_extrapolation,
-				use_direct_solver, incompressible, implicit_time_pl,
+				use_direct_solver, Stab_pl, incompressible, implicit_time_pl,
     			kappa_abs_vec, mpi_communicator, n_mpi_processes, this_mpi_process);
 
 	pl_problem.setup_system();
