@@ -1329,8 +1329,6 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
              double coef0_diff_stab = fabs(kappa0*Kappa_tilde_v);
              double coef1_diff_stab = fabs(kappa1*Kappa_tilde_v);
 
-			coef0_diff_stab = coef0_diff;
-			coef1_diff_stab = coef1_diff; 
 
              double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
              double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
