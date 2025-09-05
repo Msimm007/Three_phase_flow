@@ -1436,6 +1436,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 	Sv_problem.setup_system();
 
 
+    bool rebuild_pl_mat = true;
     bool rebuild_Sa_mat = true;
     bool rebuild_Sv_mat = true;
 	
@@ -1459,7 +1460,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 		{
         timer.reset();
 		timer.start();
-        pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,pl_solution_n,
+        pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,rebuild_pl_mat,pl_solution_n,
 													pl_solution_nminus1,pl_solution_nminus2, Sa_solution_n,
 													Sa_solution_nminus1,Sa_solution_nminus2,Sv_solution_n,
 													Sv_solution_nminus1,

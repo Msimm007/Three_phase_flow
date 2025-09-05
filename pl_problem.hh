@@ -103,7 +103,7 @@ public:
 
 	void setup_system();
 
-	void assemble_system_matrix_pressure(double time_step_, double time_,unsigned int timestep_number_,PETScWrappers::MPI::Vector pl_solution_n_,
+	void assemble_system_matrix_pressure(double time_step_, double time_,unsigned int timestep_number_,bool rebuild_matrix_,PETScWrappers::MPI::Vector pl_solution_n_,
 										PETScWrappers::MPI::Vector pl_solution_nminus1_, PETScWrappers::MPI::Vector pl_solution_nminus2_,
 										PETScWrappers::MPI::Vector Sa_solution_n_,		PETScWrappers::MPI::Vector Sa_solution_nminus1_,
 										PETScWrappers::MPI::Vector Sa_solution_nminus2_,PETScWrappers::MPI::Vector Sv_solution_n_,
@@ -161,6 +161,7 @@ private:
     double 		 time_step;
     double       time;
     unsigned int timestep_number;
+	bool rebuild_matrix;
 
     double penalty_pl;
     double penalty_pl_bdry;
@@ -253,7 +254,7 @@ void LiquidPressureProblem<dim>::setup_system()
 }
 
 template <int dim>
-void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_step_, double time_, unsigned int timestep_number_,
+void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_step_, double time_, unsigned int timestep_number_,bool rebuild_matrix_,
 																PETScWrappers::MPI::Vector pl_solution_n_,
 																PETScWrappers::MPI::Vector pl_solution_nminus1_,
 																PETScWrappers::MPI::Vector pl_solution_nminus2_,
@@ -264,6 +265,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 																PETScWrappers::MPI::Vector Sv_solution_nminus1_,
 																PETScWrappers::MPI::Vector Sv_solution_nminus2_)
 {
+	rebuild_matrix = rebuild_matrix_;
 	
     system_matrix_pressure.reinit(locally_owned_dofs,
 			  	  	  	  	  	  locally_owned_dofs,
@@ -305,6 +307,10 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
     lambda_l<dim> lambda_l_fcn;
     lambda_v<dim> lambda_v_fcn;
     lambda_a<dim> lambda_a_fcn;
+
+	// Stabilization term. Declared and defined.
+	StabLiquidPressure<dim> Kappa_tilde_pl_fcn;
+    double Kappa_tilde_pl = Kappa_tilde_pl_fcn.value();
 
 
     // Capillary pressures
@@ -407,9 +413,9 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         std::vector<double> old_pl_vals(n_qpoints);
         std::vector<double> old_pl_vals_nminus1(n_qpoints);
         std::vector<double> old_pl_vals_nminus2(n_qpoints);
+        std::vector<Tensor<1, dim>> old_pl_grads(n_qpoints);
+        std::vector<Tensor<1, dim>> old_pl_grads_nminus1(n_qpoints);		
 
-		// added for stab method
-		std::vector<Tensor<1, dim>> old_pl_grads(n_qpoints);
 
         std::vector<double> old_Sa_vals(n_qpoints);
         std::vector<double> old_Sa_vals_nminus1(n_qpoints);
@@ -427,6 +433,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         fe_v.get_function_values(temp_pl_solution_n, old_pl_vals);
         fe_v.get_function_values(temp_pl_solution_nminus1, old_pl_vals_nminus1);
         fe_v.get_function_values(temp_pl_solution_nminus2, old_pl_vals_nminus2);
+        fe_v.get_function_gradients(temp_pl_solution_n, old_pl_grads);
+        fe_v.get_function_gradients(temp_pl_solution_nminus1, old_pl_grads_nminus1);
 
         fe_v.get_function_values(temp_Sa_solution_n, old_Sa_vals);
         fe_v.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
@@ -448,8 +456,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 			double pl_value_n = old_pl_vals[point];
 			double pl_value_nminus1 = old_pl_vals_nminus1[point];
 			double pl_value_nminus2 = old_pl_vals_nminus2[point];
-			// added for stab method
-
+			Tensor<1,dim> pl_grad_n = old_pl_grads[point];
+			Tensor<1,dim> pl_grad_nminus1 = old_pl_grads_nminus1[point];			
 
 			// Get value of sa at current integration point
 			double Sa_value_n = old_Sa_vals[point];
@@ -503,6 +511,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 			double pl_nplus1_extrapolation = pl_value_n;
         	double Sa_nplus1_extrapolation = Sa_value_n;
         	double Sv_nplus1_extrapolation = Sv_value_n;
+        	Tensor<1,dim> pl_grad_nplus1_extrapolation = pl_grad_n;
         	Tensor<1,dim> Sa_grad_nplus1_extrapolation = Sa_grad_n;
         	Tensor<1,dim> Sv_grad_nplus1_extrapolation = Sv_grad_n;
 
@@ -516,6 +525,9 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 
         		Sv_nplus1_extrapolation *= 2.0;
         		Sv_nplus1_extrapolation -= Sv_value_nminus1;
+
+				pl_grad_nplus1_extrapolation *= 2.0;
+        		pl_grad_nplus1_extrapolation -= pl_grad_nminus1;
 
         		Sa_grad_nplus1_extrapolation *= 2.0;
         		Sa_grad_nplus1_extrapolation -= Sa_grad_nminus1;
@@ -602,13 +614,25 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
             {
                 for (unsigned int j = 0; j < n_dofs; ++j)
                 {
-
-					copy_data.cell_matrix(i,j) +=
+					if(Stab_pl)
+					{
+						copy_data.cell_matrix(i,j) +=
+						Kappa_tilde_pl
+						* kappa
+						* fe_v.shape_grad(i, point)
+						* fe_v.shape_grad(j, point)
+						* JxW[point];						
+					}
+					else
+					{
+						copy_data.cell_matrix(i,j) +=
 						rholambda_t
 						* kappa
 						* fe_v.shape_grad(i, point)
 						* fe_v.shape_grad(j, point)
 						* JxW[point];
+					}
+
 					// Time term
 					if(implicit_time_pl)
 					{
@@ -625,12 +649,18 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 									* fe_v.shape_value(i, point)
 									* fe_v.shape_value(j, point)
 									* JxW[point];
-
 					}
                 }
 
                 // Source term
                 copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point]) * fe_v.shape_value(i, point) * JxW[point];
+
+				// addition from stab
+				if(Stab_pl)
+				{
+                    copy_data.cell_rhs(i) += (Kappa_tilde_pl - rholambda_t) * kappa * pl_grad_nplus1_extrapolation
+                                             * fe_v.shape_grad(i, point) * JxW[point];					
+				}
 
                 // Time term of pl
                 if(implicit_time_pl)
@@ -738,6 +768,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 		std::vector<double> old_pl_vals_nminus1(n_qpoints);
 		// added for stabilization method
 		std::vector<Tensor<1, dim>> old_pl_grads(n_qpoints);
+		std::vector<Tensor<1, dim>> old_pl_grads_nminus1(n_qpoints);
 
 		std::vector<double> old_Sa_vals(n_qpoints);
 		std::vector<double> old_Sa_vals_nminus1(n_qpoints);
@@ -751,6 +782,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 
 		fe_face.get_function_values(temp_pl_solution_n, old_pl_vals);
 		fe_face.get_function_values(temp_pl_solution_nminus1, old_pl_vals_nminus1);
+		fe_face.get_function_gradients(temp_pl_solution_n, old_pl_grads);
+		fe_face.get_function_gradients(temp_pl_solution_nminus1, old_pl_grads_nminus1);
 
 		fe_face.get_function_values(temp_Sa_solution_n, old_Sa_vals);
 		fe_face.get_function_values(temp_Sa_solution_nminus1, old_Sa_vals_nminus1);
@@ -784,6 +817,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 				// Get pl, sa and sv at current int point
 				double pl_value_n = old_pl_vals[point];
 				double pl_value_nminus1 = old_pl_vals_nminus1[point];
+				Tensor<1,dim> pl_grad_n = old_pl_grads[point];
+				Tensor<1,dim> pl_grad_nminus1 = old_pl_grads_nminus1[point];
 
 				double Sa_value_n = old_Sa_vals[point];
 				double Sa_value_nminus1 = old_Sa_vals_nminus1[point];
@@ -825,6 +860,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 				double pl_nplus1_extrapolation = pl_value_n;
 	        	double Sa_nplus1_extrapolation = Sa_value_n;
 	        	double Sv_nplus1_extrapolation = Sv_value_n;
+	        	Tensor<1,dim> pl_grad_nplus1_extrapolation = pl_grad_n;
 	        	Tensor<1,dim> Sa_grad_nplus1_extrapolation = Sa_grad_n;
 	        	Tensor<1,dim> Sv_grad_nplus1_extrapolation = Sv_grad_n;
 
@@ -832,6 +868,9 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 	        	{
 	        		pl_nplus1_extrapolation *= 2.0;
 	        		pl_nplus1_extrapolation -= pl_value_nminus1;
+
+	        		pl_grad_nplus1_extrapolation *= 2.0;
+	        		pl_grad_nplus1_extrapolation -= pl_grad_nminus1;					
 
 	        		Sa_nplus1_extrapolation *= 2.0;
 	        		Sa_nplus1_extrapolation -= Sa_value_nminus1;
@@ -875,6 +914,27 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 				{
 					for (unsigned int j = 0; j < n_facet_dofs; ++j)
 					{
+
+						if (Stab_pl)
+						{
+							copy_data.cell_matrix(i, j) +=
+									-Kappa_tilde_pl
+									* kappa
+									* fe_face.shape_value(i, point)
+									* fe_face.shape_grad(j, point)
+									* normals[point]
+									* JxW[point];
+
+							copy_data.cell_matrix(i, j) +=
+									theta_pl
+									* Kappa_tilde_pl
+									* kappa
+									* fe_face.shape_value(j, point)
+									* fe_face.shape_grad(i, point)
+									* normals[point]
+									* JxW[point];
+						}
+						else
 						{
 							copy_data.cell_matrix(i, j) +=
 									- rholambda_t
@@ -891,10 +951,9 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 									* fe_face.shape_value(j, point)
 									* fe_face.shape_grad(i, point)
 									* normals[point]
-								* JxW[point];
-						}
-
-
+									* JxW[point];	
+						}		
+																
 						copy_data.cell_matrix(i, j) +=
 								penalty_factor
 								* fe_face.shape_value(i, point)
@@ -906,8 +965,25 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
                                             * fe_face.shape_value(i, point)
 											* g[point]
 											* JxW[point];
+					if(Stab_pl)
 					{
-						copy_data.cell_rhs(i) += theta_pl
+                            copy_data.cell_rhs(i) += ( rholambda_t - Kappa_tilde_pl)
+                                                     * kappa
+                                                     * pl_grad_nplus1_extrapolation
+                                                     * normals[point]
+                                                     * fe_face.shape_value(i, point)
+                                                     * JxW[point];
+							copy_data.cell_rhs(i) += theta_pl
+												* Kappa_tilde_pl
+												* kappa
+												* fe_face.shape_grad(i, point)
+												* normals[point]
+												* g[point]
+												* JxW[point];
+					}
+					else
+					{
+							copy_data.cell_rhs(i) += theta_pl
 												* rholambda_t
 												* kappa
 												* fe_face.shape_grad(i, point)
@@ -1091,6 +1167,9 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         std::vector<double> old_pl_vals_nminus1(n_qpoints);
         std::vector<double> old_pl_vals_neighbor_nminus1(n_qpoints);
 
+		std::vector<Tensor<1, dim>> old_pl_grads_nminus1(n_qpoints);
+        std::vector<Tensor<1, dim>> old_pl_grads_neighbor_nminus1(n_qpoints);
+
         std::vector<double> old_Sa_vals(n_qpoints);
         std::vector<double> old_Sa_vals_neighbor(n_qpoints);
 
@@ -1120,6 +1199,12 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 
         fe_face.get_function_values(temp_pl_solution_nminus1, old_pl_vals_nminus1);
         fe_face_neighbor.get_function_values(temp_pl_solution_nminus1, old_pl_vals_neighbor_nminus1);
+
+        fe_face.get_function_gradients(temp_pl_solution_n, old_pl_grads);
+		fe_face_neighbor.get_function_gradients(temp_pl_solution_n, old_pl_grads_neighbor);		
+
+        fe_face.get_function_gradients(temp_pl_solution_nminus1, old_pl_grads_nminus1);
+		fe_face_neighbor.get_function_gradients(temp_pl_solution_nminus1, old_pl_grads_neighbor_nminus1);		
 
         fe_face.get_function_values(temp_Sa_solution_n, old_Sa_vals);
         fe_face_neighbor.get_function_values(temp_Sa_solution_n, old_Sa_vals_neighbor);
@@ -1156,8 +1241,14 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         	double pl_value1_n = old_pl_vals_neighbor[point];
 			
         	double pl_value0_nminus1 = old_pl_vals_nminus1[point];
-        	double pl_value1_nminus1 = old_pl_vals_neighbor_nminus1[point];			
-
+        	double pl_value1_nminus1 = old_pl_vals_neighbor_nminus1[point];		
+			
+			Tensor<1,dim> pl_grad0_n = old_pl_grads[point];
+			Tensor<1,dim> pl_grad1_n = old_pl_grads_neighbor[point];
+			
+			Tensor<1,dim> pl_grad0_nminus1 = old_pl_grads_nminus1[point];
+			Tensor<1,dim> pl_grad1_nminus1 = old_pl_grads_neighbor_nminus1[point];
+		
 			double Sa_value0_n = old_Sa_vals[point];
 			double Sa_value1_n = old_Sa_vals_neighbor[point];
 
@@ -1223,8 +1314,13 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         	double Sa_nplus1_extrapolation1 = Sa_value1_n;
         	double Sv_nplus1_extrapolation0 = Sv_value0_n;
         	double Sv_nplus1_extrapolation1 = Sv_value1_n;
+
+        	Tensor<1,dim> pl_grad_nplus1_extrapolation0 = pl_grad0_n;
+        	Tensor<1,dim> pl_grad_nplus1_extrapolation1 = pl_grad1_n;
+
         	Tensor<1,dim> Sa_grad_nplus1_extrapolation0 = Sa_grad0_n;
         	Tensor<1,dim> Sa_grad_nplus1_extrapolation1 = Sa_grad1_n;
+
         	Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
         	Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
 
@@ -1235,6 +1331,12 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 
         		pl_nplus1_extrapolation1 *= 2.0;
         		pl_nplus1_extrapolation1 -= pl_value1_nminus1;
+
+        		pl_grad_nplus1_extrapolation0 *= 2.0;
+        		pl_grad_nplus1_extrapolation0 -= pl_grad0_nminus1;
+
+        		pl_grad_nplus1_extrapolation1 *= 2.0;
+        		pl_grad_nplus1_extrapolation1 -= pl_grad1_nminus1;				
 
         		Sa_nplus1_extrapolation0 *= 2.0;
         		Sa_nplus1_extrapolation0 -= Sa_value0_nminus1;
@@ -1301,10 +1403,16 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
             double coef0_diff = rholambda_t0*kappa0;
 			double coef1_diff = rholambda_t1*kappa1;
 
+			// for stabilization term
+			double coef0_diff_stab = Kappa_tilde_pl*kappa0;
+			double coef1_diff_stab = Kappa_tilde_pl*kappa1;
 
 
 			double weight0_diff = coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
 			double weight1_diff = coef0_diff/(coef0_diff + coef1_diff + 1.e-20);
+
+            double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+            double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);			
 
 			// Coefficients and weights from pcv term
 			double coef0_pcv = rho_v0*lambda_v0*kappa0;
@@ -1327,9 +1435,14 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 
 			double weight0_g = coef1_g/(coef0_g + coef1_g + 1.e-20);
 			double weight1_g = coef0_g/(coef0_g + coef1_g + 1.e-20);
-			
 
-            double gamma_pl_e = 2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
+			double gamma_pl_e;
+			if (Stab_pl)
+				double gamma_pl_e = 2.0*coef0_diff_stab*coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+			else
+           		double gamma_pl_e = 2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
+				
+
             double h_e = cell->face(f)->measure();
             double penalty_factor = (penalty_pl/h_e) * gamma_pl_e * degree*(degree + dim - 1);
 
