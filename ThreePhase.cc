@@ -1480,6 +1480,10 @@ void CoupledPressureSaturationProblem<dim>::run()
 
         pl_solution = pl_problem.pl_solution;
 
+		if(Stab_pl){
+			rebuild_pl_mat = false;
+		}
+
 		timer.reset();
 		timer.start();
         if(project_to_RT0)
