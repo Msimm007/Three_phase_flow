@@ -131,7 +131,7 @@ end
 
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = false
+  set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 45
