@@ -2,12 +2,12 @@
 # ---------------------
 
 subsection Time discretization parameters
-  # Final time of simulation (default 750.0 may need to increase for 3d problem)
-  set Final time = 750.0
-  #set Final time = 4500.0
+  # Final time of simulation (default 750.0 for 2d problem. 4500.0 for 3d problem)
+  #set Final time = 25.0
+  set Final time = 4500.0
   
   # Initial time step (default 0.25)
-  set Initial time step = 0.10
+  set Initial time step = 0.25
   
   # Second order time derivative
   set Second order time derivative = false
@@ -131,7 +131,7 @@ end
 
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = true
+  set print vtk = false
   
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 45
