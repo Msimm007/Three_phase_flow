@@ -990,7 +990,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 											* JxW[point];
 					if(Stab_pl)
 					{
-                            copy_data.cell_rhs(i) += ( Kappa_tilde_pl-rholambda_t)
+                            copy_data.cell_rhs(i) -= ( Kappa_tilde_pl-rholambda_t)
                                                      * kappa
                                                      * pl_grad_nplus1_extrapolation
                                                      * normals[point]
@@ -998,7 +998,7 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
                                                      * JxW[point];
 
 							copy_data.cell_rhs(i) -= theta_pl
-												*(- Kappa_tilde_pl)
+												* (-Kappa_tilde_pl)
 												* kappa
 												* fe_face.shape_grad(i, point)
 												* normals[point]
@@ -1463,12 +1463,20 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
 			double weight0_g = coef1_g/(coef0_g + coef1_g + 1.e-20);
 			double weight1_g = coef0_g/(coef0_g + coef1_g + 1.e-20);
 
-			double gamma_pl_e = 2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
-
-			if (Stab_pl)
+			double gamma_pl_e;
+			if (Stab_pl){
 				gamma_pl_e = 2.0*coef0_diff_stab*coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+			}
+			else{
+				 gamma_pl_e = 2.0*coef0_diff*coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
+			}
            		
-				
+			// pl coeff and weights for stab method
+			double coef0_pl_stab = (Kappa_tilde_pl - rholambda_t0)*kappa0;
+			double coef1_pl_stab = (Kappa_tilde_pl - rholambda_t1)*kappa1;
+			
+            double weight0_pl_stab = coef1_pl_stab/(coef0_pl_stab + coef1_pl_stab + 1.e-20);
+            double weight1_pl_stab = coef0_pl_stab/(coef0_pl_stab + coef1_pl_stab + 1.e-20);				
 
             double h_e = cell->face(f)->measure();
             double penalty_factor = (penalty_pl/h_e) * gamma_pl_e * degree*(degree + dim - 1);
@@ -1489,8 +1497,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
                                     coef0_diff_stab, coef1_diff_stab,
                                     weight0_diff_stab, weight1_diff_stab);
 
-                        copy_data_face.cell_matrix(i, j) +=
-                                - fe_iv.jump_in_shape_values(i, point)
+                        copy_data_face.cell_matrix(i, j) -=
+                                 fe_iv.jump_in_shape_values(i, point)
                                 * weighted_aver_j_stab
                                 * JxW[point];
 
@@ -1549,8 +1557,8 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
                         // pl term added to the RHS
                         double weighted_aver_rhs0_stab = AverageGradOperators::weighted_average_rhs<dim>(normals[point],
                                                                                 pl_grad_nplus1_extrapolation0, pl_grad_nplus1_extrapolation1,
-                                                                                coef0_diff_stab, coef1_diff_stab,
-                                                                                weight0_diff_stab, weight1_diff_stab);
+                                                                                coef0_pl_stab, coef1_pl_stab,
+                                                                                 weight0_pl_stab, weight1_pl_stab);
 
                         copy_data_face.cell_rhs(i) -=
                                 weighted_aver_rhs0_stab

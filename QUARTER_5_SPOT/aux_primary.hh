@@ -26,6 +26,7 @@
 using namespace dealii;
 extern double amp_factor_cap_pressure;
 
+extern double stab_pl_data;
 extern double stab_sa_data;
 extern double stab_sv_data;
 
@@ -341,7 +342,22 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 	}
 	return kappa_abs;
 };
+template <int dim>
+class StabLiquidPressure : public Function<dim>
+{
+public:
+    StabLiquidPressure()
+            : Function<dim>(1)
+    {}
 
+    virtual double value() const;
+};
+template <int dim>
+double StabLiquidPressure<dim>::value()const
+{
+
+    return stab_pl_data;
+}
 
 
 template <int dim>
