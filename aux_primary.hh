@@ -342,6 +342,7 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 	}
 	return kappa_abs;
 };
+
 template <int dim>
 class StabLiquidPressure : public Function<dim>
 {

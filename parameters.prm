@@ -4,7 +4,8 @@
 subsection Time discretization parameters
   # Final time of simulation (default 750.0 for 2d problem. 4500.0 for 3d problem)
   set Final time = 250
-  
+  #set Final time = 4500.0
+
   # Initial time step (default 0.25)
   set Initial time step = 0.25
   
@@ -26,7 +27,7 @@ end
 
 subsection Spatial discretization parameters
   # Dimension (2 or 3)
-  set Dimension = 2
+  set Dimension = 3
 
   # If true, then stability method is used For pl (*******TODO: debug. not currently working**************) 
   set Stab_pl = true
@@ -137,6 +138,7 @@ subsection Output parameters
   
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 25
+
   
   # Compute errors (manufactured sol test case)
   set Compute errors = false

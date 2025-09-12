@@ -10,10 +10,10 @@ subsection Time discretization parameters
   set Initial time step = 1
 
   # Second order time derivative
-  set Second order time derivative = true
+  set Second order time derivative = false
 
   # Second order extrapolation
-  set Second order extrapolation = true
+  set Second order extrapolation = false
 
   # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
   set Midpoint method = false
@@ -144,7 +144,7 @@ subsection Spatial discretization parameters
 end
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = true
+  set print vtk = false
 
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 40
