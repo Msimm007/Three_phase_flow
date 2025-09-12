@@ -28,6 +28,7 @@ extern double M;
 extern double amp_factor_cap_pressure;
 
 // stability terms
+extern double stab_pl_data;
 extern double stab_sa_data;
 extern double stab_sv_data;
 
@@ -301,6 +302,22 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
         data_mtx.print_formatted(myfile, 5, true, 0, "0.0", 1.0, 0.0);
         myfile.close();
     }
+}
+template <int dim>
+class StabLiquidPressure : public Function<dim>
+{
+public:
+    StabLiquidPressure()
+            : Function<dim>(1)
+    {}
+
+    virtual double value() const;
+};
+template <int dim>
+double StabLiquidPressure<dim>::value()const
+{
+
+    return stab_pl_data;
 }
 
 template <int dim>

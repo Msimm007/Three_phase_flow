@@ -39,6 +39,7 @@ extern double mu_l_data;
 extern double mu_a_data;
 extern double mu_v_data;
 
+extern double stab_pl_data;
 extern double stab_sa_data;
 extern double stab_sv_data;
 
@@ -107,6 +108,24 @@ template <int dim>
 double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator & /*cell*/)
 {
     return kappa;
+}
+
+// STAB CLASSES
+template <int dim>
+class StabLiquidPressure : public Function<dim>
+{
+public:
+    StabLiquidPressure()
+            : Function<dim>(1)
+    {}
+
+    virtual double value() const;
+};
+template <int dim>
+double StabLiquidPressure<dim>::value()const
+{
+
+    return stab_pl_data;
 }
 
 template <int dim>

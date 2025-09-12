@@ -174,6 +174,7 @@ private:
 
     bool incompressible;
 
+	bool Stab_pl;
 	bool Stab_a;
     bool Stab_v;
 
@@ -269,6 +270,7 @@ CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const un
 	prm.enter_subsection("Spatial discretization parameters");
 
     incompressible = prm.get_bool("Incompressible");
+    Stab_pl = prm.get_bool("Stab_pl");
     Stab_a = prm.get_bool("Stab_a");
     Stab_v = prm.get_bool("Stab_v");
 
@@ -1408,7 +1410,7 @@ void CoupledPressureSaturationProblem<dim>::run()
     			theta_pl, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_Sa_in_pl,
     			use_exact_Sv_in_pl,
     			second_order_time_derivative, second_order_extrapolation,
-				use_direct_solver, incompressible, implicit_time_pl,
+				use_direct_solver, Stab_pl, incompressible, implicit_time_pl,
     			kappa_abs_vec, mpi_communicator, n_mpi_processes, this_mpi_process);
 
 	pl_problem.setup_system();
@@ -1434,6 +1436,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 	Sv_problem.setup_system();
 
 
+    bool rebuild_pl_mat = true;
     bool rebuild_Sa_mat = true;
     bool rebuild_Sv_mat = true;
 	
@@ -1457,7 +1460,7 @@ void CoupledPressureSaturationProblem<dim>::run()
 		{
         timer.reset();
 		timer.start();
-        pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,pl_solution_n,
+        pl_problem.assemble_system_matrix_pressure(time_step, time, timestep_number,rebuild_pl_mat,pl_solution_n,
 													pl_solution_nminus1,pl_solution_nminus2, Sa_solution_n,
 													Sa_solution_nminus1,Sa_solution_nminus2,Sv_solution_n,
 													Sv_solution_nminus1,
@@ -1476,6 +1479,10 @@ void CoupledPressureSaturationProblem<dim>::run()
 		pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl ;
 
         pl_solution = pl_problem.pl_solution;
+
+		if(Stab_pl){
+			rebuild_pl_mat = false;
+		}
 
 		timer.reset();
 		timer.start();
