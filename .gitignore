@@ -46,3 +46,6 @@ MIDPOINT/
 *.sh
 *.o*
 hpc_cluster_notes.txt
+
+# for debugging from LC
+FROM_LC

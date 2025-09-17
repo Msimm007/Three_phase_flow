@@ -28,7 +28,7 @@ subsection Time discretization parameters
   set Create initial perturbation = false
 
   # delta_t = h^2 if true. if false, delta_t = h
-  set delta_t div 4 = false
+  set delta_t div 4 = true
 end
 
 
@@ -40,10 +40,10 @@ subsection Spatial discretization parameters
   set Stab_pl = false
 
   # If true, then stability method is used For Sa
-  set Stab_a = false
+  set Stab_a = true
 
   # If true, then stability method is used For Sv
-  set Stab_v = false
+  set Stab_v = true
 
   # If true, then it considers all the densities as constant, and cancels it from all the three equations
   set Incompressible = false
@@ -55,7 +55,7 @@ subsection Spatial discretization parameters
   set Initial level of refinement = 2
 
   # Final level of refinement
-  set Final level of refinement = 4
+  set Final level of refinement = 6
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -94,7 +94,7 @@ subsection Spatial discretization parameters
   set Project to RT0 = true
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
-  set Project to RT0 with kappa only = false
+  set Project to RT0 with kappa only = true
   
   # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
   # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise

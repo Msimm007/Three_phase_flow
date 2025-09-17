@@ -566,22 +566,18 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 				Sv_nplus1_extrapolation *= 2.0;
 				Sv_nplus1_extrapolation -= Sv_value_nminus1;
 
-				Sv_grad_nplus1_extrapolation *=2.0;
-				Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
-
-				Sa_nplus1_extrapolation *= 2.0;
-				Sa_nplus1_extrapolation -= Sa_value_nminus1;
-
-			}
+			Sv_grad_nplus1_extrapolation *=2.0;
+			Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
+		    }
 
 			double phi_nplus1 = porosity_fcn.value(pl_value);
 			double phi_n = porosity_fcn.value(pl_value_n);
 			double phi_nminus1 = porosity_fcn.value(pl_value_nminus1);
 
-			double rho_l = rho_l_fcn.value(pl_value);
-			double rho_v = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double rho_v_extr = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double rho_a = rho_a_fcn.value(pl_value);
+		    double rho_l = rho_l_fcn.value(pl_value);
+		    double rho_v = rho_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+		    double rho_v_extr = rho_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+		    double rho_a = rho_a_fcn.value(pl_value);
 
 			double rho_v_n = rho_v_fcn.value(pl_value_n, Sa_value_n, Sv_value_n);
 			double rho_v_nminus1 = rho_v_fcn.value(pl_value_nminus1, Sa_value_nminus1, Sv_value_nminus1);
@@ -593,13 +589,13 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 				rho_v_nminus1 = 1.0;
 			}
 
-			double lambda_l = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_v = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_a = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+		    double lambda_l = lambda_l_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+		    double lambda_v = lambda_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+		    double lambda_a = lambda_a_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
 
-			double lambda_l_extr = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_v_extr = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-			double lambda_a_extr = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+		    double lambda_l_extr = lambda_l_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+		    double lambda_v_extr = lambda_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+		    double lambda_a_extr = lambda_a_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
 
 			double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
 			double rholambda_t_extr = rho_l*lambda_l_extr + rho_v_extr*lambda_v_extr + rho_a*lambda_a_extr;
@@ -613,12 +609,12 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 					for (unsigned int j = 0; j < n_dofs; ++j)
 					{
 						// Time term
-						if(timestep_number == 1 || !second_order_time_derivative)
+						if(!second_order_time_derivative)
 						{
                         	// Time term
 							copy_data.cell_matrix(i,j) +=
 							(1.0/time_step)
-							* phi_n
+							* phi_nplus1
 							* rho_v_n
 							* fe_v.shape_value(i, point)
 							* fe_v.shape_value(j, point)
@@ -662,7 +658,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 						* fe_v.shape_value(i, point)
 						* JxW[point];
 				// Time term
-				if(timestep_number == 1 || !second_order_time_derivative)
+				if(!second_order_time_derivative)
 				{
 					copy_data.cell_rhs(i) += (1.0/time_step) * phi_n * rho_v_n * Sv_value_n
 							* fe_v.shape_value(i, point) * JxW[point];
@@ -743,7 +739,7 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 		std::vector<double> old_Sv_vals(n_qpoints);
 		std::vector<double> old_Sv_vals_nminus1(n_qpoints);
-        std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
+		std::vector<Tensor<1, dim>> old_Sv_grads(n_qpoints);
 		std::vector<Tensor<1, dim>> old_Sv_grads_nminus1(n_qpoints);
 
 
@@ -826,36 +822,32 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 
 				Tensor<1,dim> totalDarcyVelo_extrapolation = totalDarcyVelo;
 
-				if(second_order_extrapolation)
-				{
-					Sv_nplus1_extrapolation *= 2.0;
-					Sv_nplus1_extrapolation -= Sv_value_nminus1;
-					
-                    Sv_grad_nplus1_extrapolation *= 2.0;
-                    Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
+			if(second_order_extrapolation)
+			{
+			    Sv_nplus1_extrapolation *= 2.0;
+			    Sv_nplus1_extrapolation -= Sv_value_nminus1;
 
-					Sa_nplus1_extrapolation *= 2.0;
-					Sa_nplus1_extrapolation -= Sa_value_nminus1;
+			    Sv_grad_nplus1_extrapolation *= 2.0;
+			    Sv_grad_nplus1_extrapolation -= Sv_grad_nminus1;
+			}
 
-				}
-
-				double rho_l = rho_l_fcn.value(pl_value);
-				double rho_v = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-				double rho_v_extr = rho_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-				double rho_a = rho_a_fcn.value(pl_value);
+			double rho_l = rho_l_fcn.value(pl_value);
+			double rho_v = rho_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+			double rho_v_extr = rho_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+			double rho_a = rho_a_fcn.value(pl_value);
 
 				if(incompressible)
 				{
 					rho_l = rho_v = rho_a = 1.0;
 				}
 
-				double lambda_l = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-				double lambda_v = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-				double lambda_a = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			double lambda_l = lambda_l_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+			double lambda_v = lambda_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+			double lambda_a = lambda_a_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
 
-				double lambda_l_extr = lambda_l_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-				double lambda_v_extr = lambda_v_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
-				double lambda_a_extr = lambda_a_fcn.value(pl_value, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation);
+			double lambda_l_extr = lambda_l_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+			double lambda_v_extr = lambda_v_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
+			double lambda_a_extr = lambda_a_fcn.value(pl_value, Sa_value, Sv_nplus1_extrapolation);
 
 				double rholambda_t = rho_l*lambda_l + rho_v*lambda_v + rho_a*lambda_a;
 				double rholambda_t_extr = rho_l*lambda_l_extr + rho_v_extr*lambda_v_extr + rho_a*lambda_a_extr;
@@ -1244,37 +1236,32 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			Tensor<1,dim> totalDarcyVelo0 = DarcyVelocities[point];
 			Tensor<1,dim> totalDarcyVelo1 = DarcyVelocities_neighbor[point];
 
-			double Sv_nplus1_extrapolation0 = Sv_value0_n;
-			double Sv_nplus1_extrapolation1 = Sv_value1_n;
-			double Sa_nplus1_extrapolation0 = Sa_value0_n;
-			double Sa_nplus1_extrapolation1 = Sa_value1_n;
-			Tensor<1,dim> totalDarcyVelo_extrapolation0 = totalDarcyVelo0;
-			Tensor<1,dim> totalDarcyVelo_extrapolation1 = totalDarcyVelo1;
+                    // Second order extrapolations if needed
+                    double Sv_nplus1_extrapolation0 = Sv_value0_n;
+                    double Sv_nplus1_extrapolation1 = Sv_value1_n;
 
-			Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
-			Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
+                    Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
+                    Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
 
-			if(second_order_extrapolation)
-			{
-				Sv_nplus1_extrapolation0 *= 2.0;
-				Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
+		    Tensor<1,dim> totalDarcyVelo_extrapolation0 = totalDarcyVelo0;
+		    Tensor<1,dim> totalDarcyVelo_extrapolation1 = totalDarcyVelo1;
+
+		    if(second_order_extrapolation)
+		    {
+                        Sv_nplus1_extrapolation0 *= 2.0;
+                        Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
 
 				Sv_nplus1_extrapolation1 *= 2.0;
 				Sv_nplus1_extrapolation1 -= Sv_value1_nminus1;
 
-				Sa_nplus1_extrapolation0 *= 2.0;
-				Sa_nplus1_extrapolation0 -= Sa_value0_nminus1;
+//debug to uncomment/comment
+//                        Sv_grad_nplus1_extrapolation0 *= 2.0;
+//                        Sv_grad_nplus1_extrapolation0 -= Sv_grad0_nminus1;
 
-				Sa_nplus1_extrapolation1 *= 2.0;
-				Sa_nplus1_extrapolation1 -= Sa_value1_nminus1;
-
-				Sv_grad_nplus1_extrapolation0 *= 2.0;
-				Sv_grad_nplus1_extrapolation0 -= Sv_grad0_nminus1;
-
-				Sv_grad_nplus1_extrapolation1 *= 2.0;
-				Sv_grad_nplus1_extrapolation1 -= Sv_grad1_nminus1;
-
-			}
+//                        Sv_grad_nplus1_extrapolation1 *= 2.0;
+//                        Sv_grad_nplus1_extrapolation1 -= Sv_grad1_nminus1;
+// END debug to uncomment/comment
+		    }
 
 			double rho_l0 = rho_l_fcn.value(pl_value0);
 			double rho_l1 = rho_l_fcn.value(pl_value1);
@@ -1282,8 +1269,8 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double rho_v0 = rho_v_fcn.value(pl_value0, Sa_value0, Sv_nplus1_extrapolation0);
 			double rho_v1 = rho_v_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
 
-			double rho_v_extr0 = rho_v_fcn.value(pl_value0, Sa_nplus1_extrapolation0, Sv_nplus1_extrapolation0);
-			double rho_v_extr1 = rho_v_fcn.value(pl_value1, Sa_nplus1_extrapolation1, Sv_nplus1_extrapolation1);
+		    double rho_v_extr0 = rho_v_fcn.value(pl_value0, Sa_value0, Sv_nplus1_extrapolation0);
+		    double rho_v_extr1 = rho_v_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
 
 			double rho_a0 = rho_a_fcn.value(pl_value0);
 			double rho_a1 = rho_a_fcn.value(pl_value1);
@@ -1302,13 +1289,13 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double lambda_v1 = lambda_v_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
 			double lambda_a1 = lambda_a_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
 
-			double lambda_l_extr0 = lambda_l_fcn.value(pl_value0, Sa_nplus1_extrapolation0, Sv_nplus1_extrapolation0);
-			double lambda_v_extr0 = lambda_v_fcn.value(pl_value0, Sa_nplus1_extrapolation0, Sv_nplus1_extrapolation0);
-			double lambda_a_extr0 = lambda_a_fcn.value(pl_value0, Sa_nplus1_extrapolation0, Sv_nplus1_extrapolation0);
+		    double lambda_l_extr0 = lambda_l_fcn.value(pl_value0, Sa_value0, Sv_nplus1_extrapolation0);
+		    double lambda_v_extr0 = lambda_v_fcn.value(pl_value0, Sa_value0, Sv_nplus1_extrapolation0);
+		    double lambda_a_extr0 = lambda_a_fcn.value(pl_value0, Sa_value0, Sv_nplus1_extrapolation0);
 
-			double lambda_l_extr1 = lambda_l_fcn.value(pl_value1, Sa_nplus1_extrapolation1, Sv_nplus1_extrapolation1);
-			double lambda_v_extr1 = lambda_v_fcn.value(pl_value1, Sa_nplus1_extrapolation1, Sv_nplus1_extrapolation1);
-			double lambda_a_extr1 = lambda_a_fcn.value(pl_value1, Sa_nplus1_extrapolation1, Sv_nplus1_extrapolation1);
+		    double lambda_l_extr1 = lambda_l_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
+		    double lambda_v_extr1 = lambda_v_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
+		    double lambda_a_extr1 = lambda_a_fcn.value(pl_value1, Sa_value1, Sv_nplus1_extrapolation1);
 
 			double rholambda_t0 = rho_l0*lambda_l0 + rho_v0*lambda_v0 + rho_a0*lambda_a0;
 			double rholambda_t1 = rho_l1*lambda_l1 + rho_v1*lambda_v1 + rho_a1*lambda_a1;
@@ -1319,53 +1306,56 @@ void VaporSaturationProblem<dim>::assemble_system_matrix_vapor_saturation(double
 			double dpcv_dSv0 = cap_p_pcv_fcn.derivative_wrt_Sv(Sv_nplus1_extrapolation0);
 			double dpcv_dSv1 = cap_p_pcv_fcn.derivative_wrt_Sv(Sv_nplus1_extrapolation1);
 
-			// Diffusion coefficients and weights
-			double coef0_diff = rho_v0*lambda_v0*kappa0*dpcv_dSv0;
-			double coef1_diff = rho_v1*lambda_v1*kappa1*dpcv_dSv1;
-			double weight0_diff = coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
-			double weight1_diff = coef0_diff/(coef0_diff + coef1_diff + 1.e-20);
+		    // Diffusion coefficients
+		    double coef0_diff = fabs(rho_v0*lambda_v0*kappa0*dpcv_dSv0);
+		    double coef1_diff = fabs(rho_v1*lambda_v1*kappa1*dpcv_dSv1);
 
-            // Diffusion coefficients and weights for stab method
-             double coef0_diff_stab = fabs(kappa0*Kappa_tilde_v);
-             double coef1_diff_stab = fabs(kappa1*Kappa_tilde_v);
+		    // Diffusion coefficients for stab method
+		    double coef0_diff_stab = fabs(kappa0*Kappa_tilde_v);
+		    double coef1_diff_stab = fabs(kappa1*Kappa_tilde_v);
 
+		    double gamma_Sv_e;
+		    if (Stab_v)
+		    {
+			gamma_Sv_e = fabs(2.0*coef0_diff_stab*coef1_diff_stab
+					  /(coef0_diff_stab + coef1_diff_stab + 1.e-20));
+		    }
+		    else
+		    {
+			gamma_Sv_e = fabs(2.0*coef0_diff*coef1_diff
+					  /(coef0_diff + coef1_diff + 1.e-20));
+		    }
+		    double h_e = cell->face(f)->measure();
+		    double penalty_factor = (penalty_Sv/h_e) * gamma_Sv_e * degree*(degree + dim - 1);
 
-             double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
-             double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+                    // Diffusion weights
+		    double weight0_diff = coef1_diff/(coef0_diff + coef1_diff + 1.e-20);
+		    double weight1_diff = coef0_diff/(coef0_diff + coef1_diff + 1.e-20);
 
+                    // Diffusion weights for stab method
+		    double weight0_diff_stab = coef1_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+		    double weight1_diff_stab = coef0_diff_stab/(coef0_diff_stab + coef1_diff_stab + 1.e-20);
+
+                    //Sv coefficients and weights for stab method
 		    double coef0_Sv_stab = (-rho_v0*lambda_v0*dpcv_dSv0+Kappa_tilde_v)*kappa0;
+		    double coef1_Sv_stab = (-rho_v1*lambda_v1*dpcv_dSv1+Kappa_tilde_v)*kappa1;
 
-            double coef1_Sv_stab = (-rho_v1*lambda_v1*dpcv_dSv1+Kappa_tilde_v)*kappa1;
+		    double weight0_Sv_stab = coef1_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
+		    double weight1_Sv_stab = coef0_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
 
-            double weight0_Sv_stab = coef1_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
-            double weight1_Sv_stab = coef0_Sv_stab/(coef0_Sv_stab + coef1_Sv_stab + 1.e-20);
-
-            double gamma_Sv_e;
-            if (Stab_v)
-            {
-                gamma_Sv_e = fabs(2.0*coef0_diff_stab*coef1_diff_stab
-                                  /(coef0_diff_stab + coef1_diff_stab + 1.e-20));
-            }
-            else
-            {
-                gamma_Sv_e = fabs(2.0*coef0_diff*coef1_diff
-                                  /(coef0_diff + coef1_diff + 1.e-20));
-            }
-			double h_e = cell->face(f)->measure();
-			double penalty_factor = (penalty_Sv/h_e) * gamma_Sv_e * degree*(degree + dim - 1);
-
-			for (unsigned int i = 0; i < n_dofs; ++i)
+                    // start of interior face terms
+		    for (unsigned int i = 0; i < n_dofs; ++i)
+		    {
+			if (rebuild_matrix)
 			{
-				if (rebuild_matrix)
-				{
-					for (unsigned int j = 0; j < n_dofs; ++j)
-					{
-					// Interior face terms from diffusion
-						copy_data_face.cell_matrix(i, j) +=
-						penalty_factor
-						* fe_iv.jump_in_shape_values(i, point)
-						* fe_iv.jump_in_shape_values(j, point)
-						* JxW[point];
+			    for (unsigned int j = 0; j < n_dofs; ++j)
+			    {
+				// Interior face terms from diffusion
+				copy_data_face.cell_matrix(i, j) +=
+				    penalty_factor
+				    * fe_iv.jump_in_shape_values(i, point)
+				    * fe_iv.jump_in_shape_values(j, point)
+				    * JxW[point];
 
                     	if (Stab_v)
                     	{

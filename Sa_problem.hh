@@ -636,57 +636,57 @@ namespace AqueousSaturation
                 if(artificial_visc_exp || artificial_visc_imp)
                     nu_h_artificial_visc = 0.5*sqrt(cell->measure())*art_visc_multiple_Sa*maximum_Darcy*2.0*maximum_Sa;
 
-                // This is where the main formulation starts
-                for (unsigned int i = 0; i < n_dofs; ++i)
-                {
-                    if (rebuild_matrix)
-                    {
-                        for (unsigned int j = 0; j < n_dofs; ++j)
-                        {
-                            if(timestep_number == 1 || !second_order_time_derivative)
-                            {
-                            // Time term
-                                copy_data.cell_matrix(i,j) +=
-                                    (1.0/time_step)
-                                    * phi_nplus1
-                                    * rho_a
-                                    * fe_v.shape_value(i, point)
-                                    * fe_v.shape_value(j, point)
-                                    * JxW[point];
-                            }
-                            else
-                            {
-                                copy_data.cell_matrix(i,j) +=
-                                    (1.0/time_step)
-                                    * 1.5
-                                    * phi_nplus1
-                                    * rho_a
-                                    * fe_v.shape_value(i, point)
-                                    * fe_v.shape_value(j, point)
-                                    * JxW[point];
-                            }
-                            if (Stab_a)
-                            {
-                                // Diffusion Term
-                                copy_data.cell_matrix(i,j) -=
-                                    -Kappa_tilde_a
-                                    * kappa
-                                    * fe_v.shape_grad(i, point)
-                                    * fe_v.shape_grad(j, point)
-                                    * JxW[point];
-                            }
-                            else
-                            {
-                                // Diffusion Term
-                                copy_data.cell_matrix(i,j) -=
-                                    rho_a
-                                    * lambda_a
-                                    * dpca_dSa
-                                    * kappa
-                                    * fe_v.shape_grad(i, point)
-                                    * fe_v.shape_grad(j, point)
-                                    * JxW[point];
-                            }
+		    // This is where the main formulation starts
+		    for (unsigned int i = 0; i < n_dofs; ++i)
+		    {
+			if (rebuild_matrix)
+			{
+			    for (unsigned int j = 0; j < n_dofs; ++j)
+			    {
+				// Time term
+				if(!second_order_time_derivative)
+				{
+				    copy_data.cell_matrix(i,j) +=
+					(1.0/time_step)
+					* phi_nplus1
+					* rho_a
+					* fe_v.shape_value(i, point)
+					* fe_v.shape_value(j, point)
+					* JxW[point];
+				}
+				else
+				{
+				    copy_data.cell_matrix(i,j) +=
+					(1.0/time_step)
+					* 1.5
+					* phi_nplus1
+					* rho_a
+					* fe_v.shape_value(i, point)
+					* fe_v.shape_value(j, point)
+					* JxW[point];
+				}
+
+				// Diffusion Term
+				if (Stab_a)
+				{
+				    copy_data.cell_matrix(i,j) -=
+					-Kappa_tilde_a
+					* kappa
+					* fe_v.shape_grad(i, point)
+					* fe_v.shape_grad(j, point)
+					* JxW[point];
+				}
+				else
+				{
+				    copy_data.cell_matrix(i,j) -=
+					rho_a
+					* lambda_a
+					* dpca_dSa
+					* kappa
+					* fe_v.shape_grad(i, point)
+					* fe_v.shape_grad(j, point)
+					* JxW[point];
+				}
 
                             if(artificial_visc_imp)
                                 {
@@ -701,19 +701,19 @@ namespace AqueousSaturation
                     // Source term
                     copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point]) * fe_v.shape_value(i, point) * JxW[point];
 
-                    // Time term
-                    if(timestep_number == 1 || !second_order_time_derivative) // bdf1
-                    {
-                        copy_data.cell_rhs(i) += (1.0/time_step) * phi_n * rho_a_n * Sa_value_n
-                                                 * fe_v.shape_value(i, point) * JxW[point];
-                    }
-                    else // bdf2
-                    {
-                        copy_data.cell_rhs(i) += (1.0/time_step)
-                                                 * (2.0 * phi_n * rho_a_n * Sa_value_n
-                                                    - 0.5 * phi_nminus1 * rho_a_nminus1 * Sa_value_nminus1)
-                                                 * fe_v.shape_value(i, point) * JxW[point];
-                    }
+			// Time term
+			if(!second_order_time_derivative) // bdf1
+			{
+			    copy_data.cell_rhs(i) += (1.0/time_step) * phi_n * rho_a_n * Sa_value_n
+				* fe_v.shape_value(i, point) * JxW[point];
+			}
+			else // bdf2
+			{
+			    copy_data.cell_rhs(i) += (1.0/time_step)
+				* (2.0 * phi_n * rho_a_n * Sa_value_n
+				   - 0.5 * phi_nminus1 * rho_a_nminus1 * Sa_value_nminus1)
+				* fe_v.shape_value(i, point) * JxW[point];
+			}
 
                     copy_data.cell_rhs(i) += rho_a * lambda_a * dpca_dSv * kappa * Sv_grad_nplus1_extrapolation
                                              * fe_v.shape_grad(i, point) * JxW[point];

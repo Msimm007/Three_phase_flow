@@ -613,56 +613,60 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
         	double time_term_n = 0.0;
         	double time_term_nminus1 = 0.0;
 
-            if(timestep_number > 1)
-			{
-            	time_term = phi_n*rhot;
-				time_term_n = phi_n*rhot_n;
-				time_term_nminus1 = phi_nminus1*rhot_nminus1;
-			}
-            for (unsigned int i = 0; i < n_dofs; ++i)
-            {
-				if(rebuild_matrix)
-				{
-                	for (unsigned int j = 0; j < n_dofs; ++j)
-                	{
-						if(Stab_pl)
-						{
-							copy_data.cell_matrix(i,j) +=
-							Kappa_tilde_pl
-							* kappa
-							* fe_v.shape_grad(i, point)
-							* fe_v.shape_grad(j, point)
-							* JxW[point];						
-						}
-						else
-						{
-							copy_data.cell_matrix(i,j) +=
-							rholambda_t
-							* kappa
-							* fe_v.shape_grad(i, point)
-							* fe_v.shape_grad(j, point)
-							* JxW[point];
-						}
+//		    if(timestep_number > 1)
+//		    {
+//			time_term = phi_n*rhot;
+//			time_term_n = phi_n*rhot_n;
+//			time_term_nminus1 = phi_nminus1*rhot_nminus1;
+//		    }
+		    time_term = phi*rhot;
+		    time_term_n = phi_n*rhot_n;
+		    time_term_nminus1 = phi_nminus1*rhot_nminus1;
 
-						// Time term
-						if(implicit_time_pl)
-						{
-							if(timestep_number == 1 || !second_order_time_derivative)
-								copy_data.cell_matrix(i,j) +=
-									(psi/time_step)
-									* fe_v.shape_value(i, point)
-									* fe_v.shape_value(j, point)
-									* JxW[point];
-						else
-							copy_data.cell_matrix(i,j) +=
-									(psi/time_step)
-									* 1.5
-									* fe_v.shape_value(i, point)
-									* fe_v.shape_value(j, point)
-									* JxW[point];
-						}
-                	}
+		    for (unsigned int i = 0; i < n_dofs; ++i)
+		    {
+			if(rebuild_matrix)
+			{
+			    for (unsigned int j = 0; j < n_dofs; ++j)
+			    {
+				if(Stab_pl)
+				{
+				    copy_data.cell_matrix(i,j) +=
+					Kappa_tilde_pl
+					* kappa
+					* fe_v.shape_grad(i, point)
+					* fe_v.shape_grad(j, point)
+					* JxW[point];
 				}
+				else
+				{
+				    copy_data.cell_matrix(i,j) +=
+					rholambda_t
+					* kappa
+					* fe_v.shape_grad(i, point)
+					* fe_v.shape_grad(j, point)
+					* JxW[point];
+				}
+
+				// Time term
+				if(implicit_time_pl)
+				{
+				    if(!second_order_time_derivative)
+					copy_data.cell_matrix(i,j) +=
+					    (psi/time_step)
+					    * fe_v.shape_value(i, point)
+					    * fe_v.shape_value(j, point)
+					    * JxW[point];
+				    else
+					copy_data.cell_matrix(i,j) +=
+					    (psi/time_step)
+					    * 1.5
+					    * fe_v.shape_value(i, point)
+					    * fe_v.shape_value(j, point)
+					    * JxW[point];
+				}
+			    }
+			}
 
                 // Source term
                 copy_data.cell_rhs(i) += right_hand_side_fcn.value(q_points[point]) * fe_v.shape_value(i, point) * JxW[point];
@@ -674,21 +678,21 @@ void LiquidPressureProblem<dim>::assemble_system_matrix_pressure(double time_ste
                                              * fe_v.shape_grad(i, point) * JxW[point];					
 				}
 
-                // Time term of pl
-                if(implicit_time_pl)
-                {
-                	if(timestep_number == 1 || !second_order_time_derivative)
-						copy_data.cell_rhs(i) +=
-								(psi/time_step)
-								* pl_value_n
-								* fe_v.shape_value(i, point)
-								* JxW[point];
-                	else
-						copy_data.cell_rhs(i) +=
-								(psi/time_step)
-								* (2.0*pl_value_n - 0.5*pl_value_nminus1)
-								* fe_v.shape_value(i, point)
-								* JxW[point];
+			// Time term of pl
+			if(implicit_time_pl)
+			{
+			    if(!second_order_time_derivative)
+				copy_data.cell_rhs(i) +=
+				    (psi/time_step)
+				    * pl_value_n
+				    * fe_v.shape_value(i, point)
+				    * JxW[point];
+			    else
+				copy_data.cell_rhs(i) +=
+				    (psi/time_step)
+				    * (2.0*pl_value_n - 0.5*pl_value_nminus1)
+				    * fe_v.shape_value(i, point)
+				    * JxW[point];
 
                 	if(second_order_time_derivative)
                 	{
