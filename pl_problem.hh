@@ -995,8 +995,6 @@ namespace LiquidPressure
 				    * JxW[point];
 			    }
 
-			    if(cell->face(face_no)->boundary_id() != 5 && cell->face(face_no)->boundary_id() != 6)
-			    {
 				copy_data.cell_rhs(i) += rho_v
 				    * lambda_v
 				    * kappa
@@ -1012,7 +1010,6 @@ namespace LiquidPressure
 				    * normals[point]
 				    * fe_face.shape_value(i, point)
 				    * JxW[point];
-			    }
 
 			    copy_data.cell_rhs(i) -= kappa*(rho_l_fcn.value(pl_nplus1_extrapolation)*rho_l*lambda_l
 							    + rho_v_fcn.value(pl_nplus1_extrapolation, Sa_nplus1_extrapolation, Sv_nplus1_extrapolation)*rho_v*lambda_v
