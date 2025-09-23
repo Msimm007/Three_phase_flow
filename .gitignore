@@ -32,7 +32,7 @@ compile_commands.json
 ThreePhase
 
 # Outputs only for local use. No need to be on github
-OUT_*/
+OUTFILE_*/
 out_*
 OUTPUT_*/
 
@@ -49,3 +49,6 @@ hpc_cluster_notes.txt
 
 # for debugging from LC
 FROM_LC
+
+# for batch job scripts
+BATCH_JOB_SCRIPTS

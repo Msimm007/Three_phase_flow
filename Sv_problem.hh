@@ -902,7 +902,7 @@ namespace VaporSaturation
                             // added to RHS - stab method
 			    if (Stab_v)
 			    {
-				copy_data.cell_rhs(i) += (rho_v*lambda_v*dpcv_dSv - Kappa_tilde_v)
+				copy_data.cell_rhs(i) -= ( Kappa_tilde_v - rho_v*lambda_v*dpcv_dSv)
 				    * kappa
 				    * Sv_grad_nplus1_extrapolation
 				    * normals[point]
@@ -1198,30 +1198,28 @@ namespace VaporSaturation
 		    Tensor<1,dim> totalDarcyVelo0 = DarcyVelocities[point];
 		    Tensor<1,dim> totalDarcyVelo1 = DarcyVelocities_neighbor[point];
 
-                    // Second order extrapolations if needed
-                    double Sv_nplus1_extrapolation0 = Sv_value0_n;
-                    double Sv_nplus1_extrapolation1 = Sv_value1_n;
+            // Second order extrapolations if needed
+            double Sv_nplus1_extrapolation0 = Sv_value0_n;
+            double Sv_nplus1_extrapolation1 = Sv_value1_n;
 
-                    Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
-                    Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
+            Tensor<1,dim> Sv_grad_nplus1_extrapolation0 = Sv_grad0_n;
+            Tensor<1,dim> Sv_grad_nplus1_extrapolation1 = Sv_grad1_n;
 
 		    Tensor<1,dim> totalDarcyVelo_extrapolation0 = totalDarcyVelo0;
 		    Tensor<1,dim> totalDarcyVelo_extrapolation1 = totalDarcyVelo1;
 
 		    if(second_order_extrapolation)
 		    {
-                        Sv_nplus1_extrapolation0 *= 2.0;
-                        Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
-
-                        Sv_nplus1_extrapolation1 *= 2.0;
-                        Sv_nplus1_extrapolation1 -= Sv_value1_nminus1;
+                Sv_nplus1_extrapolation0 *= 2.0;
+                Sv_nplus1_extrapolation0 -= Sv_value0_nminus1;
+                Sv_nplus1_extrapolation1 *= 2.0;
+                Sv_nplus1_extrapolation1 -= Sv_value1_nminus1;
 
 //TODO: debug to uncomment/comment
-//                        Sv_grad_nplus1_extrapolation0 *= 2.0;
-//                        Sv_grad_nplus1_extrapolation0 -= Sv_grad0_nminus1;
-
-//                        Sv_grad_nplus1_extrapolation1 *= 2.0;
-//                        Sv_grad_nplus1_extrapolation1 -= Sv_grad1_nminus1;
+                Sv_grad_nplus1_extrapolation0 *= 2.0;
+                Sv_grad_nplus1_extrapolation0 -= Sv_grad0_nminus1;
+                Sv_grad_nplus1_extrapolation1 *= 2.0;
+                Sv_grad_nplus1_extrapolation1 -= Sv_grad1_nminus1;
 // END debug to uncomment/comment
 		    }
 

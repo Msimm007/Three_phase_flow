@@ -6,7 +6,7 @@ subsection Time discretization parameters
   set Final time = 1
   
   # Initial time step
-  set Initial time step = 0.10
+  set Initial time step = 0.01
 
   # Second order time derivative
   set Second order time derivative = false
@@ -37,7 +37,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For pl
-  set Stab_pl = false
+  set Stab_pl = true
 
   # If true, then stability method is used For Sa
   set Stab_a = true
@@ -52,10 +52,10 @@ subsection Spatial discretization parameters
   set Degree = 1
 
   # Initial level of refinement
-  set Initial level of refinement = 2
+  set Initial level of refinement = 4
 
   # Final level of refinement
-  set Final level of refinement = 6
+  set Final level of refinement = 4
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -91,15 +91,15 @@ subsection Spatial discretization parameters
   #set Penalty Sv boundary = 1000.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = true
+  set Project to RT0 = false
 
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
-  set Project to RT0 with kappa only = true
+  set Project to RT0 with kappa only = false
   
   # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
   # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise
   # it projects either only the \nabla P_h part
-  set Project Darcy with gravity = false
+  set Project Darcy with gravity = true
   
   # Use direct solver for linear systems. If false, it uses gmres
   set Use direct solver for linear systems = false

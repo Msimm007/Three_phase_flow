@@ -717,7 +717,7 @@ namespace LiquidPressure
 				    * fe_v.shape_value(i, point) * JxW[point];
 			    }
 			    else
-                		copy_data.cell_rhs(i) += -(1.0/time_step)*(time_term_n - time_term_nminus1) * fe_v.shape_value(i, point) * JxW[point];
+                	copy_data.cell_rhs(i) += -(1.0/time_step)*(time_term_n - time_term_nminus1) * fe_v.shape_value(i, point) * JxW[point];
 			}
 
 			// Pca and pcv terms
@@ -976,8 +976,8 @@ namespace LiquidPressure
 				    * fe_face.shape_value(i, point)
 				    * JxW[point];
 
-				copy_data.cell_rhs(i) -= theta_pl
-				    * (-Kappa_tilde_pl)
+				copy_data.cell_rhs(i) += theta_pl
+				    * Kappa_tilde_pl
 				    * kappa
 				    * fe_face.shape_grad(i, point)
 				    * normals[point]

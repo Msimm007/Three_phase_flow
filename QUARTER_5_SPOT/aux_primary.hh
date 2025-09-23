@@ -331,14 +331,19 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 
         double zz;
 		if(dim == 3)
+		{
 			zz = cell->center()[2];
-		
-
-
-		if(xx >= 25.0 && xx <= 50.0)
-			if(yy >= 25.0 && yy <= 50.0)
-				if(zz >= 25.0 && zz <= 50.0)
+			if(xx >= 25.0 && xx <= 50.0)
+				if(yy >= 25.0 && yy <= 50.0)
+					if(zz >= 25.0 && zz <= 50.0)
+						kappa_abs /= 1000.0;		
+		}
+		else
+		{
+			if(xx >= 25.0 && xx <= 50.0)
+				if(yy >= 25.0 && yy <= 50.0)
 					kappa_abs /= 1000.0;
+		}
 	}
 	return kappa_abs;
 };

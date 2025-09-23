@@ -640,7 +640,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 
 	data_out_pl_nminus1.set_flags(flags);
 	const std::string filename_pl_0 =
-		        "OUTPUT_Q5S_3D/solution_pl-000.vtu";
+		        "OUTPUT_Q5S/solution_pl-000.vtu";
 	data_out_pl_nminus1.write_vtu_in_parallel(filename_pl_0, mpi_communicator);
 
 	pl_solution_n.update_ghost_values();
@@ -653,7 +653,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 
 	data_out_pl_n.set_flags(flags);
 	const std::string filename_pl_1 =
-		        "OUTPUT_Q5S_3D/solution_pl-001.vtu";
+		        "OUTPUT_Q5S/solution_pl-001.vtu";
 	data_out_pl_n.write_vtu_in_parallel(filename_pl_1, mpi_communicator);
 
 	// Sa
@@ -667,7 +667,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 
 	data_out_Sa_nminus1.set_flags(flags);
 	const std::string filename_Sa_0 =
-				"OUTPUT_Q5S_3D/solution_Sa-000.vtu";
+				"OUTPUT_Q5S/solution_Sa-000.vtu";
 	data_out_Sa_nminus1.write_vtu_in_parallel(filename_Sa_0, mpi_communicator);
 
 	Sa_solution_n.update_ghost_values();
@@ -680,7 +680,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 
 	data_out_Sa_n.set_flags(flags);
 	const std::string filename_Sa_1 =
-				"OUTPUT_Q5S_3D/solution_Sa-001.vtu";
+				"OUTPUT_Q5S/solution_Sa-001.vtu";
 	data_out_Sa_n.write_vtu_in_parallel(filename_Sa_1, mpi_communicator);
 
 	// Sv
@@ -696,7 +696,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 
 		data_out_Sv_nminus1.set_flags(flags);
 		const std::string filename_Sv_0 =
-					"OUTPUT_Q5S_3D/solution_Sv-000.vtu";
+					"OUTPUT_Q5S/solution_Sv-000.vtu";
 		data_out_Sv_nminus1.write_vtu_in_parallel(filename_Sv_0, mpi_communicator);
 
 		Sv_solution_n.update_ghost_values();
@@ -709,7 +709,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk_initial_cond() const
 
 		data_out_Sv_n.set_flags(flags);
 		const std::string filename_Sv_1 =
-					"OUTPUT_Q5S_3D/solution_Sv-001.vtu";
+					"OUTPUT_Q5S/solution_Sv-001.vtu";
 		data_out_Sv_n.write_vtu_in_parallel(filename_Sv_1, mpi_communicator);
 	}
 }
@@ -729,7 +729,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk() const
 
 	data_out_pl.set_flags(flags);
 	const std::string filename_pl =
-		        "OUTPUT_Q5S_3D/solution_pl-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
+		        "OUTPUT_Q5S/solution_pl-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
 	data_out_pl.write_vtu_in_parallel(filename_pl, mpi_communicator);
 
 	// Sa
@@ -743,7 +743,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk() const
 
 	data_out_Sa.set_flags(flags);
 	const std::string filename_Sa =
-			"OUTPUT_Q5S_3D/solution_Sa-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
+			"OUTPUT_Q5S/solution_Sa-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
 	data_out_Sa.write_vtu_in_parallel(filename_Sa, mpi_communicator);
 
 
@@ -761,7 +761,7 @@ void CoupledPressureSaturationProblem<dim>::output_vtk() const
 
 		data_out_Sv.set_flags(flags);
 		const std::string filename_Sv =
-				"OUTPUT_Q5S_3D/solution_Sv-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
+				"OUTPUT_Q5S/solution_Sv-" + Utilities::int_to_string(timestep_number, 3) + ".vtu";
 		data_out_Sv.write_vtu_in_parallel(filename_Sv, mpi_communicator);
 
 
