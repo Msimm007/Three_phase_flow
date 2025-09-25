@@ -325,7 +325,8 @@ CoupledPressureSaturationProblem<dim>::CoupledPressureSaturationProblem(const un
 	if(continue_solution)
 		timestep_number = prm.get_integer("Time step number");
 	else
-		timestep_number = 2;
+	    //timestep_number = 2;
+	    timestep_number = 1;
 
 	prm.leave_subsection();
 
@@ -1324,16 +1325,61 @@ void CoupledPressureSaturationProblem<dim>::run()
 	InitialValuesAqueousSaturation_dt<dim> Sa_fcn;
 	InitialValuesVaporSaturation_dt<dim> Sv_fcn;
 
-	pl_fcn.set_time(time_step);
-	Sa_fcn.set_time(time_step);
-	Sv_fcn.set_time(time_step);
+        //Initial variable at time tnminus2
+	pl_fcn.set_time(-2*time_step);
+	Sa_fcn.set_time(-2*time_step);
+	Sv_fcn.set_time(-2*time_step);
+        VectorTools::project(dof_handler,
+                             constraints,
+                             QGauss<dim>(fe.degree + 1),
+                             pl_fcn,
+                             pl_solution_nminus2);
+        VectorTools::project(dof_handler,
+                             constraints,
+                             QGauss<dim>(fe.degree + 1),
+                             Sa_fcn,
+                             Sa_solution_nminus2);
+        if(two_phase)
+            Sv_solution_nminus2 = 0.0;
+        else
+            VectorTools::project(dof_handler,
+                                 constraints,
+                                 QGauss<dim>(fe.degree + 1),
+                                 Sv_fcn,
+                                 Sv_solution_nminus2);
 
+        //Initial variable at time tnminus1
+	pl_fcn.set_time(-time_step);
+	Sa_fcn.set_time(-time_step);
+	Sv_fcn.set_time(-time_step);
+        VectorTools::project(dof_handler,
+                             constraints,
+                             QGauss<dim>(fe.degree + 1),
+                             pl_fcn,
+                             pl_solution_nminus1);
+        VectorTools::project(dof_handler,
+                             constraints,
+                             QGauss<dim>(fe.degree + 1),
+                             Sa_fcn,
+                             Sa_solution_nminus1);
+        if(two_phase)
+            Sv_solution_nminus1 = 0.0;
+        else
+            VectorTools::project(dof_handler,
+                                 constraints,
+                                 QGauss<dim>(fe.degree + 1),
+                                 Sv_fcn,
+                                 Sv_solution_nminus1);
+
+        //Initial variable at time tn
+	pl_fcn.set_time(0*time_step);
+	Sa_fcn.set_time(0*time_step);
+	Sv_fcn.set_time(0*time_step);
 	VectorTools::project(dof_handler,
-						 constraints,
-						 QGauss<dim>(fe.degree + 1),
-						 pl_fcn,
-						 pl_solution_n);
-
+			     constraints,
+			     QGauss<dim>(fe.degree + 1),
+			     pl_fcn,
+			     pl_solution_n);
 	VectorTools::project(dof_handler,
 						 constraints,
 						 QGauss<dim>(fe.degree + 1),
