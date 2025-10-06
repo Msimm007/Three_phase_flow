@@ -188,7 +188,12 @@ double
 ExactLiquidPressure<dim>::value(const Point<dim> &p,
                                 const unsigned int /*component*/) const
 {
-    return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
+    if (dim == 3)
+        return 2.0 + p[0]*p[1]*p[1]*p[2]*p[2]*p[2] + p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
+    else
+        return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
+
+
 }
 
 template <int dim>
@@ -198,8 +203,16 @@ ExactLiquidPressure<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_pl;
 
-    grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
-    grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
+    if (dim == 3){
+        grad_pl[0] = p[1]*p[1]*p[2]*p[2]*p[2] + 2.0*p[0]*p[2]*sin(this->get_time() + p[1]);
+        grad_pl[1] = 2.0*p[0]*p[1]*p[2]*p[2]*p[2] + p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);        
+        grad_pl[2] = 3.0*p[0]*p[1]*p[1]*p[2]*p[2] + p[0]*p[0]*sin(this->get_time() + p[1]);        
+    }
+    else{
+        grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
+        grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
+    }
+
 
     return grad_pl;
 }
@@ -209,7 +222,12 @@ double
 ExactLiquidPressure<dim>::laplacian(const Point<dim> &p,
                                     const unsigned int /*component*/) const
 {
-    return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
+    if (dim == 3)
+        return p[2]*sin(this->get_time() + p[1])*(2 - p[0]*p[0]) + 2*p[0]*p[2]*(p[2]*p[2] + 3*p[1]*p[1]);
+    else
+        return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
+
+
 }
 
 template <int dim>
@@ -217,7 +235,11 @@ double
 ExactLiquidPressure<dim>::time_derivative(const Point<dim> &p,
                                           const unsigned int /*component*/) const
 {
-    return p[0]*p[0]*cos(this->get_time() + p[1]);
+    if (dim == 3)
+        return p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);
+    else
+        return p[0]*p[0]*cos(this->get_time() + p[1]);
+
 }
 
 template <int dim>

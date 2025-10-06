@@ -1,0 +1,1 @@
+salloc --mem=8gb -t 3:00:00 -n 28 -N 1
