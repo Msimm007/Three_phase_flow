@@ -52,3 +52,6 @@ FROM_LC
 
 # for batch job scripts
 BATCH_JOB_SCRIPTS
+
+# code for interactive job request
+interactive_job_command
