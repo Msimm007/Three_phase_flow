@@ -317,7 +317,12 @@ double
 ExactVaporSaturation<dim>::value(const Point<dim> &p,
                                  const unsigned int /*component*/) const
 {
-    return (3.0 - cos(this->get_time() + p[0]))/8.0;
+    if (dim == 3)
+        return (3.0 - cos(this->get_time() + p[0] + p[2]))/8.0;
+    else
+        return (3.0 - cos(this->get_time() + p[0]))/8.0;
+
+    
 }
 
 template <int dim>
@@ -327,9 +332,15 @@ ExactVaporSaturation<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_Sv;
 
-    grad_Sv[0] = sin(this->get_time() + p[0])/8.0;
-    grad_Sv[1] = 0.0;
-
+    if (dim == 3){
+        grad_Sv[0] = sin(this->get_time() + p[0]+ p[2])/8.0;
+        grad_Sv[1] = 0.0;
+        grad_Sv[2] = sin(this->get_time() + p[0]+ p[2])/8.0;
+    }
+    else{
+        grad_Sv[0] = sin(this->get_time() + p[0])/8.0;
+        grad_Sv[1] = 0.0; 
+    }
     return grad_Sv;
 }
 
@@ -338,7 +349,10 @@ double
 ExactVaporSaturation<dim>::laplacian(const Point<dim> &p,
                                      const unsigned int /*component*/) const
 {
-    return cos(this->get_time() + p[0])/8.0;
+    if (dim == 3)
+        return cos(this->get_time() + p[0] + p[2])/4.0;
+    else
+        return cos(this->get_time() + p[0])/8.0;
 }
 
 template <int dim>
@@ -346,7 +360,11 @@ double
 ExactVaporSaturation<dim>::time_derivative(const Point<dim> &p,
                                            const unsigned int /*component*/) const
 {
-    return sin(this->get_time() + p[0])/8.0;
+    if (dim == 3)
+        return sin(this->get_time() + p[0] + p[2])/8.0;
+    else
+        return sin(this->get_time() + p[0])/8.0;
+        
 }
 
 template <int dim>
@@ -375,7 +393,10 @@ double
 ExactAqueousSaturation<dim>::value(const Point<dim> &p,
                                    const unsigned int /*component*/) const
 {
-    return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
+    if (dim == 3)
+        return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] + cos(this->get_time() + p[0] + p[2]))/8.0;
+    else
+        return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
 }
 
 template <int dim>
@@ -385,8 +406,16 @@ ExactAqueousSaturation<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_Sa;
 
-    grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
-    grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
+    if (dim == 3){
+        grad_Sa[0] = (4.0*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]))/8.0;
+        grad_Sa[1] = p[0]*p[0]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0;        
+        grad_Sa[2] = (6*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]) )/8.0;        
+    }
+    else{
+        grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
+        grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
+    }
+
 
     return grad_Sa;
 }
@@ -396,7 +425,13 @@ double
 ExactAqueousSaturation<dim>::laplacian(const Point<dim> &p,
                                        const unsigned int /*component*/) const
 {
-    return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;;
+    if (dim == 3){
+        return (4.0*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] + 18.0*p[0]*p[0]*p[1]*p[1]*p[2]*p[2] 
+        - cos(this->get_time() + p[0]+ p[2]))/8.0 + p[0]*p[0]*p[2]*p[2]*p[2]*p[2]/2.0;
+    }
+    else
+        return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;;
+
 }
 
 template <int dim>
@@ -404,7 +439,10 @@ double
 ExactAqueousSaturation<dim>::time_derivative(const Point<dim> &p,
                                              const unsigned int /*component*/) const
 {
-    return -sin(this->get_time() + p[0])/8.0;
+    if (dim == 3)
+        return -sin(this->get_time() + p[0] + p[2])/8.0;
+    else
+        return -sin(this->get_time() + p[0])/8.0;
 }
 
 // pl at t=0
