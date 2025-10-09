@@ -1456,8 +1456,8 @@ namespace LiquidPressure
 														  coef0_diff_stab, coef1_diff_stab,
 														  weight0_diff_stab, weight1_diff_stab);
 
-				    copy_data_face.cell_matrix(i, j) -=
-					fe_iv.jump_in_shape_values(i, point)
+				    copy_data_face.cell_matrix(i, j) +=
+					-fe_iv.jump_in_shape_values(i, point)
 					* weighted_aver_j_stab
 					* JxW[point];
 

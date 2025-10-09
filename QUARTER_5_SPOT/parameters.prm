@@ -3,7 +3,7 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 750.0 for 2d problem. 4500.0 for 3d problem)
-  set Final time = 25.0
+  set Final time = 750.0
   
   # Initial time step (default 0.25)
   set Initial time step = 0.25
@@ -29,7 +29,7 @@ subsection Spatial discretization parameters
   set Dimension = 2
 
   # If true, then stability method is used For pl (*******TODO: debug. not currently working**************) 
-  set Stab_pl = false
+  set Stab_pl = true
   
   # If true, then stability method is used For Sa
   set Stab_a = true
@@ -44,10 +44,10 @@ subsection Spatial discretization parameters
   set Degree = 1
   
   # Initial level of refinement
-  set Initial level of refinement = 2
+  set Initial level of refinement = 1
   
   # Final level of refinement
-  set Final level of refinement = 2
+  set Final level of refinement = 1
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -80,7 +80,7 @@ subsection Spatial discretization parameters
   set Project to RT0 = false
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
-  set Project to RT0 with kappa only = false
+  set Project to RT0 with kappa only = true
   
   # Project Darcy velocity with gravity. If true, projects -\kappa (\rho\lambda)_t (\nabla P_h + \rho_a g)
   # or -\kappa (\nabla P_h + \rho_a g) according to the previous parameter. Otherwise
@@ -88,7 +88,7 @@ subsection Spatial discretization parameters
   set Project Darcy with gravity = false
   
   # Use direct solver for linear systems. If false, it uses gmres
-  set Use direct solver for linear systems = true
+  set Use direct solver for linear systems = false
   
   # Use exact pl in Sa (only for manufactured test case)
   set Use exact pl in Sa = false
@@ -133,7 +133,7 @@ end
 
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = false
+  set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
   set Frequency for vtk printing = 25
