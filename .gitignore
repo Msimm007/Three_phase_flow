@@ -51,4 +51,4 @@ hpc_cluster_notes.txt
 FROM_LC
 
 # for batch job scripts
-BATCH_JOB_SCRIPTS
+RUNNING_SCRIPTS
