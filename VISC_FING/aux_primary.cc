@@ -1,6 +1,6 @@
 #include "aux_primary.hh"
 
-double M = 200.0;
+double M = 100.0;
 double amp_factor_cap_pressure = 300.0;
 
 double stab_pl_data = 8000.0;

@@ -7,7 +7,7 @@ subsection Time discretization parameters
 
 
   # Initial time step (must be chosen so that at least one time step is performed)
-  set Initial time step = 4
+  set Initial time step = 2
 
   # Second order time derivative
   set Second order time derivative = true
@@ -48,14 +48,13 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # Polynomial degree for FE space
-  set Degree = 1
-
+  set Degree = 2
 
   # Initial level of refinement
-  set Initial level of refinement = 0
+  set Initial level of refinement = 1
 
   # Final level of refinement
-  set Final level of refinement = 0
+  set Final level of refinement = 1
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
