@@ -484,6 +484,18 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
 	if(this->get_time() == 0)
 		return 0.2;
 
+	// if(0.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 5.0 && fabs(p[1] - 5.0) < 1.e-12)
+	// 	return 0.7;
+
+	// 	// return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5);
+	// else if(fabs(p[0] - 5.0) < 1.e-12 && 0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0)
+	// 	return 0.7;
+	// else
+	// 	return 0.2;
+		// return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5);
+	// if(this->get_time() == 0)
+	// 	return 0.2;
+
 	if(0.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 5.0 && fabs(p[1] - 5.0) < 1.e-12)
 		return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5);
 	else if(fabs(p[0] - 5.0) < 1.e-12 && 0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0)
@@ -495,6 +507,7 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
 //		return 0.1;
 
 	return 0.1;
+	// return 0.1;
 }
 
 // pl at t=0
