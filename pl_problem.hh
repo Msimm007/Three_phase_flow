@@ -606,6 +606,7 @@ namespace LiquidPressure
 		    time_term = phi*rhot;
 		    time_term_n = phi_n*rhot_n;
 		    time_term_nminus1 = phi_nminus1*rhot_nminus1;
+			// pcout << "rho lambda t value: " << rholambda_t << std::endl;
 
 		    for (unsigned int i = 0; i < n_dofs; ++i)
 		    {

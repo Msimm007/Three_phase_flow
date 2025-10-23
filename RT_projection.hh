@@ -52,7 +52,7 @@ using namespace dealii;
 template<int dim>
 PETScWrappers::MPI::Vector compute_RT0_projection(Triangulation<dim, dim> &triangulation, const unsigned int degree, double theta_pl, double time,
 		double time_step, double penalty_pl, double penalty_pl_bdry, std::vector<unsigned int> dirichlet_id_pl, bool use_exact_pl_in_RT0,
-		bool use_exact_Sa_in_RT0, bool use_exact_Sv_in_RT0, bool second_order_extrapolation, bool incompressible,
+		bool use_exact_Sa_in_RT0, bool use_exact_Sv_in_RT0, bool second_order_extrapolation, bool Stab_pl, bool incompressible,
 		PETScWrappers::MPI::Vector pl_solution, PETScWrappers::MPI::Vector Sa_solution_n, PETScWrappers::MPI::Vector Sa_solution_nminus1,
 		PETScWrappers::MPI::Vector Sv_solution_n, PETScWrappers::MPI::Vector Sv_solution_nminus1, PETScWrappers::MPI::Vector kappa_abs_vec,
 		bool project_only_kappa, MPI_Comm mpi_communicator, const unsigned int n_mpi_processes, const unsigned int this_mpi_process)
@@ -137,6 +137,9 @@ PETScWrappers::MPI::Vector compute_RT0_projection(Triangulation<dim, dim> &trian
     lambda_l<dim> lambda_l_fcn;
     lambda_v<dim> lambda_v_fcn;
     lambda_a<dim> lambda_a_fcn;
+
+	StabLiquidPressure<dim> Kappa_tilde_pl_fcn;
+	double Kappa_tilde_pl = Kappa_tilde_pl_fcn.value();
 
     ExactLiquidPressure<dim> pl_fcn;
     ExactAqueousSaturation<dim> Sa_fcn;

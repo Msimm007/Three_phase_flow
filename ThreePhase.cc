@@ -376,7 +376,7 @@ void CoupledPressureSaturationProblem<dim>::run()
         	{
 				totalDarcyvelocity_RT_Sa = RT_Projection::compute_RT0_projection<dim>(triangulation, degree, theta_pl, time,
 						time_step, penalty_pl, penalty_pl_bdry, dirichlet_id_pl, use_exact_pl_in_RT,
-						use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, incompressible,
+						use_exact_Sa_in_RT, use_exact_Sv_in_RT, second_order_extrapolation, Stab_pl, incompressible,
 						pl_solution, Sa_solution_n, Sa_solution_nminus1,
 						Sv_solution_n, Sv_solution_nminus1, kappa_abs_vec, project_only_kappa,
 						mpi_communicator, n_mpi_processes, this_mpi_process);

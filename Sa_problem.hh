@@ -636,6 +636,8 @@ namespace AqueousSaturation
                 if(artificial_visc_exp || artificial_visc_imp)
                     nu_h_artificial_visc = 0.5*sqrt(cell->measure())*art_visc_multiple_Sa*maximum_Darcy*2.0*maximum_Sa;
 
+            // pcout <<  "Ka value: " << rho_a* lambda_a* dpca_dSa<< std::endl;
+
 		    // This is where the main formulation starts
 		    for (unsigned int i = 0; i < n_dofs; ++i)
 		    {
@@ -955,9 +957,9 @@ namespace AqueousSaturation
                     if(artificial_visc_imp)
                         gamma_Sa_e += nu_h_artificial_visc;
                     
-                    if (!Stab_a){
+                    // if (!Stab_a){
                     gamma_Sa_e += sqrt(totalDarcyVelo_extrapolation*totalDarcyVelo_extrapolation);
-                    }
+                    // }
 
                     double h_e = cell->face(face_no)->measure();
                     double penalty_factor = (penalty_Sa_bdry/h_e) * gamma_Sa_e * degree*(degree + dim - 1);
