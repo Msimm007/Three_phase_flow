@@ -28,7 +28,7 @@ subsection Time discretization parameters
   set Create initial perturbation = false
 
   # delta_t = h^2 if true. if false, delta_t = h
-  set delta_t div 4 = false
+  set delta_t div 4 = true
 end
 
 
