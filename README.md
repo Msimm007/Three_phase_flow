@@ -1,6 +1,5 @@
 # Three Phase Flow Code
-A codebase using deal.ii that solves the three-phase flow problem in porous media. 
-
+A codebase using deal.ii that solves various multiphase flow problems in porous media.
 # Running The Code
 
 Running the code is pretty straight forward, but you need to be careful on what problem you are solving. The code is meant to be robust and at this point it handles 3 different problems. The main distinguister are the three files 
