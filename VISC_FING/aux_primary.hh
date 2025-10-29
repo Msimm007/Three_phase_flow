@@ -615,6 +615,34 @@ public:
     }
 };
 
+template <int dim>
+class porosity : public Function<dim>
+{
+public:
+    porosity()
+            : Function<dim>(1)
+    {}
+
+    virtual double value(const double pl,
+                         const unsigned int component = 0) const;
+
+    virtual double derivative_wrt_pl(const double pl, const unsigned int component = 0) const;
+};
+
+template <int dim>
+double
+porosity<dim>::value(const double pl,
+                     const unsigned int /*component*/) const
+{
+    return 0.2;
+}
+
+template <int dim>
+double porosity<dim>::derivative_wrt_pl(const double pl,
+                                        const unsigned int /*component*/) const
+{
+    return 0.0;
+}
 
 // Auxiliary functions
 template<int dim>
@@ -716,7 +744,17 @@ CapillaryPressurePca<dim>::value(double Sa, double Sv,
     Sa = std::min(1.0, std::max(Sa, 0.0));
     Sv = std::min(1.0, std::max(Sv, 0.0));
 
-    return amp_factor_cap_pressure/sqrt(Sa);
+    porosity<dim> porosity_class;
+
+    double phi = porosity_class.value(0.2);   // 0.2 is a placeholder. not actual reflection of value. still will return 0.2 since porosity is constant 
+
+    double kappa_abs = 7.e-10;
+
+    // double coeff = amp_factor_cap_pressure*sqrt(phi/kappa_abs);
+
+    return amp_factor_cap_pressure*sqrt(phi/kappa_abs)*pow(1.0-Sa,2.0);
+
+    // return amp_factor_cap_pressure/sqrt(Sa);
 }
 
 template <int dim>
@@ -750,7 +788,16 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
 {
     Sa = std::min(1.0, std::max(Sa, 0.0));
 
-    return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
+    porosity<dim> porosity_class;
+
+    double phi = porosity_class.value(0.2);   // 0.2 is a placeholder. 
+
+    double kappa_abs = 7.e-10;
+
+    return -2.0*amp_factor_cap_pressure*sqrt(phi/kappa_abs)*(1.0-Sa);
+    
+
+    // return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
 }
 
 template <int dim>
@@ -790,34 +837,6 @@ VaporPressure<dim>::value(const double pl, double Sa, double Sv,
     return pl + pcv.value(Sv);
 }
 
-template <int dim>
-class porosity : public Function<dim>
-{
-public:
-    porosity()
-            : Function<dim>(1)
-    {}
-
-    virtual double value(const double pl,
-                         const unsigned int component = 0) const;
-
-    virtual double derivative_wrt_pl(const double pl, const unsigned int component = 0) const;
-};
-
-template <int dim>
-double
-porosity<dim>::value(const double pl,
-                     const unsigned int /*component*/) const
-{
-    return 0.2;
-}
-
-template <int dim>
-double porosity<dim>::derivative_wrt_pl(const double pl,
-                                        const unsigned int /*component*/) const
-{
-    return 0.0;
-}
 
 // Densities
 template <int dim>
