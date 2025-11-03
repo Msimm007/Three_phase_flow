@@ -198,8 +198,15 @@ ExactLiquidPressure<dim>::value(const Point<dim> &p,
                                 const unsigned int /*component*/) const
 {
     if (dim == 3)
+
+        return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
+
+
+		// ORIG 3-D
         // return 2.0 + p[0]*p[1]*p[1]*p[2]*p[2]*p[2] + p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
-        return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
+
+		// 2-D CASE WITH 3D 
+        // return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
 
     else
         return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
@@ -214,13 +221,22 @@ ExactLiquidPressure<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_pl;
 
-    if (dim == 3 ){
+    if (dim == 3)
+	{
+
+
+        grad_pl[0] = p[1]*p[1] + 2.0*p[0]*p[2]*sin(this->get_time() + p[1]);
+        grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);        
+        grad_pl[2] =  p[0]*p[0]*sin(this->get_time() + p[1]);
+
+		// ORIG 3-D
         // grad_pl[0] = p[1]*p[1]*p[2]*p[2]*p[2] + 2.0*p[0]*p[2]*sin(this->get_time() + p[1]);
         // grad_pl[1] = 2.0*p[0]*p[1]*p[2]*p[2]*p[2] + p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);        
         // grad_pl[2] = 3.0*p[0]*p[1]*p[1]*p[2]*p[2] + p[0]*p[0]*sin(this->get_time() + p[1]);
         
-        grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
-        grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
+		// 2-D CASE WITH 3D 
+        // grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
+        // grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
 
     }
     else{
@@ -238,8 +254,16 @@ ExactLiquidPressure<dim>::laplacian(const Point<dim> &p,
                                     const unsigned int /*component*/) const
 {
     if (dim == 3)
+
+        return 2.0*p[2]*sin(this->get_time() + p[1]) + 2.0*p[0] -  p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
+		
+	
+		// ORIG 3-D
         // return (p[2]*sin(this->get_time() + p[1]))*(2.0 - p[0]*p[0]) + 2.0*p[0]*p[2]*(p[2]*p[2] + 3.0*p[1]*p[1]);
-        return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
+
+
+		// 2-D CASE WITH 3D 
+        // return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
 
     else
         return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
@@ -253,8 +277,16 @@ ExactLiquidPressure<dim>::time_derivative(const Point<dim> &p,
                                           const unsigned int /*component*/) const
 {
     if (dim == 3)
+
+
+       return p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);
+
+		// ORIG 3-D
         // return p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);
-        return p[0]*p[0]*cos(this->get_time() + p[1]);
+
+
+		// 2-D CASE WITH 3D 
+        // return p[0]*p[0]*cos(this->get_time() + p[1]);
 
     else
         return p[0]*p[0]*cos(this->get_time() + p[1]);
@@ -285,8 +317,15 @@ ExactLiquidSaturation<dim>::value(const Point<dim> &p,
                                   const unsigned int /*component*/) const
 {
     if (dim == 3)
+
+        return (4.0 - 2.0*p[0]*p[0]*p[1]*p[1] - cos(this->get_time() + p[0] + p[2]) + cos(this->get_time() + p[0]))/8.0;
+
+
+		// ORIG
         // return (4.0 - 2.0*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] + cos(this->get_time() + p[0] + p[2]))/8.0;
-        return (2.0 - p[0]*p[0]*p[1]*p[1])/4.0;
+
+		// 2D CASE WITH 3D
+        // return (2.0 - p[0]*p[0]*p[1]*p[1])/4.0;
 
     else    
         return (2.0 - p[0]*p[0]*p[1]*p[1])/4.0;
@@ -302,12 +341,19 @@ ExactLiquidSaturation<dim>::gradient(const Point<dim> &p,
     Tensor<1,dim> grad_Sl;
 
     if (dim == 3){
+
+		grad_Sl[0] = -4.0*p[0]*p[1]*p[1] + sin(this->get_time() + p[0] + p[2]) -sin(this->get_time() + p[0]) /8.0 ;
+        grad_Sl[1] = -4.0*p[0]*p[0]*p[1]/8.0;        
+        grad_Sl[2] =  sin(this->get_time() + p[0] + p[2])/8.0;
+
+		// ORIG
         // grad_Sl[0] = -p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0 - sin(this->get_time() + p[0] + p[2])/8.0 ;
         // grad_Sl[1] = -p[0]*p[0]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0;        
         // grad_Sl[2] = -p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2])/8.0;
         
-        grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
-        grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
+		// 2D CASE WITH 3D
+        // grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
+        // grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
 
     }
     else {
@@ -322,8 +368,14 @@ double
 ExactLiquidSaturation<dim>::time_derivative(const Point<dim> &p,
                                             const unsigned int /*component*/) const
 {
+
+    return sin(this->get_time() + p[0] + p[2])/8.0;
+
+	// ORIG
     // return -sin(this->get_time() + p[0] + p[2])/8.0 ;
-    return 0.0;
+
+	// 2-D CASE
+    // return 0.0;
 }
 
 template <int dim>
@@ -438,8 +490,15 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
                                    const unsigned int /*component*/) const
 {
     if (dim == 3)
+
+
+        return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0] + p[2]))/8.0;
+
+		// ORIG
         // return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] + cos(this->get_time() + p[0] + p[2]))/8.0;
-        return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
+
+		//2-D CASE WITH 3D 
+        // return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
 
     else
         return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
@@ -453,11 +512,21 @@ ExactAqueousSaturation<dim>::gradient(const Point<dim> &p,
     Tensor<1,dim> grad_Sa;
 
     if (dim == 3){
+
+
+        grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0] + p[2]))/8.0;
+        grad_Sa[1] = 4.0*p[0]*p[0]*p[1]/8.0;        
+        grad_Sa[2] = -sin(this->get_time() + p[0] + p[2])/8.0;   
+		
+
+		// ORIG
         // grad_Sa[0] = (4.0*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]))/8.0;
         // grad_Sa[1] = p[0]*p[0]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0;        
-        // grad_Sa[2] = (8*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]))/8.0;        
-        grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
-        grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
+        // grad_Sa[2] = (8*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]))/8.0;    
+		
+		//2-D CASE WITH 3D 
+        // grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
+        // grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
 
     }
     else{
@@ -475,13 +544,20 @@ ExactAqueousSaturation<dim>::laplacian(const Point<dim> &p,
                                        const unsigned int /*component*/) const
 {
     if (dim == 3){
+
+        return (4.0*p[1]*p[1] - cos(this->get_time() + p[0] + p[2]) + 4.0*p[0]*p[0] - cos(this->get_time() + p[0] + p[2]))/8.0;
+
+		// ORIG
         // return 0.5*p[2]*p[2]*( p[1]*p[1]*p[2]*p[2] + p[0]*p[0]*p[2]*p[2] + 6.0*p[0]*p[0]*p[1]*p[1]) 
         // - cos(this->get_time() + p[0]+ p[2])/4.0;
-        return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;;
+
+
+		// 2-D CASE WITH 3D
+        // return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;
 
     }
     else
-        return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;;
+        return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;
 
 }
 
@@ -491,8 +567,16 @@ ExactAqueousSaturation<dim>::time_derivative(const Point<dim> &p,
                                              const unsigned int /*component*/) const
 {
     if (dim == 3)
+
+        return -sin(this->get_time() + p[0] + p[2])/8.0;
+
+
+		// ORIG
         // return -sin(this->get_time() + p[0] + p[2])/8.0;
-        return -sin(this->get_time() + p[0])/8.0;
+
+
+		// 2-D CASE WITH 3D
+        // return -sin(this->get_time() + p[0])/8.0;
 
     else
         return -sin(this->get_time() + p[0])/8.0;
