@@ -24,6 +24,7 @@
 #include <fstream>
 
 using namespace dealii;
+
 extern double amp_factor_cap_pressure;
 
 extern double stab_pl_data;
@@ -31,6 +32,7 @@ extern double stab_sa_data;
 extern double stab_sv_data;
 
 extern bool hetero;
+extern bool is_rand;
 
 
 // Mesh creator
@@ -322,6 +324,44 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 {
 //	double kappa_abs = 3.72e-13;
 	double kappa_abs = 5.e-8;
+    double coord = cell -> center()[0];
+    double kappa_rand = 1.0;
+    if (is_rand)
+    {
+        if (0.0 < coord && coord <= 5.0)
+        {
+    	    double mean_val = 5.0;
+		    double sigma = mean_val/3.0;
+		    double random_number = -1.0;
+		    while (random_number < 1.0 || random_number > 10.0)
+			    random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+
+		    kappa_rand = random_number;        
+        }
+        if (15.0 < coord && coord <= 95.0)
+        {
+    	    double mean_val = 55.0;
+		    double sigma = mean_val/3.0;
+		    double random_number = -1.0;
+		    while (random_number < 10.0 || random_number > 100.0)
+			    random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+
+		    kappa_rand = random_number;        
+        }
+        if (95.0 < coord && coord <= 100.0)
+        {
+    	    double mean_val = 550.0;
+		    double sigma = mean_val/3.0;
+		    double random_number = -1.0;
+		    while (random_number < 100.0 || random_number > 1000.0)
+			    random_number = Utilities::generate_normal_random_number(mean_val,sigma);
+
+		    kappa_rand = random_number;        
+        }
+        kappa_abs *=kappa_rand;
+		return kappa_abs;
+        
+    }
 
 	if (hetero)
 	{	
@@ -344,8 +384,12 @@ double compute_kappa_value(const typename DoFHandler<dim>::active_cell_iterator 
 				if(yy >= 25.0 && yy <= 50.0)
 					kappa_abs /= 1000.0;
 		}
+		return kappa_abs;
 	}
-	return kappa_abs;
+	else
+	{
+		return kappa_abs;
+	}
 };
 template <int dim>
 class StabLiquidPressure : public Function<dim>

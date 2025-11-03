@@ -8,3 +8,5 @@ double stab_sv_data = 5.0;
 
 // if true, makes kappa_abs 1000 times lower in the region [25, 50] x [25, 50] (x [25, 50] if 3d)
 bool hetero = false;
+
+bool is_rand = true;
