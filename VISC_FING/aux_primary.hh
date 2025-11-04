@@ -751,8 +751,12 @@ CapillaryPressurePca<dim>::value(double Sa, double Sv,
 
     // double coeff = amp_factor_cap_pressure*sqrt(phi/kappa_abs);
 
-    return amp_factor_cap_pressure*sqrt(phi/kappa_abs)*pow(1.0-Sa,2.0);
+    // return amp_factor_cap_pressure*sqrt(phi/kappa_abs)*pow(1.0-Sa,2.0);
 
+    // BC model, lambda = 10
+    return amp_factor_cap_pressure*pow(Sa,-0.1);
+
+    // BC model, lambda = 2
     // return amp_factor_cap_pressure/sqrt(Sa);
 }
 
@@ -791,9 +795,13 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
 
     double kappa_abs = 7.e-10;
 
-    return -2.0*amp_factor_cap_pressure*sqrt(phi/kappa_abs)*(1.0-Sa);
+    // return -2.0*amp_factor_cap_pressure*sqrt(phi/kappa_abs)*(1.0-Sa);
     
 
+    // BC model, lambda = 10
+    return -0.1*amp_factor_cap_pressure*pow(Sa, -1.1);
+
+    // BC model, lambda = 2
     // return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
 }
 
