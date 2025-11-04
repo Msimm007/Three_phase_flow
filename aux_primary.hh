@@ -369,7 +369,7 @@ ExactLiquidSaturation<dim>::time_derivative(const Point<dim> &p,
                                             const unsigned int /*component*/) const
 {
 
-    return sin(this->get_time() + p[0] + p[2])/8.0;
+    return (sin(this->get_time() + p[0] + p[2]) - sin(this->get_time() + p[0])) /8.0;
 
 	// ORIG
     // return -sin(this->get_time() + p[0] + p[2])/8.0 ;
