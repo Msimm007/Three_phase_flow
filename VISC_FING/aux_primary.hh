@@ -744,11 +744,10 @@ CapillaryPressurePca<dim>::value(double Sa, double Sv,
     Sa = std::min(1.0, std::max(Sa, 0.0));
     Sv = std::min(1.0, std::max(Sv, 0.0));
 
-    porosity<dim> porosity_class;
-
-    double phi = porosity_class.value(0.2);   // 0.2 is a placeholder. not actual reflection of value. still will return 0.2 since porosity is constant 
 
     double kappa_abs = 7.e-10;
+
+    double phi = 0.2;
 
     // double coeff = amp_factor_cap_pressure*sqrt(phi/kappa_abs);
 
@@ -788,9 +787,7 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
 {
     Sa = std::min(1.0, std::max(Sa, 0.0));
 
-    porosity<dim> porosity_class;
-
-    double phi = porosity_class.value(0.2);   // 0.2 is a placeholder. 
+    double phi = 0.2;
 
     double kappa_abs = 7.e-10;
 
