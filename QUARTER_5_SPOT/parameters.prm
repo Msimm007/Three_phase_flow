@@ -9,10 +9,10 @@ subsection Time discretization parameters
   set Initial time step = 0.125
   
   # Second order time derivative
-  set Second order time derivative = false
+  set Second order time derivative = true
   
   # Second order extrapolation
-  set Second order extrapolation = false
+  set Second order extrapolation = true
   
   # Use implicit time derivative term in pl. If false, the term \partial_t(\phi \rho_t) is computed as (\phi^n\rho_t^n - \phi^{n-1}\rho_t^{n-1})/\tau.
   # If true, we apply chain rule and write it as \partial_t(\phi \rho_t) = a1 \partial_t p_\ell + a2 \partial_t s_a + a3 \partial_t s_v
