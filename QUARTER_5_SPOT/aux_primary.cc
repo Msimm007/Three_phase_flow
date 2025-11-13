@@ -3,6 +3,7 @@
 double amp_factor_cap_pressure = 1.e7;
 
 double stab_pl_data = 12000.0;
+// double stab_sa_data = 500.0; // BEST FOR 3D 
 double stab_sa_data = 200.0;
 double stab_sv_data = 5.0;
 
