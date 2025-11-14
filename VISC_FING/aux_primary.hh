@@ -228,7 +228,7 @@ void create_initial_Sa_vector(Triangulation<dim, dim> &triangulation, MPI_Comm m
 
     std::ofstream myfile;
     if(this_mpi_process == 0)
-        	myfile.open("sa_perturbation_fine");
+        	myfile.open("sa_perturbation_3d");
 
 
     int n_data = (dim==2)? 5 : 7;

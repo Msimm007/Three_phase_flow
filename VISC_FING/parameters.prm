@@ -27,7 +27,7 @@ subsection Time discretization parameters
 
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation" #########(KEEP FALSE PLEASE)############ 
-  set Create initial perturbation = false
+  set Create initial perturbation = true
 
   # delta_t = h^2 if true. if false, delta_t = h
   set delta_t div 4 = false
@@ -36,7 +36,7 @@ end
 
 subsection Spatial discretization parameters
   # Dimension (2 or 3)
-  set Dimension = 2
+  set Dimension = 3
 
  # If true, then stability method is used For pl (*******TODO: debug. not currently working**************) 
   set Stab_pl = false
@@ -51,10 +51,10 @@ subsection Spatial discretization parameters
   set Degree = 2
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 0
 
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 0
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
