@@ -3,10 +3,11 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 750.0 for 2d problem. 4500.0 for 3d problem)
-  set Final time = 4500.0
+  #set Final time = 4500.0
+  set Final time = 750.0
   
   # Initial time step (default 0.25)
-  set Initial time step = 0.25
+  set Initial time step = 0.125
   
   # Second order time derivative
   set Second order time derivative = false
@@ -41,7 +42,7 @@ subsection Spatial discretization parameters
   set Incompressible = true
 
   # Polynomial degree for FE space
-  set Degree = 1
+  set Degree = 2
   
   # Initial level of refinement
   set Initial level of refinement = 0
@@ -77,7 +78,7 @@ subsection Spatial discretization parameters
   set Penalty Sv boundary = 1.0
   
   # Project to RT0 (if false then projects to RTk)
-  set Project to RT0 = true
+  set Project to RT0 = false
   
   # If true then projects -\kappa \nabla P_h to RT0, otherwise it uses rholambda_t
   set Project to RT0 with kappa only = false
