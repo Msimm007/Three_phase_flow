@@ -3,17 +3,16 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 8000)
-  set Final time = 2000
-
+  set Final time = 8000
 
   # Initial time step (must be chosen so that at least one time step is performed)
   set Initial time step = 2
 
   # Second order time derivative
-  set Second order time derivative = true
+  set Second order time derivative = false
 
   # Second order extrapolation
-  set Second order extrapolation = true
+  set Second order extrapolation = false
 
   # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
   set Midpoint method = false
@@ -27,7 +26,7 @@ subsection Time discretization parameters
 
   # This is used only for viscous fingering. If true, it creates a new perturbation for sa
   # If false, it reads the initial perturbation from a file called "sa_perturbation" #########(KEEP FALSE PLEASE)############ 
-  set Create initial perturbation = true
+  set Create initial perturbation = false
 
   # delta_t = h^2 if true. if false, delta_t = h
   set delta_t div 4 = false
@@ -48,7 +47,7 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # Polynomial degree for FE space
-  set Degree = 2
+  set Degree = 1
 
   # Initial level of refinement
   set Initial level of refinement = 0

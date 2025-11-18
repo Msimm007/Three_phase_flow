@@ -423,7 +423,7 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
     if(fabs(this->get_time()) < 1.e-10)
     {
         // For t = 0, read from perturbation file
-        std::ifstream infile("sa_perturbation");
+        std::ifstream infile("sa_perturbation_3d");
 
 		
 
@@ -753,7 +753,7 @@ CapillaryPressurePca<dim>::value(double Sa, double Sv,
 
 
     //BA model
-    return P - amp_factor_cap_pressure*log(Sa);
+    // return P - amp_factor_cap_pressure*log(Sa);
 
     // LJ model
     // return amp_factor_cap_pressure*sqrt(phi/kappa_abs)*pow(1.0-Sa,2.0);
@@ -765,8 +765,8 @@ CapillaryPressurePca<dim>::value(double Sa, double Sv,
 
     // return amp_factor_cap_pressure*pow(Sa,-0.1);
 
-    // BC model, lambda = 2
-    // return amp_factor_cap_pressure/sqrt(Sa);
+    // BC model, lambda = 2 ORIG
+    return amp_factor_cap_pressure/sqrt(Sa);
 }
 
 template <int dim>
@@ -806,7 +806,7 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
 
 
     //BA model
-    return -amp_factor_cap_pressure*pow(Sa,-1.0);
+    // return -amp_factor_cap_pressure*pow(Sa,-1.0);
 
 
     // LJ model
@@ -819,8 +819,8 @@ CapillaryPressurePca<dim>::derivative_wrt_Sa(double Sa, double Sv,
     // BC model, lambda = 10
     // return -0.1*amp_factor_cap_pressure*pow(Sa, -1.1);
 
-    // BC model, lambda = 2
-    // return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
+    // BC model, lambda = 2 ORIG
+    return -amp_factor_cap_pressure*0.5*pow(Sa, -1.5);
 }
 
 template <int dim>
