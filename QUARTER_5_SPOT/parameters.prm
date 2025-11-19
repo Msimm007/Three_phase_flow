@@ -7,7 +7,7 @@ subsection Time discretization parameters
   set Final time = 750.0
   
   # Initial time step (default 0.25)
-  set Initial time step = 0.125
+  set Initial time step = 0.25
   
   # Second order time derivative
   set Second order time derivative = false
@@ -42,7 +42,7 @@ subsection Spatial discretization parameters
   set Incompressible = true
 
   # Polynomial degree for FE space
-  set Degree = 2
+  set Degree = 1
   
   # Initial level of refinement
   set Initial level of refinement = 0
