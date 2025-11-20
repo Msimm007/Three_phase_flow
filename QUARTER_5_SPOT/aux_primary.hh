@@ -132,11 +132,14 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 	{
 		for (unsigned int face_no=0; face_no < GeometryInfo<dim>::faces_per_cell; face_no++)
 		{
-//    		pcout << "face_no = " << face_no << std::endl;
 			if(cell->face(face_no)->at_boundary())
 			{
+
 				bool bdr_1, bdr_2, bdr_3, bdr_4, bdr_5, bdr_6, bdr_7, bdr_8;
 				bdr_1 = bdr_2 = bdr_3 = bdr_4 = bdr_5 = bdr_6 = bdr_7 = bdr_8 = false;
+
+				bool bdr_9, bdr_10;
+				bdr_9 = bdr_10 = false;
 
 				 for (unsigned int i = 0; i < GeometryInfo<dim>::vertices_per_face; ++i)
 				 {
@@ -257,6 +260,38 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 					 }
 
 				 }
+				// 3d case adds extra faces to classify. 
+				 if (dim == 3)
+				 {
+				 	for (unsigned int i = 0; i < GeometryInfo<dim>::vertices_per_face; ++i)
+				 	{
+					 	Point<dim> &v = cell->face(face_no)->vertex(i);
+
+//					 	//  0 < x < 5, 0 < y < 5, z = 5
+					 	if(0.0 < v[0] + 1.e-12 && v[0] - 1.e-12 < 5.0 && 0.0 < v[1] + 1.e-12 && v[1] - 1.e-12 < 5.0 && fabs(v[2] - 5.0) < 1.e-12)
+							bdr_9 = true;
+					 	else
+					 	{
+						 	bdr_9 = false;
+						 	break;
+					 	}
+
+				 	}
+				 	for (unsigned int i = 0; i < GeometryInfo<dim>::vertices_per_face; ++i)
+				 	{
+					 	Point<dim> &v = cell->face(face_no)->vertex(i);
+
+//					 	//  95 < x < 100, 95 < y < 100, z = 95
+					 	if( 95.0 < v[0] + 1.e-12 && v[0] - 1.e-12 < 100.0 && 95.0 < v[1] + 1.e-12 && v[1] - 1.e-12 < 100.0 && fabs(v[2] - 95.0) < 1.e-12)
+							bdr_10 = true;
+					 	else
+					 	{
+						 	bdr_10 = false;
+						 	break;
+					 	}
+
+				 	}										
+				 }
 
 				 if(bdr_1)
 					 cell->face(face_no)->set_boundary_id(1);
@@ -278,32 +313,73 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 //					 cell->face(face_no)->set_boundary_id(1);
 //				 else
 //					 cell->face(face_no)->set_boundary_id(2);
+				 if (dim == 3)
+				 {
+					std:: cout << "I am in this loop" << std::endl;
+				 	if(bdr_9)
+					 	cell->face(face_no)->set_boundary_id(9);
+				 	else if(bdr_10)
+					 	cell->face(face_no)->set_boundary_id(10);				
+				 }
 			}
 		}
 	}
 	// Dirichlet boundary attributes for each problem
-	dirichlet_id_pl.resize(4);
-	dirichlet_id_pl[0] = 1;
-	dirichlet_id_pl[1] = 2;
-	dirichlet_id_pl[2] = 5;
-	dirichlet_id_pl[3] = 6;
+	
+	if (dim == 3)
+	{
+		dirichlet_id_pl.resize(6);
+		dirichlet_id_pl[0] = 1;
+		dirichlet_id_pl[1] = 2;
+		dirichlet_id_pl[2] = 5;
+		dirichlet_id_pl[3] = 6;
 
-    dirichlet_id_sa.resize(2);
-    dirichlet_id_sa[0] = 1;
-    dirichlet_id_sa[1] = 2;
-//    dirichlet_id_sa[2] = 5;
-//    dirichlet_id_sa[3] = 6;
+		//3d parts added
+		dirichlet_id_pl[4] = 9;
+		dirichlet_id_pl[5] = 10;
 
-//	dirichlet_id_pl.resize(2);
-//	dirichlet_id_pl[0] = 4;
-//	dirichlet_id_pl[1] = 5;
-//
-//    dirichlet_id_sa.resize(4);
-//    dirichlet_id_sa[0] = 4;
-//    dirichlet_id_sa[1] = 5;
+		// for(int i = 0; i < dirichlet_id_pl.size(); i++)
+		// 	std::cout << dirichlet_id_pl[i];
 
-    dirichlet_id_sv.resize(1);
-    dirichlet_id_sv[0] = 0;
+
+		dirichlet_id_sa.resize(3);
+    	dirichlet_id_sa[0] = 1;
+    	dirichlet_id_sa[1] = 2;
+
+		//3d part added
+    	dirichlet_id_sa[2] = 9;
+
+		dirichlet_id_sv.resize(1);
+    	dirichlet_id_sv[0] = 0;
+
+	}
+	else
+	{
+		dirichlet_id_pl.resize(4);
+		dirichlet_id_pl[0] = 1;
+		dirichlet_id_pl[1] = 2;
+		dirichlet_id_pl[2] = 5;
+		dirichlet_id_pl[3] = 6;
+
+    	dirichlet_id_sa.resize(2);
+    	dirichlet_id_sa[0] = 1;
+    	dirichlet_id_sa[1] = 2;
+//  	  dirichlet_id_sa[2] = 5;
+//  	  dirichlet_id_sa[3] = 6;
+
+//		dirichlet_id_pl.resize(2);
+//		dirichlet_id_pl[0] = 4;
+//		dirichlet_id_pl[1] = 5;
+//	
+//  	  dirichlet_id_sa.resize(4);
+//  	  dirichlet_id_sa[0] = 4;
+//  	  dirichlet_id_sa[1] = 5;
+
+    	dirichlet_id_sv.resize(1);
+    	dirichlet_id_sv[0] = 0;
+	}
+
+
 }
 
 // This function create and prints the initial perturbation to a file. It can be empty if not used
@@ -432,6 +508,11 @@ ExactLiquidPressure<dim>::value(const Point<dim> &p,
 		return 1.0e5;
 	else if(fabs(p[0] - 95.0) < 1.e-12 && 95.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 100.0)
 		return 1.0e5;
+	// 3d case
+	else if (dim == 3 &&  0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0 &&  fabs(p[2] - 5.0) < 1.e-12)
+		return 3.e5;
+	else if (dim == 3 && 95.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 100.0 &&  fabs(p[2] - 95.0) < 1.e-12)
+		return 1.0e5;
 
 //	if(fabs(p[1] - 100.0) < 1.e-12 && 95.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 100.0)
 //		return 1.5e5;
@@ -487,7 +568,11 @@ ExactAqueousSaturation<dim>::value(const Point<dim> &p,
 	if(0.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 5.0 && fabs(p[1] - 5.0) < 1.e-12)
 		return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5);
 	else if(fabs(p[0] - 5.0) < 1.e-12 && 0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0)
-		return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5);
+		return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5); 
+	//3d case
+	else if (dim == 3 &&  0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0 &&  fabs(p[2] - 5.0) < 1.e-12)
+		return std::min(0.7,0.2 + 1.e-2*this->get_time()*0.5); 
+	
 
 //	if(fabs(p[1] - 100.0) < 1.e-12 && 95.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 100.0)
 //		return 0.1;

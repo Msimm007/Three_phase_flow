@@ -1510,10 +1510,10 @@ PETScWrappers::MPI::Vector compute_RTk_projection(Triangulation<dim, dim> &trian
 	const unsigned int dofs_per_face_test_vector = fe_test_vector.n_dofs_per_face();
 	const unsigned int dofs_per_cell_test_vector = fe_test_vector.dofs_per_cell;
 
-	std::cout << "dofs_per_cell_RT= " << dofs_per_cell_RT << std::endl;
-	std::cout << "dofs_per_cell_test_vector= " << dofs_per_cell_test_vector << std::endl;
-	std::cout << "dofs_per_face_test_vector= " << dofs_per_face_test_vector << std::endl;
-	std::cout << "dofs_per_face_test_scalar= " << dofs_per_face_test_scalar << std::endl;
+	// std::cout << "dofs_per_cell_RT= " << dofs_per_cell_RT << std::endl;
+	// std::cout << "dofs_per_cell_test_vector= " << dofs_per_cell_test_vector << std::endl;
+	// std::cout << "dofs_per_face_test_vector= " << dofs_per_face_test_vector << std::endl;
+	// std::cout << "dofs_per_face_test_scalar= " << dofs_per_face_test_scalar << std::endl;
 
 	std::vector<std::vector<unsigned int>> fe_support_on_face_scalar(GeometryInfo<dim>::faces_per_cell);
 
