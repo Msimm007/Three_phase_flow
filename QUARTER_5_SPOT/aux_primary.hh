@@ -267,9 +267,16 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 				 	{
 					 	Point<dim> &v = cell->face(face_no)->vertex(i);
 
-//					 	//  0 < x < 5, 0 < y < 5, z = 5
-					 	if(0.0 < v[0] + 1.e-12 && v[0] - 1.e-12 < 5.0 && 0.0 < v[1] + 1.e-12 && v[1] - 1.e-12 < 5.0 && fabs(v[2] - 5.0) < 1.e-12)
+//					 	//  0 < x < 5, 0 < y < 5, z = 5 ORIG
+//					 	//  0 < z < 5, y = 5
+					 	// if(0.0 < v[0] + 1.e-12 && v[0] - 1.e-12 < 5.0 && 0.0 < v[1] + 1.e-12 && v[1] - 1.e-12 < 5.0 && fabs(v[2] - 5.0) < 1.e-12)
+					 	if(0.0 < v[2] + 1.e-12 && v[2] - 1.e-12 < 5.0  && fabs(v[1] - 5.0) < 1.e-12)
+						{
 							bdr_9 = true;
+							// std::cout <<"inner loop true:"<< bdr_9 << std::endl;
+
+						}
+
 					 	else
 					 	{
 						 	bdr_9 = false;
@@ -292,6 +299,7 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 
 				 	}										
 				 }
+				std::cout << bdr_9 << std::endl;
 
 				 if(bdr_1)
 					 cell->face(face_no)->set_boundary_id(1);
