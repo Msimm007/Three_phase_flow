@@ -4,7 +4,8 @@
 subsection Time discretization parameters
   # Final time of simulation (default 750.0 for 2d problem. 4500.0 for 3d problem)
   #set Final time = 4500.0
-  set Final time = 750.0
+  #set Final time = 750.0
+  set Final time = 250.0
   
   # Initial time step (default 0.25)
   set Initial time step = 0.25
@@ -137,7 +138,7 @@ subsection Output parameters
   set print vtk = true
   
   # How often vtk files are printed. Only used if previous variable is true
-  set Frequency for vtk printing = 50
+  set Frequency for vtk printing = 25
   
   # Compute errors (manufactured sol test case)
   set Compute errors = false

@@ -801,6 +801,11 @@ namespace LiquidPressure
 		{
 		    if(cell->face(face_no)->boundary_id() == dirichlet_id_pl[i])
 		    {
+				// 			// --- START DEBUGGING PRINT STATEMENT ---
+    			// std::cout << "Condition is TRUE! Face boundary ID matches a Dirichlet ID." << std::endl;
+    			// std::cout << "  Boundary ID: " << cell->face(face_no)->boundary_id() << std::endl;
+    			// std::cout << "  Matching Dirichlet ID (dirichlet_id_pl[" << i << "]): " << dirichlet_id_pl[i] << std::endl;
+    			// // --- END DEBUGGING PRINT STATEMENT ---
         		dirichlet = true;
         		break;
 		    }

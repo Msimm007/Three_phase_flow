@@ -315,7 +315,6 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 //					 cell->face(face_no)->set_boundary_id(2);
 				 if (dim == 3)
 				 {
-					std:: cout << "I am in this loop" << std::endl;
 				 	if(bdr_9)
 					 	cell->face(face_no)->set_boundary_id(9);
 				 	else if(bdr_10)
@@ -500,11 +499,11 @@ ExactLiquidPressure<dim>::value(const Point<dim> &p,
 			return 1.0e5;
 	}
 
-	if(0.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 5.0 && fabs(p[1] - 5.0) < 1.e-12)
-		return 3.e5;
-	else if(fabs(p[0] - 5.0) < 1.e-12 && 0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0)
-		return 3.e5;
-	else if(fabs(p[1] - 95.0) < 1.e-12 && 95.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 100.0)
+	// if(0.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 5.0 && fabs(p[1] - 5.0) < 1.e-12)
+	// 	return 3.e5;
+	// else if(fabs(p[0] - 5.0) < 1.e-12 && 0.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 5.0)
+	// 	return 3.e5;
+	 if(fabs(p[1] - 95.0) < 1.e-12 && 95.0 < p[0] + 1.e-12 && p[0] - 1.e-12 < 100.0)
 		return 1.0e5;
 	else if(fabs(p[0] - 95.0) < 1.e-12 && 95.0 < p[1] + 1.e-12 && p[1] - 1.e-12 < 100.0)
 		return 1.0e5;
@@ -1464,6 +1463,7 @@ void BoundaryValuesLiquidPressure<dim>::value_list(const std::vector<Point<dim>>
     for (unsigned int i = 0; i < values.size(); ++i)
     {
     	values[i] = exact_pressure.value(points[i]);
+		// std::cout << values[i] << std::endl;
     }
 }
 
