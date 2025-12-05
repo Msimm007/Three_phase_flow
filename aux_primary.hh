@@ -580,7 +580,6 @@ CapillaryPressurePcv<dim>::num_gradient(double Sv,
 
     return grad_pcv;
 }
-//
 template <int dim>
 double
 CapillaryPressurePcv<dim>::laplacian(const Point<dim> &p,
