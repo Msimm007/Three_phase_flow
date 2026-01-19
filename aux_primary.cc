@@ -1,23 +1,10 @@
 #include "aux_primary.hh"
 
+double M = 200.0;
+double amp_factor_cap_pressure = 300.0; //BC
+// double amp_factor_cap_pressure = 0.062; //LJ
+// double amp_factor_cap_pressure = 416.8041; // BA
 
-bool inc = false;
-
-double porosity_data = 0.2;
-double kappa = 1.0;
-
-double rho_l_data = 3.0;
-double rho_a_data = 5.0;
-double rho_v_data = 1.0;
-
-double mu_l_data = 0.75;
-double mu_a_data = 0.5;
-double mu_v_data = 0.25;
-
-//stab data
-double stab_pl_data = 5.0;
-double stab_sa_data = 5.0;
+double stab_pl_data = 800.0;
+double stab_sa_data = 100000.0;
 double stab_sv_data = 5.0;
-
-
-// Non-template function definitions would also go here
