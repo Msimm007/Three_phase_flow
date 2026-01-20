@@ -299,7 +299,7 @@ void create_mesh(Triangulation<dim, dim> &triangulation, unsigned int ref_level,
 
 				 	}										
 				 }
-				std::cout << bdr_9 << std::endl;
+				// std::cout << bdr_9 << std::endl;
 
 				 if(bdr_1)
 					 cell->face(face_no)->set_boundary_id(1);
