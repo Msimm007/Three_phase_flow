@@ -3,17 +3,16 @@
 
 subsection Time discretization parameters
   # Final time of simulation (default 8000)
-  set Final time = 2000
-
+  set Final time = 8000
 
   # Initial time step (must be chosen so that at least one time step is performed)
   set Initial time step = 2
 
   # Second order time derivative
-  set Second order time derivative = true
+  set Second order time derivative = false
 
   # Second order extrapolation
-  set Second order extrapolation = true
+  set Second order extrapolation = false
 
   # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
   set Midpoint method = false
@@ -36,7 +35,7 @@ end
 
 subsection Spatial discretization parameters
   # Dimension (2 or 3)
-  set Dimension = 2
+  set Dimension = 3
 
  # If true, then stability method is used For pl (*******TODO: debug. not currently working**************) 
   set Stab_pl = false
@@ -48,13 +47,13 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # Polynomial degree for FE space
-  set Degree = 2
+  set Degree = 1
 
   # Initial level of refinement
-  set Initial level of refinement = 1
+  set Initial level of refinement = 0
 
   # Final level of refinement
-  set Final level of refinement = 1
+  set Final level of refinement = 0
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
