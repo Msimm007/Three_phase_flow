@@ -59,12 +59,21 @@ void create_mesh(Triangulation<dim, dim> &triangulation,
     v0[0] = 0.0;
     v0[1] = 0.0;
 
+    if(dim == 3)
+        v0[2] = 0.0;
+
     v1[0] = 1.0;
     v1[1] = 1.0;
+
+    if (dim == 3)
+        v1[2] = 1.0;
 
     std::vector<unsigned int> repetitions(dim);
     repetitions[0] = 1;
     repetitions[1] = 1;
+
+    if (dim == 3)
+        repetitions[2] = 1;
 
     GridGenerator::subdivided_hyper_rectangle(triangulation, repetitions, v0, v1);
     triangulation.refine_global(ref_level);
@@ -188,7 +197,21 @@ double
 ExactLiquidPressure<dim>::value(const Point<dim> &p,
                                 const unsigned int /*component*/) const
 {
-    return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
+    if (dim == 3)
+
+        // return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
+
+
+		// ORIG 3-D
+        return 2.0 + p[0]*p[1]*p[1]*p[2]*p[2]*p[2] + p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
+
+		// 2-D CASE WITH 3D 
+        // return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
+
+    else
+        return 2.0 + p[0]*p[1]*p[1] + p[0]*p[0]*sin(this->get_time() + p[1]);
+
+
 }
 
 template <int dim>
@@ -198,8 +221,29 @@ ExactLiquidPressure<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_pl;
 
-    grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
-    grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
+    if (dim == 3)
+	{
+
+
+        // grad_pl[0] = p[1]*p[1] + 2.0*p[0]*p[2]*sin(this->get_time() + p[1]);
+        // grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);        
+        // grad_pl[2] =  p[0]*p[0]*sin(this->get_time() + p[1]);
+
+		// ORIG 3-D
+        grad_pl[0] = p[1]*p[1]*p[2]*p[2]*p[2] + 2.0*p[0]*p[2]*sin(this->get_time() + p[1]);
+        grad_pl[1] = 2.0*p[0]*p[1]*p[2]*p[2]*p[2] + p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);        
+        grad_pl[2] = 3.0*p[0]*p[1]*p[1]*p[2]*p[2] + p[0]*p[0]*sin(this->get_time() + p[1]);
+        
+		// 2-D CASE WITH 3D 
+        // grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
+        // grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
+
+    }
+    else{
+        grad_pl[0] = p[1]*p[1] + 2.0*p[0]*sin(this->get_time() + p[1]);
+        grad_pl[1] = 2.0*p[0]*p[1] + p[0]*p[0]*cos(this->get_time() + p[1]);
+    }
+
 
     return grad_pl;
 }
@@ -209,7 +253,22 @@ double
 ExactLiquidPressure<dim>::laplacian(const Point<dim> &p,
                                     const unsigned int /*component*/) const
 {
-    return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
+    if (dim == 3)
+
+        // return 2.0*p[2]*sin(this->get_time() + p[1]) + 2.0*p[0] -  p[0]*p[0]*p[2]*sin(this->get_time() + p[1]);
+		
+	
+		// ORIG 3-D
+        return (p[2]*sin(this->get_time() + p[1]))*(2.0 - p[0]*p[0]) + 2.0*p[0]*p[2]*(p[2]*p[2] + 3.0*p[1]*p[1]);
+
+
+		// 2-D CASE WITH 3D 
+        // return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
+
+    else
+        return 2.0*p[0] + sin(this->get_time() + p[1])*(2.0 - p[0]*p[0]);
+
+
 }
 
 template <int dim>
@@ -217,7 +276,21 @@ double
 ExactLiquidPressure<dim>::time_derivative(const Point<dim> &p,
                                           const unsigned int /*component*/) const
 {
-    return p[0]*p[0]*cos(this->get_time() + p[1]);
+    if (dim == 3)
+
+
+    //    return p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);
+
+		// ORIG 3-D
+        return p[0]*p[0]*p[2]*cos(this->get_time() + p[1]);
+
+
+		// 2-D CASE WITH 3D 
+        // return p[0]*p[0]*cos(this->get_time() + p[1]);
+
+    else
+        return p[0]*p[0]*cos(this->get_time() + p[1]);
+
 }
 
 template <int dim>
@@ -243,7 +316,21 @@ double
 ExactLiquidSaturation<dim>::value(const Point<dim> &p,
                                   const unsigned int /*component*/) const
 {
-    return (2.0 - p[0]*p[0]*p[1]*p[1])/4.0;
+    if (dim == 3)
+
+        // return (4.0 - 2.0*p[0]*p[0]*p[1]*p[1])/8.0;
+        // return 0.0;
+
+
+		// ORIG
+        return (4.0 - 2.0*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] + cos(this->get_time() + p[0] + p[2]))/8.0;
+
+		// 2D CASE WITH 3D
+        // return (2.0 - p[0]*p[0]*p[1]*p[1])/4.0;
+
+    else    
+        return (2.0 - p[0]*p[0]*p[1]*p[1])/4.0;
+
 }
 
 template <int dim>
@@ -253,11 +340,27 @@ ExactLiquidSaturation<dim>::gradient(const Point<dim> &p,
 {
 
     Tensor<1,dim> grad_Sl;
-//	Vector<double> grad_Sl(dim);
 
-    grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
-    grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
+    // if (dim == 3){
 
+	// 	grad_Sl[0] = -4.0*p[0]*p[1]*p[1]/8.0;
+    //     grad_Sl[1] = -4.0*p[0]*p[0]*p[1]/8.0;        
+    //     grad_Sl[2] =  0.0;
+
+	// 	// ORIG
+         grad_Sl[0] = -p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0 - sin(this->get_time() + p[0] + p[2])/8.0 ;
+         grad_Sl[1] = -p[0]*p[0]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0;        
+         grad_Sl[2] = -p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2])/8.0;
+        
+	// 	// 2D CASE WITH 3D
+    //     // grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
+    //     // grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
+
+    // }
+    // else {
+    //     grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
+    //     grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
+    // }
     return grad_Sl;
 }
 
@@ -266,7 +369,14 @@ double
 ExactLiquidSaturation<dim>::time_derivative(const Point<dim> &p,
                                             const unsigned int /*component*/) const
 {
-    return 0.0;
+
+    // return (sin(this->get_time() + p[0] + p[2]) - sin(this->get_time() + p[0])) /8.0;
+
+	// ORIG
+    return -sin(this->get_time() + p[0] + p[2])/8.0 ;
+
+	// 2-D CASE
+    // return 0.0;
 }
 
 template <int dim>
@@ -295,7 +405,20 @@ double
 ExactVaporSaturation<dim>::value(const Point<dim> &p,
                                  const unsigned int /*component*/) const
 {
-    return (3.0 - cos(this->get_time() + p[0]))/8.0;
+    if (dim == 3)
+
+        // return (3.0 - cos(this->get_time() + p[0] + p[2]))/8.0;
+
+        // ORIG
+        return (3.0 - 2.0*cos(this->get_time() + p[0] + p[2]))/8.0;
+
+        // 2-D CASE WITH 3D 
+        // return (3.0 - cos(this->get_time() + p[0]))/8.0;
+
+    else
+        return (3.0 - cos(this->get_time() + p[0]))/8.0;
+
+    
 }
 
 template <int dim>
@@ -305,9 +428,29 @@ ExactVaporSaturation<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_Sv;
 
-    grad_Sv[0] = sin(this->get_time() + p[0])/8.0;
-    grad_Sv[1] = 0.0;
+    if (dim == 3){
 
+
+        // grad_Sv[0] = 2.0*sin(this->get_time() + p[0]+ p[2])/8.0;
+        // grad_Sv[1] = 0.0;
+        // grad_Sv[2] = 2.0*sin(this->get_time() + p[0]+ p[2])/8.0;
+
+
+        // ORIG
+        grad_Sv[0] = 2.0*sin(this->get_time() + p[0]+ p[2])/8.0;
+        grad_Sv[1] = 0.0;
+        grad_Sv[2] = 2.0*sin(this->get_time() + p[0]+ p[2])/8.0;
+
+
+        // 2D CASE WITH 3D
+        // grad_Sv[0] = sin(this->get_time() + p[0])/8.0;
+        // grad_Sv[1] = 0.0; 
+
+    }
+    else{
+        grad_Sv[0] = sin(this->get_time() + p[0])/8.0;
+        grad_Sv[1] = 0.0; 
+    }
     return grad_Sv;
 }
 
@@ -316,7 +459,19 @@ double
 ExactVaporSaturation<dim>::laplacian(const Point<dim> &p,
                                      const unsigned int /*component*/) const
 {
-    return cos(this->get_time() + p[0])/8.0;
+    if (dim == 3)
+
+
+        // return 4.0*cos(this->get_time() + p[0] + p[2])/8.0;
+
+        // ORIG
+        return cos(this->get_time() + p[0] + p[2])/2.0;
+
+        // 2D CASE WITH 3D
+        // return cos(this->get_time() + p[0])/8.0;
+
+    else
+        return cos(this->get_time() + p[0])/8.0;
 }
 
 template <int dim>
@@ -324,7 +479,19 @@ double
 ExactVaporSaturation<dim>::time_derivative(const Point<dim> &p,
                                            const unsigned int /*component*/) const
 {
-    return sin(this->get_time() + p[0])/8.0;
+    if (dim == 3)
+
+        // return 2.0*sin(this->get_time() + p[0] + p[2])/8.0;
+
+        // ORIG
+        return 2.0*sin(this->get_time() + p[0] + p[2])/8.0;
+
+        // 2D CASE WITH 3D
+        // return sin(this->get_time() + p[0])/8.0;
+
+    else
+        return sin(this->get_time() + p[0])/8.0;
+        
 }
 
 template <int dim>
@@ -353,7 +520,19 @@ double
 ExactAqueousSaturation<dim>::value(const Point<dim> &p,
                                    const unsigned int /*component*/) const
 {
-    return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
+    if (dim == 3)
+
+
+        // return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0] + p[2]))/8.0;
+
+		// ORIG
+        return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] + cos(this->get_time() + p[0] + p[2]))/8.0;
+
+		//2-D CASE WITH 3D 
+        // return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
+
+    else
+        return (1.0 + 2.0*p[0]*p[0]*p[1]*p[1] + cos(this->get_time() + p[0]))/8.0;
 }
 
 template <int dim>
@@ -363,8 +542,29 @@ ExactAqueousSaturation<dim>::gradient(const Point<dim> &p,
 {
     Tensor<1,dim> grad_Sa;
 
-    grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
-    grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
+    if (dim == 3){
+
+
+        // grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0] + p[2]))/8.0;
+        // grad_Sa[1] = 4.0*p[0]*p[0]*p[1]/8.0;        
+        // grad_Sa[2] = -sin(this->get_time() + p[0] + p[2])/8.0;   
+		
+
+		// ORIG
+        grad_Sa[0] = (4.0*p[0]*p[1]*p[1]*p[2]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]))/8.0;
+        grad_Sa[1] = p[0]*p[0]*p[1]*p[2]*p[2]*p[2]*p[2]/2.0;        
+        grad_Sa[2] = (8*p[0]*p[0]*p[1]*p[1]*p[2]*p[2]*p[2] - sin(this->get_time() + p[0] + p[2]))/8.0;    
+		
+		//2-D CASE WITH 3D 
+        // grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
+        // grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
+
+    }
+    else{
+        grad_Sa[0] = (4.0*p[0]*p[1]*p[1] - sin(this->get_time() + p[0]))/8.0;
+        grad_Sa[1] = p[0]*p[0]*p[1]/2.0;
+    }
+
 
     return grad_Sa;
 }
@@ -374,7 +574,22 @@ double
 ExactAqueousSaturation<dim>::laplacian(const Point<dim> &p,
                                        const unsigned int /*component*/) const
 {
-    return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;;
+    if (dim == 3){
+
+        // return (4.0*p[1]*p[1] - cos(this->get_time() + p[0] + p[2]) + 4.0*p[0]*p[0] - cos(this->get_time() + p[0] + p[2]))/8.0;
+
+		// ORIG
+        return 0.5*p[2]*p[2]*( p[1]*p[1]*p[2]*p[2] + p[0]*p[0]*p[2]*p[2] + 6.0*p[0]*p[0]*p[1]*p[1]) 
+        - cos(this->get_time() + p[0]+ p[2])/4.0;
+
+
+		// 2-D CASE WITH 3D
+        // return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;
+
+    }
+    else
+        return (4.0*p[1]*p[1] - cos(this->get_time() + p[0]))/8.0 + p[0]*p[0]/2.0;
+
 }
 
 template <int dim>
@@ -382,7 +597,20 @@ double
 ExactAqueousSaturation<dim>::time_derivative(const Point<dim> &p,
                                              const unsigned int /*component*/) const
 {
-    return -sin(this->get_time() + p[0])/8.0;
+    if (dim == 3)
+
+        // return -sin(this->get_time() + p[0] + p[2])/8.0;
+
+
+		// ORIG
+        return -sin(this->get_time() + p[0] + p[2])/8.0;
+
+
+		// 2-D CASE WITH 3D
+        // return -sin(this->get_time() + p[0])/8.0;
+
+    else
+        return -sin(this->get_time() + p[0])/8.0;
 }
 
 // pl at t=0
@@ -597,8 +825,16 @@ CapillaryPressurePcv<dim>::laplacian(const Point<dim> &p,
     grad_Sv = exact_Sv.gradient(p);
     lap_Sv = exact_Sv.laplacian(p);
 
+    if (dim == 3){
+    return -(3.9/log(0.01))*(1.0/((1.0 - Sv + 0.01)*(1.0 - Sv + 0.01))
+                             *(grad_Sv[0]*grad_Sv[0] + grad_Sv[1]*grad_Sv[1]+ grad_Sv[2]*grad_Sv[2]) + 1.0/(1.0 - Sv + 0.01)*lap_Sv);
+
+    }
+    else{
     return -(3.9/log(0.01))*(1.0/((1.0 - Sv + 0.01)*(1.0 - Sv + 0.01))
                              *(grad_Sv[0]*grad_Sv[0] + grad_Sv[1]*grad_Sv[1]) + 1.0/(1.0 - Sv + 0.01)*lap_Sv);
+    }
+
 }
 
 template <int dim>
@@ -730,8 +966,16 @@ CapillaryPressurePca<dim>::laplacian(const Point<dim> &p,
     grad_Sa = exact_Sa.gradient(p);
     lap_Sa = exact_Sa.laplacian(p);
 
+    if (dim == 3){
+    return (6.3/log(0.01))*(-1.0/((Sa + 0.01)*(Sa + 0.01))
+                            *(grad_Sa[0]*grad_Sa[0] + grad_Sa[1]*grad_Sa[1] + grad_Sa[2]*grad_Sa[2]) + 1.0/(Sa + 0.01)*lap_Sa);
+        
+    }
+    else{
     return (6.3/log(0.01))*(-1.0/((Sa + 0.01)*(Sa + 0.01))
                             *(grad_Sa[0]*grad_Sa[0] + grad_Sa[1]*grad_Sa[1]) + 1.0/(Sa + 0.01)*lap_Sa);
+    }
+
 }
 
 template <int dim>
@@ -1080,7 +1324,7 @@ double viscosity_a<dim>::value(const double pl,
                                const unsigned int /*component*/) const
 {
     //return 0.5; 
-    return mu_a_data; // Multiplied by 2 to divide diffusion term by 2
+    return mu_a_data; 
 }
 
 // Mobilities
