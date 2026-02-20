@@ -7,13 +7,13 @@ subsection Time discretization parameters
 
 
   # Initial time step (must be chosen so that at least one time step is performed)
-  set Initial time step = 1
+  set Initial time step = 2
 
   # Second order time derivative
-  set Second order time derivative = false
+  set Second order time derivative = true
 
   # Second order extrapolation
-  set Second order extrapolation = false
+  set Second order extrapolation = true
 
   # Use midpoint time discretization. NOTE: can only be run if Incompressible is true
   set Midpoint method = false
@@ -38,6 +38,9 @@ subsection Spatial discretization parameters
   # Dimension (2 or 3)
   set Dimension = 2
 
+ # If true, then stability method is used For pl (*******TODO: debug. not currently working**************) 
+  set Stab_pl = false
+  
   # If true, then stability method is used For Sa
   set Stab_a = false
 
@@ -45,14 +48,13 @@ subsection Spatial discretization parameters
   set Stab_v = false
 
   # Polynomial degree for FE space
-  set Degree = 1
-
+  set Degree = 2
 
   # Initial level of refinement
-  set Initial level of refinement = 2
+  set Initial level of refinement = 1
 
   # Final level of refinement
-  set Final level of refinement = 2
+  set Final level of refinement = 1
 
   # theta pl (0 = Incomplete IPDG, 1 = Nonsymmetric IPDG, -1 = Symmetric IPDG)
   set Theta pl = 1
@@ -144,10 +146,10 @@ subsection Spatial discretization parameters
 end
 subsection Output parameters
   # Print vtk files with solution
-  set print vtk = false
+  set print vtk = true
 
   # How often vtk files are printed. Only used if previous variable is true
-  set Frequency for vtk printing = 40
+  set Frequency for vtk printing = 20
 
   # Compute errors (manufactured sol test case)
   set Compute errors = false
