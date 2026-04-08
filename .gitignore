@@ -53,3 +53,6 @@ FROM_LC
 # for batch job scripts
 RUNNING_SCRIPTS
 
+# for comp tests
+comp_*
+
