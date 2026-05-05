@@ -41,7 +41,7 @@ subsection Spatial discretization parameters
   set Incompressible = true
 
   # Polynomial degree for FE space
-  set Degree = 1
+  set Degree = 2
   
   # Initial level of refinement
   set Initial level of refinement = 1

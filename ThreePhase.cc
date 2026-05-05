@@ -247,6 +247,16 @@ void CoupledPressureSaturationProblem<dim>::run()
 	// new for tracking total time in loop
 	Vector<double> total_loop_time(final_time/time_step - timestep_number + 1);
 
+	// Vectors to save computational time per unknown
+	Vector<double> pl_assemble_time(final_time/time_step - timestep_number + 1);
+    Vector<double> pl_solver_time(final_time/time_step - timestep_number + 1);
+
+	Vector<double> sa_assemble_time(final_time/time_step - timestep_number + 1);
+    Vector<double> sa_solver_time(final_time/time_step - timestep_number + 1);
+
+	Vector<double> sv_assemble_time(final_time/time_step - timestep_number + 1);
+    Vector<double> sv_solver_time(final_time/time_step - timestep_number + 1);
+
 	
 
     Timer timer(mpi_communicator);
@@ -339,6 +349,8 @@ void CoupledPressureSaturationProblem<dim>::run()
         assemble_time[index_time] = timer.cpu_time();
 		pcout << "Elapsed CPU time for pl assemble: " << timer.cpu_time() << " seconds."<< std::endl;
 
+		pl_assemble_time[index_time] = timer.cpu_time();
+
         timer.reset();
 		timer.start();
         pl_problem.solve_pressure();
@@ -346,6 +358,9 @@ void CoupledPressureSaturationProblem<dim>::run()
 
         solver_time[index_time] = timer.cpu_time();
 		pcout << "Elapsed CPU time for pl solve: " << timer.cpu_time() << " seconds." << std::endl ;
+
+
+        pl_solver_time[index_time] = timer.cpu_time();
 
         pl_solution = pl_problem.pl_solution;
 
@@ -438,6 +453,8 @@ void CoupledPressureSaturationProblem<dim>::run()
 		pcout << std::endl;
 		pcout << "Elapsed CPU time for Sa assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
+		sa_assemble_time[index_time] = timer.cpu_time();
+
 		timer.reset();
 		timer.start();
 		Sa_problem.solve_aqueous_saturation(pl_solution);
@@ -445,6 +462,8 @@ void CoupledPressureSaturationProblem<dim>::run()
 
 		solver_time[index_time] += timer.cpu_time();
 		pcout << "Elapsed CPU time for Sa solve: " << timer.cpu_time() << " seconds." << std::endl;
+
+		sa_solver_time[index_time] = timer.cpu_time();
 
 		Sa_solution = Sa_problem.Sa_solution;
 
@@ -469,13 +488,18 @@ void CoupledPressureSaturationProblem<dim>::run()
 			pcout << std::endl;
 			pcout << "Elapsed CPU time for Sv assemble: " << timer.cpu_time() << " seconds." << std::endl;
 
+			sv_assemble_time[index_time] = timer.cpu_time();
+
+
 			timer.reset();
 			timer.start();
 			Sv_problem.solve_vapor_saturation(pl_solution);
 			timer.stop();
 
-			solver_time[index_time] += timer.cpu_time();
+			solver_time[index_time] = timer.cpu_time();
 			pcout << "Elapsed CPU time for Sv solve: " << timer.cpu_time() << " seconds." << std::endl;
+
+			sv_solver_time[index_time] += timer.cpu_time();
 
 			Sv_solution = Sv_problem.Sv_solution;
 
@@ -568,14 +592,33 @@ void CoupledPressureSaturationProblem<dim>::run()
 
         index_time ++;
     }
-
-
-
+	
 
     total_timer.stop();
     total_time = total_timer.cpu_time();
 	pcout << "Total Time: " << total_time << " seconds." << std::endl;
 
+	    // Save computation times
+    std::ofstream time_file;
+
+    // time_file.open("comp_times", std::ios::app);
+    time_file.open("comp_times");
+	
+
+
+
+	time_file << "Average pl assemble time = " << pl_assemble_time.mean_value() << " seconds." << std::endl;
+    time_file << "Average pl solver time = " << pl_solver_time.mean_value() << " seconds." << std::endl << "\n";
+
+	time_file << "Average sa assemble time = " << sa_assemble_time.mean_value() << " seconds." << std::endl;
+    time_file << "Average sa solver time = " << sa_solver_time.mean_value() << " seconds." << std::endl << "\n";
+
+	time_file << "Average sv assemble time = " << sv_assemble_time.mean_value()<< " seconds." << std::endl;
+    time_file << "Average sv solver time = " << sv_solver_time.mean_value() << " seconds." << std::endl << "\n";
+
+	time_file << "Total Time: " << total_time << " seconds." << std::endl << "\n";
+
+	time_file.close();
     if(compute_errors_sol)
     	compute_errors();
 
@@ -632,12 +675,12 @@ int main(int argc, char *argv[])
 				dgmethod.run();
         	}
 			if(div4_delta_t){
-
 				delta_t /= 4.0;
 			}
 			else
 			{
 				delta_t /= 2.0;
+				tf /= 2.0; // if doing comp tests
 			}
 
         }

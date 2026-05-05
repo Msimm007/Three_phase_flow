@@ -341,7 +341,7 @@ ExactLiquidSaturation<dim>::gradient(const Point<dim> &p,
 
     Tensor<1,dim> grad_Sl;
 
-    // if (dim == 3){
+    if (dim == 3){
 
 	// 	grad_Sl[0] = -4.0*p[0]*p[1]*p[1]/8.0;
     //     grad_Sl[1] = -4.0*p[0]*p[0]*p[1]/8.0;        
@@ -356,11 +356,11 @@ ExactLiquidSaturation<dim>::gradient(const Point<dim> &p,
     //     // grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
     //     // grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
 
-    // }
-    // else {
-    //     grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
-    //     grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
-    // }
+     }
+    else {
+        grad_Sl[0] = -p[0]*p[1]*p[1]/2.0;
+        grad_Sl[1] = -p[0]*p[0]*p[1]/2.0;
+    }
     return grad_Sl;
 }
 
@@ -373,10 +373,16 @@ ExactLiquidSaturation<dim>::time_derivative(const Point<dim> &p,
     // return (sin(this->get_time() + p[0] + p[2]) - sin(this->get_time() + p[0])) /8.0;
 
 	// ORIG
+    if(dim == 3){
     return -sin(this->get_time() + p[0] + p[2])/8.0 ;
 
+    }
+
 	// 2-D CASE
-    // return 0.0;
+    else{
+     return 0.0;
+    }
+
 }
 
 template <int dim>
