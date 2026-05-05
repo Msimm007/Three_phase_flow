@@ -1,0 +1,11 @@
+Average pl assemble time = 18.1597 seconds.
+Average pl solver time = 126.73 seconds.
+
+Average sa assemble time = 247.434 seconds.
+Average sa solver time = 125.27 seconds.
+
+Average sv assemble time = 245.978 seconds.
+Average sv solver time = 127.057 seconds.
+
+Total Time: 63509.3 seconds.
+

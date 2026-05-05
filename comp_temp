@@ -1,0 +1,12 @@
+# FIRST ITERATION
+Average pl assemble time = 0.463128 seconds.
+Average pl solver time = 1.0255 seconds.
+
+Average sa assemble time = 6.21994 seconds.
+Average sa solver time = 0.893668 seconds.
+
+Average sv assemble time = 5.88135 seconds.
+Average sv solver time = 0.81723 seconds.
+
+Total Time: 11880.2 seconds.
+
